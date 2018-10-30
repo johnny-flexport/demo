@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
     <title>Demo</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
-    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
-</head>
-<body>
-   <a href="./tables">Tables</a>
-   <a href="./spin">Spinners & More...</a>
-   <a href="./contrast">Contrast</a>
-   <a href="./buttons">Loading Buttons</a>
-
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
     <style>
 
         :root {
-            --speed: 2s;
-
             --blue10:#E7F1FF;
             --blue20:#bad2ff;
             --blue30:#3e6be6;
@@ -25,89 +16,26 @@
             --blue50:#1942B3;
             --blue60:#0E2259;
 
-
             --grey10:#F7FAFC;
             --grey20:#EDF3F7;
             --grey30:#CED7DE;
             --grey40:#B0BAC2;
             --grey50:#6E7881;
             --grey60:#18191A;
-
-            /*--grey10: hsl(204, 45%, 98%);
-            --grey20: hsl(204, 38%, 95%);
-            --grey30: hsl(206, 20%, 84%);
-            --grey40: hsl(207, 13%, 73%);
-            --grey50: hsl(208, 8%, 47%);
-            --grey60: hsl(210, 4%, 10%);*/
         }
-            * {outline:none;}
-            a {color:var(--blue40);transition:color 150ms ease-in-out;}
-            a:hover {color:var(--blue50);}
-            a:active {text-decoration:none;}
+        * {outline:none;}
+        a {color:var(--blue40);transition:color 150ms ease-in-out;}
+        a:hover {color:var(--blue50);}
+        a:active {text-decoration:none;}
 
-             * {margin:0;padding:0;}
-
-            html {font:normal 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;color:var(--grey60);}
-        
-            h1 {}
-            h2 {}
-            h3 {font-size:18px;font-weight:700;color:var(--grey60);margin:0;line-height:28px;}
-            h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:16px 40px;}
-            h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
-        
-            .btn {white-space:nowrap;}
-        
-            table .btn {margin:0;text-align:center;}
-        
-            table {border-collapse: collapse;margin:0 24px 48px;width:calc(100% - 48px);line-height:20px;}
-            tr {box-shadow:0 1px var(--grey20);transition:all 150ms ease-in-out;cursor:default;border-top:1px solid transparent;}
-                tr:first-child {border:none;}
-                tr:nth-child(2) {border-top-color:var(--grey30)}
-                tr:last-child {box-shadow:none;}
-        
-                tr:not(:first-child):not(.selected):hover {background:var(--grey10);border-top-color:var(--blue20);}
-        
-                tr:last-child:hover {box-shadow:0 1px var(--blue20);}
-        
-                tr:not(:first-child):hover + tr:not(.selected) {border-top-color:var(--blue20)}
-        
-                tr.selected {background:var(--blue10);border-top-color:var(--blue20);}/* box-shadow:0 -1px var(--blue30), 0 1px var(--blue30); */
-                tr.selected + tr:not(.selected) {border-top-color:var(--blue20);}
-                tr.selected:last-child {box-shadow:0 1px var(--blue20);}
-        
-                tr.selected:hover {background:hsl(215, 100%, 97%);}
-        
-            .static {border-right:1px solid var(--grey30);}
-        
-        
-            th {font-size:11px;font-weight:500;text-transform:uppercase;text-align:left;padding:4px 12px;color:var(--grey50);vertical-align:bottom !important;transition:color 150ms ease-in-out;}
-                th.sort {cursor:pointer;}
-                th.sort:hover {color:var(--grey60);}
-                th.sort:active {color:black;}
-        
-            .fixedscroll th {border-top:1px solid var(--grey30);padding: 6px 12px 5px;}
-        
-            td {padding:12px 12px;box-sizing:border-box;height:40px;max-width:25%;vertical-align:top;}
-            td:first-child, th:first-child {padding-left:16px;}
-            td:last-child, th:last-child {padding-right:16px;}
-        
-            .checkcell {width:16px;padding-right:0;vertical-align:middle;}
-        
-            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:3px;width:16px;height:16px;cursor:pointer;display:block;margin:2px 0;transition:all 150ms ease-in-out;}
-                input[type=checkbox]:hover {border-color:var(--grey50);}
-                input[type=checkbox]:active {border-color:var(--grey50);background:var(--grey50);}
-                input[type=checkbox]:checked {border-color:transparent;background:var(--blue40) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
-        
-                input[type=checkbox]:checked:hover {background-color:var(--blue50);}
-                input[type=checkbox]:checked:active {background:var(--blue50);}
-        
-            .secondary {color:var(--grey50);}
-        
-            .action {vertical-align: middle;}
-        
-            .sortable {position:relative;padding-right:16px;display:inline-block;}
-                .sortable::after {content:'▼';position:absolute;bottom:0;right:0;display:block;font-size:9px;transform:scale(1.25,.8);opacity:0.8;transition:transform 150ms ease-in-out;}
-                    .sortable.desc::after {transform:scale(1.25,-0.8);} /* content:'▲'; */
-        </style>
+        html {font:normal 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;color:var(--grey60);}
+    </style>
+</head>
+<body>
+    <a href="./tables">Tables</a><br>
+    <a href="./spin">Spinners & More...</a><br>
+    <a href="./contrast">Contrast</a><br>
+    <a href="./buttons">Loading Buttons</a><br>
+    <a href="./stuff">Stuff</a><br>
 </body>
 </html>
