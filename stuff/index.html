@@ -72,7 +72,7 @@
     <div class=onebar></div>
 </div> -->
 
-<!-- 
+
 
 
 <div class=btn onclick="loading.call(this,event);">
@@ -198,6 +198,7 @@
     <span class=spinning>
         <div class="loader loader400 fat loaderdynamic" style="top: 21px;width:100%;left:-24px;">
             <div class=bar></div>
+            <!-- <div class="bar bar2"></div> -->
             <div class="bar bar3"></div>
         </div>
     </span>
@@ -213,6 +214,7 @@
     <span class=spinning style="width:100%;">
         <div class="loader loader400 fat loaderdynamic" style="top: 35px;left:-24px;width:100%;">
             <div class=bar></div>
+            <!-- <div class="bar bar2"></div> -->
             <div class="bar bar3"></div>
         </div>
         <div class=spinlabel style="position:absolute;top:3px;left:50%;margin-left:-40px;">Submitting...</div>
@@ -260,9 +262,441 @@
     .tipwrap {position:relative;display:inline-block;margin:24px;cursor:pointer;}
     .tooltip {z-index:1337;position:absolute;top:calc(100% + 6px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:#18191Ada;color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
         .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
-</style> -->
+</style>
+
+<div class=greys>
+    <div class=grad>
+        <div class="gc g1"></div>
+        <div class="gc g2"></div>
+        <div class="gc g3"></div>
+        <div class="gc g4"></div>
+        <div class="gc g5"></div>
+        <div class="gc g6"></div>
+    </div>
+</div>
+
+<div class=greygrid>
+    <div class="gc gg1"></div>
+    <div class="gc gg2"></div>
+    <div class="gc gg3"></div>
+    <div class="gc gg4"></div>
+    <div class="gc gg5"></div>
+    <div class="gc gg6"></div>
+</div>
+
+<div class=greyshades>
+    <div class="shade c1"></div><div class="shade c2"></div><div class="shade c3"></div><div class="shade c4"></div><div class="shade c5"></div><div class="shade c6"></div>
+</div>
+
+<div class="greyshades evenhue">
+    <div class="shade c1"></div><div class="shade c2"></div><div class="shade c3"></div><div class="shade c4"></div><div class="shade c5"></div><div class="shade c6"></div>
+</div>
+
+<div class="greyshades samehue">
+    <div class="shade c1"></div><div class="shade c2"></div><div class="shade c3"></div><div class="shade c4"></div><div class="shade c5"></div><div class="shade c6"></div>
+</div>
+
+<!-- <div class="greyshades evengreys">
+    <div class="shade c1"></div><div class="shade c2"></div><div class="shade c3"></div><div class="shade c4"></div><div class="shade c5"></div><div class="shade c6"></div>
+</div> -->
+
+<div class="greyshades desat">
+    <div class="shade c1"></div><div class="shade c2"></div><div class="shade c3"></div><div class="shade c4"></div><div class="shade c5"></div><div class="shade c6"></div>
+</div>
+
+<style>
+    .grad {width:100%;height:20px;background:linear-gradient(to right, hsl(210, 50%, 100%), hsl(210, 0%, 0%));position:relative;}
+
+    .gc {width: 12px;height: 12px;border: 2px solid #ffffff;position: absolute;top: 4px;left: 0;margin-left: -6px;border-radius: 50%;box-sizing: border-box;box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);}
+
+    .g1 {left:1%;}
+    .g2 {left:3%;}
+    .g3 {left:13%;}
+    .g4 {left:24%;}
+    .g5 {left:49%;}
+    .g6 {left:90%;}
 
 
+    .greygrid {width:400px;height:400px;margin:24px;position:relative;
+        background: hsl(210, 100%, 50%);
+        background-image: linear-gradient(to top, #000, rgba(204, 154, 129, 0)), linear-gradient(to right, #fff, rgba(204, 154, 129, 0));
+    }
+
+    .greygrid .gc {margin-top:-6px;position: absolute;}
+
+    .gg1 {top:1%;left:2%;}
+    .gg2 {top:3%;left:5%;}
+    .gg3 {top:13%;left:7%;}
+    .gg4 {top:24%;left:9%;}
+    .gg5 {top:49%;left:15%;}
+    .gg6 {top:90%;left:6%;}
+
+
+    .greyshades::after {content:'';display:block;clear:both;}
+    .shade {width:64px;height:64px;display:inline-block;margin:0;float:left;}
+
+    .c1 {background:var(--grey10);}
+    .c2 {background:var(--grey20);}
+    .c3 {background:var(--grey30);}
+    .c4 {background:var(--grey40);}
+    .c5 {background:var(--grey50);}
+    .c6 {background:var(--grey60);}
+
+    .evengreys .c1 {background:hsl(224, 45%, 98%);}
+    .evengreys .c2 {background:hsl(224, 38%, 95%);}
+    .evengreys .c3 {background:hsl(224, 20%, 84%);}
+    .evengreys .c4 {background:hsl(224, 13%, 73%);}
+    .evengreys .c5 {background:hsl(224, 8%, 47%);}
+    .evengreys .c6 {background:hsl(224, 4%, 10%);}
+
+    /*--grey10: hsl(204, 45%, 98%);
+    --grey20: hsl(204, 38%, 95%);
+    --grey30: hsl(206, 20%, 84%);
+    --grey40: hsl(207, 13%, 73%);
+    --grey50: hsl(208, 8%, 47%);
+    --grey60: hsl(210, 4%, 10%);*/
+
+    
+</style>
+
+
+
+<script>
+
+    let COLORS = {
+        grey: [
+            {name: 'white', hex: '#fff'},
+            {name: '10', hex: '#F7FAFC'},
+            {name: '20', hex: '#EDF3F7'},
+            {name: '30', hex: '#CED7DE'},
+            {name: '40', hex: '#B0BAC2'},
+            {name: '50', hex: '#6E7881'},
+            {name: '60', hex: '#18191A'},
+            {name: 'black', hex: '#000'}
+        ],
+        blue: [
+            {name:'10', hex:"#E7F1FF"},
+            {name:'20', hex:"#BAD2FF"},
+            {name:'30', hex:"#3E6BE6"}, 
+            {name:'40', hex:"#265DF1"},
+            {name:'50', hex:"#1942B3"},
+            {name:'60', hex:"#0E2259"}
+        ],
+        red: [
+            {name:'10', hex:"#FFEBEB"},
+            {name:'20', hex:"#FCBDBD"},
+            {name:'30', hex:"#F2555F"}, 
+            {name:'40', hex:"#EF3340"},
+            {name:'45', hex:"#D92736"},
+            {name:'50', hex:"#A6212A"},
+            {name:'60', hex:"#591317"}
+        ],
+        yellow: [
+            {name:'10', hex:"#FCF6DE"},
+            {name:'20', hex:"#FFE880"},
+            {name:'30', hex:"#FFDE4C"}, 
+            {name:'40', hex:"#FFD100"},
+            {name:'50', hex:"#FF9419"},
+            {name:'60', hex:"#662E00"}
+        ],
+        green: [
+            {name:'10', hex:"#EBFFF1"},
+            {name:'20', hex:"#B0EBC3"},
+            {name:'30', hex:"#66CC86"}, 
+            {name:'40', hex:"#3DC468"},
+            {name:'50', hex:"#2DA854"},
+            {name:'60', hex:"#124D25"}
+        ],
+        cyan: [
+            {name:'10', hex:"#E8F6FF"},
+            {name:'20', hex:"#BEE6FF"},
+            {name:'30', hex:"#8CDBFF"}, 
+            {name:'40', hex:"#66CFFF"},
+            {name:'50', hex:"#0A8FCC"},
+            {name:'60', hex:"#00384C"}
+        ],
+        cyan: [
+            {name:'10', hex:"#F4EDFF"},
+            {name:'20', hex:"#C4AEE8"},
+            {name:'30', hex:"#8F62D9"}, 
+            {name:'40', hex:"#7B41D9"},
+            {name:'50', hex:"#572E99"},
+            {name:'60', hex:"#331B59"}
+        ]
+    }
+
+
+    function toDecimal(num, fixed) {
+        var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+        return num.toString().match(re)[0];
+    }
+
+    function contrastr(a, b) { //rgb
+        a = hex2rgb(a);
+        b = hex2rgb(b);
+        var l1 = luminance(a) + 0.05;
+        var l2 = luminance(b) + 0.05;
+        var ratio = l1 / l2;
+
+        if (l2 > l1) {
+        //ratio = 1 / ratio;
+        }
+
+        ratio = 1 / ratio;
+
+        // ratio = Math.round(ratio, 1);
+
+        return ratio;
+    };
+
+    /**
+     * Converts an HSL color value to RGB. Conversion formula
+     * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+     * Assumes h, s, and l are contained in the set [0, 1] and
+     * returns r, g, and b in the set [0, 255].
+     *
+     * @param   {number}  h       The hue
+     * @param   {number}  s       The saturation
+     * @param   {number}  l       The lightness
+     * @return  {Array}           The RGB representation
+     */
+    function hsl2rgb(h, s, l) {
+        var r, g, b;
+
+        if (s === 0) {
+        r = g = b = l; // achromatic
+        } else {
+        var hue2rgb = function (p, q, t) {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+        };
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+        }
+
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    };
+
+    /**
+     * Converts an RGB color value to HSL. Conversion formula
+     * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+     * Assumes r, g, and b are contained in the set [0, 255] and
+     * returns h, s, and l in the set [0, 1].
+     *
+     * @param   {number}  r       The red color value
+     * @param   {number}  g       The green color value
+     * @param   {number}  b       The blue color value
+     * @return  {Array}           The HSL representation
+     */
+    function rgb2hsl(r, g, b) {
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+        var h, s, l = (max + min) / 2;
+
+        if (max == min) {
+        h = s = 0; // achromatic
+        } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+            case g:
+            h = (b - r) / d + 2;
+            break;
+            case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+        }
+
+        return [h, s, l];
+    };
+
+    function hex2rgb(hex) {
+        // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+        return r + r + g + g + b + b;
+        });
+
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+        parseInt(result[1], 16),
+        parseInt(result[2], 16),
+        parseInt(result[3], 16)
+        ] : null;
+    };
+
+    function luminance(rgba2) {
+        // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+        //var rgba = this.rgba.slice();
+        var a = [];
+        for (var i = 0; i < 3; i++) {
+            var rgb = rgba2[i];
+            rgb = rgb / 255;
+            rgb = rgb < 0.03928 ? rgb / 12.92 : Math.pow((rgb + 0.055) / 1.055, 2.4);
+            a[i] = rgb;
+        }
+
+        return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+    };
+</script>
+
+
+<h4>Transit Information</h4>
+<table>
+    <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class="sortable desc" onclick="sortflip.call(this,event)">Carrier</span></th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Lufthansa Cargo AG</td><td>Air</td><td>5 - 7 Days</td><td>Nov 8, 2018</td></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Maersk</td><td>Ocean</td><td>31 - 38 Days</td><td>Nov 14, 2018</td></tr>
+</table>
+
+<table>
+    <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+</table>
+
+<table>
+    <tr class="fixedscroll"><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="static sort"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+    <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+</table>
+
+<style>
+    * {outline:none;}
+    a {color:var(--blue40);transition:color 150ms ease-in-out;}
+    a:hover {color:var(--blue50);}
+    a:active {text-decoration:none;}
+
+    h1 {}
+    h2 {}
+    h3 {font-size:18px;font-weight:700;color:var(--grey60);margin:0;line-height:28px;}
+    h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:16px 40px;}
+    h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
+
+    .btn {white-space:nowrap;}
+
+    table .btn {margin:0;text-align:center;}
+
+    table {border-collapse: collapse;margin:0 24px 48px;width:calc(100% - 48px);line-height:20px;}
+    tr {box-shadow:0 1px var(--grey20);transition:all 150ms ease-in-out;cursor:default;border-top:1px solid transparent;}
+        tr:first-child {border:none;}
+        tr:nth-child(2) {border-top-color:var(--grey30)}
+        tr:last-child {box-shadow:none;}
+
+        tr:not(:first-child):not(.selected):hover {background:var(--grey10);border-top-color:var(--blue20);}
+
+        tr:last-child:hover {box-shadow:0 1px var(--blue20);}
+
+        tr:not(:first-child):hover + tr:not(.selected) {border-top-color:var(--blue20)}
+
+        tr.selected {background:var(--blue10);border-top-color:var(--blue20);}/* box-shadow:0 -1px var(--blue30), 0 1px var(--blue30); */
+        tr.selected + tr:not(.selected) {border-top-color:var(--blue20);}
+        tr.selected:last-child {box-shadow:0 1px var(--blue20);}
+
+        tr.selected:hover {background:hsl(215, 100%, 97%);}
+
+    .static {border-right:1px solid var(--grey30);}
+
+
+    th {font-size:11px;font-weight:500;text-transform:uppercase;text-align:left;padding:4px 12px;color:var(--grey50);vertical-align:bottom !important;transition:color 150ms ease-in-out;}
+        th.sort {cursor:pointer;}
+        th.sort:hover {color:var(--grey60);}
+        th.sort:active {color:black;}
+
+    .fixedscroll th {border-top:1px solid var(--grey30);padding: 6px 12px 5px;}
+
+    td {padding:12px 12px;box-sizing:border-box;height:40px;max-width:25%;vertical-align:top;}
+    td:first-child, th:first-child {padding-left:16px;}
+    td:last-child, th:last-child {padding-right:16px;}
+
+    .checkcell {width:16px;padding-right:0;vertical-align:middle;}
+
+    input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:3px;width:16px;height:16px;cursor:pointer;display:block;margin:2px 0;transition:all 150ms ease-in-out;}
+        input[type=checkbox]:hover {border-color:var(--grey50);}
+        input[type=checkbox]:active {border-color:var(--grey50);background:var(--grey50);}
+        input[type=checkbox]:checked {border-color:transparent;background:var(--blue40) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
+
+        input[type=checkbox]:checked:hover {background-color:var(--blue50);}
+        input[type=checkbox]:checked:active {background:var(--blue50);}
+
+    .secondary {color:var(--grey50);}
+
+    .action {vertical-align: middle;}
+
+    .sortable {position:relative;padding-right:16px;display:inline-block;}
+        .sortable::after {content:'▼';position:absolute;bottom:0;right:0;display:block;font-size:9px;transform:scale(1.25,.8);opacity:0.8;transition:transform 150ms ease-in-out;}
+            .sortable.desc::after {transform:scale(1.25,-0.8);} /* content:'▲'; */
+</style>
+
+<script>
+    function checked2(e, x){
+        var r = this.parentElement.parentElement;
+        var t = r.parentElement;
+
+        var rows = t.getElementsByClassName('row');
+
+        if ( x ){
+            for(var i=0;i<rows.length;i++){
+                var a = rows[i];
+                var inp = a.getElementsByTagName('input')[0];
+                if ( this.checked ){
+                    inp.checked = true;
+                } else {
+                    inp.checked = false;
+                }
+
+                if ( this.checked ){
+                    inp.parentElement.parentElement.classList.add('selected');
+                } else {
+                    inp.parentElement.parentElement.classList.remove('selected');
+                }
+            }
+            return;
+        }
+
+        if ( this.checked ){
+            r.classList.add('selected');
+        } else {
+            r.classList.remove('selected');
+        }
+
+        var alltrue = true;
+
+        for(var i=0;i<rows.length;i++){
+            var a = rows[i];
+            var inp = a.getElementsByTagName('input')[0];
+            if ( !inp.checked ){
+                alltrue = false
+            }
+        }
+
+        if ( !alltrue ){
+            t.getElementsByTagName('input')[0].checked = false;
+        } else {
+            t.getElementsByTagName('input')[0].checked = true;
+        }
+    }
+
+    function sortflip(e){
+        this.classList.toggle('desc');
+    }
+</script>
 
 
 <div class="tridiv">
@@ -384,7 +818,7 @@
 
 
 
-<!-- <div class=spinner>
+<div class=spinner>
     <svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <path d="M26.8284272,2.00000009 L2.00000009,26.8284264 L2.00000009,50.0000001 L25.1715728,50.0000004 L50.0000001,25.1715794 L50.0000001,2.00000009 L26.8284272,2.00000009 Z M24.7663065,50.4052666 C24.7657995,50.4057728 24.7652928,50.4062794 24.7647865,50.4067865 L24.7663065,50.4052665 Z M50.0000001,25.7417666 C49.9999967,25.7435108 49.9999967,25.7452553 50.0000001,25.7470001 L50.0000001,25.7417655 Z" stroke="#000" stroke-width="3" fill=none ></path>
     </svg>
@@ -394,9 +828,9 @@
     <svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <path d="M26.8284272,2.00000009 L2.00000009,26.8284264 L2.00000009,50.0000001 L25.1715728,50.0000004 L50.0000001,25.1715794 L50.0000001,2.00000009 L26.8284272,2.00000009 Z M24.7663065,50.4052666 C24.7657995,50.4057728 24.7652928,50.4062794 24.7647865,50.4067865 L24.7663065,50.4052665 Z M50.0000001,25.7417666 C49.9999967,25.7435108 49.9999967,25.7452553 50.0000001,25.7470001 L50.0000001,25.7417655 Z"></path>
     </svg>
-</div> -->
+</div>
 
-<!-- 
+
 <svg width="84" height="84">
         <circle r="40" cx="42" cy="42" style="fill: none;stroke: black;stroke-width: 4;">
             <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0 251.4;125.7 125.7;0 251.4" />
@@ -497,7 +931,7 @@
 
 <div class="spinner3">
         <svg class="spin3" width="48" height="48" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle></svg>
-</div> -->
+</div>
 
 <style>
 
