@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-    <title>Spin</title>
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/> -->
+    <title>Tables</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
     <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 </head>
 <body>
@@ -30,8 +30,121 @@
     <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
 </table>
 
+
+
+<div class=advancedtable>
+    <div class=tablecontrols>
+        <div class=primarycontrols>
+            <div class="btn hollow">Upload CSV</div><div class="btn hollow">Download CSV</div>
+        </div>
+        <div class=secondarycontrols>
+            <div class="btn hollow">Manage Line Items</div>
+        </div>
+    </div>
+    <div class=filters>
+        <div class="filter search">
+            <div class=label>Search</div>
+            <input type=text class=searchbar placeholder="Find things..." />
+        </div><div class=filter>
+            <div class=label>Sync Status</div>
+            <div class=dropdown>
+                Synced
+            </div>
+            
+        </div><div class=filter>
+            <div class=label>Filters</div>
+            <div class=insertfilters></div><div class="btn hollow">Add Filter</div>
+        </div> 
+
+        <div class=secondaryfilters>
+                <div class=filter>
+                    <div class=label>&nbsp;</div>
+                    <div class=pagecount>1 - 30 of 332</div>
+                </div>
+                <div class=filter>
+                    <div class=label>Results Per</div>
+                    <div class=dropdown>
+                        30
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class=actions>
+        <div class=btn>Delete</div><div class="btn hollow">Unselect All</div><div class=selectcount></div>
+    </div>
+
+    <style>
+        .tablecontrols, .filters, .actions {margin:0 24px 24px;}
+
+        .filters::after, .actions::after {content:'';display:block;clear:both;}
+
+        .actions {display:none;padding-top:24px;}
+            .selection .actions {display:block;}
+            .selection .filters {display:none;}
+
+        .actions .btn {float:left;}
+
+        .tablecontrols {margin-bottom:36px;}
+        .tablecontrols::after {content:'';display:block;clear:both;}
+            .primarycontrols {float:left;}
+            .secondarycontrols {float:right;}
+                .secondarycontrols .btn {margin-right:0;margin-left:16px;}
+            .tablecontrols .btn, .actions .btn {margin-bottom:0;}
+
+        .pagination {margin:0 24px}
+            .pagecount {line-height:36px;color:var(--grey50);}
+
+        .filter {display:inline-block;vertical-align:top;margin-right:16px;float:left;}
+            .filter .btn {margin:0;}
+        .searchbar {width:280px;}
+
+        .secondaryfilters {float:right;}
+
+        .selectcount {line-height:36px;color:var(--blue40);font-weight:500;font-variant-numeric: tabular-nums;}
+
+        .dropdown {height:36px;border-radius:3px;border:1px solid var(--grey30);cursor:pointer;line-height:34px;box-sizing:border-box;padding:0 16px;position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;}
+            .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:16px;margin-top:-1px;}
+    
+        input.quiet {border-radius:0;border:none;border-bottom:1px solid var(--grey30);text-indent:0;}
+
+        .pagewidget input {width:48px;text-align:center;}
+        
+        .pagebtn {position:relative;}
+        .pagebtn::after {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-left: 2px solid var(--grey50);
+            border-bottom: 2px solid var(--grey50);
+            transform: translateY(-50%) rotate(-45deg);
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            margin-top: -1px;
+        }
+    </style>
+    <table>
+        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+    </table>
+
+    <div class=pagination>
+        <div class=pagecount>1 - 30 of 332</div>
+        <div class=pagewidget>
+            <div class="btn hollow pagebtn"></div><input type=number class=quiet value=1 /><div class=ofpage>of 12</div><div class="btn hollow pagebtn"></div>
+        </div>
+    </div>
+</div>
+
+
+
 <style>
     * {outline:none;}
+
+    html {line-height:20px;}
+
     a {color:var(--blue40);transition:color 150ms ease-in-out;}
     a:hover {color:var(--blue50);}
     a:active {text-decoration:none;}
@@ -42,7 +155,17 @@
     h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:16px 40px;}
     h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
 
-    .btn {white-space:nowrap;}
+    input {-webkite-appearance:none;appearance:none;height:36px;border:1px solid var(--grey30);font-size:14px;text-indent:16px;border-radius:3px;box-sizing:border-box;}
+
+        input[type=text] {transition:all 150ms ease-in-out;}
+            input[type=text]:hover {border-color:var(--grey40);}
+            input[type=text]:active {border-color:var(--grey50);}
+            input[type=text]:focus {border-color:var(--blue30);box-shadow:0 1px 2px hsla(224, 40%, 50%, 0.2)}
+
+
+    .label {font-size:13px;color:var(--grey50);margin-bottom:4px;line-height:20px;}
+
+    .btn {white-space:nowrap;box-sizing:border-box;}
 
     table .btn {margin:0;text-align:center;}
 
@@ -94,7 +217,7 @@
 
     .sortable {position:relative;padding-right:16px;display:inline-block;}
         .sortable::after {content:'▼';position:absolute;bottom:0;right:0;display:block;font-size:9px;transform:scale(1.25,.8);opacity:0.8;transition:transform 150ms ease-in-out;}
-            .sortable.desc::after {transform:scale(1.25,-0.8);} /* content:'▲'; */
+            .sortable.desc::after {transform:rotate(180deg) scale(1.25,0.8);} /* content:'▲'; */
 </style>
 
 <script>
@@ -105,11 +228,13 @@
         var rows = t.getElementsByClassName('row');
 
         if ( x ){
+            var selected = 0;
             for(var i=0;i<rows.length;i++){
                 var a = rows[i];
                 var inp = a.getElementsByTagName('input')[0];
                 if ( this.checked ){
                     inp.checked = true;
+                    selected++;
                 } else {
                     inp.checked = false;
                 }
@@ -120,6 +245,16 @@
                     inp.parentElement.parentElement.classList.remove('selected');
                 }
             }
+
+                var at = this.getparent('advancedtable');
+
+                if ( selected ){
+                    at.classList.add('selection');
+
+                    at.getElementsByClassName('selectcount')[0].innerText = selected + ' Selected';
+                } else {
+                    at.classList.remove('selection');
+                }
             return;
         }
 
@@ -130,12 +265,15 @@
         }
 
         var alltrue = true;
+        var selected = 0;
 
         for(var i=0;i<rows.length;i++){
             var a = rows[i];
             var inp = a.getElementsByTagName('input')[0];
             if ( !inp.checked ){
                 alltrue = false
+            } else {
+                selected++;
             }
         }
 
@@ -143,6 +281,15 @@
             t.getElementsByTagName('input')[0].checked = false;
         } else {
             t.getElementsByTagName('input')[0].checked = true;
+        }
+
+        var at = this.getparent('advancedtable');
+
+        if ( selected ){
+            at.classList.add('selection');
+            at.getElementsByClassName('selectcount')[0].innerText = selected + ' Selected';
+        } else {
+            at.classList.remove('selection');
         }
     }
 
@@ -182,15 +329,17 @@
         --grey60: hsl(210, 4%, 10%);*/
     }
 
-    .btn {background:var(--blue30);user-select:none;border-radius:3px;padding:0 16px;line-height:36px;height:36px;font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:24px 0px 24px 16px;position:relative;
+    .btn {background:var(--blue30);user-select:none;border-radius:3px;padding:0 16px;line-height:36px;height:36px;font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:0 16px 24px 0;position:relative;
         transition:all 150ms ease-in-out;
     }
         .btn:hover {background:var(--blue40);box-shadow:0 2px 2px hsla(224, 88%, 55%, .2);}
         .btn:active {background:var(--blue50);box-shadow:none;}
 
-    .btn.hollow {background:white;border:1px solid var(--grey30);color:#18191A;}
-        .btn.hollow:hover {background:white;border-color:var(--grey40);box-shadow:0 2px 2px rgba(0, 0, 0, 0.05);color:black;}
-        .btn.hollow:active {background:white;border-color:var(--grey30);box-shadow:none;}
+    .dropdown {transition:all 150ms ease-in-out;padding-right:40px;}
+
+    .btn.hollow, .dropdown {background:white;border:1px solid var(--grey30);color:#18191A;}
+        .btn.hollow:hover, .dropdown:hover {background:white;border-color:var(--grey40);box-shadow:0 2px 2px rgba(0, 0, 0, 0.05);color:black;}
+        .btn.hollow:active, .dropdown:active {background:white;border-color:var(--grey30);box-shadow:none;}
 
         .btn.hollow.blue {color:var(--blue40);}
             .btn.hollow.blue:hover {color:var(--blue40);}
@@ -213,7 +362,48 @@
 
    
 
+<script>
 
+    String.prototype.stripslashes = function(){
+        return this.replace(/\\(.)/mg, "$1");
+    };
+
+    String.prototype.elemental = function(o) {
+        return this.replace(/{([^{}]*)}/g,
+            function (a, b) {
+                var r = o[b];
+                return typeof r === 'string' || r === 'number' ? r : '';//a
+            }
+        );
+    };
+
+    Object.prototype.getparent = function(c) {
+        var a = this;
+        var x = false;
+        while ( a ){
+            if ( a.classList && a.classList.contains(c) ){
+                x = a;
+                break;
+            }
+            a = a.parentElement
+        }
+        return x;
+    };
+
+    Object.prototype.empty = function(){
+        while(this.firstChild){
+            this.removeChild(this.firstChild);
+        }
+    };
+
+    String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+    };
+
+    Array.prototype.random = function () {
+        return this[Math.floor(Math.random() * this.length)]
+    };
+</script>
 
 </body>
 </html>
