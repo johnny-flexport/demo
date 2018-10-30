@@ -86,7 +86,7 @@
         </div>
     </div>
     <div class=actions>
-        <div class=btn>Delete</div><div class="btn hollow">Unselect All</div><div class=selectcount></div>
+        <div class=btn>Delete</div><div class="btn hollow" onclick="unselect()">Unselect All</div><div class=selectcount></div>
     </div>
     <script>
         function opendrop(e){
@@ -113,6 +113,16 @@
             var f = this.getparent('filter');
 
             f.parentNode.removeChild(f);
+        }
+
+        function unselect(){
+            var m = document.getElementById('maincheck');
+            
+            if ( m.checked ){
+                m.click();
+            } else {
+                checked2.call(m, null, true);
+            }
         }
     </script>
     <style>
@@ -195,7 +205,7 @@
             .pagebtn.disabled::after {border-color:var(--grey30);}
     </style>
     <table>
-        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+        <tr><th class=checkcell><input type=checkbox id=maincheck onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
