@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+    <title>Contrast</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+</head>
+<body>
+    <div id=contrast style="padding-top:24px">
+
+    </div>
+
+    <script>
+
+        let COLORS = {
+            grey: [
+                {name: 'white', hex: '#fff'},
+                {name: '10', hex: '#F7FAFC'},
+                {name: '20', hex: '#EDF3F7'},
+                {name: '30', hex: '#CED7DE'},
+                {name: '40', hex: '#B0BAC2'},
+                {name: '50', hex: '#6E7881'},
+                {name: '60', hex: '#18191A'},
+                {name: 'black', hex: '#000'}
+            ],
+            blue: [
+                {name:'10', hex:"#E7F1FF"},
+                {name:'20', hex:"#BAD2FF"},
+                {name:'30', hex:"#3E6BE6"}, 
+                {name:'40', hex:"#265DF1"},
+                {name:'50', hex:"#1942B3"},
+                {name:'60', hex:"#0E2259"}
+            ],
+            red: [
+                {name:'10', hex:"#FFEBEB"},
+                {name:'20', hex:"#FCBDBD"},
+                {name:'30', hex:"#F2555F"}, 
+                {name:'40', hex:"#EF3340"},
+                {name:'45', hex:"#D92736"},
+                {name:'50', hex:"#A6212A"},
+                {name:'60', hex:"#591317"}
+            ],
+            yellow: [
+                {name:'10', hex:"#FCF6DE"},
+                {name:'20', hex:"#FFE880"},
+                {name:'30', hex:"#FFDE4C"}, 
+                {name:'40', hex:"#FFD100"},
+                {name:'50', hex:"#FF9419"},
+                {name:'60', hex:"#662E00"}
+            ],
+            green: [
+                {name:'10', hex:"#EBFFF1"},
+                {name:'20', hex:"#B0EBC3"},
+                {name:'30', hex:"#66CC86"}, 
+                {name:'40', hex:"#3DC468"},
+                {name:'50', hex:"#2DA854"},
+                {name:'60', hex:"#124D25"}
+            ],
+            cyan: [
+                {name:'10', hex:"#E8F6FF"},
+                {name:'20', hex:"#BEE6FF"},
+                {name:'30', hex:"#8CDBFF"}, 
+                {name:'40', hex:"#66CFFF"},
+                {name:'50', hex:"#0A8FCC"},
+                {name:'60', hex:"#00384C"}
+            ],
+            purple: [
+                {name:'10', hex:"#F4EDFF"},
+                {name:'20', hex:"#C4AEE8"},
+                {name:'30', hex:"#8F62D9"}, 
+                {name:'40', hex:"#7B41D9"},
+                {name:'50', hex:"#572E99"},
+                {name:'60', hex:"#331B59"}
+            ]
+        }
+
+        function contrast(x){
+            var container = document.getElementById('contrast');
+            
+            var d = document.createElement('table');
+            tb = document.createElement('tbody')
+
+            tb.innerHTML = '<tr><th>Color on Color</th><th>Ratio</th><th>Large Text</th><th>Small Text</th><th>Demo</th></tr>';
+
+            for (const key of Object.keys(COLORS)) {
+
+
+                for(var i=0;i<COLORS[key].length;i++){
+                    var bg = COLORS[key][i];
+                    
+                    for (const key2 of Object.keys(COLORS)) {
+
+                        for(var j=0;j<COLORS[key2].length;j++){
+                            var a = COLORS[key2][j];
+                            var hex = a.hex;
+
+                            if (hex == bg.hex ){
+                                continue;
+                            }
+
+                            var t = document.createElement('tr');
+                            
+                            var td1 = document.createElement('td');
+                            var td2 = document.createElement('td');
+                            var td3 = document.createElement('td');
+                            var td4 = document.createElement('td');
+                            var td5 = document.createElement('td');
+
+                            //t.style.background = bg;
+
+                            
+                            var con = contrastr(hex, bg.hex);
+
+                            if ( con < 1 ){
+                                con = 1/con;
+                            }
+                            
+                            var ratio = toDecimal(con, 2)
+
+                            //t.appendChild(document.createTextNode('Grey ' + a.name + ' Aa - ' + ratio));
+
+                            //t.style.color = hex;
+
+                            var large = 'Pass';
+                            var small = 'Pass';
+
+                            td3.style.color = td4.style.color = '#218741';
+
+                            if ( con < 4.5 ){
+                                //t.style.textDecoration = 'underline';
+                                small = 'Fail';
+                                td4.style.color='#d92736';
+                            }
+
+                            if ( con < 3 ){
+                                //t.style.textDecoration = 'line-through';
+                                large = 'Fail';
+                                td3.style.color = td4.style.color = '#fcbdbd';
+
+                                t.style.color = 'var(--grey40)';
+
+                                //td5.style.opacity = 0.5;
+                            }
+
+                            var foreground = key2 + '' + a.name;
+                            var background = key + '' + bg.name;
+
+                            if ( foreground == 'greywhite' ){
+                                foreground = 'white';
+                            }
+
+                            if ( foreground == 'greyblack' ){
+                                foreground = 'black';
+                            }
+
+                            if ( background == 'greywhite' ){
+                                background = 'white';
+                            }
+
+                            if ( background == 'greyblack' ){
+                                background = 'black';
+                            }
+                            
+                            
+
+                            td1.appendChild(document.createTextNode(foreground + ' : ' + background));
+                            td2.appendChild(document.createTextNode(ratio));
+                            td3.appendChild(document.createTextNode(large));
+                            td4.appendChild(document.createTextNode(small));
+
+                            var demo = document.createElement('div');
+
+                            demo.style.background = bg.hex;
+                            demo.style.color = hex;
+                            demo.style.textAlign = 'center';
+                            demo.style.borderRadius = '2px';
+                            demo.appendChild(document.createTextNode('Aa'));
+
+                            td5.appendChild(demo);
+
+                            t.appendChild(td1);
+                            t.appendChild(td2);
+                            t.appendChild(td3);
+                            t.appendChild(td4);
+                            t.appendChild(td5);
+
+                            tb.appendChild(t);
+                        }
+                    }
+                }
+                
+                d.appendChild(tb);
+            }
+            container.appendChild(d);
+        }
+
+        contrast();
+
+        function toDecimal(num, fixed) {
+            var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+            return num.toString().match(re)[0];
+        }
+
+        function contrastr(a, b) { //rgb
+            a = hex2rgb(a);
+            b = hex2rgb(b);
+            var l1 = luminance(a) + 0.05;
+            var l2 = luminance(b) + 0.05;
+            var ratio = l1 / l2;
+
+            if (l2 > l1) {
+            //ratio = 1 / ratio;
+            }
+
+            ratio = 1 / ratio;
+
+            // ratio = Math.round(ratio, 1);
+
+            return ratio;
+        };
+
+        /**
+         * Converts an HSL color value to RGB. Conversion formula
+         * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+         * Assumes h, s, and l are contained in the set [0, 1] and
+         * returns r, g, and b in the set [0, 255].
+         *
+         * @param   {number}  h       The hue
+         * @param   {number}  s       The saturation
+         * @param   {number}  l       The lightness
+         * @return  {Array}           The RGB representation
+         */
+        function hsl2rgb(h, s, l) {
+            var r, g, b;
+
+            if (s === 0) {
+            r = g = b = l; // achromatic
+            } else {
+            var hue2rgb = function (p, q, t) {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1 / 6) return p + (q - p) * 6 * t;
+                if (t < 1 / 2) return q;
+                if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                return p;
+            };
+
+            var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            var p = 2 * l - q;
+            r = hue2rgb(p, q, h + 1 / 3);
+            g = hue2rgb(p, q, h);
+            b = hue2rgb(p, q, h - 1 / 3);
+            }
+
+            return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+        };
+
+        /**
+         * Converts an RGB color value to HSL. Conversion formula
+         * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+         * Assumes r, g, and b are contained in the set [0, 255] and
+         * returns h, s, and l in the set [0, 1].
+         *
+         * @param   {number}  r       The red color value
+         * @param   {number}  g       The green color value
+         * @param   {number}  b       The blue color value
+         * @return  {Array}           The HSL representation
+         */
+        function rgb2hsl(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+
+            var max = Math.max(r, g, b),
+            min = Math.min(r, g, b);
+            var h, s, l = (max + min) / 2;
+
+            if (max == min) {
+            h = s = 0; // achromatic
+            } else {
+            var d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+                case g:
+                h = (b - r) / d + 2;
+                break;
+                case b:
+                h = (r - g) / d + 4;
+                break;
+            }
+            h /= 6;
+            }
+
+            return [h, s, l];
+        };
+
+        function hex2rgb(hex) {
+            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+            var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+            hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+            return r + r + g + g + b + b;
+            });
+
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+            ] : null;
+        };
+
+        function luminance(rgba2) {
+            // Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+            //var rgba = this.rgba.slice();
+            var a = [];
+            for (var i = 0; i < 3; i++) {
+                var rgb = rgba2[i];
+                rgb = rgb / 255;
+                rgb = rgb < 0.03928 ? rgb / 12.92 : Math.pow((rgb + 0.055) / 1.055, 2.4);
+                a[i] = rgb;
+            }
+
+            return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+        };
+    </script>
+
+    <style>
+
+        :root {
+            --speed: 2s;
+
+            --blue10:#E7F1FF;
+            --blue20:#bad2ff;
+            --blue30:#3e6be6;
+            --blue40:#265df1;
+            --blue50:#1942B3;
+            --blue60:#0E2259;
+
+
+            --grey10:#F7FAFC;
+            --grey20:#EDF3F7;
+            --grey30:#CED7DE;
+            --grey40:#B0BAC2;
+            --grey50:#6E7881;
+            --grey60:#18191A;
+
+            /*--grey10: hsl(204, 45%, 98%);
+            --grey20: hsl(204, 38%, 95%);
+            --grey30: hsl(206, 20%, 84%);
+            --grey40: hsl(207, 13%, 73%);
+            --grey50: hsl(208, 8%, 47%);
+            --grey60: hsl(210, 4%, 10%);*/
+        }
+            * {outline:none;}
+            a {color:var(--blue40);transition:color 150ms ease-in-out;}
+            a:hover {color:var(--blue50);}
+            a:active {text-decoration:none;}
+
+             * {margin:0;padding:0;}
+
+            html {font:normal 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;color:var(--grey60);}
+        
+            h1 {}
+            h2 {}
+            h3 {font-size:18px;font-weight:700;color:var(--grey60);margin:0;line-height:28px;}
+            h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:16px 40px;}
+            h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
+        
+            .btn {white-space:nowrap;}
+        
+            table .btn {margin:0;text-align:center;}
+        
+            table {border-collapse: collapse;margin:0 24px 48px;width:calc(100% - 48px);line-height:20px;}
+            tr {box-shadow:0 1px var(--grey20);transition:all 150ms ease-in-out;cursor:default;border-top:1px solid transparent;}
+                tr:first-child {border:none;}
+                tr:nth-child(2) {border-top-color:var(--grey30)}
+                tr:last-child {box-shadow:none;}
+        
+                tr:not(:first-child):not(.selected):hover {background:var(--grey10);border-top-color:var(--blue20);}
+        
+                tr:last-child:hover {box-shadow:0 1px var(--blue20);}
+        
+                tr:not(:first-child):hover + tr:not(.selected) {border-top-color:var(--blue20)}
+        
+                tr.selected {background:var(--blue10);border-top-color:var(--blue20);}/* box-shadow:0 -1px var(--blue30), 0 1px var(--blue30); */
+                tr.selected + tr:not(.selected) {border-top-color:var(--blue20);}
+                tr.selected:last-child {box-shadow:0 1px var(--blue20);}
+        
+                tr.selected:hover {background:hsl(215, 100%, 97%);}
+        
+            .static {border-right:1px solid var(--grey30);}
+        
+        
+            th {font-size:11px;font-weight:500;text-transform:uppercase;text-align:left;padding:4px 12px;color:var(--grey50);vertical-align:bottom !important;transition:color 150ms ease-in-out;}
+                th.sort {cursor:pointer;}
+                th.sort:hover {color:var(--grey60);}
+                th.sort:active {color:black;}
+        
+            .fixedscroll th {border-top:1px solid var(--grey30);padding: 6px 12px 5px;}
+        
+            td {padding:12px 12px;box-sizing:border-box;height:40px;max-width:25%;vertical-align:top;}
+            td:first-child, th:first-child {padding-left:16px;}
+            td:last-child, th:last-child {padding-right:16px;}
+        
+            .checkcell {width:16px;padding-right:0;vertical-align:middle;}
+        
+            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:3px;width:16px;height:16px;cursor:pointer;display:block;margin:2px 0;transition:all 150ms ease-in-out;}
+                input[type=checkbox]:hover {border-color:var(--grey50);}
+                input[type=checkbox]:active {border-color:var(--grey50);background:var(--grey50);}
+                input[type=checkbox]:checked {border-color:transparent;background:var(--blue40) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
+        
+                input[type=checkbox]:checked:hover {background-color:var(--blue50);}
+                input[type=checkbox]:checked:active {background:var(--blue50);}
+        
+            .secondary {color:var(--grey50);}
+        
+            .action {vertical-align: middle;}
+        
+            .sortable {position:relative;padding-right:16px;display:inline-block;}
+                .sortable::after {content:'▼';position:absolute;bottom:0;right:0;display:block;font-size:9px;transform:scale(1.25,.8);opacity:0.8;transition:transform 150ms ease-in-out;}
+                    .sortable.desc::after {transform:scale(1.25,-0.8);} /* content:'▲'; */
+        </style>
+</body>
+</html>
