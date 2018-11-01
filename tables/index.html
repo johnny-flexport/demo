@@ -12,19 +12,19 @@
     .demo {margin-bottom:120px;}
 </style>
 
-<div class=demo>
+<div class=demo style="max-width:800px;">
     <h4>Transit Information</h4>
     <table>
-        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class="sortable desc" onclick="sortflip.call(this,event)">Carrier</span></th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Lufthansa Cargo AG</td><td>Air</td><td>5 - 7 Days</td><td>Nov 8, 2018</td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Maersk</td><td>Ocean</td><td>31 - 38 Days</td><td>Nov 14, 2018</td></tr>
+        <tr><th>Carrier</th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
+        <tr class=row><td>Lufthansa Cargo AG</td><td>Air</td><td>5 - 7 Days</td><td>Nov 8, 2018</td></tr>
+        <tr class=row><td>Maersk</td><td>Ocean</td><td>31 - 38 Days</td><td>Nov 14, 2018</td></tr>
     </table>
 </div>
 
 <div class=demo>
     <h4>Expandable Rows</h4>
     <table>
-        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Action</span></th></tr>
+        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th></tr>
 
         <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
 
@@ -41,6 +41,14 @@
     .expansion {border-color: transparent !important;border-bottom-color:var(--blue30);box-shadow: 0 2px var(--blue30);} */
 
     .expand + tr {border-top-color:var(--blue30) !important;} /* box-shadow:0 -1px var(--blue30) !important; */
+
+    .searchbarwrap {position:relative;}
+    .searchicon {position:absolute;top:0;right:0;padding:7px 12px;border-radius:0 3px 3px 0;cursor:pointer;border:1px solid transparent;transition:all 150ms ease-in-out;box-sizing:border-box;}
+        .searchicon:hover {border-color:var(--grey40);box-shadow:0 2px 2px rgba(0, 0, 0, 0.05);}
+        .searchicon:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
+        .searchicon svg {display:block;}
+        .searchicon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
+        .searchicon:hover svg path {fill:var(--grey60);}
 </style>
 
 <script>
@@ -61,7 +69,7 @@
 
 <div class=demo>
     <table>
-        <tr class="fixedscroll"><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="static sort"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+            <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
     </table>
@@ -81,7 +89,14 @@
     <div class=filters>
         <div class="filter search">
             <div class=label>Search</div>
-            <input type=text class=searchbar placeholder="Find things..." />
+            <div class=searchbarwrap>
+                <input type=text class=searchbar placeholder="Find things..." />
+                <div class=searchicon>
+                    <svg width="20px" height="20px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M51.8128372,45.50901 L50.4728372,44.17401 L39.3728372,33.07401 L38.7518372,32.45401 C44.5778372,23.40901 42.6478372,11.42601 34.2748372,4.66900997 C25.9018372,-2.08699003 13.7818372,-1.44399003 6.17083715,6.16200997 C-1.43916285,13.76701 -2.09016285,25.88701 4.66083715,34.26401 C11.4128372,42.64101 23.3938372,44.58001 32.4428372,38.75901 L33.0638372,39.37901 L44.1638372,50.47901 L45.5028372,51.81601 C45.8530393,52.1603475 46.414635,52.1603475 46.7648372,51.81601 L48.1028372,50.47901 L50.4728372,48.10901 L51.8118372,46.77101 C52.1597073,46.4224223 52.1601544,45.8581485 51.8128372,45.50901 Z M6.07283715,21.10901 C6.06757812,15.035638 9.72204193,9.55736493 15.3315972,7.22954118 C20.9411526,4.90171742 27.4006426,6.18295514 31.6970265,10.4756187 C35.9934103,14.7682822 37.2802433,21.2266599 34.95728,26.8382297 C32.6343166,32.4497995 27.1592114,36.1090077 21.0858372,36.10901 C12.8018372,36.10301 6.08583715,29.39301 6.07283715,21.10901 Z" id="path-1"></path>
+                    </svg>
+                </div>
+            </div>
         </div><div class=filter>
             <div class=label>Sync Status</div>
             <div class=dropdown>
@@ -157,7 +172,7 @@
     </script>
     <style>
 
-     td:nth-child(6),  td:nth-child(7), th:nth-child(6), th:nth-child(7) {text-align:right;}
+     td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7), td:nth-child(9), th:nth-child(9) {text-align:right;}
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
             .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;}
@@ -240,7 +255,7 @@
             .pagebtn.disabled::after {border-color:var(--grey30);}
     </style>
     <table>
-        <tr><th class=checkcell><input type=checkbox id=maincheck onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
+            <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
@@ -448,7 +463,7 @@
         if (s.classList.contains('current')){
             this.classList.toggle('desc');
         } else {
-            var c = document.getElementsByClassName('sort current');
+            var c = s.getparent('table').getElementsByClassName('sort current');
             while(c[0]){
                 c[0].classList.remove('current');
             }
@@ -538,11 +553,11 @@
         );
     };
 
-    Object.prototype.getparent = function(c) {
+    Object.prototype.getparent = function(c) { //class, tag, or id
         var a = this;
         var x = false;
         while ( a ){
-            if ( a.classList && a.classList.contains(c) ){
+            if ( a.classList && a.classList.contains(c) || a.tagName == c.toUpperCase() || a.id == c ){
                 x = a;
                 break;
             }
