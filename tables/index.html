@@ -49,6 +49,9 @@
         .searchicon svg {display:block;}
         .searchicon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
         .searchicon:hover svg path {fill:var(--grey60);}
+
+
+
 </style>
 
 <script>
@@ -136,6 +139,7 @@
     <script>
         function opendrop(e){
             var dp = this.getparent('dropbtn');
+            dp.classList.remove('notransition');
             dp.classList.toggle('open');
         }
 
@@ -145,6 +149,7 @@
             var a = f.getElementsByClassName('insertfilters')[0];
 
             dp.classList.remove('open');
+            dp.classList.add('notransition');
 
             var code = `<div class=filter>
             <div class=label><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
@@ -179,13 +184,15 @@
             .closefilter .x.xx {transform:rotate(-45deg);}
 
         .dropbtn {position:relative;display:inline-block;}
-            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 4px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;}
+            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;}
             .menuitem {padding:0 16px;cursor:pointer;min-width:120px;box-sizing:border-box;}
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
 
         .dropbtn.open .btn {    border-color: var(--grey40);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
+
+        .notransition .dropmenu {transition:none;}
 
         .advancedtable {padding-bottom:20px;padding-top:20px;}
         .tablecontrols, .filters, .actions {margin:0 24px 24px;}
