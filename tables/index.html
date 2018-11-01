@@ -56,6 +56,9 @@
 
 <script>
     function toggleexpand(e){
+        if ( e.target.type == 'checkbox' ){
+            return;
+        }
 
         var closed = !this.classList.contains('expand');
         var ex = document.getElementsByClassName('expand');
