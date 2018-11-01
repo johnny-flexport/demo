@@ -22,18 +22,48 @@
 </div>
 
 <div class=demo>
+    <h4>Expandable Rows</h4>
     <table>
-        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Action</span></th></tr>
+
+        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+
+        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
     </table>
 </div>
+
+<style>
+    .expandable {cursor:pointer;}
+    .expand {box-shadow:none;border-color: var(--blue30) !important;background:var(--grey10);} /* box-shadow: 0 -1px var(--blue30); */
+
+    .expand td {padding-bottom: 300px;}
+    /* .expand + .expansion {display:table-row;background:var(--grey10);}
+    .expansion {border-color: transparent !important;border-bottom-color:var(--blue30);box-shadow: 0 2px var(--blue30);} */
+
+    .expand + tr {border-top-color:var(--blue30) !important;} /* box-shadow:0 -1px var(--blue30) !important; */
+</style>
+
+<script>
+    function toggleexpand(e){
+
+        var closed = !this.classList.contains('expand');
+        var ex = document.getElementsByClassName('expand');
+
+        while(ex[0]){
+            ex[0].classList.remove('expand');
+        }
+
+        if ( closed ){
+            this.classList.add('expand');
+        }
+    }
+</script>
 
 <div class=demo>
     <table>
         <tr class="fixedscroll"><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="static sort"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td class="static">HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
     </table>
 </div>
 
@@ -57,7 +87,7 @@
             <div class=dropdown>
                 Synced
             </div>
-            
+
         </div><div class=insertfilters></div><div class=filter>
             <div class=label>Filters</div>
             <div class=dropbtn>
@@ -70,7 +100,7 @@
                     <div class=menuitem onclick="addfilter.call(this,event);">Filter Epsilon</div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <div class=secondaryfilters>
                 <div class=filter>
@@ -117,7 +147,7 @@
 
         function unselect(){
             var m = document.getElementById('maincheck');
-            
+
             if ( m.checked ){
                 m.click();
             } else {
@@ -126,6 +156,8 @@
         }
     </script>
     <style>
+
+     td:nth-child(6),  td:nth-child(7), th:nth-child(6), th:nth-child(7) {text-align:right;}
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
             .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;}
@@ -136,7 +168,7 @@
             .menuitem {padding:0 16px;cursor:pointer;min-width:120px;box-sizing:border-box;}
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
-        
+
         .dropbtn.open .btn {    border-color: var(--grey40);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
 
@@ -170,14 +202,16 @@
         .selectcount {line-height:36px;color:var(--blue40);font-weight:500;font-variant-numeric: tabular-nums;}
 
         .dropdown {height:36px;border-radius:3px;border:1px solid var(--grey30);cursor:pointer;line-height:34px;box-sizing:border-box;padding:0 16px;position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;}
-            .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:16px;margin-top:-1px;}
-        
+            .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:16px;margin-top:-1px;transition:border-color 150ms ease-in-out;}
+
+            .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
+
 
         input.quiet {border-radius:0;border:none;border-bottom:1px solid var(--grey30);text-indent:0;}
 
         .pagewidget {float:right;}
         .pagewidget input {width:48px;text-align:center;line-height:36px;vertical-align:top;margin-left:16px;}
-        
+
         .pagebtn.btn {position:relative;margin:0;display:inline-block;width:36px;}
         .pagebtn::after {
             content: '';
@@ -191,6 +225,7 @@
             top: 50%;
             left: 50%;
             margin-left:-1px;
+            transition:border-color 150ms ease-in-out;
         }
         .pagebtn.left::after {
             transform: translate(-50%, -50%) rotate(45deg);
@@ -207,25 +242,25 @@
     <table>
         <tr><th class=checkcell><input type=checkbox id=maincheck onchange="checked2.call(this,event, true)" /></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th>Freight</th><th>From</th><th>To</th><th>Weight</th><th>Volume</th><th>Status</th><th>Action</th></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
         <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
-        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class=row><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
     </table>
 
     <div class=pagination>
@@ -271,31 +306,36 @@
     tr {box-shadow:0 1px var(--grey20);transition:all 150ms ease-in-out;cursor:default;border-top:1px solid transparent;}
         tr:first-child {border:none;}
         tr:nth-child(2) {border-top-color:var(--grey30)}
-        tr:last-child {box-shadow:none;}
+        tr:last-child {box-shadow:none;border-bottom:1px solid transparent;}
 
         tr:not(:first-child):not(.selected):hover {background:var(--grey10);border-top-color:var(--blue20);}
 
-        tr:last-child:hover {box-shadow:0 1px var(--blue20);}
+        tr:last-child:hover {/*box-shadow:0 1px var(--blue20);*/border-bottom-color:var(--blue20);}
 
         tr:not(:first-child):hover + tr:not(.selected) {border-top-color:var(--blue20)}
 
         tr.selected {background:var(--blue10);border-top-color:var(--blue20);}/* box-shadow:0 -1px var(--blue30), 0 1px var(--blue30); */
         tr.selected + tr:not(.selected) {border-top-color:var(--blue20);}
-        tr.selected:last-child {box-shadow:0 1px var(--blue20);}
+        tr.selected:last-child {/*box-shadow:0 1px var(--blue20);*/border-bottom-color:var(--blue20);}
 
         tr.selected:hover {background:hsl(215, 100%, 97%);}
+
+
+    .expansion {height:0;overflow:hidden;display:none;}
 
     .static {border-right:1px solid var(--grey30);}
 
 
     th {font-size:11px;font-weight:500;text-transform:uppercase;text-align:left;padding:4px 12px;color:var(--grey50);vertical-align:bottom !important;transition:color 150ms ease-in-out;}
-        th.sort {cursor:pointer;}
-        th.sort:hover {color:var(--grey60);}
-        th.sort:active {color:black;}
+        th.sort {}
+        th.sort .sortable {transition:color 150ms ease-in-out;}
+        th.sort .sortable:hover {color:var(--grey60);}
+        th.sort .sortable:active {color:black;}
+
 
     .fixedscroll th {border-top:1px solid var(--grey30);padding: 6px 12px 5px;}
 
-    td {padding:12px 12px;box-sizing:border-box;height:40px;max-width:25%;vertical-align:top;}
+    td {padding:12px 12px;box-sizing:border-box;height:40px;max-width:25%;vertical-align:top;transition:padding 150ms ease-in-out;}
     td:first-child, th:first-child {padding-left:16px;padding-right:0;}
     td:last-child, th:last-child {padding-right:16px;}
 
@@ -313,9 +353,13 @@
 
     .action {vertical-align: middle;}
 
-    .sortable {position:relative;padding-right:16px;display:inline-block;}
-        .sortable::after {content:'▼';position:absolute;bottom:0;right:0;display:block;font-size:9px;transform:scale(1.25,.8);opacity:0.8;transition:transform 150ms ease-in-out;}
-            .sortable.desc::after {transform:rotate(180deg) scale(1.25,0.8);} /* content:'▲'; */
+    .sortable {position:relative;padding-right:16px;display:inline-block;cursor:pointer;}
+        .sortable::after {content:url("data:image/svg+xml,%0A%3Csvg width='8px' height='10px' viewBox='0 0 8 10' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpolygon  points='1 6 4 9 7 6'%3E%3C/polygon%3E%3Cpolygon  points='7 4 1 4 4 1'%3E%3C/polygon%3E%3C/svg%3E");position:absolute;bottom:0;right:0;display:block;opacity:0.2;transition:transform 150ms ease-in-out, opacity 150ms ease-in-out;}
+
+            .sortable:hover::after {opacity:.5;}
+
+            .current .sortable::after {content:'▼';font-size: 9px;transform: scale(1.25,.8);opacity:.8;}
+            .current .sortable.desc::after {transform:rotate(180deg) scale(1.25,0.8);} /* content:'▲'; */
 </style>
 
 <script>
@@ -400,7 +444,18 @@
     }
 
     function sortflip(e){
-        this.classList.toggle('desc');
+        var s = this.getparent('sort');
+        if (s.classList.contains('current')){
+            this.classList.toggle('desc');
+        } else {
+            var c = document.getElementsByClassName('sort current');
+            while(c[0]){
+                c[0].classList.remove('current');
+            }
+
+            s.classList.add('current');
+            //this.classList.remove('desc');
+        }
     }
 </script>
 
@@ -466,7 +521,7 @@
         .outsidelabel .spinlabel {position:absolute;right:-12px;transform:translateX(100%);font-size:13px;font-weight:400;}
 </style>
 
-   
+
 
 <script>
 
