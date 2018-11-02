@@ -9,10 +9,76 @@
 </head>
 <body>
 <style>
-    .demo {margin-bottom:120px;}
+    .demo {margin-bottom:120px;padding-top:24px;}
+
+    .vtable {width:360px;margin:0 24px;}
+    .vrow {line-height:40px;border-top:1px solid var(--grey20);transition:all 150ms ease-in-out;}
+        .vrow:first-child {border-top-color:var(--grey30);}
+        .vrow:last-child {border-bottom:1px solid transparent;}
+
+    .vrow:hover {background:var(--grey10);border-top-color:var(--blue20);}
+    .vrow:hover + .vrow {border-top-color:var(--blue20);}
+        .vrow:last-child:hover {border-bottom-color:var(--blue20);}
+
+    .vrow::after {content:'';display:block;clear:both;}
+        .vlabel {width:40%;float:left;font-size: 11px;font-weight: 500;text-transform: uppercase;color: var(--grey50);padding-left:16px;box-sizing:border-box;}
+        .vvalue {width:60%;float:left;text-align:right;padding-right:16px;padding-left:24px;box-sizing:border-box;}
+
+
+    .gtable {line-height:20px;margin:0 24px;max-width:400px;}
+        .gtable::after {content:'';clear:both;display:block;}
+    .grow {float:left;min-width:200px;margin-bottom:24px;padding-left:16px;box-sizing: border-box;}
+        .glabel {font-size: 11px;font-weight: 500;text-transform: uppercase;color: var(--grey50);margin-bottom:4px;}
+        .gvalue {}
+
+    .ruler {border-bottom:1px solid var(--grey30);line-height:20px;padding:0 16px 8px;margin: 0 0 12px;}
+
+    .standard {margin-bottom:8px;}
+
 </style>
 
-<div class=demo style="max-width:800px;">
+<div class=demo style="display:inline-block;">
+    <h4 class=standard>Transit Information</h4>
+    <div class=vtable>
+        <div class=vrow>
+            <div class=vlabel>Carrier</div><div class=vvalue>Lufthansa Cargo AG</div>
+        </div>
+        <div class=vrow>
+            <div class=vlabel>Mode</div><div class=vvalue>Air</div>
+        </div>
+        <div class=vrow>
+            <div class=vlabel>Port to Port</div><div class=vvalue>5 - 7 Days</div>
+        </div>
+        <div class=vrow>
+            <div class=vlabel>Rate Expiration</div><div class=vvalue>Nov 8, 2018</div>
+        </div>
+    </div>
+</div>
+
+<div class=demo style="display:inline-block;">
+
+    <div class=gtable>
+        <h4 class=ruler>Transit Information</h4>
+        <div class=grow>
+            <div class=glabel>Carrier</div>
+            <div class=gvalue>Lufthansa Cargo AG</div>
+        </div>
+        <div class=grow>
+            <div class=glabel>Mode</div>
+            <div class=gvalue>Air</div>
+        </div>
+        <div class=grow>
+            <div class=glabel>Port to Port</div>
+            <div class=gvalue>5 - 7 Days</div>
+        </div>
+        <div class=grow>
+            <div class=glabel>Rate Expiration</div>
+            <div class=gvalue>Nov 8, 2018</div>
+        </div>
+    </div>
+</div>
+
+<div class=demo style="max-width:800px;display:inline-block;width:800px;">
     <h4>Transit Information</h4>
     <table>
         <tr><th>Carrier</th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
@@ -24,15 +90,22 @@
 <div class=demo>
     <h4>Expandable Rows</h4>
     <table>
-        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th></tr>
+        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th><th class=checkcell></th></tr>
 
-        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td><td class="checkcell "><div class=accord></div></td></tr>
 
-        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox onchange="checked2.call(this,event)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td><td class="checkcell "><div class=accord></div></td></tr>
     </table>
 </div>
 
 <style>
+    .accord {position:relative;vertical-align:top;height:20px;width:12px;}
+        .accord::after {content: '';display: block;width: 5px;height: 5px;border-left: 2px solid var(--grey50);border-bottom: 2px solid var(--grey50);transform: translate(-50%, -50%) rotate(45deg);position: absolute;top: 50%;left: 50%;margin-left: -1px;transition: border-color 150ms ease-in-out, transform 150ms ease-in-out;}
+
+    .expand .accord::after {transform:translate(-50%, -50%) rotate(-45deg);}
+
+    .vt {vertical-align:top !important;}
+
     .expandable {cursor:pointer;}
     .expand {box-shadow:none;border-color: var(--blue30) !important;background:var(--grey10);} /* box-shadow: 0 -1px var(--blue30); */
 
@@ -368,7 +441,7 @@
 
     .checkcell {width:16px;padding-right:0;vertical-align:middle;}
 
-    input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:3px;width:16px;height:16px;cursor:pointer;display:block;margin:2px 0;transition:all 150ms ease-in-out;}
+    input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:2.5px;width:16px;height:16px;cursor:pointer;display:block;margin:2px 0;transition:all 150ms ease-in-out;}
         input[type=checkbox]:hover {border-color:var(--grey50);}
         input[type=checkbox]:active {border-color:var(--grey50);background:var(--grey50);}
         input[type=checkbox]:checked {border-color:transparent;background:var(--blue30) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
