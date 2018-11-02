@@ -212,9 +212,36 @@
         </div>
     </div>
     <div class=actions>
-        <div class=btn>Delete</div><div class="btn hollow" onclick="unselect()">Unselect All</div><div class=selectcount></div>
+        <div class=btn onclick="deleterows.call(this,event)">Delete</div><div class="btn hollow" onclick="unselect()">Unselect All</div><div class=selectcount></div>
+    </div>
+    <div class=emptystate>
+        <div class=emptywrap>
+            <div class=ill></div>
+            <h3>There Currently Are No Bookings</h3>
+            <p>Add a booking to get started.</p>
+            <div class=btn>Add Booking</div>
+        </div>
     </div>
     <script>
+
+        function deleterows(e){
+            var t = this.getparent('advancedtable');
+
+            var s = t.getElementsByClassName('selected');
+
+            while(s[0]){
+                s[0].parentNode.removeChild(s[0]);
+            }
+
+            t.classList.remove('selection');
+
+            var r = t.getElementsByClassName('row')[0];
+
+            if (!r){
+                t.classList.add('empty');
+            }
+        }
+
         function opendrop(e){
             var dp = this.getparent('dropbtn');
             dp.classList.remove('notransition');
@@ -254,6 +281,14 @@
         }
     </script>
     <style>
+        .empty .actions, .empty .filters, .empty .tablecontrols, .empty table, .empty .pagination {display:none;}
+        .emptystate {padding:48px 24px;display:none;}
+                .empty .emptystate {display:block;}
+            .emptywrap {width:300px;margin:0 auto;text-align:center;}
+            .ill {width:176px;height:176px;border-radius:50%;background:var(--grey30);margin:0 auto 36px;opacity:0.6;}
+            .emptystate .btn {margin:0;}
+            .emptystate h3 {font-size:18px;font-weight:700;margin-bottom:12px;line-height:28px;}
+            .emptystate p {margin-bottom:36px;line-height:20px;}
 
      td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7), td:nth-child(9), th:nth-child(9) {text-align:right;}
 
