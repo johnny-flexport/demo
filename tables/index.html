@@ -27,6 +27,7 @@
             <div class=tab data-type=empty>Empty State</div>
             <div class=tab data-type=loading>Loading Table</div>
             <div class=tab data-type=loadingrows>Loading Rows</div>
+            <div class=tab data-type=typo>Typography</div>
         </div>
 
         <div class=tabline></div>
@@ -84,8 +85,10 @@
 <style>
     .tabs {position:relative;box-shadow:inset 0 -1px var(--grey20);padding:0 12px;padding-top:20px;background:var(--grey10);overflow-x:auto;}
         .tabsoverflow::after {content:'';clear:both;display:block;}
-    .tab {float:left;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out;}
+    .tab {float:left;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out, background-color 150ms ease-in-out;border-radius:3px;}
         .tab.current, .tab:hover {color:var(--grey60);}
+
+        .tab:active {background: var(--grey20);}
 
     .tabline {width:1px;height:3px;background:var(--blue30);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(66);transform-origin:top left;transition:transform 150ms ease-in-out;}
 
@@ -238,7 +241,7 @@
     </table>
 </div>
 
-<div class="demo nonwhite_table" style="background: var(--grey20);padding:24px 48px 48px;margin-bottom:0;">
+<div class="demo nonwhite_table" style="background: var(--grey20);padding:24px 48px 48px;">
     <h4 style="margin-left:0;">Card Table - Non-White background</h4>
     <div class=tcardwrap>
         <table class=tablecard>
@@ -453,7 +456,7 @@
             .emptystate h3 {font-size:18px;font-weight:700;margin-bottom:16px;line-height:28px;}
             .emptystate p {margin-bottom:36px;line-height:20px;}
 
-     td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7), table:not(.accordian) td:nth-child(9), table:not(.accordian) th:nth-child(9) {text-align:right;}
+     table:not(.type) td:nth-child(6), table:not(.type) td:nth-child(7), table:not(.type) th:nth-child(6), table:not(.type) th:nth-child(7), table:not(.accordian):not(.type) td:nth-child(9), table:not(.accordian):not(.type) th:nth-child(9) {text-align:right;}
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
             .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;transition:background 150ms ease-in-out;}
@@ -604,19 +607,153 @@
 </style>
 
 <div class="demo loadingrows_table">
-        <table >
-            <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th></th></tr>
+    <table >
+        <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th></th></tr>
 
-            <tr class="row "><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
+        <tr class="row "><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td></tr>
 
-            <tr class="row "><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
-        </table>
+        <tr class="row "><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td></tr>
+    </table>
 
-        <div class="loader fat loaderdynamic">
-            <div class="bar"></div>
-            <div class="bar bar3"></div>
-        </div>
+    <div class="loader fat loaderdynamic">
+        <div class="bar"></div>
+        <div class="bar bar3"></div>
+    </div>
 </div>
+
+<div class="demo typo_table">
+    <h4>Typography</h4>
+    <table class=type>
+        <tr><th>Type</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Color</th><th>Case</th><th>Usage</th></tr>
+        <tr class=row>
+            <td><h1>Display</h1></td>
+            <td>36 <span class=stext>px</span></td>
+            <td>Light <span class=stext>(300)</span></td>
+            <td>48 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Camel</td>
+            <td>Marketing & Callouts</td>
+        </tr>
+        <tr class=row>
+            <td><h2>Page Title</h2></td>
+            <td>24 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>36 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Camel</td>
+            <td>Page Title, duh</td>
+        </tr>
+        <tr class=row>
+            <td><h3>Subtitle</h3></td>
+            <td>18 <span class=stext>px</span></td>
+            <td>Bold <span class=stext>(700)</span></td>
+            <td>28 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Camel</td>
+            <td>Section Heading</td>
+        </tr>
+        <tr class=row>
+            <td><h4>Subtitle 2</h4></td>
+            <td>14 <span class=stext>px</span></td>
+            <td>Bold <span class=stext>(700)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Both??</td>
+            <td>Sub-Section Headings</td>
+        </tr>
+        <tr class=row>
+            <td><h5>Subheading</h5></td>
+            <td>11 <span class=stext>px</span></td>
+            <td>Medium <span class=stext>(500)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="stext">Grey 50</span></td>
+            <td>All Caps</td>
+            <td>Table Headings & Grid Labels</td>
+        </tr>
+        <tr class=row>
+            <td>Standard Text</td>
+            <td>14 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Sentence</td>
+            <td>Body Copy</td>
+        </tr>
+        <tr class=row>
+            <td><span class=stext>Secondary Text</span></td>
+            <td>14 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="stext">Grey 50</span></td>
+            <td>Sentence</td>
+            <td>Less important text</td>
+        </tr>
+        <tr class=row>
+            <td><span class=label>Input Label</span></td>
+            <td>13 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="stext">Grey 50</span></td>
+            <td>Both</td>
+            <td>All input fields need one</td>
+        </tr>
+        <tr class=row>
+            <td><a href="javascript:void(0)">Hyperlink</a></td>
+            <td>14 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="a">Blue 30</span> <span class=disabled>/</span> <span class="stext">Grey 50</span></td>
+            <td>Both</td>
+            <td>All input fields need one</td>
+        </tr>
+        <tr class=row>
+            <td><span class=disabled>Disabled Text</span></td>
+            <td>14 <span class=stext>px</span></td>
+            <td>Regular <span class=stext>(400)</span></td>
+            <td>20 <span class=stext>px</span></td>
+            <td><span class="disabled">Grey 40</span></td>
+            <td>Both</td>
+            <td>When something is disabled</td>
+        </tr>
+        <tr class=row>
+            <td><span class=emp>Emphasized</span></td>
+            <td>14 <span class=disabled>/</span> 18 <span class=stext>px</span></td>
+            <td>Semi-Bold <span class=stext>(600)</span></td>
+            <td>20 <span class=disabled>/</span> 28 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span></td>
+            <td>Both</td>
+            <td>To <b>Emphasize</b> text in a paragraph</td>
+        </tr>
+        <tr class=row>
+            <td><span class="italics stext">Italics</span></td>
+            <td>14 <span class=disabled>/</span> 18 <span class=stext>px</span></td>
+            <td>Italic <span class=stext>(400)</span></td>
+            <td>20 <span class=disabled>/</span> 28 <span class=stext>px</span></td>
+            <td><span class="">Grey 60</span> <span class=disabled>/</span> <span class="stext">Grey 50</span> <span class=disabled>/</span> <span class="disabled">Grey 40</span></td>
+            <td>Both</td>
+            <td>Placeholder text and optional things</td>
+        </tr>
+    </table>
+</div>
+
+<style>
+    h1 {font-size:36px;line-height:48px;font-weight:300;color:var(--grey60);}
+    h2 {font-size:24px;line-height:36px;font-weight:400;color:var(--grey60);}
+    h3 {font-size:18px;line-height:28px;font-weight:700;color:var(--grey60);}
+    h4 {font-size:14px;line-height:20px;font-weight:700;color:var(--grey60);}
+    h5 {font-size:11px;line-height:20px;font-weight:500;text-transform:uppercase;color:var(--grey50);}
+
+    b, .emp {font-weight:600;}
+    .italics {font-style:italic;}
+    .stext {color:var(--grey50);}
+    .disabled {color:var(--grey40);}
+
+    table h1, table h2, table h3, table h4, table h5 {margin:0;}
+
+    .typo_table td {vertical-align:middle;}
+
+    .a {color:var(--blue30);}
+</style>
 
 
 <style>
@@ -655,19 +792,10 @@
 
 
 <style>
-    * {outline:none;}
 
-    html {line-height:20px;}
 
-    a {color:var(--blue40);transition:color 150ms ease-in-out;}
-    a:hover {color:var(--blue50);}
-    a:active {text-decoration:none;}
 
-    h1 {}
-    h2 {}
-    h3 {font-size:18px;font-weight:700;color:var(--grey60);margin:0;line-height:28px;}
-    h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:0 40px 16px;}
-    h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
+    .demo > h4 {margin:0 40px 16px;}
 
     input {-webkite-appearance:none;appearance:none;height:36px;border:1px solid var(--grey30);font-size:14px;text-indent:16px;border-radius:3px;box-sizing:border-box;}
 
