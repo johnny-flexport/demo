@@ -58,6 +58,13 @@
     </div>
 
 
+    <div class="loader loader400b loadermini2 fat dynamicpen">
+        <div class=bar></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+    </div>
+
+
     <div class="loader loader400 fat loaderdynamic">
         <div class=bar></div>
         <!-- <div class="bar bar2"></div> -->
@@ -883,6 +890,29 @@
     .loaderdynamic {max-width:400px;width:auto;margin-right:24px;}
     .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;background:#4976F2;}
     .loaderdynamic .bar3 {animation-name:dbar2 !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+
+
+    .dynamicpen {max-width:400px;width:auto;margin-right:24px;}
+
+    .dynamicpen .bar {animation-name:dpen !important;width:100%;transform:none;left:0%;background:#4976F2;animation-duration:1.2s !important;}
+    .dynamicpen .bar3 {animation-name:dpen2 !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+    .dynamicpen .bar4 {animation-name:dpen3 !important;width:100%;transform:none;left:90%;background:#4976F2;}
+
+    @keyframes dpen {
+        from {left:-94%;}
+        to {left:94%;}
+    }
+
+    @keyframes dpen2 {
+        from {left:-282%;}
+        to {left:-94%;}
+    }
+
+    @keyframes dpen3 {
+        from {left:94%;}
+        to {left:282%;}
+    }
+
 
     .loadermini .bar {animation-name:bar400m;animation-duration: 1.5s;}
 
