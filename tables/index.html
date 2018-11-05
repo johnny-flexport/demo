@@ -15,19 +15,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Tables</div>
-            <div class="tab" data-type=advanced>Table w/ Controls</div>
-            <div class=tab data-type=list>List</div>
-            <div class=tab data-type=grid>Grid</div>
-            <div class=tab data-type=standard>Standard</div>
-            <div class=tab data-type=expandable>Expandable Rows</div>
-            <div class=tab data-type=sticky>Sticky Columns</div>
-            <div class=tab data-type=nonwhite>Card Table</div>
-            <div class=tab data-type=grey10>Grey10 Background</div>
-            <div class=tab data-type=empty>Empty State</div>
-            <div class=tab data-type=loading>Loading Table</div>
-            <div class=tab data-type=loadingrows>Loading Rows</div>
-            <div class=tab data-type=typo>Typography</div>
+            <div class="tab current" data-type=all id=starttab>All Tables</div><div class="tab" data-type=advanced>Table w/ Controls</div><div class=tab data-type=list>List</div><div class=tab data-type=grid>Grid</div><div class=tab data-type=standard>Standard</div><div class=tab data-type=expandable>Expandable Rows</div><div class=tab data-type=sticky>Sticky Columns</div><div class=tab data-type=nonwhite>Card Table</div><div class=tab data-type=grey10>Grey10 Background</div><div class=tab data-type=empty>Empty State</div><div class=tab data-type=loading>Loading Table</div><div class=tab data-type=loadingrows>Loading Rows</div><div class=tab data-type=typo>Typography</div>
         </div>
 
         <div class=tabline></div>
@@ -85,14 +73,14 @@
 <style>
     .tabs {position:relative;box-shadow:inset 0 -1px var(--grey20);padding:0 12px;padding-top:20px;background:var(--grey10);overflow-x:auto;}
         .tabsoverflow::after {content:'';clear:both;display:block;}
-    .tab {float:left;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out, background-color 150ms ease-in-out;border-radius:3px;}
+    .tab {display:inline-block;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out, background-color 150ms ease-in-out;border-radius:3px;}
         .tab.current, .tab:hover {color:var(--grey60);}
 
         .tab:active {background: var(--grey20);}
 
     .tabline {width:1px;height:3px;background:var(--blue30);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(66);transform-origin:top left;transition:transform 150ms ease-in-out;}
 
-    .tabsoverflow {white-space:nowrap;min-width:1398px;}
+    .tabsoverflow {white-space:nowrap;}
 
     .demo {margin-bottom:120px;padding-top:24px;}
 
