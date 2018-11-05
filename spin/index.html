@@ -49,7 +49,7 @@
     <!-- <div class="bar bar2"></div> -->
     <div class="bar bar3"></div>
 </div>
-    
+
     <div class="loader loader400b loadermini2 fat">
         <div class=bar></div>
         <!-- <div class="bar bar2"></div> -->
@@ -72,7 +72,7 @@
     <div class=onebar></div>
 </div> -->
 
-<!-- 
+<!--
 
 
 <div class=btn onclick="loading.call(this,event);">
@@ -231,14 +231,14 @@
             return;
         }
 
-        
+
         this.classList.add('clicked');
 
         var b = this;
-        
+
         this.timer = setTimeout(function(){
             b.classList.add('finished');
-            b.timer = setTimeout(function(){ 
+            b.timer = setTimeout(function(){
                 b.classList.remove('clicked', 'finished');
                 b.timer = null;
             }, 1300);
@@ -289,7 +289,7 @@
             </div>
         </div>
     </div> -->
-    
+
     <!-- <div class="tridiv color">
         <div class="scene" style="-webkit-transform:rotateX(-45deg) rotateY(-45deg); -moz-transform:rotateX(-45deg) rotateY(-45deg); -ms-transform:rotateX(-45deg) rotateY(-45deg); transform:rotateX(-45deg) rotateY(-45deg); ">
             <div class="shape cuboid-1 cub-1">
@@ -302,7 +302,7 @@
             </div>
         </div>
     </div> -->
-    
+
     <!-- <div class="tridiv tri2">
             <div class="scene" style="-webkit-transform:rotateX(-45deg) rotateY(-45deg); -moz-transform:rotateX(-45deg) rotateY(-45deg); -ms-transform:rotateX(-45deg) rotateY(-45deg); transform:rotateX(-45deg) rotateY(-45deg); ">
                 <div class="shape cuboid-1 cub-1">
@@ -315,7 +315,7 @@
                 </div>
             </div>
         </div> -->
-    
+
     <!-- <div class="spinner2">
             <svg class="spin2" width="48" height="48" viewBox="25 25 50 50"><circle class="noanimation" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#eee" stroke-width="3"></circle><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle></svg>
     </div>
@@ -335,7 +335,7 @@
     <div class="spinner2">
             <svg class="spin2" width="12" height="12" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="4"></circle></svg>
     </div>
-    
+
     <div class="spinner2 spinnerc">
             <svg class="spin2" width="48" height="48" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle></svg>
     </div>
@@ -347,7 +347,16 @@
     </div> -->
 
     <div class="spinner2 fat">
-            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50"><circle class="noanimation" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#eee" stroke-width="3"></circle><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle></svg>
+            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+                <circle class="noanimation" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#eee" stroke-width="3"></circle>
+                <circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle>
+            </svg>
+    </div>
+
+    <div class="spinner2 fat">
+            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+                <circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle>
+            </svg>
     </div>
 
     <div class="spinner2 fat">
@@ -365,7 +374,7 @@
     <div class="spinner2 fat">
             <svg class="spin2" width="12" height="12" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="4"></circle></svg>
     </div>
-    
+
     <div class="spinner2 spinnerc fat">
             <svg class="spin2" width="48" height="48" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle></svg>
     </div>
@@ -396,12 +405,12 @@
     </svg>
 </div> -->
 
-<!-- 
+<!--
 <svg width="84" height="84">
         <circle r="40" cx="42" cy="42" style="fill: none;stroke: black;stroke-width: 4;">
             <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0 251.4;125.7 125.7;0 251.4" />
             <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0;-100;-251.4" />
-            
+
         </circle>
         <animateTransform attributeName="transform"
                               attributeType="XML"
@@ -418,42 +427,42 @@
 
         <svg viewbox="0 0 100 100">
                 <path fill="#1EB287">
-                  <animate 
-                           attributeName="d" 
-                           dur="1000ms" 
+                  <animate
+                           attributeName="d"
+                           dur="1000ms"
                            repeatCount="indefinite"
                            values="
                            M8,32L32 8 56 8 56 32 32 56 8 56z;
-              
+
                            M20,20L21 19 45 19 45 43 44 44 20 44z;
-                           
+
                            M32,56L8 32 8 8 32 8 56 32 56 56z;"/>
                 </path>
             </svg>
 
         <svg viewbox="0 0 100 100">
                 <path fill="#1EB287">
-                  <animate 
-                           attributeName="d" 
-                           dur="1000ms" 
+                  <animate
+                           attributeName="d"
+                           dur="1000ms"
                            repeatCount="indefinite"
                            values="
                            M9,32L32 8 56 8 56 32 33 56 9 56z;
-              
+
                            M22,18L22 18 46 18 46 42 46 42 22 42z;
-                           
+
                            M8,32L8 8 31.9987335 8 55.9974141 32 55.9974141 56 31.9987335 56z;"/>
                 </path>
             </svg>
 
         <svg viewbox="0 0 100 100">
                 <path fill="#1EB287">
-                  <animate 
-                           attributeName="d" 
-                           dur="3000ms" 
+                  <animate
+                           attributeName="d"
+                           dur="3000ms"
                            repeatCount="indefinite"
                            values="M0 24 24 0 48 0 48 24 24 48 0 48z;
-              
+
                            M-7.27595761e-12,8.12183654e-13L-1.86446414e-11 -1.36424205e-12 24 -1.36424205e-12 24 24 24 24 -7.27595761e-12 24z;"/>
                 </path>
             </svg>
@@ -466,19 +475,19 @@
 
         <svg viewbox="0 0 100 100">
             <path fill="#1EB287">
-                <animate 
-                        attributeName="d" 
-                        dur="3000ms" 
+                <animate
+                        attributeName="d"
+                        dur="3000ms"
                         repeatCount="indefinite"
-                        values="M 0,0 
+                        values="M 0,0
                                 C 50,0 50,0 100,0
                                 100,50 100,50 100,100
                                 50,100 50,100 0,100
                                 0,50 0,50 0,0
                                 Z;
-            
-                                M 25,50 
-                                C 37.5,25 37.5,25 50,0 
+
+                                M 25,50
+                                C 37.5,25 37.5,25 50,0
                                 75,50 75,50 100,100
                                 50,100 50,100 0,100
                                 12.5,75 12.5,75 25,50
@@ -507,7 +516,7 @@
 
     .slider {margin:24px;}
 
-    /* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */ 
+    /* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */
 .tridiv {
   /* perspective: 800px; */
   perspective: 0px;
@@ -872,8 +881,8 @@
     .loader400 .bar {animation-name:bar400;}
 
     .loaderdynamic {max-width:400px;width:auto;margin-right:24px;}
-    .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;}
-    .loaderdynamic .bar3 {animation-name:dbar2 !important;width:100%;transform:none;left:-100%;}
+    .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+    .loaderdynamic .bar3 {animation-name:dbar2 !important;width:100%;transform:none;left:-100%;background:#4976F2;}
 
     .loadermini .bar {animation-name:bar400m;animation-duration: 1.5s;}
 
@@ -936,7 +945,7 @@
     .spinner2 svg .noanimation {
         animation: none !important;
         stroke-dasharray: 200, 200 !important;
-        stroke: #F7FAFC !important;
+        stroke: var(--grey10) !important;
     }
 
     .spinner2 svg circle {
@@ -997,7 +1006,7 @@
     }
 
     @keyframes color2 {
-        from {stroke:#4976F2;}
+        from {stroke:#4976f2;}
         25% {stroke:#4976F2;}
         29% {stroke:#265DF1;}
         50% {stroke:#265DF1;}
@@ -1027,14 +1036,18 @@
     }
 
     @keyframes dbar {
-        from {left:-100%;}
-        50% {background:#1942B3;}
+        from {left:-100%;background:var(--blue30);}
+        10% {background:var(--blue30);}
+        35% {background:var(--blue50);}
+        65% {background:var(--blue30)}
         70%, to {left:100%;}
     }
 
     @keyframes dbar2 {
-        30% {left:-100%;}
-        80% {background:#1942B3;} /* 0E2259 */
+        30% {left:-100%;background:var(--blue30);}
+        405% {background:var(--blue30)}
+        65% {background:var(--blue50);} /* 0E2259 */
+        95% {background:var(--blue30)}
         to {left:100%;}
     }
 
@@ -1153,7 +1166,7 @@
         from {
             transform: rotate(0deg);
         }
-        
+
         50% {
             transform: rotate(360deg);
         }
@@ -1171,7 +1184,7 @@
         from {
             transform: rotate(-45deg);
         }
-        
+
         50% {
             transform: rotate(315deg);
         }

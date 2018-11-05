@@ -6,9 +6,76 @@
     <title>Tables</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
     <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+
+    <script src="../js/gator.js"></script>
 </head>
 <body>
+
+    <div class=tabs>
+        <div class="tab current" data-type=all id=starttab>All Tables</div>
+        <div class="tab" data-type=advanced>Table w/ Controls</div>
+        <div class=tab data-type=list>List</div>
+        <div class=tab data-type=grid>Grid</div>
+        <div class=tab data-type=standard>Standard</div>
+        <div class=tab data-type=expandable>Expandable Rows</div>
+        <div class=tab data-type=sticky>Sticky Columns</div>
+        <div class=tab data-type=nonwhite>on Non-White Background</div>
+        <div class=tab data-type=grey10>on Grey10 Background</div>
+
+        <div class=tabline></div>
+    </div>
+
+<script>
+    function tab(e){
+        var w = this.offsetWidth;
+        w = w - 32;
+        var o = this.offsetLeft + 16;
+
+        var v = this.dataset.type;
+
+        if ( window.devicePixelRatio < 2 && window.devicePixelRatio > 1 ){
+            //do something
+        }
+
+        var p = this.getparent('tabs');
+        var c = p.getElementsByClassName('tab current');
+        var l = p.getElementsByClassName('tabline')[0];
+
+        while(c[0]){
+            c[0].classList.remove('current');
+        }
+
+        this.classList.add('current');
+
+        l.style.transform = 'translateX(' + o + 'px) scaleX(' + w + ')';
+
+        //document.body.id = v + 'table';
+
+        var d = document.getElementsByClassName('demo');
+
+        for(var i=0;i<d.length;i++){
+            var a = d[i];
+            if ( v !== 'all' && !a.classList.contains(v + '_table')){
+                a.style.display = 'none';
+            } else {
+                a.style.display = 'block';
+            }
+        }
+
+    }
+
+    Attach.on('click', '.tab', tab);
+
+
+</script>
 <style>
+    .tabs {position:relative;box-shadow:inset 0 -3px var(--grey20);padding:0 12px;padding-top:20px;background:var(--grey10)}
+        .tabs::after {content:'';clear:both;display:block;}
+    .tab {float:left;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out;}
+        .tab.current, .tab:hover {color:var(--grey60);}
+
+    .tabline {width:1px;height:3px;background:var(--blue30);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(66);transform-origin:top left;transition:transform 150ms ease-in-out;}
+
     .demo {margin-bottom:120px;padding-top:24px;}
 
     .vtable {width:360px;margin:0 24px;}
@@ -37,7 +104,7 @@
 
 </style>
 
-<div class=demo style="display:inline-block;">
+<div class="demo list_table">
     <h4 class=standard>Transit Information</h4>
     <div class=vtable>
         <div class=vrow>
@@ -55,7 +122,7 @@
     </div>
 </div>
 
-<div class=demo style="display:inline-block;">
+<div class="demo grid_table">
 
     <div class=gtable>
         <h4 class=ruler>Transit Information</h4>
@@ -78,7 +145,7 @@
     </div>
 </div>
 
-<div class=demo style="max-width:800px;display:inline-block;width:800px;">
+<div class="demo standard_table" style="max-width:800px;">
     <h4>Transit Information</h4>
     <table>
         <tr><th>Carrier</th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
@@ -87,7 +154,7 @@
     </table>
 </div>
 
-<div class=demo>
+<div class="demo expandable_table">
     <h4>Expandable Rows</h4>
     <table class=accordian>
         <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th><th class=checkcell></th></tr>
@@ -147,7 +214,7 @@
     }
 </script>
 
-<div class=demo>
+<div class="demo sticky_table">
     <h4>Sticky Column</h4>
     <table>
             <tr class="fixedscroll"><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current static"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th></tr>
@@ -156,7 +223,7 @@
     </table>
 </div>
 
-<div class=demo style="background: var(--grey20);padding:24px 48px 48px;margin-bottom:0;">
+<div class="demo nonwhite_table" style="background: var(--grey20);padding:24px 48px 48px;margin-bottom:0;">
     <h4 style="margin-left:0;">Card Table - Non-White background</h4>
     <div class=tcardwrap>
         <table class=tablecard>
@@ -167,7 +234,7 @@
     </div>
 </div>
 
-<div class=demo style="background: var(--grey10);padding:24px 48px 48px;">
+<div class="demo grey10_table" style="background: var(--grey10);padding:24px 48px 48px;">
         <h4 style="margin-left:16px;">Partial Card Table 2 - Grey 10 background</h4>
         <div class=tcardwrap2>
             <table class=tablecard2>
@@ -217,8 +284,7 @@
 </style>
 
 
-<div class=advancedtable>
-    <h5 style="margin:24px;">All Together Now</h5>
+<div class="demo advancedtable advanced_table">
     <div class=tablecontrols>
         <div class=primarycontrols>
             <div class="btn hollow">Upload CSV</div><div class="btn hollow">Download CSV</div>
@@ -495,6 +561,27 @@
 </div>
 
 
+<div class="demo empty empty_table">
+    <h5>Empty State</h5>
+    <div class=emptystate>
+        <div class=emptywrap>
+            <div class=ill></div>
+            <h3>There are currently no bookings.</h3>
+            <p>Add a booking to get started. Hit the button blow and fill away.</p>
+            <div class=btn>Add Booking</div>
+        </div>
+    </div>
+</div>
+
+<div class="demo loading_table">
+    <div class="spinner2 fat">
+        <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+            <circle  cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle>
+        </svg>
+    </div>
+</div>
+
+
 
 <style>
     * {outline:none;}
@@ -742,6 +829,207 @@
 
     .btn.outsidelabel {text-align:center;}
         .outsidelabel .spinlabel {position:absolute;right:-12px;transform:translateX(100%);font-size:13px;font-weight:400;}
+
+        .spinner2 {margin:24px;height:48px;}
+
+.spinner .spin, .spinner3 .spin3 {
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+}
+
+.spinner2 .spin2 {
+    animation-name: rotate2;
+    animation-duration: 1.75s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+    transform:rotate(-45deg);
+}
+
+.spinner svg circle {
+    animation-name: spinner;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+.spinner2 svg .noanimation {
+    animation: none !important;
+    stroke-dasharray: 200, 200 !important;
+    stroke: var(--grey10) !important;
+}
+
+.spinner2 svg circle {
+    animation-name: spin2, color2;
+    animation-duration: 1.75s, 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    stroke-dasharray: 2, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+.spinner2.spinnerc svg circle {
+    animation-name: spin2, color3;
+}
+
+.spinner2.spinnerg svg circle {
+    animation-name: spin2, colorg;
+    stroke: #B0BAC2;
+    stroke: #CED7DE;
+    /* stroke: #6E7882; */
+}
+
+.spinner2.spinnergg svg circle {
+    animation-name: spin2;
+    stroke: #B0BAC2;
+    stroke: #CED7DE;
+    stroke: #6E7882;
+}
+
+.fat.spinner2 svg circle {stroke-width:4px;}
+
+.spinner2 {
+    width: 48px;
+    /* transform: rotate(-45deg); */
+}
+
+   .spinner3 svg circle {
+    animation-name: spin3;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+@keyframes colorg {
+    from {stroke:#CED7DE;}
+    25% {stroke:#CED7DE;}
+    29% {stroke:#B0BAC2;}
+    50% {stroke:#B0BAC2;}
+    54% {stroke:#6E7882;}
+    75% {stroke:#6E7882;}
+    79% {stroke:#B0BAC2;}
+    98% {stroke:#B0BAC2;}
+    to {stroke:#CED7DE;}
+}
+
+@keyframes color2 {
+    from {stroke:#4976f2;}
+    25% {stroke:#4976F2;}
+    29% {stroke:#265DF1;}
+    50% {stroke:#265DF1;}
+    54% {stroke:#1942B3;}
+    75% {stroke:#1942B3;}
+    79% {stroke:#0E2259;}
+    98% {stroke:#0E2259;}
+    to {stroke:#4976F2;}
+}
+
+@keyframes color3 {
+    from {stroke:#265df1;}
+    25% {stroke:#265df1;}
+    29% {stroke:#3dc468;}
+    50% {stroke:#3dc468;}
+    54% {stroke:#ffd100;}
+    75% {stroke:#ffd100;}
+    79% {stroke:#ef3340;}
+    98% {stroke:#ef3340;}
+    to {stroke:#265df1;}
+}
+
+@keyframes spinner {
+    from {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@keyframes spin2 {
+    from {
+        stroke-dasharray: 2, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 80;
+        stroke-dashoffset: -80px;
+    }
+
+    to{
+        stroke-dasharray: 124;
+        stroke-dashoffset: -124px;
+    }
+}
+
+
+@keyframes spin3 {
+    50% {
+        stroke-dasharray: 90,200;
+        stroke-dashoffset: 0;
+    }
+    to{
+        stroke-dasharray: 125,200;
+        stroke-dashoffset: -125px;
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* @keyframes rotate2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
+    }
+
+    75% {
+        transform: rotate(600deg);
+    }
+
+    to {
+        transform: rotate(724deg);
+    }
+}*/
+
+@keyframes rotate2 {
+    from {
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        transform: rotate(315deg);
+    }
+
+    75% {
+        transform: rotate(555deg);
+    }
+
+    to {
+        transform: rotate(680deg);
+    }
+}
 </style>
 
 
@@ -787,6 +1075,9 @@
     Array.prototype.random = function () {
         return this[Math.floor(Math.random() * this.length)]
     };
+
+
+    document.getElementById('starttab').click();
 </script>
 
 </body>
