@@ -67,9 +67,9 @@
         }
 
         if(history.pushState) {
-            history.pushState(null, null, '#'+v);
+            history.replaceState(null, null, '#' + v);
         } else {
-            location.hash = '#'+v;
+            window.location.replace('#' + v);
         }
 
     }
