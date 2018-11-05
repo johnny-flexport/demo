@@ -64,6 +64,12 @@
             }
         }
 
+        if(history.pushState) {
+            history.pushState(null, null, '#'+v);
+        } else {
+            location.hash = '#'+v;
+        }
+
     }
 
     Attach.on('click', '.tab', tab);
@@ -71,7 +77,7 @@
 
 </script>
 <style>
-    .tabs {position:relative;box-shadow:inset 0 -3px var(--grey20);padding:0 12px;padding-top:20px;background:var(--grey10)}
+    .tabs {position:relative;box-shadow:inset 0 -1px var(--grey20);padding:0 12px;padding-top:20px;background:var(--grey10)}
         .tabs::after {content:'';clear:both;display:block;}
     .tab {float:left;padding:0 16px;height:40px;line-height:40px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out;}
         .tab.current, .tab:hover {color:var(--grey60);}
@@ -113,7 +119,7 @@
             <div class=vlabel>Carrier</div><div class=vvalue>Lufthansa Cargo AG</div>
         </div>
         <div class=vrow>
-            <div class=vlabel>Mode</div><div class=vvalue>Air</div>
+            <div class=vlabel>Mode</div><div class=vvalue><a href=javascript:void(0)>Air</a></div>
         </div>
         <div class=vrow>
             <div class=vlabel>Port to Port</div><div class=vvalue>5 - 7 Days</div>
@@ -134,7 +140,7 @@
         </div>
         <div class=grow>
             <div class=glabel>Mode</div>
-            <div class=gvalue>Air</div>
+            <div class=gvalue><a href=javascript:void(0)>Air</a></div>
         </div>
         <div class=grow>
             <div class=glabel>Port to Port</div>
@@ -151,8 +157,8 @@
     <h4>Transit Information</h4>
     <table>
         <tr><th>Carrier</th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>
-        <tr class=row><td>Lufthansa Cargo AG</td><td>Air</td><td>5 - 7 Days</td><td>Nov 8, 2018</td></tr>
-        <tr class=row><td>Maersk</td><td>Ocean</td><td>31 - 38 Days</td><td>Nov 14, 2018</td></tr>
+        <tr class=row><td>Lufthansa Cargo AG</td><td><a href=javascript:void(0)>Air</a></td><td>5 - 7 Days</td><td>Nov 8, 2018</td></tr>
+        <tr class=row><td>Maersk</td><td><a href=javascript:void(0)>Ocean</a></td><td>31 - 38 Days</td><td>Nov 14, 2018</td></tr>
     </table>
 </div>
 
@@ -575,12 +581,20 @@
 </div>
 
 <div class="demo loading_table">
-    <div class="spinner2 fat">
-        <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
-            <circle  cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle>
-        </svg>
+    <div class=tableloading>
+        <div class="spinner2 fat">
+            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+                <circle  cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="3"></circle>
+            </svg>
+        </div>
+        <div class="loadintext secondarytext">Hold on while your table is being fetched.</div>
     </div>
 </div>
+
+<style>
+    .tableloading {width:200px;text-align:center;margin:0 auto;padding:24px;color:var(--grey50);line-height:20px;}
+        .tableloading .spinner2 {margin:40px auto;}
+</style>
 
 
 
@@ -596,7 +610,7 @@
     h1 {}
     h2 {}
     h3 {font-size:18px;font-weight:700;color:var(--grey60);margin:0;line-height:28px;}
-    h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:16px 40px;}
+    h4 {font-size:14px;font-weight:700;color:var(--grey60);margin:0;line-height:20px;margin:0 40px 16px;}
     h5 {font-size:11px;font-weight:500;text-transform:uppercase;color:var(--grey50);margin:0;line-height:20px;}
 
     input {-webkite-appearance:none;appearance:none;height:36px;border:1px solid var(--grey30);font-size:14px;text-indent:16px;border-radius:3px;box-sizing:border-box;}
@@ -1034,51 +1048,25 @@
 </style>
 
 
-
+<script src="../js/base.js"></script>
 <script>
 
-    String.prototype.stripslashes = function(){
-        return this.replace(/\\(.)/mg, "$1");
-    };
+    (function() {
+        var hash = window.location.hash;
+        if(hash) {
+            console.log(hash);
+            //document.getElementById('starttab').click();
 
-    String.prototype.elemental = function(o) {
-        return this.replace(/{([^{}]*)}/g,
-            function (a, b) {
-                var r = o[b];
-                return typeof r === 'string' || r === 'number' ? r : '';//a
-            }
-        );
-    };
+            hash = hash.replace('#', '');
 
-    Object.prototype.getparent = function(c) { //class, tag, or id
-        var a = this;
-        var x = false;
-        while ( a ){
-            if ( a.classList && a.classList.contains(c) || a.tagName == c.toUpperCase() || a.id == c ){
-                x = a;
-                break;
-            }
-            a = a.parentElement
+            document.querySelector('.tab[data-type=' + hash + ']').click();;
+
+
+        } else {
+            document.getElementById('starttab').click();
         }
-        return x;
-    };
 
-    Object.prototype.empty = function(){
-        while(this.firstChild){
-            this.removeChild(this.firstChild);
-        }
-    };
-
-    String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-    };
-
-    Array.prototype.random = function () {
-        return this[Math.floor(Math.random() * this.length)]
-    };
-
-
-    document.getElementById('starttab').click();
+    }) ();
 </script>
 
 </body>
