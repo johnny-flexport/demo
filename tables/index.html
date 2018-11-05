@@ -92,9 +92,9 @@
     <table class=accordian>
         <tr><th class=checkcell><input type=checkbox onchange="checked2.call(this,event, true)" /></th><th class="sort current"><span class=sortable onclick="sortflip.call(this,event)">Name</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Freight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">From</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">To</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Weight</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Volume</span></th><th class=sort><span class=sortable onclick="sortflip.call(this,event)">Status</span></th><th>Action</th><th class=checkcell></th></tr>
 
-        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td><td class="checkcell "><div class=accord></div></td></tr>
+        <tr class="row expandable" title=Expandable onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>Rotra Air & Ocean BV<div class=secondary>FLEX-430474</div></td><td><a href=javascript:void(0)>Air</a></td><td>Foxconn - IPCD - Shenzhen Factory<div class=secondary>Shenzhen, China</div></td><td>Performance Team (Redlands)<div class=secondary>Redlands, United States</div></td><td>100.00 <span class=secondary>kg</span></td><td>0.100 <span class=secondary>cbm</span></td><td>Quote Requested</td><td class=action><div class="btn hollow blue">View Request</div></td><td class="checkcell "><div class=accord></div></td></tr>
 
-        <tr class="row expandable" onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td><td class="checkcell "><div class=accord></div></td></tr>
+        <tr class="row expandable" title=Expandable onclick="toggleexpand.call(this,event);"><td class=checkcell><input type=checkbox  onchange="checked2.call(this,event, true)" /></td><td>HANWEN Ring Solar Sign<div class=secondary>FLEX-412286</div></td><td><a href=javascript:void(0)>Ocean</a></td><td>Sino Shenzen Logistics CO., LTD<div class=secondary>PVG - Shanghai - China</div></td><td>Ring Inc.<div class=secondary>Santa Monica, United States</div></td><td>3,475.00 <span class=secondary>kg</span></td><td>17.000 <span class=secondary>cbm</span></td><td>Accepted</td><td class=action><div class="btn hollow blue">View Quote</div></td><td class="checkcell "><div class=accord></div></td></tr>
     </table>
 </div>
 
@@ -210,6 +210,10 @@
         .card2 tr:hover, .card2 .selected {box-shadow: 0 0 0 1px var(--blue20);}
 
 
+    .dropwrap {position:relative;user-select:none;}
+        .popover {position:absolute;background:white;position:absolute;top:0;left:0;border-radius:3px;border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100%);top:-41px;padding:4px 0;transform:scaleY(.94);transition:all 150ms ease-in-out;}
+            .open .popover {opacity:1;pointer-events:all;transform:scaleY(1);}
+        .popover .menuitem {line-height:36px;min-width:0;}
 </style>
 
 
@@ -236,8 +240,15 @@
             </div>
         </div><div class=filter>
             <div class=label>Sync Status</div>
-            <div class=dropdown>
-                Synced
+            <div class=dropwrap>
+                <div class=dropdown onclick="this.parentElement.classList.add('open')">
+                    Synced
+                </div>
+                <div  class=popover onclick="this.parentElement.classList.remove('open')">
+                    <div class=menuitem>Not Synced</div>
+                    <div class=menuitem>Synced</div>
+                    <div class=menuitem>Mixed</div>
+                </div>
             </div>
 
         </div><div class=insertfilters></div><div class=filter>
@@ -273,8 +284,8 @@
     <div class=emptystate>
         <div class=emptywrap>
             <div class=ill></div>
-            <h3>There Currently Are No Bookings</h3>
-            <p>Add a booking to get started.</p>
+            <h3>There are currently no bookings.</h3>
+            <p>Add a booking to get started. Hit the button blow and fill away.</p>
             <div class=btn>Add Booking</div>
         </div>
     </div>
@@ -304,6 +315,12 @@
             dp.classList.toggle('open');
         }
 
+        function closedrop(e){
+            var dp = this.getparent('dropbtn');
+            dp.classList.add('notransition');
+            dp.classList.remove('open');
+        }
+
         function addfilter(e){
             var dp = this.getparent('dropbtn');
             var f = dp.getparent('filters');
@@ -314,7 +331,16 @@
 
             var code = `<div class=filter>
             <div class=label><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
-                <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);">None</div>
+                <div class="dropbtn">
+                    <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                    <div class="dropmenu">
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Three</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
+                    </div>
+                </div>
             </div>`;
 
             a.innerHTML += code;
@@ -343,23 +369,27 @@
             .emptywrap {width:300px;margin:0 auto;text-align:center;}
             .ill {width:176px;height:176px;border-radius:50%;background:var(--grey30);margin:0 auto 36px;opacity:0.6;}
             .emptystate .btn {margin:0;}
-            .emptystate h3 {font-size:18px;font-weight:700;margin-bottom:12px;line-height:28px;}
+            .emptystate h3 {font-size:18px;font-weight:700;margin-bottom:16px;line-height:28px;}
             .emptystate p {margin-bottom:36px;line-height:20px;}
 
      td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7), table:not(.accordian) td:nth-child(9), table:not(.accordian) th:nth-child(9) {text-align:right;}
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
-            .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;}
+            .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;transition:background 150ms ease-in-out;}
             .closefilter .x.xx {transform:rotate(-45deg);}
+
+            .closefilter:hover .x {background:var(--grey60);}
 
         .dropbtn {position:relative;display:inline-block;}
             .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;}
-            .menuitem {padding:0 16px;cursor:pointer;min-width:120px;box-sizing:border-box;}
+            .menuitem {padding:0 16px;cursor:pointer;min-width:120px;box-sizing:border-box;white-space:nowrap;}
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
 
         .dropbtn.open .btn {    border-color: var(--grey40);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
+
+        .filter .dropbtn {display:block;}
 
         .notransition .dropmenu {transition:none;}
 
@@ -391,6 +421,8 @@
         .secondaryfilters {float:right;}
 
         .selectcount {line-height:36px;color:var(--blue40);font-weight:500;font-variant-numeric: tabular-nums;}
+
+        td:nth-child(6), td:nth-child(7) {font-variant-numeric: tabular-nums;}
 
         .dropdown {height:36px;border-radius:3px;border:1px solid var(--grey30);cursor:pointer;line-height:34px;box-sizing:border-box;padding:0 16px;position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;}
             .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:16px;margin-top:-1px;transition:border-color 150ms ease-in-out;}
