@@ -82,6 +82,8 @@ h5 {font-size:11px;line-height:20px;font-weight:500;text-transform:uppercase;col
 b, .emp {font-weight:600;}
 .italics {font-style:italic;}
 .stext {color:var(--grey50);}
-.disabled {color:var(--grey40);}
+
 
 .inputlabel {font-size:13px;color:var(--grey50);margin-bottom:4px;}
+
+.disabled {color:var(--grey40);}

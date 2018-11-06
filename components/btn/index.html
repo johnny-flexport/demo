@@ -95,7 +95,9 @@
                 input[type=text]:active {border-color:var(--grey50);box-shadow:none;}
                 input[type=text]:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
 
-            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:var(--radius);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
+            input[type=text]:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
+
+            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
                 .checkbox:hover input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
                 .checkbox:active input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
 
@@ -247,6 +249,23 @@
             .tooltip {z-index:1337;position:absolute;top:calc(100% + 6px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:#18191Ada;color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
                 .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
 
+        .popitem {transition:all 150ms ease-in-out;}
+        .popitem.selected {background:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
+            .popitem.selected:hover {background:var(--grey10);}
+
+
+        .demo input[type=text] {min-width:280px;}
+
+
+        .twostoryinput {position: relative;}
+            .twostoryinput .inputlabel {position:absolute;top:6px;left:var(--inset);}
+            .twostoryinput input {padding-top:20px;height:calc(var(--lineheight) + 20px);}
+
+        .floatinglabel {position: relative;padding-top:24px;}
+            .floatinglabel .inputlabel {position:absolute;top:32px;left:var(--inset);transition:all 150ms ease-in-out;font-size:14px;font-style:italic;}
+            .floatinglabel input:focus ~ .inputlabel {top:0;left:0;font-size:13px;font-style:normal;color:var(--blue30);}
+
+        .inlinewrap {display:inline-block;margin-right:16px;}
     </style>
 </head>
 <body>
@@ -312,6 +331,31 @@
     </div>
 
     <div class=demo>
+        <span class=inlinewrap>
+            <div class=inputlabel>Label</div>
+            <input type=text placeholder="Type here..." />
+        </span>
+        <span class=inlinewrap>
+            <div class="inputlabel disabled">Label</div>
+            <input type=text placeholder="Type here..." disabled />
+        </span>
+    </div>
+
+    <div class=demo>
+        <div class=floatinglabel>
+            <input type=text placeholder="" />
+            <div class=inputlabel>Label</div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=twostoryinput>
+            <div class=inputlabel>Label</div>
+            <input type=text placeholder="Type here..." />
+        </div>
+    </div>
+
+    <div class=demo>
         <div class=filter>
             <div class=inputlabel>Sync Status</div>
             <div class=dropwrap>
@@ -320,7 +364,7 @@
                 </div>
                 <div  class=popover>
                     <div class="menuitem popitem">Not Synced</div>
-                    <div class="menuitem popitem">Synced</div>
+                    <div class="menuitem popitem selected">Synced</div>
                     <div class="menuitem popitem">Mixed</div>
                 </div>
             </div>
@@ -855,6 +899,12 @@
         var p = this.getparent('popover');
         var v = this.innerText;
         var d = p.getparent('dropwrap').getElementsByClassName('droppop')[0];
+
+        var c = p.getElementsByClassName('popitem selected');
+
+        c.removeclass('selected');
+
+        this.classList.add('selected');
 
         p.style.top = -y -1 + 'px';
 
