@@ -58,8 +58,8 @@
             .btn.danger:active {background:var(--red60);box-shadow:none;}
 
         .btn.hollow {background:transparent;border:1px solid var(--grey30);color:var(--grey60);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
-            .btn.hollow:hover {background:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
-            .btn.hollow:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;}
+            .btn.hollow:hover, .dropdown:hover {background:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+            .btn.hollow:active, .dropdown:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;}
 
             .btn.hollow.danger {color:var(--red45);}
             .btn.hollow.danger:hover {color:var(--red50);}
@@ -181,10 +181,12 @@
             color: var(--grey50);
         }
 
-        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--inset);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;}
+        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--inset);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;}
             .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:var(--inset);margin-top:-1px;transition:border-color 150ms ease-in-out;}
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
+
+            .dropdown:hover {border-color:var(--grey40);}
 
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
