@@ -13,6 +13,46 @@
     --grey50:#6E7881;
     --grey60:#18191A;
 
+    --red10: #FFEBEB;
+    --red20:#FCBDBD;
+    --red30:#F2555F;
+    --red40:#EF3340;
+    --red45:#D92736;
+    --red50:#A6212A;
+    --red60:#591317;
+            /*
+            yellow: [
+                {name:'10', hex:"#FCF6DE"},
+                {name:'20', hex:"#FFE880"},
+                {name:'30', hex:"#FFDE4C"},
+                {name:'40', hex:"#FFD100"},
+                {name:'50', hex:"#FF9419"},
+                {name:'60', hex:"#662E00"}
+            ],
+            green: [
+                {name:'10', hex:"#EBFFF1"},
+                {name:'20', hex:"#B0EBC3"},
+                {name:'30', hex:"#66CC86"},
+                {name:'40', hex:"#3DC468"},
+                {name:'50', hex:"#2DA854"},
+                {name:'60', hex:"#124D25"}
+            ],
+            cyan: [
+                {name:'10', hex:"#E8F6FF"},
+                {name:'20', hex:"#BEE6FF"},
+                {name:'30', hex:"#8CDBFF"},
+                {name:'40', hex:"#66CFFF"},
+                {name:'50', hex:"#0A8FCC"},
+                {name:'60', hex:"#00384C"}
+            ],
+            purple: [
+                {name:'10', hex:"#F4EDFF"},
+                {name:'20', hex:"#C4AEE8"},
+                {name:'30', hex:"#8F62D9"},
+                {name:'40', hex:"#7B41D9"},
+                {name:'50', hex:"#572E99"},
+                {name:'60', hex:"#331B59"}*/
+
     /*--grey10: hsl(204, 45%, 98%);
     --grey20: hsl(204, 38%, 95%);
     --grey30: hsl(206, 20%, 84%);
@@ -29,7 +69,19 @@ html {
     line-height:20px;
 }
 
-a {color:var(--blue30);transition:color 150ms ease-in-out;}
-a:hover {color:var(--blue40);}
-a:active {text-decoration:none;}
+a, .a {color:var(--blue30);transition:color 150ms ease-in-out;text-decoration:underline;}
+a:hover, .a:hover {color:var(--blue40);}
+a:active, .a:active {text-decoration:none;}
 
+h1 {font-size:36px;line-height:48px;font-weight:300;color:var(--grey60);}
+h2 {font-size:24px;line-height:36px;font-weight:400;color:var(--grey60);}
+h3 {font-size:18px;line-height:28px;font-weight:700;color:var(--grey60);}
+h4 {font-size:14px;line-height:20px;font-weight:700;color:var(--grey60);}
+h5 {font-size:11px;line-height:20px;font-weight:500;text-transform:uppercase;color:var(--grey50);}
+
+b, .emp {font-weight:600;}
+.italics {font-style:italic;}
+.stext {color:var(--grey50);}
+.disabled {color:var(--grey40);}
+
+.inputlabel {font-size:13px;color:var(--grey50);margin-bottom:4px;}
