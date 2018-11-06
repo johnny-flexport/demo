@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+    <title>Buttons</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/basic.css">
+
+    <script src="../../js/gator.js"></script>
+    <script src="../../js/base.js"></script>
+
+    <style>
+        :root {
+            --radius: 3px;
+            --lineheight: 36px;
+            --inset: 16px;
+
+            --shadow: rgba(0, 0, 0, 0.05);
+            --blueshadow: hsla(224, 88%, 55%, 0.2);
+            --errorshadow: hsla(355, 70%, 50%, 0.2);
+        }
+
+        .funsize {
+            --lineheight: 24px;
+            --inset: 8px;
+        }
+
+        .current {
+            --lineheight: 30px;
+            --inset: 12px;
+        }
+
+        .multiple4 {
+            --lineheight: 32px;
+            --inset: 12px;
+        }
+
+        .large {
+            --lineheight: 40px;
+        }
+
+        .demo {padding:24px 40px 0;margin-bottom:24px;}
+
+
+        .btn {background:var(--blue30);user-select:none;border-radius:var(--radius);padding:0 var(--inset);line-height:var(--lineheight);height:var(--lineheight);font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:0 16px 0 0;position:relative;box-sizing:border-box;
+            transition:all 150ms ease-in-out;
+        }
+            .btn:hover {background:var(--blue40);box-shadow:0 2px 2px var(--blueshadow);}
+            .btn:active {background:var(--blue50);box-shadow:none;}
+
+
+
+        .btn.danger {background:var(--red45);}
+            .btn.danger:hover {background:var(--red50);box-shadow:0 2px 2px hsla(356, 67%, 39%, .2);}
+            .btn.danger:active {background:var(--red60);box-shadow:none;}
+
+        .btn.hollow {background:transparent;border:1px solid var(--grey30);color:var(--grey60);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
+            .btn.hollow:hover {background:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+            .btn.hollow:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;}
+
+            .btn.hollow.danger {color:var(--red45);}
+            .btn.hollow.danger:hover {color:var(--red50);}
+
+            .btn.hollow.cta {color:var(--blue30);}
+            .btn.hollow.cta:hover {color:var(--blue40);}
+            .btn.hollow.cta:active {color:var(--blue50);}
+
+
+        .btn.shh {background:transparent;border:none;color:var(--grey60);}
+            .btn.shh:hover {background:var(--grey10);box-shadow:none;}
+            .btn.shh:active {background:var(--grey20);}
+
+
+        .btn.disabled {pointer-events:none;background:var(--grey20) !important;color:var(--grey40) !important;border-color:transparent !important;}
+            .btn.disabled.hollow {}
+            .btn.disabled.shh {background:transparent !important;}
+
+
+        .btn .icon {display:inline-block;vertical-align:top;}
+        .btn .blabel {margin-left:12px;}
+            .btn .icon svg {width:16px;height:16px;vertical-align: middle;margin-top:-2px;}
+            .btn .icon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
+
+            .btn:hover .icon svg path {fill:var(--grey60);}
+
+            .btn.disabled .icon svg path {fill:var(--grey40) !important;}
+
+        input {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
+
+            input[type=text] {transition:all 150ms ease-in-out;}
+                input[type=text]:hover {border-color:var(--grey40);box-shadow:0 1px 2px var(--shadow);}
+                input[type=text]:active {border-color:var(--grey50);box-shadow:none;}
+                input[type=text]:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
+
+            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:var(--radius);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
+                .checkbox:hover input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
+                .checkbox:active input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
+
+                input[type=checkbox]:checked {border-color:transparent;background:var(--blue30) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
+
+                .checkbox:hover input[type=checkbox]:checked {border-color:transparent;background-color:var(--blue50);box-shadow:0 2px 2px var(--blueshadow);}
+                .checkbox:active input[type=checkbox]:checked {border-color:transparent;background:var(--blue50);box-shadow:none;}
+
+            .disabled input[type=checkbox] {border-color:var(--grey30);}
+                .disabled input[type=checkbox]:checked {background-color:var(--grey30);}
+
+            .error input[type=checkbox] {border-color:var(--red40);}
+                .error:hover input[type=checkbox] {border-color:var(--red45);box-shadow: 0 2px 2px var(--errorshadow);}
+                .error:active input[type=checkbox] {background-color:var(--red45);border-color:var(--red45);box-shadow:none;}
+
+                .error input[type=checkbox]:checked {background-color:var(--red40);}
+                    .error:hover input[type=checkbox]:checked {background-color:var(--red45);}
+                    .error:active input[type=checkbox]:checked {background-color:var(--red45);}
+
+
+
+        .choices {margin:24px 40px;}
+
+        .radio, .checkbox {line-height:var(--lineheight);margin-right:24px;cursor:pointer;display:inline-block;}
+            .radio label, .checkbox label {cursor:pointer;}
+            .radiohead {width:16px;height:16px;position:relative;display:inline-block;border:2px solid var(--grey40);border-radius:50%;vertical-align:middle;box-sizing:border-box;transition:border-color 150ms ease-in-out,box-shadow 150ms ease-in-out;}
+                .radio:hover .radiohead {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
+                .radio:active .radiohead {border-color:var(--grey60);}
+
+                .radiohead::after {content:'';width:8px;height:8px;background:var(--grey40);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) scale(0);border-radius:50%;transition:transform 150ms ease-in-out, background-color 150ms ease-in-out;}
+
+                .radio:hover .radiohead::after {background:var(--grey50);}
+                .radio:active .radiohead::after {background:var(--grey60);}
+
+            .radiolabel {margin-left:8px;vertical-align: middle;}
+
+            input:checked ~ label .radiohead {border-color:var(--blue30);}
+            input:checked ~ label .radiohead::after/*, .radio:active label .radiohead::after*/ {transform:translate(-50%, -50%) scale(1);}
+
+            input:checked ~ label .radiohead::after {background-color:var(--blue30);}
+
+
+            .radio:hover input:checked ~ label .radiohead {border-color:var(--blue40);box-shadow:0 2px 2px var(--blueshadow);}
+            .radio:hover input:checked ~ label .radiohead::after {background-color:var(--blue40);}
+
+            .radio:active input:checked ~ label .radiohead {border-color:var(--blue50);}
+            .radio:active input:checked ~ label .radiohead::after {background-color:var(--blue50);}
+
+            .radio input {}
+
+            .offscreen {position: absolute;left: -999999px;opacity: 0;}
+
+        .disabled {pointer-events:none !important;}
+
+        :focus, :focus ~ label .radiohead {box-shadow: 0 0 0 3px hsla(224, 77%, 57%, 0.3);}
+
+        .searchbarwrap {position:relative;display:inline-block;}
+        .searchbar {width:280px;}
+            .searchicon {position:absolute;top:0;right:0;padding:0 12px;border-radius:0 3px 3px 0;cursor:pointer;border:1px solid transparent;transition:all 150ms ease-in-out;box-sizing:border-box;display:flex;align-items: center;height:100%;}
+                .searchicon:hover {border-color:var(--grey40);box-shadow:0 2px 2px rgba(0, 0, 0, 0.05);}
+                .searchicon:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
+                .searchicon svg {display:block;}
+                .searchicon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
+                .searchicon:hover svg path {fill:var(--grey60);}
+
+        ::-webkit-input-placeholder {
+            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+        }
+        ::-moz-placeholder {
+            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+        }
+        :-ms-input-placeholder {
+            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+        }
+
+        :hover::-webkit-input-placeholder {
+            color: var(--grey50);
+        }
+        :hover::-moz-placeholder {
+            color: var(--grey50);
+        }
+        :hover:-ms-input-placeholder {
+            color: var(--grey50);
+        }
+
+        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--inset);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;}
+            .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:var(--inset);margin-top:-1px;transition:border-color 150ms ease-in-out;}
+
+            .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
+
+
+        .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
+            .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;transition:background 150ms ease-in-out;}
+            .closefilter .x.xx {transform:rotate(-45deg);}
+
+            .closefilter:hover .x {background:var(--grey60);}
+
+        .dropbtn {position:relative;display:inline-block;}
+            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;}
+            .menuitem {padding:0 var(--inset);cursor:pointer;min-width:120px;box-sizing:border-box;white-space:nowrap;}
+                .menuitem:hover {background:var(--grey10);}
+                .menuitem:active {background:var(--grey20);}
+
+        .dropbtn.open .btn {    border-color: var(--grey40);background: var(--grey10);}
+        .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
+
+
+        .notransition .dropmenu, .notransition.popover {transition:none;}
+
+        .dropwrap {position:relative;user-select:none;display:inline-block;}
+            .popover {position:absolute;background:white;position:absolute;top:0;left:0;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100%);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(.98);transition:all 150ms ease-in-out;box-sizing: border-box;}
+                .open .popover {opacity:1;pointer-events:all;transform:scaleY(1);}
+            .popover .menuitem {line-height:var(--lineheight);min-width:0;}
+
+
+        input.quiet {border-radius:0;border:none;border-bottom:1px solid var(--grey30);text-indent:0;}
+
+        .pagewidget {float:right;}
+        .pagewidget input {width:48px;text-align:center;line-height:36px;vertical-align:top;margin-left:16px;}
+
+        .pagebtn.btn {position:relative;margin:0;display:inline-block;width:36px;}
+        .pagebtn::after {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-left: 2px solid var(--grey50);
+            border-bottom: 2px solid var(--grey50);
+            transform: translate(-50%, -50%) rotate(-135deg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left:-1px;
+            transition:border-color 150ms ease-in-out;
+        }
+        .pagebtn.left::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+            margin-left:1px;
+        }
+
+        .ofpage {display: inline-block;color:var(--grey50);vertical-align:top;line-height:36px;margin:0 16px 0 8px;}
+
+        .pagination .pagecount {float:left;}
+
+
+        .tipwrap {position:relative;display:inline-block;margin:24px;cursor:pointer;}
+            .tooltip {z-index:1337;position:absolute;top:calc(100% + 6px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:#18191Ada;color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
+                .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
+
+    </style>
+</head>
+<body>
+
+    <div class=choices>
+        <div class=inputlabel>Sizing</div>
+        <span class=radio>
+            <input type=radio class="sizes offscreen" value=default name=sizes id=c1 checked />
+            <label for=c1><span class=radiohead></span><span class=radiolabel>36px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="sizes offscreen" value=multiple4 name=sizes id=c2 />
+            <label for=c2><span class=radiohead></span><span class=radiolabel>32px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="sizes offscreen" value=current name=sizes id=c3 />
+            <label for=c3><span class=radiohead></span><span class=radiolabel>30px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="sizes offscreen" value=funsize name=sizes id=c4 />
+            <label for=c4><span class=radiohead></span><span class=radiolabel>24px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="sizes offscreen" value=large name=sizes id=c5 />
+            <label for=c5><span class=radiohead></span><span class=radiolabel>40px</span></label>
+        </span>
+    </div>
+
+    <div class=demo>
+        <span class=checkbox>
+            <label><input type=checkbox /><span class=radiolabel>Checkbox</span></label>
+        </span>
+        <span class=checkbox>
+            <label><input type=checkbox checked /><span class=radiolabel>Checkbox</span></label>
+        </span>
+        <span class="checkbox disabled">
+            <label><input type=checkbox disabled /><span class=radiolabel>Checkbox</span></label>
+        </span>
+        <span class="checkbox disabled">
+            <label><input type=checkbox checked disabled /><span class=radiolabel>Checkbox</span></label>
+        </span>
+
+        <span class="checkbox error">
+            <label><input type=checkbox /><span class=radiolabel>Checkbox</span></label>
+        </span>
+        <span class="checkbox error">
+            <label><input type=checkbox checked /><span class=radiolabel>Checkbox</span></label>
+        </span>
+    </div>
+
+    <div class=demo>
+            <div class="filter search">
+                <div class=inputlabel>Search</div>
+                <div class=searchbarwrap>
+                    <input type=text class=searchbar placeholder="Find things..." />
+                    <div class=searchicon>
+                        <svg width="20px" height="20px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M51.8128372,45.50901 L50.4728372,44.17401 L39.3728372,33.07401 L38.7518372,32.45401 C44.5778372,23.40901 42.6478372,11.42601 34.2748372,4.66900997 C25.9018372,-2.08699003 13.7818372,-1.44399003 6.17083715,6.16200997 C-1.43916285,13.76701 -2.09016285,25.88701 4.66083715,34.26401 C11.4128372,42.64101 23.3938372,44.58001 32.4428372,38.75901 L33.0638372,39.37901 L44.1638372,50.47901 L45.5028372,51.81601 C45.8530393,52.1603475 46.414635,52.1603475 46.7648372,51.81601 L48.1028372,50.47901 L50.4728372,48.10901 L51.8118372,46.77101 C52.1597073,46.4224223 52.1601544,45.8581485 51.8128372,45.50901 Z M6.07283715,21.10901 C6.06757812,15.035638 9.72204193,9.55736493 15.3315972,7.22954118 C20.9411526,4.90171742 27.4006426,6.18295514 31.6970265,10.4756187 C35.9934103,14.7682822 37.2802433,21.2266599 34.95728,26.8382297 C32.6343166,32.4497995 27.1592114,36.1090077 21.0858372,36.10901 C12.8018372,36.10301 6.08583715,29.39301 6.07283715,21.10901 Z" id="path-1"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Sync Status</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem">Not Synced</div>
+                    <div class="menuitem popitem">Synced</div>
+                    <div class="menuitem popitem">Mixed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filters>
+            <div class=filter>
+                <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>Some Filter</div>
+                <div class="dropbtn">
+                    <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                    <div class="dropmenu">
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Three</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
+                        <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
+                    </div>
+                </div>
+            </div>
+            <div class=insertfilters></div><div class=filter>
+                <div class=inputlabel>Filters</div>
+                <div class=dropbtn>
+                    <div class="btn hollow" onclick="opendrop.call(this,event);">Add Filter</div>
+                    <div class=dropmenu>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Alpha</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Beta</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Gamma</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Delta</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Epsilon</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=tt>
+            <div class=tipwrap>
+                Hover me
+                <div class=tooltip>Tooltip</div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=btn tabindex=0>Button</div>
+
+        <div class="btn disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow cta" tabindex=0>Button</div>
+        <div class="btn hollow cta disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn  cta shh" tabindex=0>Button</div>
+        <div class="btn  cta shh disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow" tabindex=0>Button</div>
+        <div class="btn hollow disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn shh" tabindex=0>Button</div>
+        <div class="btn shh disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn danger" tabindex=0>Button</div>
+        <div class="btn danger disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow danger" tabindex=0>Button</div>
+        <div class="btn hollow danger disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn  shh danger" tabindex=0>Button</div>
+        <div class="btn  shh danger disabled">Button</div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+
+        <div class="btn hollow disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+
+        <div class="btn hollow disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+    </div>
+
+    <div class=demo>
+        <div class="btn  shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+
+        <div class="btn  shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+    </div>
+
+    <div class=demo>
+        <div class="btn  shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+
+        <div class="btn  shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+    </div>
+
+<div class=demo>
+    <h4>Loading Buttons</h4>
+    <div class=btn onclick="loading.call(this,event);" tabindex=0>
+        <span class=label>Submit</span>
+        <span class=spinning>
+            <div class="spinner2 fat spinnergg">
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+            </div>
+        </span>
+        <span class=done>
+            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+            </svg>
+        </span>
+    </div>
+
+
+<div class="btn hollow" onclick="loading.call(this,event);" tabindex=0>
+    <span class=label>Submit</span>
+    <span class=spinning>
+        <div class="spinner2 fat spinnergg">
+            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+        </div>
+    </span>
+    <span class=done>
+        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+        </svg>
+    </span>
+</div>
+
+<div class="btn hollow shh" onclick="loading.call(this,event);" tabindex=0>
+    <span class=label>Submit</span>
+    <span class=spinning>
+        <div class="spinner2 fat spinnergg">
+            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+        </div>
+    </span>
+    <span class=done>
+        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+        </svg>
+    </span>
+</div>
+
+<div class="btn wide" onclick="loading.call(this,event);" tabindex=0>
+    <span class=label>Submit</span>
+    <span class=spinning style="width:100%;">
+        <div class="spinner2 fat spinnergg">
+            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+        </div>
+        <div class=spinlabel>Submitting...</div>
+    </span>
+    <span class=done>
+        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+        </svg>
+    </span>
+</div>
+
+<div class="btn outsidelabel" onclick="loading.call(this,event);" tabindex=0>
+        <span class=label>Submit</span>
+        <span class=spinning style="width:100%;">
+            <div class="spinner2 fat spinnergg">
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+            </div>
+            <div class=spinlabel>Submitting...</div>
+        </span>
+        <span class=done>
+            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+            </svg>
+        </span>
+    </div>
+</div>
+
+<script>
+    function loading(e){
+        if ( this.classList.contains('clicked')){
+            return;
+        }
+
+
+        this.classList.add('clicked');
+
+        var b = this;
+
+        this.timer = setTimeout(function(){
+            b.classList.add('finished');
+            b.timer = setTimeout(function(){
+                b.classList.remove('clicked', 'finished');
+                b.timer = null;
+            }, 1300);
+        }, 3000);
+
+        this.blur();
+    }
+
+    // var style = document.createElement('style');
+    // style.type = 'text/css';
+    // style.innerHTML = ':root { --speed: ' + (window.innerWidth / 600) * 2 + 's; }';
+
+    // document.head.append(style);
+
+    function fat(e){
+        var a = document.getElementsByClassName('stroke');
+        if ( a[0] ){
+            while(a[0]){
+                a[0].parentNode.removeChild(a[0]);
+            }
+        }
+
+        var v = this.value || 1;
+
+        var p = this.parentElement;
+        var l = p.getElementsByTagName('label')[0];
+
+        l.innerHTML = 'Stroke - ' + v + 'px';
+
+        var style = document.createElement('style');
+        style.className = 'stroke';
+        style.innerHTML = '.loader, .loader400, .loader400b {height:' + v + 'px !important;} .spinner2 svg circle {stroke-width:' + v + 'px !important;}';
+
+        document.head.append(style);
+    }
+
+</script>
+<style>
+
+
+     .btn > * {transition:opacity 150ms ease-in-out;pointer-events:none;}
+
+    .btn.wide {width:200px;text-align:center;}
+
+    .btn .spinlabel {color:var(--grey50);opacity:1;display:inline-block;vertical-align:middle;margin-left:8px;}
+
+    .btn.outsidelabel {text-align:center;}
+        .outsidelabel .spinlabel {position:absolute;right:-12px;transform:translateX(100%);font-size:13px;font-weight:400;}
+
+
+
+
+    .btn.clicked {background:var(--grey10);pointer-events:none;border-color:transparent;box-shadow:none;}
+        .btn.clicked:hover {box-shadow:none;border-color:transparent;pointer-events:none;}
+
+    .btn.finished {}
+
+    .btn .label {transition-delay:150ms;}
+
+    .btn.clicked .label {opacity:0;transition-delay:0ms;}
+
+    .btn .spinning {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;}
+    .btn .spinning .spinner2 {margin:0;width:24px;height:24px;display:inline-block;vertical-align:middle;}
+    .btn.clicked .spinning {opacity:1;transition-delay:150ms;}
+    .btn.clicked.finished .spinning {opacity:0;transition-delay:0ms;}
+
+    .btn .spinning * {animation-play-state:paused;}
+    .btn.clicked .spinning * {animation-play-state:running !important;}
+    .btn.clicked.finished .spinning * {animation-play-state:paused;}
+
+    .btn .spinner2 svg {margin-top:-1px;display:block;}
+    .btn .spinner2 svg circle {stroke-width:5px !important;}
+
+    .btn .done {opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:14px;transition-delay:0ms;}
+    .btn .done svg {display:block;height:14px;}
+
+        .btn .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset: 80px;transition:all 150ms ease-in-out;transition-delay:500ms;}
+
+    .btn.finished .done {opacity:1;transition-delay:150ms;}
+        .btn.finished .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset:0;transition-delay:150ms;}
+
+
+
+    .spinner2 {margin:24px;height:48px;}
+
+    .spinner .spin, .spinner3 .spin3 {
+        animation-name: rotate;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        transform-origin: center;
+    }
+
+    .spinner2 .spin2 {
+        animation-name: rotate2;
+        animation-duration: 1.75s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        transform-origin: center;
+
+    }
+
+    .spinner svg circle {
+        animation-name: spinner;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+    }
+
+    .spinner2 svg .noanimation {
+        animation: none !important;
+        stroke-dasharray: 200, 200 !important;
+        stroke: #F7FAFC !important;
+    }
+
+    .spinner2 svg circle {
+        animation-name: spin2, color2;
+        animation-duration: 1.75s, 7s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        stroke-dasharray: 2, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+    }
+
+    .spinner2.spinnerc svg circle {
+        animation-name: spin2, color3;
+    }
+
+    .spinner2.spinnerg svg circle {
+        animation-name: spin2, colorg;
+        stroke: #B0BAC2;
+        stroke: #CED7DE;
+        /* stroke: #6E7882; */
+    }
+
+    .spinner2.spinnergg svg circle {
+        animation-name: spin2;
+        stroke: #B0BAC2;
+        stroke: #CED7DE;
+        stroke: #6E7882;
+    }
+
+    .fat.spinner2 svg circle {stroke-width:4px;}
+
+    .spinner2 {
+        width: 48px;
+        /* transform: rotate(-45deg); */
+    }
+
+       .spinner3 svg circle {
+        animation-name: spin3;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+    }
+
+    @keyframes colorg {
+        from {stroke:#CED7DE;}
+        25% {stroke:#CED7DE;}
+        29% {stroke:#B0BAC2;}
+        50% {stroke:#B0BAC2;}
+        54% {stroke:#6E7882;}
+        75% {stroke:#6E7882;}
+        79% {stroke:#B0BAC2;}
+        98% {stroke:#B0BAC2;}
+        to {stroke:#CED7DE;}
+    }
+
+    @keyframes color2 {
+        from {stroke:#4976F2;}
+        25% {stroke:#4976F2;}
+        29% {stroke:#265DF1;}
+        50% {stroke:#265DF1;}
+        54% {stroke:#1942B3;}
+        75% {stroke:#1942B3;}
+        79% {stroke:#0E2259;}
+        98% {stroke:#0E2259;}
+        to {stroke:#4976F2;}
+    }
+
+    @keyframes color3 {
+        from {stroke:#265df1;}
+        25% {stroke:#265df1;}
+        29% {stroke:#3dc468;}
+        50% {stroke:#3dc468;}
+        54% {stroke:#ffd100;}
+        75% {stroke:#ffd100;}
+        79% {stroke:#ef3340;}
+        98% {stroke:#ef3340;}
+        to {stroke:#265df1;}
+    }
+
+
+
+    @keyframes spinner {
+        from {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 89, 200;
+            stroke-dashoffset: -35px;
+        }
+        100% {
+            stroke-dasharray: 89, 200;
+            stroke-dashoffset: -124px;
+        }
+    }
+
+    @keyframes spin2 {
+        from {
+            stroke-dasharray: 2, 200;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 80;
+            stroke-dashoffset: -80px;
+        }
+
+        to{
+            stroke-dasharray: 124;
+            stroke-dashoffset: -124px;
+        }
+    }
+
+
+    @keyframes spin3 {
+        50% {
+            stroke-dasharray: 90,200;
+            stroke-dashoffset: 0;
+        }
+        to{
+            stroke-dasharray: 125,200;
+            stroke-dashoffset: -125px;
+        }
+    }
+
+    @keyframes rotate {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+
+
+    @keyframes rotate2 {
+        from {
+            transform: rotate(-45deg);
+        }
+
+        50% {
+            transform: rotate(315deg);
+        }
+
+        75% {
+            transform: rotate(555deg);
+        }
+
+        to {
+            transform: rotate(680deg);
+        }
+    }
+
+    @keyframes loop {
+        from {background-position-x: 10vw;}
+        to {background-position-x: 206vw;}
+    }
+</style>
+
+<script>
+
+    function opendrop(e){
+        var dp = this.getparent('dropbtn');
+        dp.classList.remove('notransition');
+        dp.classList.toggle('open');
+    }
+
+    function closedrop(e){
+        var dp = this.getparent('dropbtn');
+        dp.classList.add('notransition');
+        dp.classList.remove('open');
+    }
+
+    function addfilter(e){
+        var dp = this.getparent('dropbtn');
+        var f = dp.getparent('filters');
+        var a = f.getElementsByClassName('insertfilters')[0];
+
+        dp.classList.remove('open');
+        dp.classList.add('notransition');
+
+        var code = `<div class=filter>
+        <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
+            <div class="dropbtn">
+                <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div class="dropmenu">
+                    <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
+                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
+                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Three</div>
+                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
+                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
+                </div>
+            </div>
+        </div>`;
+
+        //a.innerHTML += code;
+    }
+
+    function closefilter(e){
+        var f = this.getparent('filter');
+
+        f.parentNode.removeChild(f);
+    }
+
+    function changesize(e){
+        var v = this.value;
+
+        document.body.classList.remove('funsize', 'large', 'default', 'current', 'multiple4');
+        document.body.classList.add(v);
+    }
+
+    function popover(e){
+        var y = this.offsetTop;
+        var p = this.getparent('popover');
+        var v = this.innerText;
+        var d = p.getparent('dropwrap').getElementsByClassName('droppop')[0];
+
+        p.style.top = -y -1 + 'px';
+
+        d.innerText = v;
+
+        p.classList.add('notransition');
+        p.getparent('dropwrap').classList.remove('open');
+    }
+
+    function closepopover(e){
+        this.classList.add('notransition');
+        this.getparent('dropwrap').classList.remove('open');
+    }
+
+    function openpopover(e){
+        var d = this.getparent('dropwrap');
+        var p = d.getElementsByClassName('popover')[0];
+        p.classList.remove('notransition');
+        d.classList.add('open')
+    }
+
+    Attach.on('click', '.sizes', changesize);
+    Attach.on('click', '.popitem', popover);
+    //Attach.on('click', '.popover', closepopover);
+    Attach.on('click', '.droppop', openpopover);
+</script>
+</body>
+</html>
