@@ -21,6 +21,12 @@ Object.prototype.empty = function(){
     }
 };
 
+Object.prototype.removeclass = function(x){
+    while(this[0]){
+        this[0].classList.remove(x);
+    }
+};
+
 String.prototype.capitalize = function() {
 return this.charAt(0).toUpperCase() + this.slice(1);
 };
