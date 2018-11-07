@@ -70,7 +70,7 @@ html {
 }
 
 a, .a {color:var(--blue30);transition:color 150ms ease-in-out;text-decoration:underline;}
-a:hover, .a:hover {color:var(--blue40);}
+a:hover, .a:hover {color:var(--blue50);}
 a:active, .a:active {text-decoration:none;}
 
 h1 {font-size:36px;line-height:48px;font-weight:300;color:var(--grey60);}

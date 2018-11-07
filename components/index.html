@@ -21,25 +21,31 @@
             --shadow: rgba(0, 0, 0, 0.05);
             --blueshadow: hsla(224, 88%, 55%, 0.2);
             --errorshadow: hsla(355, 70%, 50%, 0.2);
+
+            --textpadd: 6px;
         }
 
         .funsize {
             --lineheight: 24px;
             --inset: 8px;
+            --textpadd: 1px;
         }
 
         .current {
             --lineheight: 30px;
             --inset: 12px;
+            --textpadd: 4px;
         }
 
         .multiple4 {
             --lineheight: 32px;
             --inset: 12px;
+            --textpadd: 5px;
         }
 
         .large {
             --lineheight: 40px;
+            --textpadd: 8px;
         }
 
         .demo {padding:24px 40px 0;margin-bottom:24px;}
@@ -73,6 +79,15 @@
             .btn.shh:hover {background:var(--grey10);box-shadow:none;}
             .btn.shh:active {background:var(--grey20);}
 
+        .btn.shh.danger {color:var(--red45);}
+            .btn.shh.danger:hover {color:var(--red45);}
+            .btn.shh.danger:active {color:var(--red50);}
+
+        .btn.shh.cta {color:var(--blue30);}
+            .btn.shh.cta:hover {color:var(--blue40);}
+            .btn.shh.cta:active {color:var(--blue50);}
+
+
 
         .btn.disabled {pointer-events:none;background:var(--grey20) !important;color:var(--grey40) !important;border-color:transparent !important;}
             .btn.disabled.hollow {}
@@ -94,21 +109,25 @@
             .btn.disabled .icon svg path {fill:var(--grey40) !important;}
 
 
-        input {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
+        input, textarea {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
 
-            input[type=text] {transition:all 150ms ease-in-out;}
-                input[type=text]:hover {border-color:var(--grey40);box-shadow:0 1px 2px var(--shadow);}
-                input[type=text]:active {border-color:var(--grey50);box-shadow:none;}
-                input[type=text]:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
+            input[type=text], textarea {transition:all 150ms ease-in-out;}
+                input[type=text]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 1px 2px var(--shadow);}
+                input[type=text]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
+                input[type=text]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
 
-            .error input[type=text] {border-color:var(--red45);}
-                .error input[type=text]:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
+            input[type=text]:read-only {border-color:var(--grey20);background:var(--grey10);}
+
+            textarea {line-height:20px;padding:var(--textpadd) var(--inset);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
+
+            .error input[type=text], .error textarea {border-color:var(--red45);}
+                .error input[type=text]:focus, .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
             .error .inputlabel {color:var(--red45);}
 
 
-            .error input[type=text] {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
+            .error input[type=text], .error textarea {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
 
-            input[type=text]:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
+            input[type=text]:disabled, textarea:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
 
             input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
                 .checkbox:hover input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
@@ -160,6 +179,30 @@
             .radio:active input:checked ~ label .radiohead {border-color:var(--blue50);}
             .radio:active input:checked ~ label .radiohead::after {background-color:var(--blue50);}
 
+
+            .disabled .radiohead {border-color:var(--grey30);}
+
+            .radio.disabled input:checked ~ label .radiohead {border-color:var(--grey30);}
+            .radio.disabled input:checked ~ label .radiohead::after {background-color:var(--grey30);}
+
+            .error .radiohead {border-color:var(--red40);}
+            .error .radiolabel {color:var(--red45);}
+
+            .error input:checked ~ label .radiohead {border-color:var(--red40);}
+
+
+            .radio.error:hover input:checked ~ label .radiohead, .radio.error:hover  .radiohead {border-color:var(--red45);box-shadow:0 2px 2px var(--errorshadow);}
+            .radio.error:hover input:checked ~ label .radiohead::after, .radio.error:hover  .radiohead::after {background-color:var(--red45);}
+            .error.radio:hover .radiolabel {color:var(--red45);}
+            .error.radio:active .radiolabel {color:var(--red50);}
+
+            .radio.error:active input:checked ~ label .radiohead, .radio.error:active  .radiohead {border-color:var(--red50);box-shadow:none;}
+            .radio.error:active input:checked ~ label .radiohead::after, .radio.error:active  .radiohead::after {background-color:var(--red50);}
+
+            .error input:checked ~ label .radiohead::after {background-color:var(--red45);}
+
+
+
             .radio input {}
 
             .offscreen {position: absolute;left: -999999px;opacity: 0;}
@@ -167,6 +210,8 @@
         .disabled {pointer-events:none !important;}
 
         body:not(.hidefocus) :focus, body:not(.hidefocus) :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--blue20);}
+
+        body:not(.hidefocus) .error :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--red20);}
 
         .searchbarwrap {position:relative;display:inline-block;}
         .searchbar {width:280px;}
@@ -204,6 +249,12 @@
 
             .dropdown:hover {border-color:var(--grey40);}
 
+            .open .dropdown {border-color:var(--blue30);background-color:var(--blue10);}
+                .open .dropdown::after {border-color:var(--blue30);}
+
+            .open .dropdown.type2 {border-color:var(--grey30);background-color:var(--grey10);}
+                .open .dropdown.type2::after {border-color:var(--grey60);}
+
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
             .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;transition:background 150ms ease-in-out;}
@@ -220,14 +271,14 @@
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
 
-        .dropbtn.open .btn {    border-color: var(--grey40);background: var(--grey10);}
+        .dropbtn.open .btn {border-color: var(--grey30);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
 
 
         .notransition .dropmenu, .notransition.popover {transition:none;}
 
         .dropwrap {position:relative;user-select:none;display:inline-block;}
-            .popover {position:absolute;background:white;position:absolute;top:0;left:0;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100%);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(.98);transition:all 150ms ease-in-out;box-sizing: border-box;}
+            .popover {position:absolute;background:white;position:absolute;top:0;left:0;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100%);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(1);transition:all 150ms ease-in-out;box-sizing: border-box;}
                 .open .popover {opacity:1;pointer-events:all;transform:scaleY(1);}
             .popover .menuitem {line-height:var(--lineheight);min-width:0;}
 
@@ -262,9 +313,20 @@
         .pagination .pagecount {float:left;}
 
 
-        .tipwrap {position:relative;display:inline-block;margin:24px;cursor:pointer;}
-            .tooltip {z-index:1337;position:absolute;top:calc(100% + 6px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:#18191Ada;color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
+        .tipwrap {position:relative;display:inline-block;margin:24px;cursor: help;vertical-align: top;}
+            .tooltip {z-index:1337;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:var(--grey60);color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
                 .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
+
+            .tooltip.right {top:50%;left:calc(100% + 8px);transform:translate(0, -50%);}
+                .tipwrap:hover .tooltip.right {transform:translate(4px, -50%);}
+
+            .tooltip.top {top:-4px;left:50%;transform:translate(-50%, -100%);}
+                .tipwrap:hover .tooltip.top {transform:translate(-50%, calc(-100% - 4px));}
+
+            .tooltip.left {top:50%;left:-8px;transform:translate(-100%, -50%);}
+                .tipwrap:hover .tooltip.left {transform:translate(calc( -100% - 4px), -50%);}
+
+            .erroricon {width:24px;height:24px;background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: center center;}
 
         .popitem {transition:all 150ms ease-in-out;}
         .popitem.selected, .dropitem.selected {background-color:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
@@ -301,13 +363,13 @@
             }
 
 
-            .popitem.type5.selected {
+            .popitem.type5.selected, .dropitem.type5.selected {
                 box-shadow:0 0 0 1px var(--grey30);
                 background-color:var(--grey20);
                 color:var(--grey60);
             }
 
-            .popitem.type5:hover {
+            .popitem.type5:hover, .dropitem.type5:hover {
                 background-color:var(--grey10);
             }
 
@@ -336,7 +398,7 @@
 
         .inlinewrap {display:inline-block;margin-right:16px;}
 
-        .controls {margin:0 40px;}
+        .controls {padding:0 40px 16px;border-bottom:1px solid var(--grey20);}
 
         .loader {width:100%;height:4px;position:relative;background:#E7F1FF;transform:translateZ(0);overflow:hidden;margin-bottom:40px;}
 
@@ -398,9 +460,27 @@
             .open .combomenu {transform:translateY(0);opacity:1;pointer-events:all;}
             .combomenu .menuitem {line-height:var(--lineheight);}
 
+        .tabs {position:relative;box-shadow:inset 0 -1px var(--grey20);padding:0 12px;padding-top:16px;background:var(--grey10);overflow-x:auto;}
+            .tabsoverflow::after {content:'';clear:both;display:block;}
+        .tab {display:inline-block;padding:0 16px;line-height:48px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out, background-color 150ms ease-in-out;border-radius:3px 3px 0 0;}
+            .tab.current, .tab:hover {color:var(--grey60);}
+            .tab:active {background: var(--grey20);}
+
+        .tabline {width:1px;height:3px;background:var(--blue30);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(109);transform-origin:top left;transition:transform 150ms ease-in-out;}
+
+        .tabsoverflow {white-space:nowrap;}
+
     </style>
 </head>
 <body>
+
+    <div class=tabs>
+        <div class=tabsoverflow>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div>
+        </div>
+
+        <div class=tabline></div>
+    </div>
 
     <div class=choices>
         <div class=inputlabel>Sizing</div>
@@ -432,7 +512,7 @@
         </span>
     </div>
 
-    <div class=demo>
+    <div class="demo checkbox_demo">
         <span class=checkbox>
             <label><input type=checkbox /><span class=radiolabel>Checkbox</span></label>
         </span>
@@ -454,7 +534,35 @@
         </span>
     </div>
 
-    <div class=demo>
+    <div class="demo radio_demo">
+        <div class=inputlabel>Radios</div>
+        <span class=radio>
+            <input type=radio class=" offscreen" name=sizes2 id=c1a checked />
+            <label for=c1a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class=" offscreen" name=sizes2 id=c2a />
+            <label for=c2a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class=" offscreen"  name=sizes2 id=c3a />
+            <label for=c3a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+        <span class="radio disabled">
+            <input type=radio class=" offscreen"  name=sizes2 id=c4a disabled />
+            <label for=c4a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+        <span class="radio disabled">
+            <input type=radio class=" offscreen" checked name=sizes22 id=c4a disabled />
+            <label for=c4a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+        <span class="radio error">
+            <input type=radio class=" offscreen"  name=sizes2 id=c5a />
+            <label for=c5a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
+        </span>
+    </div>
+
+    <div class="demo search_demo">
         <div class="filter search">
             <div class=inputlabel>Search</div>
             <div class=searchbarwrap>
@@ -468,7 +576,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo combo_demo">
         <div class="filter ">
             <div class=inputlabel>Combobox</div>
             <div class=searchbarwrap>
@@ -486,7 +594,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
         <span class=inlinewrap>
             <div class=inputlabel>Label</div>
             <input type=text placeholder="Type here..." />
@@ -498,40 +606,93 @@
         <span class="inlinewrap error relative">
             <div class="inputlabel ">Label</div>
             <input type=text placeholder="Type here..."  />
-            <div class="tooltip error right">
+            <div class="tooltip error right2">
                 This field can't be blank.
             </div>
+        </span>
+        <span class=inlinewrap>
+            <div class=inputlabel>Read Only</div>
+            <input type=text placeholder="Type here..." value="Can't touch this" readonly />
+        </span>
+    </div>
+
+    <div class="demo textfield_demo">
+        <span class="inlinewrap relative">
+            <div class=inputlabel>Label</div>
+            <input type=text placeholder="Type here..." />
+            <div class=helpertext>Helper text</div>
+        </span>
+        <span class="inlinewrap relative">
+            <div class="inputlabel disabled">Label</div>
+            <input type=text placeholder="Type here..." disabled />
+            <div class="helpertext disabled">Helper text</div>
+        </span>
+        <span class="inlinewrap error relative">
+            <div class="inputlabel ">Label</div>
+            <input type=text placeholder="Type here..."  />
+            <div class="tooltip error right2">
+                This field can't be blank.
+            </div>
+            <div class="helpertext errortext">Error text</div>
         </span>
     </div>
 
     <style>
-        .tooltip.right {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
+        .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
         .tooltip.error {background:var(--red45);}
         input:focus ~ .tooltip, input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+
+        .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
+        .stuck2 input:focus ~ .label2, .stuck .label2 {opacity:1;pointer-events:all;}
+        .stuck2 input:focus ~ .label1, .stuck.stuck2 .label1 {opacity:0;pointer-events:none;top: 32px;left: var(--inset);font-size:14px;font-style:italic;}
+
+        .floattwo {}
+            .floattwo input {padding-top:12px;height:48px;}
+            .floattwo .inputlabel {top:14px;left:var(--inset);transition:all 150ms ease-in-out;font-size:14px;}
+            .floattwo input:focus ~ .inputlabel, .floattwo.stuck .inputlabel {top:4px;font-size:12px;}
+
+        .helpertext {font-size:13px;color:var(--grey50);margin-top:2px;position:absolute;top:100%;}
+            .helpertext.disabled {color:var(--grey40);}
+            .errortext {color:var(--red45);}
     </style>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
         <span class=inlinewrap>
             <div class=inputlabel>Label</div>
             <input type=text placeholder="Type here..." style="background:var(--grey10);" />
         </span>
     </div>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
         <div class=floatinglabel>
             <input type=text placeholder="" oninput="floating.call(this,event)" />
             <div class=inputlabel>Label</div>
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
+        <div class="floatinglabel stuck2">
+            <input type=text placeholder="" oninput="floating.call(this,event)" />
+            <div class="inputlabel label1">Label</div>
+            <div class="inputlabel label2">Label</div>
+        </div>
+    </div>
+
+    <div class="demo textfield_demo">
         <div class=twostoryinput>
             <div class=inputlabel>Label</div>
             <input type=text placeholder="Type here..." />
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
+        <div class="twostoryinput floattwo">
+            <input type=text placeholder="" oninput="floating.call(this,event)" />
+            <div class=inputlabel>Label</div>
+        </div>
+    </div>
+
+    <div class="demo textfield_demo">
         <div>
             <div class=inputlabel>Label</div>
             <div class="relative inblock prefix">
@@ -541,7 +702,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo textfield_demo">
         <div class="relative inblock">
             <div class=inputlabel>Label</div>
             <div class="relative inblock suffix">
@@ -551,7 +712,14 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo textarea_demo">
+        <div class="relative inblock autotext">
+            <div class=inputlabel>Textarea - Autoexpand</div>
+            <textarea placeholder="Type here..." class=autoexpand></textarea>
+        </div>
+    </div>
+
+    <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown</div>
             <div class=dropwrap>
@@ -567,7 +735,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown - checkmark</div>
             <div class=dropwrap>
@@ -583,7 +751,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown - grey checkmark</div>
             <div class=dropwrap>
@@ -597,13 +765,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
-            <div class=inputlabel>Simple Dropdown - grey </div>
-            <div class=dropwrap>
-                <div class="dropdown droppop">
+            <div class=inputlabel>Simple Dropdown</div>
+            <div class="dropwrap">
+                <div class="dropdown droppop type2">
                     Synced
                 </div>
                 <div  class=popover>
@@ -615,7 +783,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown - grey 2 </div>
             <div class=dropwrap>
@@ -629,7 +797,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <style>
         .popover {max-height:260px;overflow-y:auto;}
@@ -638,7 +806,7 @@
             .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
     </style>
 
-    <div class=demo>
+    <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown</div>
             <div class=dropwrap>
@@ -684,7 +852,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown - checkmark</div>
             <div class=dropwrap>
@@ -730,7 +898,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown - grey checkmark</div>
             <div class=dropwrap>
@@ -776,7 +944,7 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown - grey </div>
             <div class=dropwrap>
@@ -820,13 +988,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class=demo>
+    <div class="demo dropdown_demo">
         <div class=filter>
-            <div class=inputlabel>Complex Dropdown - grey 2 </div>
+            <div class=inputlabel>Complex Dropdown</div>
             <div class=dropwrap>
-                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                <div class="dropdown droppop type2" style="min-width:120px;font-style:italic;color:var(--grey50);">
                     None
                 </div>
                 <div  class=popover>
@@ -868,41 +1036,41 @@
         </div>
     </div>
 
-    <div class=demo>
+    <!-- <div class="demo dropdown_demo">
         <div class=filter>
-            <div class=inputlabel>Complex Below Dropdown 2</div>
+            <div class=inputlabel>Complex Dropdown - Below</div>
             <div class="dropbtn">
                 <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
-                <div  class=dropmenu>
+                <div  class=dropmenu style="max-height: 280px;">
                         <h5>Recent</h5>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">Vandelay West<div class=editpencil></div></div>
                             <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
                         </div>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
                             <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
                         </div>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
                         </div>
 
                         <h5>All Addresses</h5>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
                         </div>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
                             <div class="stext">99 Union Street, Seattle, WA, United States</div>
                         </div>
-                        <div class="menuitem dropitem multiline">
+                        <div class="menuitem dropitem multiline type5">
                             <div class=icon></div>
                             <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
@@ -910,14 +1078,75 @@
                     </div>
             </div>
         </div>
+    </div> -->
+
+    <div class="demo dropdown_demo">
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown - Below</div>
+            <div class="dropbtn">
+                <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div  class=dropmenu style="max-height: 280px;">
+                        <h5>Recent</h5>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">Vandelay West<div class=editpencil></div></div>
+                            <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                        </div>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                            <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                        </div>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                        </div>
+
+                        <h5>All Addresses</h5>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                        </div>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                            <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                        </div>
+                        <div class="menuitem dropitem multiline type5">
+                            <div class=icon></div>
+                            <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="demo dropbtn_demo">
+            <div class=filter>
+                <div class=inputlabel>Filters</div>
+                <div class=dropbtn>
+                    <div class="btn hollow" onclick="opendrop.call(this,event);">Add Filter</div>
+                    <div class=dropmenu>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Alpha</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Beta</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Gamma</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Delta</div>
+                        <div class=menuitem onclick="addfilter.call(this,event);">Filter Epsilon</div>
+                    </div>
+                </div>
+            </div>
+
     </div>
 
-    <div class=demo>
+    <div class="demo filters_demo">
         <div class=filters>
-            <div class=filter>
-                <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div><span class=fl>Some Filter</span></div>
+            <div class="filter inblock filterblock">
+                <div class=inputlabel>Filter</div>
                 <div class="dropbtn">
-                    <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                    <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                     <div class="dropmenu">
                         <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
                         <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
@@ -926,8 +1155,7 @@
                         <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
                     </div>
                 </div>
-            </div>
-            <div class=insertfilters></div><div class=filter>
+            </div><div class="insertfilters inblock" style="vertical-align:top;"></div><div class="filter inblock filterblock">
                 <div class=inputlabel>Filters</div>
                 <div class=dropbtn>
                     <div class="btn hollow" onclick="opendrop.call(this,event);">Add Filter</div>
@@ -943,104 +1171,127 @@
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo tooltip_demo">
         <div class=tt>
             <div class=tipwrap>
-                Hover me
+                Hover me - bottom
                 <div class=tooltip>Tooltip</div>
             </div>
+            <div class=tipwrap>
+                Hover me - right
+                <div class="tooltip right">Tooltip</div>
+            </div>
+            <div class=tipwrap>
+                Hover me - top
+                <div class="tooltip top">Tooltip</div>
+            </div>
+            <div class=tipwrap>
+                Hover me - left
+                <div class="tooltip left">Tooltip</div>
+            </div>
+
+            <div class=tipwrap>
+                <div class=erroricon></div>
+                <div class="tooltip error">Tooltip</div>
+            </div>
+        </div>
+
+        <div class=relative style="padding: 40px 24px;">
+            <div class=tooltip style="opacity:1;position:static;margin:0;top:0;left:0;display:inline-block;transform: none;vertical-align:top;margin-right:24px;">Standard tooltip</div>
+            <div class="tooltip error" style="opacity:1;position:static;margin:0;top:0;left:0;display:inline-block;transform: none;vertical-align:top;margin-right:24px;">Error tooltip</div>
+
+            <div class=tooltip style="opacity:1;position:static;margin:0;top:0;left:0;display:inline-block;max-width:200px;transform: none;vertical-align:top;">This is a really long tooltip, it just keeps on going and going and going.</div>
         </div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class=btn tabindex=0>Button</div>
 
         <div class="btn disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn hollow cta" tabindex=0>Button</div>
         <div class="btn hollow cta disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn  cta shh" tabindex=0>Button</div>
         <div class="btn  cta shh disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn hollow" tabindex=0>Button</div>
         <div class="btn hollow disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn shh" tabindex=0>Button</div>
         <div class="btn shh disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn danger" tabindex=0>Button</div>
         <div class="btn danger disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn hollow danger" tabindex=0>Button</div>
         <div class="btn hollow danger disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo btn_demo">
         <div class="btn  shh danger" tabindex=0>Button</div>
         <div class="btn  shh danger disabled">Button</div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn hollow" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
 
         <div class="btn hollow disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn hollow cta" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
 
         <div class="btn hollow cta disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn hollow" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn hollow disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn hollow cta" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn hollow cta disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn  shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
 
         <div class="btn  shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn  shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn  shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
-    <div class=demo>
+    <div class="demo icobtn_demo">
         <div class="btn cta shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn cta shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
-<div class=demo>
+<div class="demo link_demo">
     <a href="javascript:void(0);">Link</a>
 </div>
 
-<div class=demo>
-    <h4>Loading Buttons</h4>
+<div class="demo loadingbtn_demo">
     <div class=btn onclick="loading.call(this,event);" tabindex=0>
         <span class=label>Submit</span>
         <span class=spinning>
@@ -1055,51 +1306,50 @@
         </span>
     </div>
 
+    <div class="btn hollow" onclick="loading.call(this,event);" tabindex=0>
+        <span class=label>Submit</span>
+        <span class=spinning>
+            <div class="spinner2 fat spinnergg">
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+            </div>
+        </span>
+        <span class=done>
+            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+            </svg>
+        </span>
+    </div>
 
-<div class="btn hollow" onclick="loading.call(this,event);" tabindex=0>
-    <span class=label>Submit</span>
-    <span class=spinning>
-        <div class="spinner2 fat spinnergg">
-            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
-        </div>
-    </span>
-    <span class=done>
-        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
-        </svg>
-    </span>
-</div>
+    <div class="btn hollow shh" onclick="loading.call(this,event);" tabindex=0>
+        <span class=label>Submit</span>
+        <span class=spinning>
+            <div class="spinner2 fat spinnergg">
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+            </div>
+        </span>
+        <span class=done>
+            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+            </svg>
+        </span>
+    </div>
 
-<div class="btn hollow shh" onclick="loading.call(this,event);" tabindex=0>
-    <span class=label>Submit</span>
-    <span class=spinning>
-        <div class="spinner2 fat spinnergg">
-            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
-        </div>
-    </span>
-    <span class=done>
-        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
-        </svg>
-    </span>
-</div>
+    <div class="btn wide" onclick="loading.call(this,event);" tabindex=0>
+        <span class=label>Submit</span>
+        <span class=spinning style="width:100%;">
+            <div class="spinner2 fat spinnergg">
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+            </div>
+            <div class=spinlabel>Submitting...</div>
+        </span>
+        <span class=done>
+            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+            </svg>
+        </span>
+    </div>
 
-<div class="btn wide" onclick="loading.call(this,event);" tabindex=0>
-    <span class=label>Submit</span>
-    <span class=spinning style="width:100%;">
-        <div class="spinner2 fat spinnergg">
-            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
-        </div>
-        <div class=spinlabel>Submitting...</div>
-    </span>
-    <span class=done>
-        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
-        </svg>
-    </span>
-</div>
-
-<div class="btn outsidelabel" onclick="loading.call(this,event);" tabindex=0>
+    <div class="btn outsidelabel" onclick="loading.call(this,event);" tabindex=0>
         <span class=label>Submit</span>
         <span class=spinning style="width:100%;">
             <div class="spinner2 fat spinnergg">
@@ -1115,14 +1365,19 @@
     </div>
 </div>
 
-<div class="spinner2 fat">
-        <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
-            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
-        </svg>
+<div class="demo spinner_demo">
+    <div class="spinner2 fat">
+            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+            </svg>
+    </div>
 </div>
-<div class="loader loader400 fat loaderdynamic">
-    <div class=bar></div>
-    <div class="bar bar3"></div>
+
+<div class="demo progress_demo">
+    <div class="loader loader400 fat loaderdynamic">
+        <div class=bar></div>
+        <div class="bar bar3"></div>
+    </div>
 </div>
 
 <script>
@@ -1178,6 +1433,7 @@
 </script>
 <style>
 
+    .filterblock {vertical-align:top;margin-right:16px;}
 
      .btn > * {transition:opacity 150ms ease-in-out;pointer-events:none;}
 
@@ -1442,15 +1698,21 @@
     function addfilter(e){
         var dp = this.getparent('dropbtn');
         var f = dp.getparent('filters');
-        var a = f.getElementsByClassName('insertfilters')[0];
+
 
         dp.classList.remove('open');
         dp.classList.add('notransition');
 
-        var code = `<div class=filter>
+        if (!f ){
+            return;
+        }
+
+        var a = f.getElementsByClassName('insertfilters')[0];
+
+        var code = `<div class="filter inblock filterblock">
         <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
             <div class="dropbtn">
-                <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                 <div class="dropmenu">
                     <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
                     <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
@@ -1461,7 +1723,7 @@
             </div>
         </div>`;
 
-        //a.innerHTML += code;
+        a.innerHTML += code;
     }
 
     function closefilter(e){
@@ -1550,11 +1812,76 @@
         }
     }
 
+    function autoexpand(e){
+        this.removeAttribute('style');
+
+        var o = this.scrollHeight;
+
+        this.style.height = o + 2 + 'px';
+    }
+
+    function tab(e){
+        var w = this.offsetWidth;
+        w = w - 32;
+        var o = this.offsetLeft + 16;
+
+        var v = this.dataset.type;
+
+        if ( window.devicePixelRatio < 2 && window.devicePixelRatio > 1 ){
+            //do something
+        }
+
+        var p = this.getparent('tabs');
+        var c = p.getElementsByClassName('tab current');
+        var l = p.getElementsByClassName('tabline')[0];
+
+        while(c[0]){
+            c[0].classList.remove('current');
+        }
+
+        this.classList.add('current');
+
+        l.style.transform = 'translateX(' + o + 'px) scaleX(' + w + ')';
+
+        //document.body.id = v + 'table';
+
+        var d = document.getElementsByClassName('demo');
+
+        for(var i=0;i<d.length;i++){
+            var a = d[i];
+            if ( v !== 'all' && !a.classList.contains(v + '_demo')){
+                a.style.display = 'none';
+            } else {
+                a.style.display = 'block';
+            }
+        }
+
+        // if(history.replaceState) {
+        //     history.replaceState(null, null, '#' + v);
+        // } else {
+            window.location.replace('#' + v);
+        //}
+
+    }
+
+    Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
     Attach.on('click', '.popitem', popover);
     Attach.on('click', '.dropitem', dropitem);
     //Attach.on('click', '.popover', closepopover);
     Attach.on('click', '.droppop', openpopover);
+    Attach.on('input', '.autoexpand', autoexpand);
+
+    (function() {
+        var hash = window.location.hash;
+        if(hash) {
+            hash = hash.replace('#', '');
+            document.querySelector('.tab[data-type=' + hash + ']').click();;
+        } else {
+            document.getElementById('starttab').click();
+        }
+
+    })();
 </script>
 </body>
 </html>
