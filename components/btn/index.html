@@ -105,6 +105,9 @@
                 .error input[type=text]:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
             .error .inputlabel {color:var(--red45);}
 
+
+            .error input[type=text] {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
+
             input[type=text]:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
 
             input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
@@ -273,7 +276,7 @@
             .popitem.type2.selected {
                 background-position: right var(--inset) center;
                 background-repeat: no-repeat;
-                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='#3e6be6' %3E%3C/path%3E%3C/svg%3E");
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
             }
 
             .popitem.type3 {padding-right:48px !important;}
@@ -283,7 +286,7 @@
                 background-color:var(--grey20);
                 background-position: right var(--inset) center;
                 background-repeat: no-repeat;
-                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='#3e6be6' %3E%3C/path%3E%3C/svg%3E");
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
             }
 
             .popitem.type4.selected {
@@ -294,6 +297,17 @@
 
             .popitem.type4:hover {
 
+                background-color:var(--grey10);
+            }
+
+
+            .popitem.type5.selected {
+                box-shadow:0 0 0 1px var(--grey30);
+                background-color:var(--grey20);
+                color:var(--grey60);
+            }
+
+            .popitem.type5:hover {
                 background-color:var(--grey10);
             }
 
@@ -481,11 +495,20 @@
             <div class="inputlabel disabled">Label</div>
             <input type=text placeholder="Type here..." disabled />
         </span>
-        <span class="inlinewrap error">
+        <span class="inlinewrap error relative">
             <div class="inputlabel ">Label</div>
             <input type=text placeholder="Type here..."  />
+            <div class="tooltip error right">
+                This field can't be blank.
+            </div>
         </span>
     </div>
+
+    <style>
+        .tooltip.right {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
+        .tooltip.error {background:var(--red45);}
+        input:focus ~ .tooltip, input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+    </style>
 
     <div class=demo>
         <span class=inlinewrap>
@@ -587,6 +610,22 @@
                     <div class="menuitem popitem type4">Not Synced</div>
                     <div class="menuitem popitem type4 selected">Synced</div>
                     <div class="menuitem popitem type4">Mixed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Simple Dropdown - grey 2 </div>
+            <div class=dropwrap>
+                <div class="dropdown droppop">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type5">Not Synced</div>
+                    <div class="menuitem popitem type5 selected">Synced</div>
+                    <div class="menuitem popitem type5">Mixed</div>
                 </div>
             </div>
         </div>
@@ -774,6 +813,52 @@
                         <div class="stext">99 Union Street, Seattle, WA, United States</div>
                     </div>
                     <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown - grey 2 </div>
+            <div class=dropwrap>
+                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <h5>Recent</h5>
+                    <div class="menuitem popitem type5 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem popitem type5 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem popitem type5 multiline">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem popitem type5 multiline">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type5 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type5 multiline">
                         <div class=icon></div>
                         <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
                         <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
