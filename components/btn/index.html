@@ -95,6 +95,10 @@
                 input[type=text]:active {border-color:var(--grey50);box-shadow:none;}
                 input[type=text]:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
 
+            .error input[type=text] {border-color:var(--red45);}
+                .error input[type=text]:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
+            .error .inputlabel {color:var(--red45);}
+
             input[type=text]:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
 
             input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
@@ -133,6 +137,7 @@
                 .radio:active .radiohead::after {background:var(--grey60);}
 
             .radiolabel {margin-left:8px;vertical-align: middle;}
+                /* .error .radiolabel::after {content:url("data:image/svg+xml,%0A%3Csvg width='64px' height='64px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z'%3E%3C/path%3E%3C/svg%3E");} */
 
             input:checked ~ label .radiohead {border-color:var(--blue30);}
             input:checked ~ label .radiohead::after/*, .radio:active label .radiohead::after*/ {transform:translate(-50%, -50%) scale(1);}
@@ -152,7 +157,7 @@
 
         .disabled {pointer-events:none !important;}
 
-        :focus, :focus ~ label .radiohead {box-shadow: 0 0 0 3px hsla(224, 77%, 57%, 0.3);}
+        body:not(.hidefocus) :focus, body:not(.hidefocus) :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--blue20);}
 
         .searchbarwrap {position:relative;display:inline-block;}
         .searchbar {width:280px;}
@@ -195,10 +200,13 @@
             .closefilter .x {width:2px;height:12px;background:var(--grey50);transform:rotate(45deg);position:absolute;top:4px;left:8px;transition:background 150ms ease-in-out;}
             .closefilter .x.xx {transform:rotate(-45deg);}
 
+            .closefilter ~ span {transition:color 150ms ease-in-out;}
+
             .closefilter:hover .x {background:var(--grey60);}
+            .closefilter:hover ~ span {color:var(--grey60);}
 
         .dropbtn {position:relative;display:inline-block;}
-            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;}
+            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;max-height:calc(var(--lineheight) * 4.6 + 4px);overflow-y:auto;}
             .menuitem {padding:0 var(--inset);cursor:pointer;min-width:120px;box-sizing:border-box;white-space:nowrap;}
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
@@ -266,6 +274,69 @@
             .floatinglabel input:focus ~ .inputlabel {top:0;left:0;font-size:13px;font-style:normal;color:var(--blue30);}
 
         .inlinewrap {display:inline-block;margin-right:16px;}
+
+        .controls {margin:0 40px;}
+
+        .loader {width:100%;height:4px;position:relative;background:#E7F1FF;transform:translateZ(0);overflow:hidden;margin-bottom:40px;}
+
+        .loader400, .loader400b {width:400px;border-radius:12px;margin-left:24px;}
+
+
+        .bar {width:100%;background:#4976F2;position:absolute;top:0;left:0;transform:translateX(-100%);bottom:0;transform-origin:left center;border-radius:12px;
+            animation: 2s infinite forwards bar;
+            animation-timing-function: ease-in-out;
+        }
+
+        .fat.loader  {height:4px;}
+
+        .bar3 {
+            width:100%;
+            animation: 2s 400ms infinite forwards bar2;
+            animation-timing-function: ease-in-out;
+        }
+
+        .loaderdynamic {max-width:400px;width:auto;margin-right:24px;}
+        .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+        .loaderdynamic .bar3 {animation-name:dbar2 !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+
+        @keyframes dbar {
+            from {left:-100%;background:var(--blue30);}
+            10% {background:var(--blue30);}
+            35% {background:var(--blue50);}
+            65% {background:var(--blue30)}
+            70%, to {left:100%;}
+        }
+
+        @keyframes dbar2 {
+            30% {left:-100%;background:var(--blue30);}
+            405% {background:var(--blue30)}
+            65% {background:var(--blue50);} /* 0E2259 */
+            95% {background:var(--blue30)}
+            to {left:100%;}
+        }
+
+        .relative {position:relative;}
+
+        .inblock {display:inline-block;}
+
+        .prefix .inlabel {position:absolute;line-height:var(--lineheight);top:0;left:var(--inset);color:var(--grey50);}
+        .suffix .inlabel {position:absolute;line-height:var(--lineheight);top:0;right:var(--inset);color:var(--grey50);}
+
+        .prefix input {padding-left:32px;text-indent:0;}
+        .suffix input {padding-right:36px;overflow:hidden;text-overflow:ellipsis;}
+
+        .chevron {display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translate(-50%, -50%) rotate(-45deg);position:absolute;margin-top:-1px;transition:border-color 150ms ease-in-out;position:absolute;top:50%;left:50%;transition:border-color 150ms ease-in-out;}
+
+        .searchicon:hover .chevron {border-color:var(--grey60);}
+        .searchicon:active .chevron {border-color:var(--grey60);}
+
+
+        .searchbarwrap.open {z-index:1337;}
+
+        .combomenu {background:white;box-sizing:border-box;position:absolute;top:calc(100% + 6px);min-width:100%;border-radius:var(--radius);border:1px solid var(--grey30);padding:4px 0;z-index:1337;box-shadow:0 2px 2px var(--shadow);opacity:0;pointer-events:none;transition:all 150ms ease-in-out;transform:translateY(-4px);}
+            .open .combomenu {transform:translateY(0);opacity:1;pointer-events:all;}
+            .combomenu .menuitem {line-height:var(--lineheight);}
+
     </style>
 </head>
 <body>
@@ -294,6 +365,12 @@
         </span>
     </div>
 
+    <div class=controls>
+        <span class=checkbox>
+            <label><input type=checkbox onchange="document.body.classList.toggle('hidefocus');" /><span class=radiolabel>Hide focus state</span></label>
+        </span>
+    </div>
+
     <div class=demo>
         <span class=checkbox>
             <label><input type=checkbox /><span class=radiolabel>Checkbox</span></label>
@@ -317,17 +394,35 @@
     </div>
 
     <div class=demo>
-            <div class="filter search">
-                <div class=inputlabel>Search</div>
-                <div class=searchbarwrap>
-                    <input type=text class=searchbar placeholder="Find things..." />
-                    <div class=searchicon>
-                        <svg width="20px" height="20px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <path d="M51.8128372,45.50901 L50.4728372,44.17401 L39.3728372,33.07401 L38.7518372,32.45401 C44.5778372,23.40901 42.6478372,11.42601 34.2748372,4.66900997 C25.9018372,-2.08699003 13.7818372,-1.44399003 6.17083715,6.16200997 C-1.43916285,13.76701 -2.09016285,25.88701 4.66083715,34.26401 C11.4128372,42.64101 23.3938372,44.58001 32.4428372,38.75901 L33.0638372,39.37901 L44.1638372,50.47901 L45.5028372,51.81601 C45.8530393,52.1603475 46.414635,52.1603475 46.7648372,51.81601 L48.1028372,50.47901 L50.4728372,48.10901 L51.8118372,46.77101 C52.1597073,46.4224223 52.1601544,45.8581485 51.8128372,45.50901 Z M6.07283715,21.10901 C6.06757812,15.035638 9.72204193,9.55736493 15.3315972,7.22954118 C20.9411526,4.90171742 27.4006426,6.18295514 31.6970265,10.4756187 C35.9934103,14.7682822 37.2802433,21.2266599 34.95728,26.8382297 C32.6343166,32.4497995 27.1592114,36.1090077 21.0858372,36.10901 C12.8018372,36.10301 6.08583715,29.39301 6.07283715,21.10901 Z" id="path-1"></path>
-                        </svg>
-                    </div>
+        <div class="filter search">
+            <div class=inputlabel>Search</div>
+            <div class=searchbarwrap>
+                <input type=text class=searchbar placeholder="Find things..." />
+                <div class=searchicon>
+                    <svg width="20px" height="20px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path d="M51.8128372,45.50901 L50.4728372,44.17401 L39.3728372,33.07401 L38.7518372,32.45401 C44.5778372,23.40901 42.6478372,11.42601 34.2748372,4.66900997 C25.9018372,-2.08699003 13.7818372,-1.44399003 6.17083715,6.16200997 C-1.43916285,13.76701 -2.09016285,25.88701 4.66083715,34.26401 C11.4128372,42.64101 23.3938372,44.58001 32.4428372,38.75901 L33.0638372,39.37901 L44.1638372,50.47901 L45.5028372,51.81601 C45.8530393,52.1603475 46.414635,52.1603475 46.7648372,51.81601 L48.1028372,50.47901 L50.4728372,48.10901 L51.8118372,46.77101 C52.1597073,46.4224223 52.1601544,45.8581485 51.8128372,45.50901 Z M6.07283715,21.10901 C6.06757812,15.035638 9.72204193,9.55736493 15.3315972,7.22954118 C20.9411526,4.90171742 27.4006426,6.18295514 31.6970265,10.4756187 C35.9934103,14.7682822 37.2802433,21.2266599 34.95728,26.8382297 C32.6343166,32.4497995 27.1592114,36.1090077 21.0858372,36.10901 C12.8018372,36.10301 6.08583715,29.39301 6.07283715,21.10901 Z" ></path>
+                    </svg>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class="filter ">
+            <div class=inputlabel>Combobox</div>
+            <div class=searchbarwrap>
+                <input type=text class=combobar placeholder="Type here..." />
+                <div class=searchicon style="width:36px;box-sizing:border-box;" onclick="this.parentElement.classList.toggle('open');">
+                    <div class=chevron></div>
+                </div>
+
+                <div class=combomenu onclick="this.parentElement.classList.remove('open');">
+                    <div class=menuitem>Combo item 1</div>
+                    <div class=menuitem>Combo item 2</div>
+                    <div class=menuitem>Combo item 3</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class=demo>
@@ -338,6 +433,10 @@
         <span class=inlinewrap>
             <div class="inputlabel disabled">Label</div>
             <input type=text placeholder="Type here..." disabled />
+        </span>
+        <span class="inlinewrap error">
+            <div class="inputlabel ">Label</div>
+            <input type=text placeholder="Type here..."  />
         </span>
     </div>
 
@@ -352,6 +451,26 @@
         <div class=twostoryinput>
             <div class=inputlabel>Label</div>
             <input type=text placeholder="Type here..." />
+        </div>
+    </div>
+
+    <div class=demo>
+        <div>
+            <div class=inputlabel>Label</div>
+            <div class="relative inblock prefix">
+                <input type=text placeholder="" />
+                <div class=inlabel>$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class="relative inblock">
+            <div class=inputlabel>Label</div>
+            <div class="relative inblock suffix">
+                <input type=text placeholder="" />
+                <div class=inlabel>kg</div>
+            </div>
         </div>
     </div>
 
@@ -374,7 +493,7 @@
     <div class=demo>
         <div class=filters>
             <div class=filter>
-                <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>Some Filter</div>
+                <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div><span class=fl>Some Filter</span></div>
                 <div class="dropbtn">
                     <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                     <div class="dropmenu">
@@ -477,6 +596,10 @@
     </div>
 
 <div class=demo>
+    <a href="javascript:void(0);">Link</a>
+</div>
+
+<div class=demo>
     <h4>Loading Buttons</h4>
     <div class=btn onclick="loading.call(this,event);" tabindex=0>
         <span class=label>Submit</span>
@@ -550,6 +673,16 @@
             </svg>
         </span>
     </div>
+</div>
+
+<div class="spinner2 fat">
+        <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+</div>
+<div class="loader loader400 fat loaderdynamic">
+    <div class=bar></div>
+    <div class="bar bar3"></div>
 </div>
 
 <script>
