@@ -84,9 +84,15 @@
             .btn .icon svg {width:16px;height:16px;vertical-align: middle;margin-top:-2px;}
             .btn .icon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
 
+        .btn.cta .icon svg path {fill:var(--blue30);}
+
             .btn:hover .icon svg path {fill:var(--grey60);}
 
+            .btn.cta:hover .icon svg path {fill:var(--blue40);}
+            .btn.cta:active .icon svg path {fill:var(--blue50);}
+
             .btn.disabled .icon svg path {fill:var(--grey40) !important;}
+
 
         input {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
 
@@ -258,8 +264,47 @@
                 .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
 
         .popitem {transition:all 150ms ease-in-out;}
-        .popitem.selected {background:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
-            .popitem.selected:hover {background:var(--grey10);}
+        .popitem.selected, .dropitem.selected {background-color:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
+            .popitem.selected:hover, .dropitem.selected:hover {background-color:var(--grey10);}
+
+            .multiline.selected {color:var(--grey60);}
+
+            .popitem.type2 {padding-right:48px !important;}
+            .popitem.type2.selected {
+                background-position: right var(--inset) center;
+                background-repeat: no-repeat;
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='#3e6be6' %3E%3C/path%3E%3C/svg%3E");
+            }
+
+            .popitem.type3 {padding-right:48px !important;}
+            .popitem.type3.selected {
+
+                box-shadow:none;
+                background-color:var(--grey20);
+                background-position: right var(--inset) center;
+                background-repeat: no-repeat;
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='#3e6be6' %3E%3C/path%3E%3C/svg%3E");
+            }
+
+            .popitem.type4.selected {
+                box-shadow:none;
+                background-color:var(--grey20);
+                color:var(--grey60);
+            }
+
+            .popitem.type4:hover {
+
+                background-color:var(--grey10);
+            }
+
+
+            .editpencil {display:inline-block;width:20px;height:20px;vertical-align:middle;margin-left:4px;opacity:.7;cursor:pointer;
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M57,32.0000595 C57.5522847,32.0000595 58,32.4477748 58,33.0000595 L58,57.0000595 C58,57.5523443 57.5522847,58.0000595 57,58.0000595 L7,58.0000595 C6.44771525,58.0000595 6,57.5523443 6,57.0000595 L6,7.00005953 C6,6.44777478 6.44771525,6.00005953 7,6.00005953 L31,6.00005953 C31.5522847,6.00005953 32,6.44777478 32,7.00005953 L32,11.0000595 C32,11.5523443 31.5522847,12.0000595 31,12.0000595 L13,12.0000595 C12.4477153,12.0000595 12,12.4477748 12,13.0000595 L12,51.0000595 C12,51.5523443 12.4477153,52.0000595 13,52.0000595 L51,52.0000595 C51.5522847,52.0000595 52,51.5523443 52,51.0000595 L52,33.0000595 C52,32.4477748 52.4477153,32.0000595 53,32.0000595 L57,32.0000595 Z M57.776,15.4400595 L53.8,19.4110595 L44.589,10.1960595 L48.56,6.22405953 C48.8603638,5.92531349 49.3456362,5.92531349 49.646,6.22405953 L57.776,14.3540595 C58.074746,14.6544233 58.074746,15.1396957 57.776,15.4400595 Z M18,37.5520595 C18.026,37.0660595 18.218,36.6020595 18.543,36.2400595 L40.292,14.4930595 L49.507,23.7080595 L27.759,45.4570595 C27.3966035,45.7820989 26.9340917,45.9736655 26.448,46.0000595 L18.768,46.0000595 C18.3445284,45.998415 18.0016446,45.6555311 18,45.2320595 L18,37.5520595 Z' fill='%23666' %3E%3C/path%3E%3C/svg%3E");
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+
+            .editpencil:hover {opacity:1;}
 
 
         .demo input[type=text] {min-width:280px;}
@@ -476,7 +521,7 @@
 
     <div class=demo>
         <div class=filter>
-            <div class=inputlabel>Sync Status</div>
+            <div class=inputlabel>Simple Dropdown</div>
             <div class=dropwrap>
                 <div class="dropdown droppop">
                     Synced
@@ -486,6 +531,289 @@
                     <div class="menuitem popitem selected">Synced</div>
                     <div class="menuitem popitem">Mixed</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Simple Dropdown - checkmark</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type2">Not Synced</div>
+                    <div class="menuitem popitem type2 selected">Synced</div>
+                    <div class="menuitem popitem type2">Mixed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Simple Dropdown - grey checkmark</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type3">Not Synced</div>
+                    <div class="menuitem popitem type3 selected">Synced</div>
+                    <div class="menuitem popitem type3">Mixed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Simple Dropdown - grey </div>
+            <div class=dropwrap>
+                <div class="dropdown droppop">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type4">Not Synced</div>
+                    <div class="menuitem popitem type4 selected">Synced</div>
+                    <div class="menuitem popitem type4">Mixed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .popover {max-height:260px;overflow-y:auto;}
+            .menuitem.multiline {line-height:20px;padding:8px var(--inset);}
+            .dropwrap h5, .dropbtn h5 {padding:4px var(--inset) 0;}
+            .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
+    </style>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <h5>Recent</h5>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem popitem multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown - checkmark</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <h5>Recent</h5>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type2 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown - grey checkmark</div>
+            <div class=dropwrap>
+                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <h5>Recent</h5>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type3 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Dropdown - grey </div>
+            <div class=dropwrap>
+                <div class="dropdown droppop" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <h5>Recent</h5>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem popitem type4 multiline">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=demo>
+        <div class=filter>
+            <div class=inputlabel>Complex Below Dropdown 2</div>
+            <div class="dropbtn">
+                <div class=dropdown style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div  class=dropmenu>
+                        <h5>Recent</h5>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">Vandelay West<div class=editpencil></div></div>
+                            <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                        </div>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                            <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                        </div>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                        </div>
+
+                        <h5>All Addresses</h5>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                        </div>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                            <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                        </div>
+                        <div class="menuitem dropitem multiline">
+                            <div class=icon></div>
+                            <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                            <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -578,9 +906,21 @@
     </div>
 
     <div class=demo>
+        <div class="btn hollow cta" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+
+        <div class="btn hollow cta disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span><span class=blabel>Button</span></div>
+    </div>
+
+    <div class=demo>
         <div class="btn hollow" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn hollow disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+    </div>
+
+    <div class=demo>
+        <div class="btn hollow cta" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+
+        <div class="btn hollow cta disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
     <div class=demo>
@@ -593,6 +933,12 @@
         <div class="btn  shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
 
         <div class="btn  shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+    </div>
+
+    <div class=demo>
+        <div class="btn cta shh" tabindex=0><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
+
+        <div class="btn cta shh disabled"><span class=icon><svg viewBox="0 0 64 64"><path d="M25.9 22.981l-2.83-4.736c-.156-.26-.043-.413.252-.339l7.256 1.823c.344.066.7.013 1.009-.149l3.788-2.269.474-.283 2.841-1.7-4.006-1.006a1.537 1.537 0 0 1-.819-.608l-2.834-4.736c-.156-.26-.043-.413.251-.339l13.091 3.288 7.577-4.535a2.76 2.76 0 0 1 2.829 4.736l-16.1 9.636-.473.284-4.736 2.834c-.31.163-.666.216-1.009.149l-5.742-1.442a1.537 1.537 0 0 1-.819-.608zm35.1 8.08a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-22a1 1 0 0 1 1-1h3V23l-3.293-3.293A2.782 2.782 0 0 1 2 18v-4a1 1 0 0 1 1-1h5v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h5a1 1 0 0 1 1 1v4a2.782 2.782 0 0 1-.707 1.707L14 23v8.061h47zM20 45v-8H9a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11zm18 0v-8H26v8h12zm18-1v-6a1 1 0 0 0-1-1H44v8h11a1 1 0 0 0 1-1z" ></path></svg></span></div>
     </div>
 
 <div class=demo>
@@ -979,8 +1325,18 @@
 
     function opendrop(e){
         var dp = this.getparent('dropbtn');
+        var o = dp.classList.contains('open');
         dp.classList.remove('notransition');
-        dp.classList.toggle('open');
+
+        var a = document.getElementsByClassName('dropbtn open');
+        var b = document.getElementsByClassName('dropwrap open');
+
+        a.removeclass('open');
+        b.removeclass('open');
+
+        if (!o){
+            dp.classList.add('open');
+        }
     }
 
     function closedrop(e){
@@ -1031,15 +1387,18 @@
         var y = this.offsetTop;
         var p = this.getparent('popover');
         var v = this.innerText;
+        var s = p.scrollTop;
         var d = p.getparent('dropwrap').getElementsByClassName('droppop')[0];
 
         var c = p.getElementsByClassName('popitem selected');
+
+        d.removeAttribute('style');
 
         c.removeclass('selected');
 
         this.classList.add('selected');
 
-        p.style.top = -y -1 + 'px';
+        p.style.top = -y -1 + s + 'px';
 
         d.innerText = v;
 
@@ -1052,15 +1411,46 @@
         this.getparent('dropwrap').classList.remove('open');
     }
 
+    function dropitem(e){
+        var p = this.getparent('dropbtn');
+        var c = p.getElementsByClassName('dropitem selected');
+        var v = this.innerText;
+        var d = p.getElementsByClassName('dropdown')[0];
+
+        d.removeAttribute('style');
+        d.innerText = v;
+
+        c.removeclass('selected');
+
+        this.classList.add('selected');
+
+        p.classList.add('notransition');
+        p.classList.remove('open');
+    }
+
     function openpopover(e){
         var d = this.getparent('dropwrap');
         var p = d.getElementsByClassName('popover')[0];
+
+        var o = d.classList.contains('open');
+
+        var a = document.getElementsByClassName('dropbtn open');
+        var b = document.getElementsByClassName('dropwrap open');
+
+
         p.classList.remove('notransition');
-        d.classList.add('open')
+
+        a.removeclass('open');
+        b.removeclass('open');
+
+        if (!o){
+            d.classList.add('open');
+        }
     }
 
     Attach.on('click', '.sizes', changesize);
     Attach.on('click', '.popitem', popover);
+    Attach.on('click', '.dropitem', dropitem);
     //Attach.on('click', '.popover', closepopover);
     Attach.on('click', '.droppop', openpopover);
 </script>
