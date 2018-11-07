@@ -316,7 +316,9 @@
 
         .floatinglabel {position: relative;padding-top:24px;}
             .floatinglabel .inputlabel {position:absolute;top:32px;left:var(--inset);transition:all 150ms ease-in-out;font-size:14px;font-style:italic;}
-            .floatinglabel input:focus ~ .inputlabel {top:0;left:0;font-size:13px;font-style:normal;color:var(--blue30);}
+            .floatinglabel input:focus ~ .inputlabel, .stuck .inputlabel {top:0;left:0;font-size:13px;font-style:normal;color:var(--blue30);}
+
+            .stuck .inputlabel {color:var(--grey50);}
 
         .inlinewrap {display:inline-block;margin-right:16px;}
 
@@ -486,8 +488,15 @@
     </div>
 
     <div class=demo>
+        <span class=inlinewrap>
+            <div class=inputlabel>Label</div>
+            <input type=text placeholder="Type here..." style="background:var(--grey10);" />
+        </span>
+    </div>
+
+    <div class=demo>
         <div class=floatinglabel>
-            <input type=text placeholder="" />
+            <input type=text placeholder="" oninput="floating.call(this,event)" />
             <div class=inputlabel>Label</div>
         </div>
     </div>
@@ -1445,6 +1454,14 @@
 
         if (!o){
             d.classList.add('open');
+        }
+    }
+
+    function floating(e){
+        if ( this.value ){
+            this.parentElement.classList.add('stuck');
+        } else {
+            this.parentElement.classList.remove('stuck');
         }
     }
 
