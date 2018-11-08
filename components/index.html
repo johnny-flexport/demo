@@ -112,9 +112,9 @@
         input, textarea {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
 
             input[type=text], textarea {transition:all 150ms ease-in-out;}
-                input[type=text]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 1px 2px var(--shadow);}
+                input[type=text]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
                 input[type=text]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
-                input[type=text]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 1px 2px var(--blueshadow);}
+                input[type=text]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);}
 
             input[type=text]:read-only {border-color:var(--grey20);background:var(--grey10);}
 
@@ -420,7 +420,7 @@
         .loader400, .loader400b {width:400px;border-radius:12px;margin-left:24px;}
 
 
-        .bar {width:100%;background:#4976F2;position:absolute;top:0;left:0;transform:translateX(-100%);bottom:0;transform-origin:left center;border-radius:12px;
+        .bar {width:100%;background:var(--blue30);position:absolute;top:0;left:0;transform:translateX(-100%);bottom:0;transform-origin:left center;border-radius:12px;
             animation: 2s infinite forwards bar;
             animation-timing-function: ease-in-out;
         }
@@ -434,21 +434,21 @@
         }
 
         .loaderdynamic {max-width:400px;width:auto;margin-right:24px;}
-        .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;background:#4976F2;}
-        .loaderdynamic .bar3 {animation-name:dbar2 !important;width:100%;transform:none;left:-100%;background:#4976F2;}
+        .loaderdynamic .bar {animation-name:dbar !important;width:100%;transform:none;left:-100%;}
+        .loaderdynamic .bar3 {animation-name:dbar2 !important;}
 
         @keyframes dbar {
-            from {left:-100%;background:var(--blue30);}
+            from {left:-100%;}
             10% {background:var(--blue30);}
             35% {background:var(--blue50);}
-            65% {background:var(--blue30)}
+            65% {background:var(--blue30);}
             70%, to {left:100%;}
         }
 
         @keyframes dbar2 {
-            30% {left:-100%;background:var(--blue30);}
-            405% {background:var(--blue30)}
-            65% {background:var(--blue50);} /* 0E2259 */
+            30% {left:-100%;}
+            40% {background:var(--blue30)}
+            65% {background:var(--blue50);}
             95% {background:var(--blue30)}
             to {left:100%;}
         }
@@ -1529,7 +1529,7 @@
         <span class=label>Submit</span>
         <span class=spinning>
             <div class="spinner2 fat spinnergg">
-                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
             </div>
         </span>
         <span class=done>
@@ -1543,7 +1543,7 @@
         <span class=label>Submit</span>
         <span class=spinning>
             <div class="spinner2 fat spinnergg">
-                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
             </div>
         </span>
         <span class=done>
@@ -1557,7 +1557,7 @@
         <span class=label>Submit</span>
         <span class=spinning>
             <div class="spinner2 fat spinnergg">
-                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
             </div>
         </span>
         <span class=done>
@@ -1571,7 +1571,7 @@
         <span class=label>Submit</span>
         <span class=spinning style="width:100%;">
             <div class="spinner2 fat spinnergg">
-                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
             </div>
             <div class=spinlabel>Submitting...</div>
         </span>
@@ -1586,7 +1586,7 @@
         <span class=label>Submit</span>
         <span class=spinning style="width:100%;">
             <div class="spinner2 fat spinnergg">
-                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle class="loaderPath_1lxguha" cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke="#000" stroke-width="6"></circle></svg>
+                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
             </div>
             <div class=spinlabel>Submitting...</div>
         </span>
@@ -1674,12 +1674,82 @@
     </style>
 </div>
 
-<div class="demo progress_demo">
+<!-- <div class="demo progress_demo">
     <div class="loader loader400 fat loaderdynamic">
         <div class=bar></div>
         <div class="bar bar3"></div>
     </div>
 </div>
+
+<div class="demo progress_demo">
+    <div class=barloader>
+        <div class=barmover>
+            <div class="bbar bbar1"></div>
+            <div class="bbar bbar2"></div>
+            <div class="bbar bbar3"></div>
+        </div>
+    </div>
+</div> -->
+
+<div class="demo progress_demo">
+        <div class=progress1>
+            <div class=progresswrap>
+                <div class="pbar pbar1"></div>
+                <!-- <div class="pbar pbar2"></div>
+                <div class="pbar pbar3"></div> -->
+            </div>
+        </div>
+    </div>
+
+<style>
+    .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
+        .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+            animation: 1.1s infinite forwards pbar;
+            animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+/*
+        .pbar2 {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+            animation: 2s infinite forwards pbar2;
+            animation-timing-function: ease-in-out;
+        }
+
+    @keyframes pbar {
+        from {left:0%;background:var(--blue30);}
+        25% {right:0%;left:0%;background:var(--blue50);}
+        50%, to {right:0%;left:100%;background:var(--blue30);}
+    }
+
+    @keyframes pbar2 {
+        from,45% {right:100%;left:0%;background:var(--blue30)}
+        70% {right:0%;left:0%;background:var(--blue50)}
+        to {right:0%;left:100%;background:var(--blue30)}
+    } */
+
+    @keyframes pbar {
+        from {right:100%;left:0%;background:var(--blue30);}
+        50% {right:0%;left:0%;background:var(--blue50);}
+        to {right:0%;left:100%;background:var(--blue30);}
+    }
+
+
+    .barloader {width:400px;margin:40px;height:4px;background:var(--blue10);position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
+        .barmover {position:absolute;width:100%;height:100%;animation: 1s infinite forwards movebar;animation-timing-function: linear;}
+        .bbar {width:100%;height:100%;left:0;top:0;position:absolute;background:var(--blue30);border-radius:12px;}
+            .bbar1 {left:calc(100% - 8%);}
+            .bbar2 {left:calc(-100% + 8%);animation: 1s infinite forwards barcolor;animation-timing-function: ease-in-out;}
+            .bbar3 {left:calc(-300% + 24%);}
+
+    @keyframes movebar {
+        from {left:0%;}
+        to {left:calc(200% - 16%);}
+    }
+
+    @keyframes barcolor {
+        from, 20% {background:var(--blue30);}
+        50%, 70% {background:var(--blue50);}
+        to {background:var(--blue30);}
+    }
+</style>
 
 <script>
     function loading(e){
