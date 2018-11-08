@@ -130,13 +130,13 @@
             input[type=text]:disabled, textarea:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
 
             input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
-                .checkbox:hover input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
-                .checkbox:active input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
+                .checkbox:hover input[type=checkbox], .menuitem:hover .checkbox input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
+                .checkbox:active input[type=checkbox], .menuitem:active .checkbox input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
 
                 input[type=checkbox]:checked {border-color:transparent;background:var(--blue30) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
 
-                .checkbox:hover input[type=checkbox]:checked {border-color:transparent;background-color:var(--blue50);box-shadow:0 2px 2px var(--blueshadow);}
-                .checkbox:active input[type=checkbox]:checked {border-color:transparent;background:var(--blue50);box-shadow:none;}
+                .checkbox:hover input[type=checkbox]:checked, .menuitem:hover .checkbox input[type=checkbox]:checked {border-color:transparent;background-color:var(--blue50);box-shadow:0 2px 2px var(--blueshadow);}
+                .checkbox:active input[type=checkbox]:checked, .menuitem:active .checkbox input[type=checkbox]:checked {border-color:transparent;background:var(--blue50);box-shadow:none;}
 
             .disabled input[type=checkbox] {border-color:var(--grey30);}
                 .disabled input[type=checkbox]:checked {background-color:var(--grey30);}
@@ -153,7 +153,7 @@
 
         .choices {margin:24px 40px;}
 
-        .radio, .checkbox {line-height:var(--lineheight);margin-right:24px;cursor:pointer;display:inline-block;}
+        .radio, .checkbox {line-height:var(--lineheight);margin-right:24px;cursor:pointer;display:inline-block;height:var(--lineheight);}
             .radio label, .checkbox label {cursor:pointer;}
             .radiohead {width:16px;height:16px;position:relative;display:inline-block;border:2px solid var(--grey40);border-radius:50%;vertical-align:middle;box-sizing:border-box;transition:border-color 150ms ease-in-out,box-shadow 150ms ease-in-out;}
                 .radio:hover .radiohead {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
@@ -222,6 +222,15 @@
                 .searchicon svg path {fill:var(--grey50);transition:fill 150ms ease-in-out;}
                 .searchicon:hover svg path {fill:var(--grey60);}
 
+        .clearbar {position: absolute;top:50%;right:calc(var(--inset) - 4px);width:12px;height:12px;transform: translateY(-50%);opacity:0;pointer-events:none;cursor:pointer;}
+            .clearbar::after, .clearbar::before {content:'';width:100%;height:2px;background:var(--grey50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);transition:background-color 150ms ease-in-out;}
+                    .clearbar::before {transform:translate(-50%, -50%) rotate(-45deg);}
+
+            .clearbar:hover::after, .clearbar:hover::before {background:var(--grey60);}
+            .clearbar:active::after, .clearbar:active::before {background:var(--grey50);}
+
+        :focus ~ .clearbar {opacity:1;pointer-events:all;}
+
         ::-webkit-input-placeholder {
             color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
         }
@@ -266,10 +275,16 @@
             .closefilter:hover ~ span {color:var(--grey60);}
 
         .dropbtn {position:relative;display:inline-block;}
-            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:36px;transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;max-height:calc(var(--lineheight) * 4.6 + 4px);overflow-y:auto;}
-            .menuitem {padding:0 var(--inset);cursor:pointer;min-width:120px;box-sizing:border-box;white-space:nowrap;}
+            .dropmenu {box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;position:absolute;padding:4px 0;top:calc(100% + 6px);left:0;font-weight:400;background:white;min-width:100%;border-radius:3px;border:1px solid var(--grey30);line-height:var(--lineheight);transition:all 150ms ease-in-out;opacity:0;transform:translateY(-4px);pointer-events:none;z-index: 1337;max-height:calc(var(--lineheight) * 4.6 + 4px);overflow-y:auto;}
+            .menuitem {padding:0 var(--inset);cursor:pointer;min-width:120px;box-sizing:border-box;white-space:nowrap;position:relative;}
                 .menuitem:hover {background:var(--grey10);}
                 .menuitem:active {background:var(--grey20);}
+
+            .menuheading {border-bottom:1px solid var(--grey30);padding:0 var(--inset);padding-bottom:4px;margin-bottom:4px;}
+                .menuheading .radiolabel {margin-left:12px;}
+
+            .multiselect .menuitem .icon {position: absolute;left:var(--inset);pointer-events:none;top: 50%;transform: translateY(-50%);}
+                .multiselect .menuitem.multiline {padding-left:44px;}
 
         .dropbtn.open .btn {border-color: var(--grey30);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
@@ -335,14 +350,14 @@
             .multiline.selected {color:var(--grey60);}
 
             .popitem.type2 {padding-right:48px !important;}
-            .popitem.type2.selected {
+            .popitem.type2.selected, .dropitem.type2.selected {
                 background-position: right var(--inset) center;
                 background-repeat: no-repeat;
                 background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
             }
 
             .popitem.type3 {padding-right:48px !important;}
-            .popitem.type3.selected {
+            .popitem.type3.selected, .dropitem.type3.selected {
 
                 box-shadow:none;
                 background-color:var(--grey20);
@@ -351,16 +366,16 @@
                 background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
             }
 
-            .popitem.type4.selected {
+            .popitem.type4.selected, .dropitem.type4.selected {
                 box-shadow:none;
                 background-color:var(--grey20);
                 color:var(--grey60);
             }
 
-            .popitem.type4:hover {
-
+            .popitem.type4:hover, .dropitem.type4.selected:hover {
                 background-color:var(--grey10);
             }
+
 
 
             .popitem.type5.selected, .dropitem.type5.selected {
@@ -476,7 +491,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div>
         </div>
 
         <div class=tabline></div>
@@ -581,6 +596,7 @@
             <div class=inputlabel>With Chevron</div>
             <div class=searchbarwrap>
                 <input type=text class=combobar placeholder="Type here..." />
+                <div class=clearbar style="right:40px;"></div>
                 <div class=searchicon style="width:36px;box-sizing:border-box;" onclick="this.parentElement.classList.toggle('open');">
                     <div class=chevron></div>
                 </div>
@@ -599,6 +615,7 @@
                 <div class=inputlabel>Search or whatever</div>
                 <div class=searchbarwrap>
                     <input type=text class=combobar placeholder="Type here..." />
+                    <div class=clearbar></div>
 
                     <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
                         <div class=menuitem>Combo item 1</div>
@@ -630,6 +647,7 @@
                 <div class=searchbarwrap>
                     <div class="multiinput">
                         <input type=text class=combobar style="min-width:480px;" placeholder="Type here..." />
+                        <div class=clearbar></div>
                         <div class=badges></div>
                     </div>
 
@@ -850,7 +868,7 @@
     <style>
         .popover {max-height:260px;overflow-y:auto;}
             .menuitem.multiline {line-height:20px;padding:8px var(--inset);}
-            .dropwrap h5, .dropbtn h5 {padding:4px var(--inset) 0;}
+            .dropwrap h5, .dropbtn h5 {padding:4px var(--inset) 2px;}
             .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
     </style>
 
@@ -1134,36 +1152,177 @@
             <div class="dropbtn">
                 <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                 <div  class=dropmenu style="max-height: 280px;">
+                    <h5>Recent</h5>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">Vandelay West<div class=editpencil></div></div>
+                        <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
+                    </div>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
+                    </div>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
+                    </div>
+
+                    <h5>All Addresses</h5>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
+                    </div>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
+                        <div class="stext">99 Union Street, Seattle, WA, United States</div>
+                    </div>
+                    <div class="menuitem dropitem multiline type5">
+                        <div class=icon></div>
+                        <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
+                        <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo multiselect_demo">
+        <div class=filter>
+            <div class=inputlabel>Complex Multiselect</div>
+            <div class="dropbtn multiselect">
+                <div class="dropdown type2 " style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div  class=dropmenu style="max-height: 276px;">
+                    <div class="menuheading">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /><span class=radiolabel>Select All</span></label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="menuitem dropitem type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">Vandelay West</div>
+                    </div>
+                    <div class="menuitem dropitem  type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">AppCore Production Ltd </div>
+                    </div>
+                    <div class="menuitem dropitem  type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">New York Facility</div>
+                    </div>
+                    <div class="menuitem dropitem  type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">Los Angeles Facility</div>
+                    </div>
+                    <div class="menuitem dropitem  type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">Destination Warehouse 3 (Seattle)</div>
+                    </div>
+                    <div class="menuitem dropitem  type4">
+                        <div class=icon>
+                            <span class=checkbox>
+                                <label><input type=checkbox /></label>
+                            </span>
+                        </div>
+                        <div class="">Vandelay Industries (UT)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo multiselect_demo">
+        <div class=filter>
+            <div class=inputlabel>Complex Multiselect</div>
+            <div class="dropbtn multiselect">
+                <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                <div  class=dropmenu style="max-height: 280px;">
+                        <div class="menuheading">
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /><span class=radiolabel>Select All</span></label>
+                                </span>
+                            </div>
+                        </div>
                         <h5>Recent</h5>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">Vandelay West<div class=editpencil></div></div>
                             <div class="stext">123 Main St, San Francisco, CA, 94105-1804, US</div>
                         </div>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">AppCore Production Ltd • AppCore Supply<div class=editpencil></div></div>
                             <div class="stext">257 Prince Edward Rd W, Hong Kong, Kowloon, Hong Kong</div>
                         </div>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">New York Facility • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">560361 Stephen Row FL 7, NEW YORK, NY, United States</div>
                         </div>
 
                         <h5>All Addresses</h5>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">Los Angeles Facility • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">3PL Warehouse and DC, City of Industry, CA, United States</div>
                         </div>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">AppCore - Destination Warehouse 3 (Seattle) • AppCore Supply<div class=editpencil></div></div>
                             <div class="stext">99 Union Street, Seattle, WA, United States</div>
                         </div>
                         <div class="menuitem dropitem multiline type5">
-                            <div class=icon></div>
+                            <div class=icon>
+                                <span class=checkbox>
+                                    <label><input type=checkbox /></label>
+                                </span>
+                            </div>
                             <div class="">Vandelay Industries (UT) • Vandelay Industries<div class=editpencil></div></div>
                             <div class="stext">2300 Deer Valley Dr E, Park City, UT, United States</div>
                         </div>
@@ -1898,20 +2057,44 @@
     }
 
     function dropitem(e){
+        console.log('dropitem')
         var p = this.getparent('dropbtn');
         var c = p.getElementsByClassName('dropitem selected');
         var v = this.innerText;
         var d = p.getElementsByClassName('dropdown')[0];
+        var m = p.classList.contains('multiselect');
 
         d.removeAttribute('style');
+
+        if ( !m ){
+            c.removeclass('selected');
+
+            this.classList.add('selected');
+
+            p.classList.add('notransition');
+            p.classList.remove('open');
+        } else {
+            var ch = this.getElementsByTagName('input')[0];
+
+            if ( this.classList.contains('selected')){
+                this.classList.remove('selected');
+                ch.checked = false;
+            } else {
+                this.classList.add('selected');
+                ch.checked = true;
+            }
+
+            if ( c.length > 1 ){
+                v = c.length  + ' Selected';
+            } else if ( c.length === 0 ){
+                v = 'None Selected';
+                d.setAttribute('style', 'min-width:120px;font-style:italic;color:var(--grey50);');
+            }
+        }
+
         d.innerText = v;
 
-        c.removeclass('selected');
 
-        this.classList.add('selected');
-
-        p.classList.add('notransition');
-        p.classList.remove('open');
     }
 
     function openpopover(e){
