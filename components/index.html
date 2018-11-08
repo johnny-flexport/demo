@@ -836,7 +836,7 @@
     </div> -->
 
     <div class="demo dropdown_demo">
-        <div class=filter>
+        <div class="filter inblock filterblock">
             <div class=inputlabel>Simple Dropdown</div>
             <div class="dropwrap">
                 <div class="dropdown droppop type2">
@@ -845,6 +845,34 @@
                 <div  class=popover>
                     <div class="menuitem popitem type4">Not Synced</div>
                     <div class="menuitem popitem type4 selected">Synced</div>
+                    <div class="menuitem popitem type4">Mixed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter disabled inblock filterblock">
+            <div class=inputlabel>Disabled Dropdown</div>
+            <div class="dropwrap disabled">
+                <div class="dropdown droppop type2">
+                    Synced
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type4">Not Synced</div>
+                    <div class="menuitem popitem type4 selected">Synced</div>
+                    <div class="menuitem popitem type4">Mixed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter inblock filterblock error">
+            <div class=inputlabel>Error Dropdown</div>
+            <div class="dropwrap">
+                <div class="dropdown droppop type2" style="min-width:120px;font-style:italic;color:var(--grey50);">
+                    None
+                </div>
+                <div  class=popover>
+                    <div class="menuitem popitem type4">Not Synced</div>
+                    <div class="menuitem popitem type4">Synced</div>
                     <div class="menuitem popitem type4">Mixed</div>
                 </div>
             </div>
@@ -872,6 +900,22 @@
             .menuitem.multiline {line-height:20px;padding:8px var(--inset);}
             .dropwrap h5, .dropbtn h5 {padding:4px var(--inset) 2px;}
             .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
+
+            .disabled.dropwrap {pointer-events:none;}
+                .disabled .dropdown {background:var(--grey20);color:var(--grey40);border:none;}
+                    .disabled .dropdown::after {border-color:var(--grey40);}
+
+                .disabled .inputlabel {color:var(--grey40);}
+
+                .error .dropdown {background:var(--red10);color:var(--red50) !important;border-color:var(--red45);}
+                    .error .dropdown::after {border-color:var(--red45);}
+                        .error .dropdown:hover::after {border-color:var(--red50);}
+                        .error .dropdown:active::after {border-color:var(--red60);}
+
+                    .error .dropdown:hover {box-shadow:0 2px 2px var(--errorshadow);border-color:var(--red50);}
+                    .error .dropdown:active {box-shadow:none;border-color:var(--red45);}
+
+                .error .inputlabel {color:var(--red45);}
     </style>
 
     <!-- <div class="demo dropdown_demo">
@@ -1058,7 +1102,7 @@
         </div>
     </div> -->
 
-    <div class="demo dropdown_demo">
+    <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown</div>
             <div class=dropwrap>
@@ -1102,7 +1146,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="demo dropdown_demo">
         <div class=filter>
