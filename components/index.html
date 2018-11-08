@@ -578,7 +578,7 @@
 
     <div class="demo combo_demo">
         <div class="filter ">
-            <div class=inputlabel>Combobox</div>
+            <div class=inputlabel>With Chevron</div>
             <div class=searchbarwrap>
                 <input type=text class=combobar placeholder="Type here..." />
                 <div class=searchicon style="width:36px;box-sizing:border-box;" onclick="this.parentElement.classList.toggle('open');">
@@ -592,6 +592,54 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="demo combo_demo">
+
+        <div class="filter ">
+                <div class=inputlabel>Search or whatever</div>
+                <div class=searchbarwrap>
+                    <input type=text class=combobar placeholder="Type here..." />
+
+                    <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                        <div class=menuitem>Combo item 1</div>
+                        <div class=menuitem>Combo item 2</div>
+                        <div class=menuitem>Combo item 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .combobar:focus ~ .menu2, .focused ~ .menu2 {opacity:1;pointer-events: all;transform:translateY(0);}
+
+                .holdon ~ .menu2 {pointer-events: all !important;}
+
+                .badges {position:absolute;top:0;left:1px;white-space:nowrap;max-width:calc(100% - 2px);overflow-x:auto;padding-right:4px;box-sizing:border-box;}
+                .badge {padding:1px 22px 1px 8px;background:var(--blue10);border:1px solid var(--blue20);color:var(--blue50);border-radius:2px;margin:calc((var(--lineheight) - 24px) / 2) 0 0 calc((var(--lineheight) - 24px) / 2);display:inline-block;font-size:11px;font-weight:500;text-transform:uppercase;position:relative;}
+
+                .badgeclose {width:10px;height:10px;position:absolute;top:6px;right:6px;opacity:.65;cursor:pointer;transition:opacity 150ms ease-in-out;}
+                    .badgeclose:hover {opacity:1;}
+                    .badgeclose::after, .badgeclose::before {content:'';width:100%;height:1px;background:var(--blue50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);}
+                    .badgeclose::before {transform:translate(-50%, -50%) rotate(-45deg);}
+            </style>
+    </div>
+
+    <div class="demo combo_demo">
+
+        <div class="filter ">
+                <div class=inputlabel>MultiInput</div>
+                <div class=searchbarwrap>
+                    <div class="multiinput">
+                        <input type=text class=combobar style="min-width:480px;" placeholder="Type here..." />
+                        <div class=badges></div>
+                    </div>
+
+                    <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                        <div class="menuitem algolia">Combo item 1</div>
+                        <div class="menuitem algolia">Combo item 2</div>
+                        <div class="menuitem algolia">Combo item 3</div>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <div class="demo textfield_demo">
@@ -1960,7 +2008,46 @@
                 a.style.display = 'none';
             }
         }
+    }
 
+    function algolia(e){
+        var v = this.innerText;
+
+        var w = this.getparent('searchbarwrap');
+        var m = w.getElementsByClassName('badges')[0];
+        var p = w.getElementsByClassName('combobar')[0];
+
+        var b = document.createElement('div');
+        var c = document.createElement('div');
+
+        c.className = 'badgeclose';
+        b.className = 'badge';
+        b.appendChild(document.createTextNode(v));
+        b.appendChild(c);
+
+        m.appendChild(b);
+
+        var s = m.offsetWidth;
+
+        p.style.paddingLeft = s - 12 +'px';
+    }
+
+    function blur(e){
+        var f = document.getElementsByClassName('focused');
+        f[0].classList.add('holdon');
+        f.removeclass('focused');
+        window.removeEventListener('blur', blur, true);
+
+        setTimeout(function(){
+            var f = document.getElementsByClassName('holdon');
+            f.removeclass('holdon');
+        }, 300);
+    }
+
+    function focus(e){
+        this.parentElement.classList.add('focused');
+
+        window.addEventListener('blur', blur, true);
     }
 
     Attach.on('click', '.tab', tab);
@@ -1971,6 +2058,8 @@
     Attach.on('click', '.droppop', openpopover);
     Attach.on('input', '.autoexpand', autoexpand);
     Attach.on('change', '.spinnersize', spinnersize);
+    Attach.on('click', '.algolia', algolia);
+    Attach.on('focus', '.combobar', focus);
 
     (function() {
         var hash = window.location.hash;
