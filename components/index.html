@@ -476,7 +476,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div>
         </div>
 
         <div class=tabline></div>
@@ -692,7 +692,7 @@
         </div>
     </div>
 
-    <div class="demo textfield_demo">
+    <div class="demo prefix_demo">
         <div>
             <div class=inputlabel>Label</div>
             <div class="relative inblock prefix">
@@ -702,7 +702,7 @@
         </div>
     </div>
 
-    <div class="demo textfield_demo">
+    <div class="demo prefix_demo">
         <div class="relative inblock">
             <div class=inputlabel>Label</div>
             <div class="relative inblock suffix">
@@ -1155,7 +1155,21 @@
                         <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
                     </div>
                 </div>
-            </div><div class="insertfilters inblock" style="vertical-align:top;"></div><div class="filter inblock filterblock">
+            </div><div class="insertfilters inblock" style="vertical-align:top;">
+                    <div class="filter inblock filterblock">
+                        <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>Closeable</div>
+                            <div class="dropbtn">
+                                <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
+                                <div class="dropmenu">
+                                    <div class="menuitem" onclick="closedrop.call(this,event);">Option One</div>
+                                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
+                                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Three</div>
+                                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
+                                    <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
+                                </div>
+                            </div>
+                        </div>
+            </div><div class="filter inblock filterblock">
                 <div class=inputlabel>Filters</div>
                 <div class=dropbtn>
                     <div class="btn hollow" onclick="opendrop.call(this,event);">Add Filter</div>
@@ -1366,11 +1380,79 @@
 </div>
 
 <div class="demo spinner_demo">
-    <div class="spinner2 fat">
-            <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
-                <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
-            </svg>
+    <div class="radiowrap">
+        <div class=inputlabel>Size</div>
+        <span class=radio>
+            <input type=radio class="spinnersize offscreen" name=sizes2a id=c1ab value=60 />
+            <label for=c1ab><span class=radiohead></span><span class=radiolabel>60px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="spinnersize offscreen" name=sizes2a id=c2ab value=48 checked />
+            <label for=c2ab><span class=radiohead></span><span class=radiolabel>48px</span></label>
+        </span>
+        <span class=radio>
+            <input type=radio class="spinnersize offscreen"  name=sizes2a id=c3ab value=36 />
+            <label for=c3ab><span class=radiohead></span><span class=radiolabel>36px</span></label>
+        </span>
+        <span class="radio ">
+            <input type=radio class="spinnersize offscreen"  name=sizes2a id=c4ab value=24 />
+            <label for=c4ab><span class=radiohead></span><span class=radiolabel>24px</span></label>
+        </span>
+        <span class="radio ">
+            <input type=radio class="spinnersize offscreen"  name=sizes2a id=c5ab value=16 />
+            <label for=c5ab><span class=radiohead></span><span class=radiolabel>16px</span></label>
+        </span>
+        <span class="radio ">
+            <input type=radio class="spinnersize offscreen" name=sizes2a id=c6ab value=12 />
+            <label for=c6ab><span class=radiohead></span><span class=radiolabel>12px</span></label>
+        </span>
     </div>
+    <div class=checkwrap>
+
+    </div>
+
+    <div class="spinner2 fat spinner60" style="display:none;">
+        <svg class="spin2" width="60" height="60" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+    <div class="spinner2 fat spinner48" style="display:block;">
+        <svg class="spin2" width="48" height="48" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+    <div class="spinner2 fat spinner36" style="display:none;">
+        <svg class="spin2" width="36" height="36" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+
+    <div class="spinner2 fat spinner24" style="display:none;">
+        <svg class="spin2" width="24" height="24" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+
+    <div class="spinner2 fat spinner16" style="display:none;">
+        <svg class="spin2" width="16" height="16" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+
+    <div class="spinner2 fat spinner12" style="display:none;">
+        <svg class="spin2" width="12" height="12" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
+        </svg>
+    </div>
+
+    <style>
+        .spinner12 svg circle {stroke-width:8px !important;}
+        .spinner16 svg circle {stroke-width:7px !important;}
+        .spinner24 svg circle {stroke-width:5px !important;}
+        .spinner36 svg circle {stroke-width:4px !important;}
+        .spinner48 svg circle {stroke-width:4px !important;}
+        .spinner60 svg circle {stroke-width:3.5px !important;}
+    </style>
 </div>
 
 <div class="demo progress_demo">
@@ -1864,6 +1946,23 @@
 
     }
 
+    function spinnersize(e){
+        var w = this.getparent('demo');
+        var s = w.getElementsByClassName('spinner2');
+        var v = this.value;
+
+        for(var i=0;i<s.length;i++){
+            var a = s[i];
+
+            if ( a.classList.contains('spinner' + v)){
+                a.style.display = 'block';
+            } else {
+                a.style.display = 'none';
+            }
+        }
+
+    }
+
     Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
     Attach.on('click', '.popitem', popover);
@@ -1871,6 +1970,7 @@
     //Attach.on('click', '.popover', closepopover);
     Attach.on('click', '.droppop', openpopover);
     Attach.on('input', '.autoexpand', autoexpand);
+    Attach.on('change', '.spinnersize', spinnersize);
 
     (function() {
         var hash = window.location.hash;
