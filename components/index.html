@@ -1691,15 +1691,28 @@
     </div>
 </div> -->
 
+
 <div class="demo progress_demo">
-        <div class=progress1>
-            <div class=progresswrap>
-                <div class="pbar pbar1"></div>
-                <!-- <div class="pbar pbar2"></div>
-                <div class="pbar pbar3"></div> -->
-            </div>
+    <div class=inputlabel>Indeterminate</div>
+    <div class=progress1>
+        <div class=progresswrap>
+            <div class="pbar pbar1"></div>
+            <!-- <div class="pbar pbar2"></div>
+            <div class="pbar pbar3"></div> -->
         </div>
     </div>
+</div>
+
+<div class="demo progress_demo">
+<div class=inputlabel>Determinate</div>
+    <div class="progress1 deter">
+        <div class=progresswrap>
+            <div class="pbar pbar1 pbarloading"></div>
+            <!-- <div class="pbar pbar2"></div>
+            <div class="pbar pbar3"></div> -->
+        </div>
+    </div>
+</div>
 
 <style>
     .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
@@ -1707,6 +1720,13 @@
             animation: 1.1s infinite forwards pbar;
             animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
         }
+
+        .progress1.deter {background:var(--blue10);}
+        .deter .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+            animation: 3s infinite forwards pbarloading;
+            animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+
 /*
         .pbar2 {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
             animation: 2s infinite forwards pbar2;
@@ -1729,6 +1749,13 @@
         from {right:100%;left:0%;background:var(--blue30);}
         50% {right:0%;left:0%;background:var(--blue50);}
         to {right:0%;left:100%;background:var(--blue30);}
+    }
+
+    @keyframes pbarloading {
+        from {right:100%;left:0%;background:var(--blue30);}
+        90% {right:0%;left:0%;background:var(--blue50);}
+        91% {opacity:1;}
+        to {right:0%;left:0%;background:var(--blue50);opacity:0;}
     }
 
 
