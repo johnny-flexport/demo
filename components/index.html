@@ -284,7 +284,7 @@
                 .menuheading .radiolabel {margin-left:12px;}
 
             .multiselect .menuitem .icon {position: absolute;left:var(--inset);pointer-events:none;top: 50%;transform: translateY(-50%);}
-                .multiselect .menuitem.multiline {padding-left:44px;}
+                .multiselect .menuitem, .multiselect .menuitem.multiline {padding-left:44px;}
 
         .dropbtn.open .btn {border-color: var(--grey30);background: var(--grey10);}
         .dropbtn.open .dropmenu {opacity:1;transform:translateY(0);pointer-events:all;}
@@ -1192,7 +1192,7 @@
 
     <div class="demo multiselect_demo">
         <div class=filter>
-            <div class=inputlabel>Complex Multiselect</div>
+            <div class=inputlabel>Simple Multiselect</div>
             <div class="dropbtn multiselect">
                 <div class="dropdown type2 " style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                 <div  class=dropmenu style="max-height: 276px;">
