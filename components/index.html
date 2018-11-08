@@ -344,8 +344,8 @@
             .erroricon {width:24px;height:24px;background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: center center;}
 
         .popitem {transition:all 150ms ease-in-out;}
-        .popitem.selected, .dropitem.selected {background-color:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
-            .popitem.selected:hover, .dropitem.selected:hover {background-color:var(--grey10);}
+        .popitem.selected, .dropitem.selected, .menuitem.selected {background-color:var(--blue10);box-shadow:0 0 0 1px var(--blue20);position:relative;z-index:2;color:var(--blue50);}
+            .popitem.selected:hover, .dropitem.selected:hover, .menuitem.selected:hover {background-color:var(--grey10);}
 
             .multiline.selected {color:var(--grey60);}
 
@@ -366,13 +366,13 @@
                 background-image: url("data:image/svg+xml,%0A%3Csvg width='14px' height='14px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.9638022,16.5198022 L23.7778022,54.7058022 C23.3851298,55.0975384 22.7494745,55.0975384 22.3568022,54.7058022 L16.5568022,48.9058022 L16.5568022,48.9008022 L2.29380217,34.6408022 C1.90206594,34.2481298 1.90206594,33.6124745 2.29380217,33.2198022 L7.97880217,27.5358022 C8.3714745,27.1440659 9.00712984,27.1440659 9.39980217,27.5358022 L22.9478022,41.0838022 L54.7378022,9.29380217 C55.1304745,8.90206594 55.7661298,8.90206594 56.1588022,9.29380217 L61.9638022,15.0998022 C62.3548738,15.4923589 62.3548738,16.1272454 61.9638022,16.5198022 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
             }
 
-            .popitem.type4.selected, .dropitem.type4.selected {
+            .popitem.type4.selected, .dropitem.type4.selected, .menuitem.selected {
                 box-shadow:none;
                 background-color:var(--grey20);
                 color:var(--grey60);
             }
 
-            .popitem.type4:hover, .dropitem.type4.selected:hover {
+            .popitem.type4:hover, .dropitem.type4.selected:hover, .menuitem.selected:hover {
                 background-color:var(--grey10);
             }
 
@@ -1375,8 +1375,19 @@
                                     <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
                                 </div>
                             </div>
-                        </div>
-            </div><div class="filter inblock filterblock">
+                        </div><div class="filter inblock filterblock">
+                                <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>Closeable</div>
+                                    <div class="dropbtn">
+                                        <div class="dropdown type2" onclick="opendrop.call(this,event);">Option One</div>
+                                        <div class="dropmenu">
+                                            <div class="menuitem selected type4" onclick="closedrop.call(this,event);">Option One</div>
+                                            <div class="menuitem" onclick="closedrop.call(this,event);">Option Two</div>
+                                            <div class="menuitem" onclick="closedrop.call(this,event);">Option Three</div>
+                                            <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
+                                            <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
+                                        </div>
+                                    </div>
+                                </div></div><div class="filter inblock filterblock">
                 <div class=inputlabel>Filters</div>
                 <div class=dropbtn>
                     <div class="btn hollow" onclick="opendrop.call(this,event);">Add Filter</div>
@@ -1387,8 +1398,7 @@
                         <div class=menuitem onclick="addfilter.call(this,event);">Filter Delta</div>
                         <div class=menuitem onclick="addfilter.call(this,event);">Filter Epsilon</div>
                     </div>
-                </div>
-            </div>
+                </div></div>
         </div>
     </div>
 
@@ -1998,8 +2008,10 @@
 
         var a = f.getElementsByClassName('insertfilters')[0];
 
-        var code = `<div class="filter inblock filterblock">
-        <div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
+        var div = document.createElement('div');
+        div.className = 'filter inblock filterblock';
+
+        var code = `<div class=inputlabel><div class=closefilter onclick='closefilter.call(this,event);'><div class=x></div><div class='x xx'></div></div>` + this.innerText + `</div>
             <div class="dropbtn">
                 <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                 <div class="dropmenu">
@@ -2009,10 +2021,11 @@
                     <div class="menuitem" onclick="closedrop.call(this,event);">Option Four</div>
                     <div class="menuitem" onclick="closedrop.call(this,event);">Option Five</div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
 
-        a.innerHTML += code;
+        div.innerHTML = code;
+
+        a.appendChild(div);
     }
 
     function closefilter(e){
