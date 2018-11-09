@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-    <title>Buttons</title>
+    <title>Components</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
     <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
@@ -114,45 +114,55 @@
             .btn.disabled .icon svg path {fill:var(--grey40) !important;}
 
 
-        input, textarea {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;}
+        input, textarea {-moz-appearance:none;-webkit-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;}
 
-            input[type=text], textarea {transition:all 150ms ease-in-out;}
-                input[type=text]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
-                input[type=text]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
-                input[type=text]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);}
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
 
-            input[type=text]:read-only {border-color:var(--grey20);background:var(--grey10);}
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
 
-            textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
+        input[type=text], input[type=number], textarea {transition:all 150ms ease-in-out;}
+            input[type=text]:hover, input[type=number]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+            input[type=text]:active, input[type=number]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
+            input[type=text]:focus, input[type=number]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);}
 
-            .error input[type=text], .error textarea {border-color:var(--red45);}
-                .error input[type=text]:focus, .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
-            .error .inputlabel {color:var(--red45);}
+        input[type=text]:read-only, input[type=number]:read-only {border-color:var(--grey20);background:var(--grey10);}
+        input[type=text]:read-only:hover, input[type=number]:read-only:hover {box-shadow:none;}
+
+        textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
+
+        .error input[type=text], .error input[type=number], .error textarea {border-color:var(--red45);}
+            .error input[type=text]:focus, .error input[type=number]:focus, .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
+        .error .inputlabel {color:var(--red45);}
 
 
-            .error input[type=text], .error textarea {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
+        .error input[type=text], .error input[type=number], .error textarea {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
 
-            input[type=text]:disabled, textarea:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
+        input[type=text]:disabled, input[type=number]:disabled, textarea:disabled {pointer-events:none;border-color:transparent;color:var(--grey40);background:var(--grey20);}
 
-            input[type=checkbox] {-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
-                .checkbox:hover input[type=checkbox], .menuitem:hover .checkbox input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
-                .checkbox:active input[type=checkbox], .menuitem:active .checkbox input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
+        input[type=checkbox] {-moz-appearance:none;-webkit-appearance: none;appearance: none;border:2px solid var(--grey40);border-radius:calc(var(--radius) - 1px);width:16px;height:16px;cursor:pointer;margin:0;transition:all 150ms ease-in-out;vertical-align: middle;}
+            .checkbox:hover input[type=checkbox], .menuitem:hover .checkbox input[type=checkbox] {border-color:var(--grey50);box-shadow:0 2px 2px var(--shadow);}
+            .checkbox:active input[type=checkbox], .menuitem:active .checkbox input[type=checkbox] {border-color:var(--grey50);background:var(--grey50);box-shadow:none;}
 
-                input[type=checkbox]:checked {border-color:transparent;background:var(--blue30) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
+            input[type=checkbox]:checked {border-color:transparent;background:var(--blue30) url("data:image/svg+xml,%3Csvg width='12px' height='12px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M61.964,16.52 L23.778,54.706 C23.3853277,55.0977362 22.7496723,55.0977362 22.357,54.706 L16.557,48.906 L2.294,34.641 C1.90226377,34.2483277 1.90226377,33.6126723 2.294,33.22 L7.979,27.536 C8.37167233,27.1442638 9.00732767,27.1442638 9.4,27.536 L22.948,41.084 L54.738,9.294 C55.1306723,8.90226377 55.7663277,8.90226377 56.159,9.294 L61.964,15.1 C62.3550716,15.4925567 62.3550716,16.1274433 61.964,16.52 Z' fill='%23fff' %3E%3C/path%3E%3C/svg%3E") no-repeat center;}
 
-                .checkbox:hover input[type=checkbox]:checked, .menuitem:hover .checkbox input[type=checkbox]:checked {border-color:transparent;background-color:var(--blue50);box-shadow:0 2px 2px var(--blueshadow);}
-                .checkbox:active input[type=checkbox]:checked, .menuitem:active .checkbox input[type=checkbox]:checked {border-color:transparent;background:var(--blue50);box-shadow:none;}
+            .checkbox:hover input[type=checkbox]:checked, .menuitem:hover .checkbox input[type=checkbox]:checked {border-color:transparent;background-color:var(--blue50);box-shadow:0 2px 2px var(--blueshadow);}
+            .checkbox:active input[type=checkbox]:checked, .menuitem:active .checkbox input[type=checkbox]:checked {border-color:transparent;background:var(--blue50);box-shadow:none;}
 
-            .disabled input[type=checkbox] {border-color:var(--grey30);}
-                .disabled input[type=checkbox]:checked {background-color:var(--grey30);}
+        .disabled input[type=checkbox] {border-color:var(--grey30);}
+            .disabled input[type=checkbox]:checked {background-color:var(--grey30);}
 
-            .error input[type=checkbox] {border-color:var(--red40);}
-                .error:hover input[type=checkbox] {border-color:var(--red45);box-shadow: 0 2px 2px var(--errorshadow);}
-                .error:active input[type=checkbox] {background-color:var(--red45);border-color:var(--red45);box-shadow:none;}
+        .error input[type=checkbox] {border-color:var(--red40);}
+            .error:hover input[type=checkbox] {border-color:var(--red45);box-shadow: 0 2px 2px var(--errorshadow);}
+            .error:active input[type=checkbox] {background-color:var(--red45);border-color:var(--red45);box-shadow:none;}
 
-                .error input[type=checkbox]:checked {background-color:var(--red40);}
-                    .error:hover input[type=checkbox]:checked {background-color:var(--red45);}
-                    .error:active input[type=checkbox]:checked {background-color:var(--red45);}
+            .error input[type=checkbox]:checked {background-color:var(--red40);}
+                .error:hover input[type=checkbox]:checked {background-color:var(--red45);}
+                .error:active input[type=checkbox]:checked {background-color:var(--red45);}
 
 
 
@@ -256,12 +266,12 @@
             color: var(--grey50);
         }
 
-        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--indent);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;}
+        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--indent);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;background:white;}
             .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:var(--inset);margin-top:-1px;transition:border-color 150ms ease-in-out;}
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
 
-            .dropdown:hover {border-color:var(--grey40);}
+            .dropdown:hover {border-color:var(--grey40);background:white;}
 
             .open .dropdown {border-color:var(--blue30);background-color:var(--blue10);}
                 .open .dropdown::after {border-color:var(--blue30);}
@@ -498,7 +508,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
         </div>
 
         <div class=tabline></div>
@@ -582,6 +592,56 @@
             <input type=radio class=" offscreen"  name=sizes2 id=c5a />
             <label for=c5a><span class=radiohead></span><span class=radiolabel>Radio</span></label>
         </span>
+    </div>
+
+    <div class="demo stepper_demo">
+        <span class=inlinewrap>
+            <div class=inputlabel>Label</div>
+            <div class=relative>
+                <input type=number placeholder="0" />
+                <div class=stepper>
+                    <div class="step stepdown"></div>
+                    <div class="step stepup"></div>
+                </div>
+            </div>
+        </span>
+
+        <style>
+            .stepper {position:absolute;top:0;right:0;bottom:0;}
+            .step {width:var(--lineheight);height:100%;float:left;border:1px solid transparent;position:relative;box-sizing:border-box;cursor:pointer;transition:all 150ms ease-in-out;}
+                .step:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+                .step:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
+                .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
+                .stepdown {margin-right:-1px;}
+
+                .step::after {
+                    content: '';
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    border-left: 2px solid var(--grey50);
+                    border-bottom: 2px solid var(--grey50);
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-top: -1px;
+                    transition: border-color 150ms ease-in-out;
+                }
+
+                .step:hover::after {
+                    border-color:var(--grey60);
+                }
+                .step:active::after {
+                    border-color:var(--grey60);
+                }
+
+                .stepup::after {
+                    transform: translate(-50%, -50%) rotate(135deg);
+                    margin-top: 2px;
+                }
+
+        </style>
     </div>
 
     <div class="demo search_demo">
@@ -1955,8 +2015,10 @@
 
 <div class="demo form_demo">
     <div class=form>
-        <h3>Create Booking</h3>
-        <div class=description>Fill out the form below to get started on your first booking! It’s that simple.</div>
+        <div class=heading>
+            <h3>Create Booking</h3>
+            <div class=description>Fill out the form below to get started on your first booking! It’s that simple.</div>
+        </div>
         <div class=section>
             <div class=formrow>
                 <div class=formcell>
@@ -2148,7 +2210,13 @@
             <div class=formrow>
                     <div class="formcell">
                         <div class=inputlabel>Quantity</div>
-                        <input type=text placeholder="3" />
+                        <div class=relative>
+                            <input type=number placeholder="0" />
+                            <div class=stepper>
+                                <div class="step stepdown"></div>
+                                <div class="step stepup"></div>
+                            </div>
+                        </div>
                     </div>
             </div>
 
@@ -2168,7 +2236,7 @@
         </div>
         <div class=section>
             <div class=btngroup>
-                <div class="btn shh">Cancel</div><div class=btn onclick="loading.call(this,event);" tabindex=0>
+                <div class="btn shh" tabindex=0>Cancel</div><div class=btn onclick="loading.call(this,event);" tabindex=0>
                     <span class=label>Submit</span>
                     <span class=spinning>
                         <div class="spinner2 fat spinnergg">
@@ -2197,8 +2265,11 @@
 
         .form .description {margin:0 8px 24px;}
 
-        .form .section {margin-bottom:48px;}
+        .form .heading {padding:0 16px;}
+
+        .form .section {margin-bottom:0;padding:24px 16px;}
     .formrow {margin-bottom:24px;display:flex;}
+        .formrow:last-child {margin-bottom:0;}
         /* .formrow {
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
@@ -2207,7 +2278,7 @@
 
         .formcell {width:100%;margin:0 8px;position:relative;}
 
-            .formcell input[type=text], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
+            .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
 
             .formcell.quarter {width: calc(50% - 16px);}
 
