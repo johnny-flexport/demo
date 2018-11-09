@@ -23,12 +23,16 @@
             --errorshadow: hsla(355, 70%, 50%, 0.2);
 
             --textpadd: 6px;
+
+            --indent: 12px;
         }
 
         .funsize {
             --lineheight: 24px;
             --inset: 8px;
             --textpadd: 1px;
+
+            --indent: 8px;
         }
 
         .current {
@@ -46,6 +50,7 @@
         .large {
             --lineheight: 40px;
             --textpadd: 8px;
+            --indent: 16px;
         }
 
         .demo {padding:24px 40px 0;margin-bottom:24px;}
@@ -109,7 +114,7 @@
             .btn.disabled .icon svg path {fill:var(--grey40) !important;}
 
 
-        input, textarea {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--inset);border-radius:var(--radius);box-sizing:border-box;}
+        input, textarea {-webkite-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;}
 
             input[type=text], textarea {transition:all 150ms ease-in-out;}
                 input[type=text]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
@@ -118,7 +123,7 @@
 
             input[type=text]:read-only {border-color:var(--grey20);background:var(--grey10);}
 
-            textarea {line-height:20px;padding:var(--textpadd) var(--inset);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
+            textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
 
             .error input[type=text], .error textarea {border-color:var(--red45);}
                 .error input[type=text]:focus, .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
@@ -251,7 +256,7 @@
             color: var(--grey50);
         }
 
-        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--inset);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;}
+        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--indent);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;}
             .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:var(--inset);margin-top:-1px;transition:border-color 150ms ease-in-out;}
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
@@ -263,6 +268,8 @@
 
             .open .dropdown.type2 {border-color:var(--grey30);background-color:var(--grey10);}
                 .open .dropdown.type2::after {border-color:var(--grey60);}
+
+        .dropdown:focus {border-color:var(--blue30);}
 
 
         .closefilter {position:relative;width:20px;height:20px;display:inline-block;vertical-align: top;cursor:pointer;}
@@ -293,9 +300,9 @@
         .notransition .dropmenu, .notransition.popover {transition:none;}
 
         .dropwrap {position:relative;user-select:none;display:inline-block;}
-            .popover {position:absolute;background:white;position:absolute;top:0;left:0;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100%);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(1);transition:all 150ms ease-in-out;box-sizing: border-box;}
+            .popover {position:absolute;background:white;position:absolute;top:0;left:-4px;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100% + 8px);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(1);transition:all 150ms ease-in-out;box-sizing: border-box;}
                 .open .popover {opacity:1;pointer-events:all;transform:scaleY(1);}
-            .popover .menuitem {line-height:var(--lineheight);min-width:0;}
+            .popover .menuitem {line-height:var(--lineheight);min-width:0;padding:0 calc(var(--indent) + 4px);}
 
 
         input.quiet {border-radius:0;border:none;border-bottom:1px solid var(--grey30);text-indent:0;}
@@ -471,7 +478,7 @@
 
         .searchbarwrap.open {z-index:1337;}
 
-        .combomenu {background:white;box-sizing:border-box;position:absolute;top:calc(100% + 6px);min-width:100%;border-radius:var(--radius);border:1px solid var(--grey30);padding:4px 0;z-index:1337;box-shadow:0 2px 2px var(--shadow);opacity:0;pointer-events:none;transition:all 150ms ease-in-out;transform:translateY(-4px);}
+        .combomenu {background:white;box-sizing:border-box;position:absolute;top:calc(100% + 6px);min-width:100%;border-radius:var(--radius);border:1px solid var(--grey30);padding:4px 0;z-index:1337;box-shadow:0 2px 2px var(--shadow);opacity:0;pointer-events:none;transition:all 150ms ease-in-out;transform:translateY(-4px);max-height:calc(var(--lineheight) * 7.6 + 4px);overflow-y:auto;}
             .open .combomenu {transform:translateY(0);opacity:1;pointer-events:all;}
             .combomenu .menuitem {line-height:var(--lineheight);}
 
@@ -491,7 +498,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
         </div>
 
         <div class=tabline></div>
@@ -610,20 +617,19 @@
         </div>
     </div>
     <div class="demo combo_demo">
-
         <div class="filter ">
-                <div class=inputlabel>Search or whatever</div>
-                <div class=searchbarwrap>
-                    <input type=text class=combobar placeholder="Type here..." />
-                    <div class=clearbar></div>
+            <div class=inputlabel>Search or whatever</div>
+            <div class=searchbarwrap>
+                <input type=text class=combobar placeholder="Type here..." />
+                <div class=clearbar></div>
 
-                    <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
-                        <div class=menuitem>Combo item 1</div>
-                        <div class=menuitem>Combo item 2</div>
-                        <div class=menuitem>Combo item 3</div>
-                    </div>
+                <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                    <div class=menuitem>Combo item 1</div>
+                    <div class=menuitem>Combo item 2</div>
+                    <div class=menuitem>Combo item 3</div>
                 </div>
             </div>
+        </div>
 
             <style>
                 .combobar:focus ~ .menu2, .focused ~ .menu2 {opacity:1;pointer-events: all;transform:translateY(0);}
@@ -787,6 +793,13 @@
         </div>
     </div>
 
+    <div class="demo textarea_demo">
+        <div class="relative inblock autotext">
+            <div class=inputlabel>Textarea - Static</div>
+            <textarea placeholder="Type here..."  style="min-height:214px;"></textarea>
+        </div>
+    </div>
+
     <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown</div>
@@ -901,7 +914,7 @@
                     .daterow::after {content:'';clear:both;display:block;}
                     .daywrap {width:var(--lineheight);height:var(--lineheight);text-align:center;float:left;box-sizing:border-box;cursor:pointer;padding:1px;}
 
-                        .date {width:100%;height:100%;box-sizing:border-box;border-radius:50%;align-items: center;justify-content: center;display: flex;}
+                        .date {width:100%;height:100%;box-sizing:border-box;border-radius:50%;align-items: center;justify-content: center;display: flex;font-variant-numeric: tabular-nums;}
 
                         .daywrap:hover .date {box-shadow:inset 0 0 0 3px var(--grey30);}
                         .daywrap:active .date {box-shadow:inset 0 0 0 3px var(--grey40);}
@@ -1074,9 +1087,13 @@
     </div> -->
 
     <style>
-        .popover {max-height:260px;overflow-y:auto;}
-            .menuitem.multiline {line-height:20px;padding:8px var(--inset);}
-            .dropwrap h5, .dropbtn h5 {padding:4px var(--inset) 2px;}
+        .popover {max-height:calc(var(--lineheight) * 7.6 + 4px);overflow-y:auto;}
+        .multiline .popover {max-height:260px;}
+            .menuitem.multiline {line-height:20px;padding:8px var(--indent);}
+            .dropwrap h5, .dropbtn h5 {padding:4px var(--indent) 2px;}
+
+            .dropwrap.multiselect h5, .dropbtn.multiselect h5 {padding:4px var(--inset) 2px;}
+
             .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
 
             .disabled.dropwrap {pointer-events:none;}
@@ -1926,7 +1943,7 @@
 </div>
 
 <div class="demo progress_demo">
-<div class=inputlabel>Determinate</div>
+    <div class=inputlabel>Determinate</div>
     <div class="progress1 deter">
         <div class=progresswrap>
             <div class="pbar pbar1 pbarloading"></div>
@@ -1936,7 +1953,273 @@
     </div>
 </div>
 
+<div class="demo form_demo">
+    <div class=form>
+        <h3>Create Booking</h3>
+        <div class=description>Fill out the form below to get started on your first booking! It’s that simple.</div>
+        <div class=section>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Shipment Name</div>
+                    <input type=text placeholder="E-Scooters" />
+                </div>
+            </div>
+        </div>
+        <div class=section>
+            <h4>Contact Details</h4>
+
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>First Name</div>
+                    <input type=text placeholder="Mike" />
+                </div><div class=formcell>
+                    <div class=inputlabel>Last Name</div>
+                    <input type=text placeholder="Jones" />
+                </div>
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Address</div>
+                    <input type=text placeholder="123 Evergreen terrace" />
+                </div>
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Address 2 (Optional)</div>
+                    <input type=text placeholder="Apt 1337" />
+                </div>
+            </div>
+            <div class=formrow>
+                <div class="formcell error">
+                    <div class=inputlabel>City</div>
+                    <input type=text placeholder="San Francisco"  />
+                    <div class="tooltip error right2" style="margin-top:9px;">
+                        This field can't be blank.
+                    </div>
+                </div><div class="formcell quarter">
+                    <div class=inputlabel>State</div>
+                    <div class="dropwrap">
+                        <div class="dropdown droppop type2 emptydrop" tabindex=0>
+                            None
+                        </div>
+                        <div  class=popover>
+                            <div class="menuitem popitem type4">AL</div>
+                            <div class="menuitem popitem type4">AK</div>
+                            <div class="menuitem popitem type4">AZ</div>
+                            <div class="menuitem popitem type4">AR</div>
+                            <div class="menuitem popitem type4">CA</div>
+                            <div class="menuitem popitem type4">CO</div>
+                            <div class="menuitem popitem type4">CT</div>
+                            <div class="menuitem popitem type4">DE</div>
+                            <div class="menuitem popitem type4">DC</div>
+                            <div class="menuitem popitem type4">FL</div>
+                            <div class="menuitem popitem type4">GA</div>
+                            <div class="menuitem popitem type4">HI</div>
+                        </div>
+                    </div>
+                </div><div class="formcell quarter disabled">
+                    <div class=inputlabel>Zip Code</div>
+                    <input type=text placeholder="90210" value=90210 disabled />
+                </div>
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Phone Number</div>
+                    <input type=text placeholder="555-555-5555" />
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Email</div>
+                    <input type=text placeholder="dave@email.com" value="mikejones@flexport.com" readonly />
+                </div>
+            </div>
+            <div class=formrow>
+                <div class="formcell radiowrap">
+                    <div class=inputlabel>Residence</div>
+                    <span class=radio>
+                        <input type=radio class="offscreen" name=res id=res98 />
+                        <label for=res98><span class=radiohead></span><span class=radiolabel>Residential</span></label>
+                    </span>
+                    <span class=radio>
+                        <input type=radio class="offscreen" name=res id=res99 />
+                        <label for=res99><span class=radiohead></span><span class=radiolabel>Business</span></label>
+                    </span>
+                </div>
+            </div>
+            <div class="formrow">
+                <div class="formcell">
+                    <div class=inputlabel>Country</div>
+                    <div class=searchbarwrap>
+                        <input type=text class=combobar placeholder="Jamaica" />
+                        <div class=clearbar></div>
+
+                        <div class="combomenu menu2" onclick="this.getparent('searchbarwrap').classList.remove('open');">
+                            <div class=menuitem>Afghanistan</div>
+                            <div class=menuitem>Albania</div>
+                            <div class=menuitem>Algeria</div>
+                            <div class=menuitem>Andorra</div>
+                            <div class=menuitem>Angola</div>
+                            <div class=menuitem>Antigua and Barbuda</div>
+                            <div class=menuitem>Argentina</div>
+                            <div class=menuitem>Armenia</div>
+                            <div class=menuitem>Australia</div>
+                            <div class=menuitem>Austria</div>
+                            <div class=menuitem>Algeria</div>
+                            <div class=menuitem>Bahamas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Comments</div>
+                    <textarea placeholder="I love you" class=autoexpand></textarea>
+                </div>
+            </div>
+        </div>
+        <div class=section>
+            <h4>Shipment Details</h4>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Value</div>
+                    <div class="relative  prefix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>$</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Weight</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>kg</div>
+                    </div>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Volume</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>cbm</div>
+                    </div>
+                </div>
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Length</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>cm</div>
+                    </div>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Width</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>cm</div>
+                    </div>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Height</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>cm</div>
+                    </div>
+                </div>
+            </div>
+            <div class=formrow>
+                <div class="formcell">
+                    <div class=inputlabel>Product Type</div>
+                    <div class=searchbarwrap>
+                        <div class="multiinput">
+                            <input type=text class=combobar style="min-width:100%;" placeholder="Tablet" />
+                            <div class=clearbar></div>
+                            <div class=badges></div>
+                        </div>
+
+                        <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                            <div class="menuitem algolia">Electronics</div>
+                            <div class="menuitem algolia">Material</div>
+                            <div class="menuitem algolia">Magic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=formrow>
+                    <div class="formcell">
+                        <div class=inputlabel>Quantity</div>
+                        <input type=text placeholder="3" />
+                    </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class=section>
+            <div class=formrow>
+                <div class=formcell>
+                    <span class=checkbox>
+                        <label><input type=checkbox /><span class=radiolabel>I agree to the <a href="javascript:void(0);">Terms and Conditions</a>.</span></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class=section>
+            <div class=btngroup>
+                <div class="btn shh">Cancel</div><div class=btn onclick="loading.call(this,event);" tabindex=0>
+                    <span class=label>Submit</span>
+                    <span class=spinning>
+                        <div class="spinner2 fat spinnergg">
+                            <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
+                        </div>
+                    </span>
+                    <span class=done>
+                        <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <style>
+
+    .emptydrop {font-style:italic;color:var(--grey50);}
+
+    .form {width:640px;margin:40px auto;}
+        .form h3 {margin:0 8px 12px;padding-bottom:8px;border-bottom:1px solid var(--grey30);}
+        .form h4 {margin:0 8px 12px;}
+
+        .form .description {margin:0 8px 24px;}
+
+        .form .section {margin-bottom:48px;}
+    .formrow {margin-bottom:24px;display:flex;}
+        /* .formrow {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+            grid-gap: 40px 16px;
+        } */
+
+        .formcell {width:100%;margin:0 8px;position:relative;}
+
+            .formcell input[type=text], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
+
+            .formcell.quarter {width: calc(50% - 16px);}
+
+            .formcell .dropwrap {width:100%;}
+
+        .form .popover {top: -5px;}
+
+        .form .btngroup {text-align:right;margin:0 8px;}
+        .form .btngroup .btn:last-child {margin:0;}
+
+
+
     .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
         .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
             animation: 1.1s infinite forwards pbar;
@@ -2372,6 +2655,7 @@
         var c = p.getElementsByClassName('popitem selected');
 
         d.removeAttribute('style');
+        d.classList.remove('emptydrop');
 
         c.removeclass('selected');
 
