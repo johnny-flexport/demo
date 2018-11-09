@@ -491,7 +491,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div>
         </div>
 
         <div class=tabline></div>
@@ -879,6 +879,184 @@
         </div>
     </div>
 
+    <style>
+        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;}
+            .calhead {line-height: 40px;position:relative;}
+                .nextmonth {width:40px;height:40px;position:absolute;top:0;right:4px;cursor:pointer;}
+                .lastmonth {width:40px;height:40px;position:absolute;top:0;left:4px;cursor:pointer;}
+
+                .monthcontrol {width:8px;height:8px;position:absolute;top:50%;left:50%;border:2px solid var(--grey50);border-left:none;border-top:none;transform:translate(-50%, -50%) rotate(135deg);transition:border-color 150ms ease-in-out;}
+                    .nextmonth .monthcontrol {transform:translate(-50%, -50%) rotate(-45deg);}
+
+                    .nextmonth:hover .monthcontrol, .lastmonth:hover .monthcontrol  {border-color:var(--grey60);}
+                    .nextmonth:active .monthcontrol, .lastmonth:active .monthcontrol  {border-color:var(--grey50);}
+                .month {font-weight:700;text-align:center;}
+
+            .week {padding:5px 8px;border:1px solid var(--grey20);border-left:none;border-right:none;}
+                .week::after {content:'';clear:both;display:block;}
+                .day {width:var(--lineheight);text-align:center;color:var(--grey50);font-size:11px;font-weight:500;text-transform:uppercase;line-height:20px;float:left;}
+
+            .dates {padding:4px 8px;}
+                .daterow {}
+                    .daterow::after {content:'';clear:both;display:block;}
+                    .daywrap {width:var(--lineheight);height:var(--lineheight);text-align:center;float:left;box-sizing:border-box;cursor:pointer;padding:1px;}
+
+                        .date {width:100%;height:100%;box-sizing:border-box;border-radius:50%;align-items: center;justify-content: center;display: flex;}
+
+                        .daywrap:hover .date {box-shadow:inset 0 0 0 3px var(--grey30);}
+                        .daywrap:active .date {box-shadow:inset 0 0 0 3px var(--grey40);}
+                    .nonmonth {color:var(--grey50);font-style:italic;}
+                    .currentday {font-weight:600;background:var(--grey20);}
+                    .selectedday {box-shadow:inset 0 0 0 3px var(--blue30);color:var(--blue50);background:var(--blue30);color:white;}
+                        .daywrap:hover .selectedday{box-shadow:inset 0 0 0 3px var(--blue50);}
+
+                .startday {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--blue30);}
+                .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--blue30);}
+                .middleday {border-radius:0;box-shadow:1px 0 var(--blue30), -1px 0 var(--blue30);}
+                .middleendday {border-radius: 0 3px 3px 0;box-shadow:-1px 0 var(--blue30);}
+                .endday {border-radius: 0 50% 50% 0;box-shadow:-1px 0 var(--blue30);}
+    </style>
+
+    <div class="demo calendar_demo">
+        <div class=calendar>
+            <div class=calhead>
+                <div class="lastmonth">
+                    <div class="monthcontrol"></div>
+                </div>
+                <div class="month">November 2018</div>
+                <div class="nextmonth">
+                    <div class="monthcontrol"></div>
+                </div>
+            </div>
+            <div class=week>
+                <div class=day>Su</div>
+                <div class=day>Mo</div>
+                <div class=day>Tu</div>
+                <div class=day>We</div>
+                <div class=day>Th</div>
+                <div class=day>Fr</div>
+                <div class=day>Sa</div>
+            </div>
+            <div class=dates>
+                <div class=daterow>
+                        <div class=daywrap><div class="date nonmonth">28</div></div>
+                    <div class=daywrap><div class="date nonmonth">29</div></div>
+                    <div class=daywrap><div class="date nonmonth">30</div></div>
+                    <div class=daywrap><div class="date nonmonth">31</div></div>
+                    <div class=daywrap><div class=date>1</div></div>
+                    <div class=daywrap><div class=date>2</div></div>
+                    <div class=daywrap><div class=date>3</div></div>
+                </div>
+                <div class=daterow>
+                    <div class=daywrap><div class=date>4</div></div>
+                    <div class=daywrap><div class=date>5</div></div>
+                    <div class=daywrap><div class=date>6</div></div>
+                    <div class=daywrap><div class=date>7</div></div>
+                    <div class=daywrap><div class="date currentday">8</div></div>
+                    <div class=daywrap><div class=date>9</div></div>
+                    <div class=daywrap><div class=date>10</div></div>
+                </div>
+                <div class=daterow>
+                    <div class=daywrap><div class=date>11</div></div>
+                    <div class=daywrap><div class=date>12</div></div>
+                    <div class=daywrap><div class=date>13</div></div>
+                    <div class=daywrap><div class=date>14</div></div>
+                    <div class=daywrap><div class=date>15</div></div>
+                    <div class=daywrap><div class=date>16</div></div>
+                    <div class=daywrap><div class=date>17</div></div>
+                </div>
+                <div class=daterow>
+                        <div class=daywrap><div class=date>18</div></div>
+                    <div class=daywrap><div class=date>19</div></div>
+                    <div class=daywrap><div class=date>20</div></div>
+                    <div class=daywrap><div class=date>21</div></div>
+                    <div class=daywrap><div class="date selectedday">22</div></div>
+                    <div class=daywrap><div class=date>23</div></div>
+                    <div class=daywrap><div class=date>24</div></div>
+                </div>
+                <div class=daterow>
+                        <div class=daywrap><div class=date>25</div></div>
+                    <div class=daywrap><div class=date>26</div></div>
+                    <div class=daywrap><div class=date>27</div></div>
+                    <div class=daywrap><div class=date>28</div></div>
+                    <div class=daywrap><div class=date>29</div></div>
+                    <div class=daywrap><div class=date>30</div></div>
+                    <div class=daywrap><div class="date nonmonth">1</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo calendar_demo">
+            <div class=calendar>
+                <div class=calhead>
+                    <div class="lastmonth">
+                        <div class="monthcontrol"></div>
+                    </div>
+                    <div class="month">November 2018</div>
+                    <div class="nextmonth">
+                        <div class="monthcontrol"></div>
+                    </div>
+                </div>
+                <div class=week>
+                    <div class=day>Su</div>
+                    <div class=day>Mo</div>
+                    <div class=day>Tu</div>
+                    <div class=day>We</div>
+                    <div class=day>Th</div>
+                    <div class=day>Fr</div>
+                    <div class=day>Sa</div>
+                </div>
+                <div class=dates>
+                    <div class=daterow>
+                            <div class=daywrap><div class="date nonmonth">28</div></div>
+                        <div class=daywrap><div class="date nonmonth">29</div></div>
+                        <div class=daywrap><div class="date nonmonth">30</div></div>
+                        <div class=daywrap><div class="date nonmonth">31</div></div>
+                        <div class=daywrap><div class=date>1</div></div>
+                        <div class=daywrap><div class=date>2</div></div>
+                        <div class=daywrap><div class=date>3</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class=date>4</div></div>
+                        <div class=daywrap><div class=date>5</div></div>
+                        <div class=daywrap><div class=date>6</div></div>
+                        <div class=daywrap><div class=date>7</div></div>
+                        <div class=daywrap><div class="date currentday">8</div></div>
+                        <div class=daywrap><div class=date>9</div></div>
+                        <div class=daywrap><div class=date>10</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class=date>11</div></div>
+                        <div class=daywrap><div class=date>12</div></div>
+                        <div class=daywrap><div class=date>13</div></div>
+                        <div class=daywrap><div class=date>14</div></div>
+                        <div class=daywrap><div class=date>15</div></div>
+                        <div class=daywrap><div class=date>16</div></div>
+                        <div class=daywrap><div class=date>17</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class=date>18</div></div>
+                        <div class=daywrap><div class=date>19</div></div>
+                        <div class=daywrap><div class=date>20</div></div>
+                        <div class=daywrap><div class=date>21</div></div>
+                        <div class=daywrap><div class="date selectedday startday">22</div></div>
+                        <div class=daywrap><div class="date selectedday middleday">23</div></div>
+                        <div class=daywrap><div class="date selectedday middleendday">24</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class="date selectedday middlestartday">25</div></div>
+                        <div class=daywrap><div class="date selectedday middleday">26</div></div>
+                        <div class=daywrap><div class="date selectedday endday">27</div></div>
+                        <div class=daywrap><div class=date>28</div></div>
+                        <div class=daywrap><div class=date>29</div></div>
+                        <div class=daywrap><div class=date>30</div></div>
+                        <div class=daywrap><div class="date nonmonth">1</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Simple Dropdown - grey 2 </div>
@@ -907,12 +1085,12 @@
 
                 .disabled .inputlabel {color:var(--grey40);}
 
-                .error .dropdown {background:var(--red10);color:var(--red50) !important;border-color:var(--red45);}
-                    .error .dropdown::after {border-color:var(--red45);}
-                        .error .dropdown:hover::after {border-color:var(--red50);}
-                        .error .dropdown:active::after {border-color:var(--red60);}
+                .error .dropdown {background:var(--red10);color:var(--red50) !important;border-color:var(--red40);}
+                    .error .dropdown::after {border-color:var(--red40);}
+                        .error .dropdown:hover::after {border-color:var(--red45);}
+                        .error .dropdown:active::after {border-color:var(--red50);}
 
-                    .error .dropdown:hover {box-shadow:0 2px 2px var(--errorshadow);border-color:var(--red50);}
+                    .error .dropdown:hover {box-shadow:0 2px 2px var(--errorshadow);border-color:var(--red45);}
                     .error .dropdown:active {box-shadow:none;border-color:var(--red45);}
 
                 .error .inputlabel {color:var(--red45);}
