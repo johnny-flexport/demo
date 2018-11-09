@@ -25,6 +25,8 @@
             --textpadd: 6px;
 
             --indent: 12px;
+
+            --fieldgap: 8px;
         }
 
         .funsize {
@@ -266,7 +268,7 @@
             color: var(--grey50);
         }
 
-        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--indent);position:relative;white-space:nowrap;max-width:200px;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;background:white;}
+        .dropdown {height:var(--lineheight);border-radius:var(--radius);border:1px solid var(--grey30);cursor:pointer;line-height:calc(var(--lineheight) - 2px);box-sizing:border-box;padding:0 var(--indent);position:relative;white-space:nowrap;width:100%;text-overflow: ellipsis;overflow:hidden;padding-right:40px;transition:all 150ms ease-in-out;background:white;}
             .dropdown::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(-45deg);position:absolute;top:50%;right:var(--inset);margin-top:-1px;transition:border-color 150ms ease-in-out;}
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
@@ -309,7 +311,7 @@
 
         .notransition .dropmenu, .notransition.popover {transition:none;}
 
-        .dropwrap {position:relative;user-select:none;display:inline-block;}
+        .dropwrap {position:relative;user-select:none;display:inline-block;max-width:200px;}
             .popover {position:absolute;background:white;position:absolute;top:0;left:-4px;border-radius:var(--radius);border:1px solid var(--grey30);box-shadow:0 2px 2px rgba(0,0,0,.05);z-index:1337;margin-left:0;pointer-events:none;opacity:0;min-width:calc(100% + 8px);top:calc(-1px - 4px - var(--lineheight));padding:4px 0;transform:scaleY(1);transition:all 150ms ease-in-out;box-sizing: border-box;}
                 .open .popover {opacity:1;pointer-events:all;transform:scaleY(1);}
             .popover .menuitem {line-height:var(--lineheight);min-width:0;padding:0 calc(var(--indent) + 4px);}
@@ -508,7 +510,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
         </div>
 
         <div class=tabline></div>
@@ -640,6 +642,64 @@
                     transform: translate(-50%, -50%) rotate(135deg);
                     margin-top: 2px;
                 }
+
+        </style>
+    </div>
+
+    <div class="demo slider_demo">
+        <div class=inputlabel>Slider</div>
+        <input type=range />
+
+        <style>
+            input[type=range] {
+                -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+                width: 280px; /* Specific width is required for Firefox. */
+                background: transparent; /* Otherwise white in Chrome */
+                border:none;
+                cursor:pointer;
+            }
+
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+            }
+
+            input[type=range]:focus {
+                outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+                box-shadow:none;
+            }
+
+            input[type=range]::-ms-track {
+                width: 100%;
+                cursor: pointer;
+
+                /* Hides the slider so custom styles can be added */
+                background: transparent;
+                border-color: transparent;
+                color: transparent;
+            }
+
+            input[type=range]::-webkit-slider-thumb {width:20px;height:20px;box-sizing:border-box;border-radius:50%;border:2px solid var(--grey50);margin-top:-9px;background:white;transition:all 150ms ease-in-out;}
+            input[type=range]:hover::-webkit-slider-thumb {border-color:var(--grey60);box-shadow:0 2px 2px var(--shadow);}
+            input[type=range]:active::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);border-width:10px;cursor:-webkit-grabbing;}
+            input[type=range]:focus::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 0 0 3px var(--blue20);}
+                input[type=range]:hover:focus::-webkit-slider-thumb {border-color:var(--blue40);}
+
+            input[type=range]::-moz-range-thumb {}
+            input[type=range]::-ms-thumb {}
+
+
+            input[type=range]::-webkit-slider-runnable-track {height:2px;background:var(--grey30);border-radius:1px;}
+            input[type=range]:focus::-webkit-slider-runnable-track {}
+
+
+            input[type=range]::-moz-range-track {}
+
+            input[type=range]::-ms-track {}
+            input[type=range]::-ms-fill-lower {}
+            input[type=range]:focus::-ms-fill-lower {}
+            input[type=range]::-ms-fill-upper {}
+            input[type=range]:focus::-ms-fill-upper {}
+
 
         </style>
     </div>
@@ -2014,6 +2074,120 @@
 </div>
 
 <div class="demo form_demo">
+    <div class=controlpanel>
+        <div class=control>
+            <div class=inputlabel>Form Width <div class=value>600</div></div>
+            <input type=range value=648 min=328 max=900 step=4 oninput="formwidth.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <div class=inputlabel>Section Spacing <div class=value>48</div></div>
+            <input type=range value=48 min=0 max=96 step=4 oninput="sectionspacing.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <div class=inputlabel>Row Spacing <div class=value>24</div></div>
+            <input type=range value=24 min=8 max=48 step=4 oninput="rowspacing.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <div class=inputlabel>Field Gap <div class=value>16</div></div>
+            <input type=range value=8 min=2 max=36 step=2 oninput="fieldgap.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').classList.toggle('hoverbg');" /><span class=radiolabel>Section hover background</span></label>
+            </span>
+        </div>
+    </div>
+
+    <style>
+        .controlpanel {position:absolute;top:240px;left:24px;width:100%;max-width:280px;padding:24px;}
+            .control {position:relative;margin-bottom: 16px;}
+                .control .value {float:right;font-weight: 500;color: var(--grey60);font-variant-numeric: tabular-nums;}
+                .control input[type=range] {width:100%;}
+
+        .hoverbg .section:hover {background:var(--grey10);}
+    </style>
+
+    <script>
+        function formwidth(e){
+            var c = this.getparent('control');
+            var p = c.getparent('form_demo');
+            var f  = p.getElementsByClassName('form')[0];
+            var v = this.value;
+            var l = c.getElementsByClassName('value')[0];
+            var cv = v + 'px';
+
+            if ( v >= 900 ){
+                cv = '100%';
+            }
+
+            l.innerText = v - 48;
+
+            f.style.maxWidth = cv;
+        }
+
+        function sectionspacing(e){
+            var c = this.getparent('control');
+            var p = c.getparent('form_demo');
+            var f  = p.getElementsByClassName('form')[0];
+            var v = this.value;
+            var l = c.getElementsByClassName('value')[0];
+            var vv = v/2 + 'px';
+
+            var s = f.getElementsByClassName('section');
+
+            for(var i=0;i<s.length;i++){
+                var sec = s[i];
+                sec.style.padding = vv + ' 16px';
+            }
+
+
+            l.innerText = v;
+        }
+
+        function fieldgap(e){
+            var v = this.value;
+
+            var c = this.getparent('control');
+            var l = c.getElementsByClassName('value')[0];
+            var vv = v*2;
+
+            var old = document.getElementsByClassName('fieldgap');
+
+            while(old[0]){
+                old[0].parentNode.removeChild(old[0]);
+            }
+
+            var style = document.createElement('style');
+            style.className = 'fieldgap';
+            style.innerHTML = ' :root {--fieldgap: ' + v + 'px !important;}';
+            document.head.appendChild(style);
+
+            l.innerText = vv;
+        }
+
+        function rowspacing(e){
+            var v = this.value;
+            var c = this.getparent('control');
+            var p = c.getparent('form_demo');
+            var f  = p.getElementsByClassName('form')[0];
+            var l = c.getElementsByClassName('value')[0];
+            var s = f.getElementsByClassName('formrow');
+
+            var vv = v + 'px';
+
+            for(var i=0;i<s.length;i++){
+                var a = s[i];
+                a.style.marginBottom = vv;
+            }
+
+
+            l.innerText = v;
+        }
+    </script>
     <div class=form>
         <div class=heading>
             <h3>Create Booking</h3>
@@ -2259,35 +2433,39 @@
 
     .emptydrop {font-style:italic;color:var(--grey50);}
 
-    .form {width:640px;margin:40px auto;}
-        .form h3 {margin:0 8px 12px;padding-bottom:8px;border-bottom:1px solid var(--grey30);}
-        .form h4 {margin:0 8px 12px;}
+    .form {width:100%;max-width:648px;margin:40px auto;}
+        .form h3 {margin:0 var(--fieldgap) 12px;padding-bottom:8px;border-bottom:1px solid var(--grey30);}
+        .form h4 {margin:0 var(--fieldgap) 12px;}
 
-        .form .description {margin:0 8px 24px;}
+        .form .description {margin:0 var(--fieldgap) 24px;}
 
         .form .heading {padding:0 16px;}
 
-        .form .section {margin-bottom:0;padding:24px 16px;}
+        .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
+
+        .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
     .formrow {margin-bottom:24px;display:flex;}
-        .formrow:last-child {margin-bottom:0;}
+        .formrow:last-child {margin-bottom:0 !important;}
         /* .formrow {
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
             grid-gap: 40px 16px;
         } */
 
-        .formcell {width:100%;margin:0 8px;position:relative;}
+        .formcell {width:100%;margin:0 var(--fieldgap);position:relative;}
 
             .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
 
-            .formcell.quarter {width: calc(50% - 16px);}
+            .formcell.quarter {width: calc(50% - (var(--fieldgap) * 2));}
 
-            .formcell .dropwrap {width:100%;}
+            .formcell .dropwrap {width:100%;max-width:100%;}
 
         .form .popover {top: -5px;}
 
         .form .btngroup {text-align:right;margin:0 8px;}
         .form .btngroup .btn:last-child {margin:0;}
+
+        .form .dropwrap {display:block;}
 
 
 
