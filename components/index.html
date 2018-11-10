@@ -3164,8 +3164,11 @@
         var hash = window.location.hash;
         if(hash) {
             hash = hash.replace('#', '');
-            console.log(hash);
-            document.querySelector('.tab[data-type=' + hash + ']').click();;
+
+            var exist = document.querySelector('.tab[data-type=' + hash + ']');
+            if ( exist ){
+                exist.click();
+            }
         } else {
             document.getElementById('starttab').click();
         }
