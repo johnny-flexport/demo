@@ -2140,6 +2140,12 @@
             l.innerText = v - 48;
 
             f.style.maxWidth = cv;
+
+            if ( v < 400 ){
+                f.classList.add('onecolumn');
+            } else {
+                f.classList.remove('onecolumn');
+            }
         }
 
         function sectionspacing(e){
@@ -2461,6 +2467,7 @@
             .errormessage {background:var(--grey10);padding:16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
                 /* background: var(--red10);
                 color:var(--red50); */
+                color: var(--red50);
             }
 
     .formerror {margin: 0 calc(var(--fieldgap) + 16px);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
@@ -2482,6 +2489,8 @@
 
         .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
     .formrow {margin-bottom:24px;display:flex;}
+
+        .onecolumn .formrow {display:block;}
         .formrow:last-child {margin-bottom:0 !important;}
         /* .formrow {
             display: grid;
@@ -2490,10 +2499,13 @@
         } */
 
         .formcell {width:100%;margin:0 var(--fieldgap);position:relative;}
+            .onecolumn .formcell {margin-bottom:24px;width:calc(100% - (var(--fieldgap) * 2));}
+            .onecolumn .formcell:last-child {margin-bottom:0;}
 
             .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
 
             .formcell.quarter {width: calc(50% - (var(--fieldgap) * 2));}
+                .onecolumn .formcell.quarter {width:calc(100% - (var(--fieldgap) * 2));}
 
             .formcell .dropwrap {width:100%;max-width:100%;}
 
