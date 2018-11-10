@@ -118,7 +118,9 @@
 
         input, textarea {-moz-appearance:none;-webkit-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;}
 
-        input[type='number'] {
+        input[type=text], input[type=number] {line-height:var(--lineheight);}
+
+        input[type=number] {
             -moz-appearance:textfield;
         }
 
@@ -2289,7 +2291,7 @@
                     <input type=text placeholder="555-555-5555" />
                 </div>
                 <div class=formcell>
-                    <div class=inputlabel>Email</div>
+                    <div class=inputlabel>Email - Read Only</div>
                     <input type=text placeholder="dave@email.com" value="mikejones@flexport.com" readonly />
                 </div>
             </div>
@@ -2388,6 +2390,35 @@
                     </div>
                 </div>
             </div>
+            <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Full Container Loads</div>
+                        <div class="relative  suffix">
+                            <input type=text placeholder="" />
+                            <div class=inlabel>FCL</div>
+                        </div>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Less than Container</div>
+                        <div class="relative  suffix">
+                            <input type=text placeholder="" />
+                            <div class=inlabel>LCL</div>
+                        </div>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Cartons</div>
+                        <div class="relative  suffix">
+                            <input type=text placeholder="" />
+                            <div class=inlabel>Per</div>
+                        </div>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Type</div>
+                        <div class="relative ">
+                            <input type=text placeholder="Carton" />
+                        </div>
+                    </div>
+                </div>
             <div class=formrow>
                 <div class="formcell">
                     <div class=inputlabel>Product Type</div>
