@@ -824,6 +824,9 @@
             <div class="tooltip error right2">
                 This field can't be blank.
             </div>
+            <!-- <div class=helper>
+                <div class=errortext>This field can't be blank.</div>
+            </div> -->
         </span>
         <span class=inlinewrap>
             <div class=inputlabel>Read Only</div>
@@ -855,7 +858,7 @@
     <style>
         .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
         .tooltip.error {background:var(--red45);}
-        input:focus ~ .tooltip, input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+        .demo:not(.notooltip) input:focus ~ .tooltip, .demo:not(.notooltip) input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
 
         .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
         .stuck2 input:focus ~ .label2, .stuck .label2 {opacity:1;pointer-events:all;}
@@ -2131,9 +2134,33 @@
         </div>
         <div class=control>
             <span class=checkbox>
-                <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('formerror')[0].classList.toggle('open')" /><span class=radiolabel>Form Error</span></label>
+                <label><input type=checkbox id=formerrors onchange="openformerrors.call(this,event)" /><span class=radiolabel>Form Error</span></label>
             </span>
         </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').classList.toggle('req')" /><span class=radiolabel>Show Required</span></label>
+            </span>
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').classList.toggle('inlineerrors')" /><span class=radiolabel>Inline Errors</span></label>
+            </span>
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').classList.toggle('notooltip')" checked /><span class=radiolabel>Tooltip Errors</span></label>
+            </span>
+        </div>
+
+        <!-- <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').classList.toggle('errorall')"  /><span class=radiolabel>Error All</span></label>
+            </span>
+        </div> -->
     </div>
 
     <style>
@@ -2146,6 +2173,15 @@
     </style>
 
     <script>
+        function openformerrors(e){
+            var  f = this.getparent('form_demo');
+            fe = f.getElementsByClassName('formerror');
+
+            for(var i=0;i<fe.length;i++){
+                fe[i].classList.toggle('open');
+            }
+        }
+
         function formwidth(e){
             var c = this.getparent('control');
             var p = c.getparent('form_demo') || c.getparent('form2_demo');
@@ -2229,6 +2265,13 @@
         }
     </script>
     <div class=form>
+            <div class=formerror>
+                    <div class=errorwrap>
+                        <div class=errormessage>
+                                <div class=inlineerroricon></div>Everything is missing =(
+                        </div>
+                    </div>
+                </div>
         <div class=heading>
             <h3>Create Booking</h3>
             <div class=description>Fill out the form below to get started on your first booking! It’s that simple.</div>
@@ -2238,6 +2281,9 @@
                 <div class=formcell>
                     <div class=inputlabel>Shipment Name</div>
                     <input type=text placeholder="E-Scooters" />
+                    <div class=helper>
+                        <div class=text>Give it a name that's unique and you'll remember</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2254,21 +2300,25 @@
                 <div class=formcell>
                     <div class=inputlabel>First Name</div>
                     <input type=text placeholder="Mike" />
+                    <div class=helper></div>
                 </div><div class=formcell>
                     <div class=inputlabel>Last Name</div>
                     <input type=text placeholder="Jones" />
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
                 <div class=formcell>
                     <div class=inputlabel>Address</div>
                     <input type=text placeholder="742 Evergreen Terrace" />
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
-                <div class=formcell>
+                <div class="formcell optional">
                     <div class=inputlabel>Address 2 (Optional)</div>
                     <input type=text placeholder="Apt 1337 - Optional" />
+                    <div class=helper><div class=text>For things such as apartment numbers or office locations</div></div>
                 </div>
             </div>
             <div class=formrow>
@@ -2277,6 +2327,9 @@
                     <input type=text placeholder="Springfield"  />
                     <div class="tooltip error right2">
                         This field can't be blank.
+                    </div>
+                    <div class=helper>
+                        <div class=errortext>This field can't be blank.</div>
                     </div>
                 </div><div class="formcell quarter">
                     <div class=inputlabel>State</div>
@@ -2299,19 +2352,23 @@
                             <div class="menuitem popitem type4">HI</div>
                         </div>
                     </div>
+                    <div class=helper></div>
                 </div><div class="formcell quarter disabled">
                     <div class=inputlabel>Zip Code</div>
                     <input type=text placeholder="90210" value=90210 disabled />
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
                 <div class=formcell>
                     <div class=inputlabel>Phone Number</div>
                     <input type=text placeholder="555-555-5555" />
+                    <div class=helper></div>
                 </div>
                 <div class=formcell>
                     <div class=inputlabel>Email - Read Only</div>
                     <input type=text placeholder="dave@email.com" value="mikejones@flexport.com" readonly />
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
@@ -2349,12 +2406,14 @@
                             <div class=menuitem>Bahamas</div>
                         </div>
                     </div>
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
                 <div class=formcell>
                     <div class=inputlabel>Comments</div>
                     <textarea placeholder="I love you" class=autoexpand></textarea>
+                    <div class=helper></div>
                 </div>
             </div>
         </div>
@@ -2367,6 +2426,7 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>$</div>
                     </div>
+                    <div class=helper></div>
                 </div>
             </div>
 
@@ -2377,6 +2437,7 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>kg</div>
                     </div>
+                    <div class=helper></div>
                 </div>
                 <div class=formcell>
                     <div class=inputlabel>Volume</div>
@@ -2384,6 +2445,7 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>cbm</div>
                     </div>
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
@@ -2393,6 +2455,7 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>cm</div>
                     </div>
+                    <div class=helper></div>
                 </div>
                 <div class=formcell>
                     <div class=inputlabel>Width</div>
@@ -2400,6 +2463,7 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>cm</div>
                     </div>
+                    <div class=helper></div>
                 </div>
                 <div class=formcell>
                     <div class=inputlabel>Height</div>
@@ -2407,37 +2471,38 @@
                         <input type=text placeholder="" />
                         <div class=inlabel>cm</div>
                     </div>
+                    <div class=helper></div>
                 </div>
             </div>
             <div class=formrow>
-                    <div class=formcell>
-                        <div class=inputlabel>Full Container Loads</div>
-                        <div class="relative  suffix">
-                            <input type=text placeholder="" />
-                            <div class=inlabel>FCL</div>
-                        </div>
-                    </div>
-                    <div class=formcell>
-                        <div class=inputlabel>Less than Container</div>
-                        <div class="relative  suffix">
-                            <input type=text placeholder="" />
-                            <div class=inlabel>LCL</div>
-                        </div>
-                    </div>
-                    <div class=formcell>
-                        <div class=inputlabel>Cartons</div>
-                        <div class="relative  suffix">
-                            <input type=text placeholder="" />
-                            <div class=inlabel>Per</div>
-                        </div>
-                    </div>
-                    <div class=formcell>
-                        <div class=inputlabel>Type</div>
-                        <div class="relative ">
-                            <input type=text placeholder="Carton" />
-                        </div>
+                <div class=formcell>
+                    <div class=inputlabel>Full Container Loads</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>FCL</div>
                     </div>
                 </div>
+                <div class=formcell>
+                    <div class=inputlabel>Less than Container</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>LCL</div>
+                    </div>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Cartons</div>
+                    <div class="relative  suffix">
+                        <input type=text placeholder="" />
+                        <div class=inlabel>Per</div>
+                    </div>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Type</div>
+                    <div class="relative ">
+                        <input type=text placeholder="Carton" />
+                    </div>
+                </div>
+            </div>
             <div class=formrow>
                 <div class="formcell">
                     <div class=inputlabel>Product Type</div>
@@ -2487,10 +2552,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="section reqsection stext">
+            * Required fields
+        </div>
         <div class=section>
             <div class=btngroup>
-                <div class="btn shh" tabindex=0>Cancel</div><div class=btn onclick="loading.call(this,event);" tabindex=0>
+                <div class="btn shh" tabindex=0>Cancel</div><div class=btn onclick="surprise.call(this,event);" data-clicks=0 tabindex=0>
                     <span class=label>Submit</span>
                     <span class=spinning>
                         <div class="spinner2 fat spinnergg">
@@ -2816,6 +2883,15 @@
     .form .subsection {padding-left:0;}
         .noindent .subsection {padding-left:48px;}
 
+    .req .form .formcell:not(.optional) .inputlabel::after {content:' *';}
+    .reqsection {display:none;}
+    .req .reqsection {display:block;}
+
+    .form .helper {}
+        .form .helper .text {font-size:13px;color:var(--grey50);margin-top:4px;}
+        .form .helper .errortext {font-size:13px;color:var(--red45);margin-top:4px;display:none;}
+        .inlineerrors .error .helper .errortext {display:block;}
+
     .sectionborders .section.borderable {border-radius:6px;border:1px solid var(--grey30); margin: 0 24px;padding: 20px 12px 24px 12px;box-shadow: 0 2px 2px var(--shadow);}
         .sectionborders .formsectionwrapper .section.borderable {margin-top:20px;}
 
@@ -2829,13 +2905,12 @@
             .errormessage {background:var(--grey10);padding:16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
                 /* background: var(--red10);
                 color:var(--red50); */
-                color: var(--red50);
             }
 
     .formerror {margin: 0 calc(var(--fieldgap) + 16px);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
         .formerror.open {height:80px;opacity:1;}
         .formerror .errorwrap {border:1px solid var(--red20);}
-        .formerror .errormessage {background: var(--red10);color:var(--red50);}
+        .formerror .errormessage {background: var(--red10);color:var(--grey60);}
 
     .emptydrop {font-style:italic;color:var(--grey50);}
 
@@ -2879,6 +2954,18 @@
 
         .form .dropwrap {display:block;}
 
+
+        .btn.errorsubmit {
+            animation: 200ms 3 forwards nooo;
+        }
+
+        @keyframes nooo {
+            from {transform:translateX(0);}
+            25% {transform:translateX(-4px);}
+            50% {transform:translateX(0);}
+            75% {transform:translateX(4px);}
+            to {transform:translateX(0);}
+        }
 
 
     .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
@@ -2945,6 +3032,33 @@
 </style>
 
 <script>
+
+    function surprise(e){
+        this.classList.remove('errorsubmit');
+        var c = Number(this.dataset.clicks);
+
+        this.dataset.clicks = c + 1;
+
+        var f = document.getElementById('formerrors');
+        var fc = f.checked;
+
+        if ( c % 2 ){
+            loading.call(this,e);
+            if ( fc ){
+                f.click();
+            }
+        } else {
+            this.offsetLeft;
+
+            this.classList.add('errorsubmit');
+
+            if ( !fc ){
+                f.click();
+            }
+
+        }
+    }
+
     function addanother(e){
         var cw = document.getElementById('containersection');
         var c = cw.cloneNode(true);
