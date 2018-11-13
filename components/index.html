@@ -70,8 +70,8 @@
             .btn.danger:hover {background:var(--red50);box-shadow:0 2px 2px hsla(356, 67%, 39%, .2);}
             .btn.danger:active {background:var(--red60);box-shadow:none;}
 
-        .btn.hollow {background:transparent;border:1px solid var(--grey30);color:var(--grey60);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
-            .btn.hollow:hover, .dropdown:hover {background:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+        .btn.hollow {background-color:transparent;border:1px solid var(--grey30);color:var(--grey60);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
+            .btn.hollow:hover, .dropdown:hover {background-color:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
             .btn.hollow:active, .dropdown:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;}
 
             .btn.hollow.danger {color:var(--red45);}
@@ -129,22 +129,24 @@
             -webkit-appearance: none;
         }
 
-        input[type=text], input[type=number], textarea {transition:all 150ms ease-in-out;}
+        input[type=text], input[type=number], textarea {transition:all 150ms ease-in-out;box-shadow:0 0 0 var(--shadow);}
             input[type=text]:hover, input[type=number]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
             input[type=text]:active, input[type=number]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
             input[type=text]:focus, input[type=number]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);}
 
-        input[type=text]:read-only, input[type=number]:read-only {border-color:var(--grey20);background:var(--grey10);}
+        input[type=text]:read-only, input[type=number]:read-only, textarea:read-only {border-color:var(--grey20);background:var(--grey10);}
         input[type=text]:read-only:hover, input[type=number]:read-only:hover {box-shadow:none;}
 
         textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
 
         .error input[type=text], .error input[type=number], .error textarea {border-color:var(--red45);}
-            .error input[type=text]:focus, .error input[type=number]:focus, .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
+            .error input[type=text]:focus, .error input[type=number]:focus, body:not(.hidefocus) .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
         .error .inputlabel {color:var(--red45);}
 
 
-        .error input[type=text], .error input[type=number], .error textarea {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
+        .error input[type=text], .error input[type=number], .error textarea, .error .dropdown {background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: right 12px center;padding-right:40px;}
+
+            .error textarea {background-position-y: calc((var(--lineheight) - 18px) / 2);}
 
         .inlineerroricon {width:20px;height:20px;display:inline-block;margin-right:8px;vertical-align:top;background-image:url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ef3340' %3E%3C/path%3E%3C/svg%3E");background-repeat:no-repeat;background-position: center center;}
 
@@ -277,7 +279,7 @@
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
 
-            .dropdown:hover {border-color:var(--grey40);background:white;}
+            .dropdown:hover {border-color:var(--grey40);background-color:white;}
 
             .open .dropdown {border-color:var(--blue30);background-color:var(--blue10);}
                 .open .dropdown::after {border-color:var(--blue30);}
@@ -940,9 +942,21 @@
     </div>
 
     <div class="demo textarea_demo">
-        <div class="relative inblock autotext">
+        <div class="relative inblock autotext" style="margin-right: 20px;">
             <div class=inputlabel>Textarea - Static</div>
             <textarea placeholder="Type here..."  style="min-height:214px;"></textarea>
+        </div>
+        <div class="relative inblock autotext disabled" style="margin-right: 20px;">
+            <div class=inputlabel>Textarea - Disabled</div>
+            <textarea placeholder="Type here..."  style="min-height:214px;" disabled></textarea>
+        </div>
+        <div class="relative inblock autotext error" style="margin-right: 20px;">
+            <div class=inputlabel>Textarea - Error</div>
+            <textarea placeholder="Type here..."  style="min-height:214px;"></textarea>
+        </div>
+        <div class="relative inblock autotext readonly" style="margin-right: 20px;">
+            <div class=inputlabel>Textarea - Readonly</div>
+            <textarea placeholder="Type here..."  style="min-height:214px;" readonly>Can't touch this</textarea>
         </div>
     </div>
 
@@ -1248,7 +1262,7 @@
 
                 .disabled .inputlabel {color:var(--grey40);}
 
-                .error .dropdown {background:var(--red10);color:var(--red50) !important;border-color:var(--red40);}
+                .error .dropdown {background-color:var(--red10);color:var(--red50) !important;border-color:var(--red40);background-position: right var(--lineheight) center;padding-right: 60px;}
                     .error .dropdown::after {border-color:var(--red40);}
                         .error .dropdown:hover::after {border-color:var(--red45);}
                         .error .dropdown:active::after {border-color:var(--red50);}
