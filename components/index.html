@@ -22,7 +22,7 @@
             --blueshadow: hsla(224, 88%, 55%, 0.2);
             --errorshadow: hsla(355, 70%, 50%, 0.2);
 
-            --textpadd: 6px;
+            --textpadd: 7px;
 
             --indent: 12px;
 
@@ -55,7 +55,7 @@
             --indent: 16px;
         }
 
-        .demo {padding:24px 40px 0;margin-bottom:24px;}
+        .demo {padding:24px 40px 0;margin-bottom:24px;position: relative;}
 
 
         .btn {background:var(--blue30);user-select:none;border-radius:var(--radius);padding:0 var(--inset);line-height:var(--lineheight);height:var(--lineheight);font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:0 16px 0 0;position:relative;box-sizing:border-box;
@@ -514,7 +514,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Forms</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div>
         </div>
 
         <div class=tabline></div>
@@ -603,7 +603,7 @@
     <div class="demo stepper_demo">
         <span class=inlinewrap>
             <div class=inputlabel>Label</div>
-            <div class=relative>
+            <div class="relative stepwrap">
                 <input type=number placeholder="0" />
                 <div class=stepper>
                     <div class="step stepdown"></div>
@@ -612,7 +612,22 @@
             </div>
         </span>
 
+        <span class=inlinewrap>
+            <div class=inputlabel>Label</div>
+            <div class="relative altstep">
+                <input type=number placeholder="0" />
+                <div class="stepper">
+                    <div class="step stepup"></div>
+
+                </div>
+                <div class="stepper stepperup">
+                    <div class="step stepdown"></div>
+                </div>
+            </div>
+        </span>
+
         <style>
+            .stepwrap input {padding-right:calc(var(--lineheight) * 2);}
             .stepper {position:absolute;top:0;right:0;bottom:0;}
             .step {width:var(--lineheight);height:100%;float:left;border:1px solid transparent;position:relative;box-sizing:border-box;cursor:pointer;transition:all 150ms ease-in-out;}
                 .step:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
@@ -646,6 +661,11 @@
                     transform: translate(-50%, -50%) rotate(135deg);
                     margin-top: 2px;
                 }
+
+                .altstep .stepperup {left:0;position:absolute;right:auto;}
+                .altstep .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
+                .altstep .stepdown {border-radius: var(--radius) 0 0 var(--radius);margin:0;}
+                .altstep input {padding:0 var(--lineheight);text-align:center;}
 
         </style>
     </div>
@@ -771,23 +791,22 @@
     </div>
 
     <div class="demo combo_demo">
-
         <div class="filter ">
-                <div class=inputlabel>MultiInput</div>
-                <div class=searchbarwrap>
-                    <div class="multiinput">
-                        <input type=text class=combobar style="min-width:480px;" placeholder="Type here..." />
-                        <div class=clearbar></div>
-                        <div class=badges></div>
-                    </div>
+            <div class=inputlabel>MultiInput</div>
+            <div class=searchbarwrap>
+                <div class="multiinput">
+                    <input type=text class=combobar style="min-width:480px;" placeholder="Type here..." />
+                    <div class=clearbar></div>
+                    <div class=badges></div>
+                </div>
 
-                    <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
-                        <div class="menuitem algolia">Combo item 1</div>
-                        <div class="menuitem algolia">Combo item 2</div>
-                        <div class="menuitem algolia">Combo item 3</div>
-                    </div>
+                <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                    <div class="menuitem algolia">Combo item 1</div>
+                    <div class="menuitem algolia">Combo item 2</div>
+                    <div class="menuitem algolia">Combo item 3</div>
                 </div>
             </div>
+        </div>
     </div>
 
     <div class="demo textfield_demo">
@@ -2081,7 +2100,7 @@
     <div class=controlpanel>
         <div class=control>
             <div class=inputlabel>Form Width <div class=value>600</div></div>
-            <input type=range value=648 min=328 max=900 step=4 oninput="formwidth.call(this,event)" />
+            <input type=range value=648 min=328 max=1200 step=4 oninput="formwidth.call(this,event)" />
         </div>
 
         <div class=control>
@@ -2118,7 +2137,7 @@
     </div>
 
     <style>
-        .controlpanel {position:absolute;top:240px;left:24px;width:100%;max-width:280px;padding:24px;}
+        .controlpanel {position:absolute;top:24px;left:24px;width:100%;max-width:280px;padding:24px;}
             .control {position:relative;margin-bottom: 16px;}
                 .control .value {float:right;font-weight: 500;color: var(--grey60);font-variant-numeric: tabular-nums;}
                 .control input[type=range] {width:100%;}
@@ -2129,13 +2148,13 @@
     <script>
         function formwidth(e){
             var c = this.getparent('control');
-            var p = c.getparent('form_demo');
+            var p = c.getparent('form_demo') || c.getparent('form2_demo');
             var f  = p.getElementsByClassName('form')[0];
             var v = this.value;
             var l = c.getElementsByClassName('value')[0];
             var cv = v + 'px';
 
-            if ( v >= 900 ){
+            if ( v >= 1200 ){
                 cv = '100%';
             }
 
@@ -2152,7 +2171,7 @@
 
         function sectionspacing(e){
             var c = this.getparent('control');
-            var p = c.getparent('form_demo');
+            var p = c.getparent('form_demo') || c.getparent('form2_demo');
             var f  = p.getElementsByClassName('form')[0];
             var v = this.value;
             var l = c.getElementsByClassName('value')[0];
@@ -2193,7 +2212,7 @@
         function rowspacing(e){
             var v = this.value;
             var c = this.getparent('control');
-            var p = c.getparent('form_demo');
+            var p = c.getparent('form_demo') || c.getparent('form2_demo');
             var f  = p.getElementsByClassName('form')[0];
             var l = c.getElementsByClassName('value')[0];
             var s = f.getElementsByClassName('formrow');
@@ -2489,8 +2508,320 @@
     </div>
 </div>
 
+<div class="demo form2_demo">
+        <div class=controlpanel>
+            <div class=control>
+                <div class=inputlabel>Form Width <div class=value>600</div></div>
+                <input type=range value=648 min=328 max=1200 step=4 oninput="formwidth.call(this,event)" />
+            </div>
+
+            <div class=control>
+                <div class=inputlabel>Section Spacing <div class=value>48</div></div>
+                <input type=range value=48 min=0 max=96 step=4 oninput="sectionspacing.call(this,event)" />
+            </div>
+
+            <div class=control>
+                <div class=inputlabel>Row Spacing <div class=value>24</div></div>
+                <input type=range value=24 min=8 max=48 step=4 oninput="rowspacing.call(this,event)" />
+            </div>
+
+            <div class=control>
+                <div class=inputlabel>Field Gap <div class=value>16</div></div>
+                <input type=range value=8 min=2 max=36 step=2 oninput="fieldgap.call(this,event)" />
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('hoverbg');" /><span class=radiolabel>Section hover background</span></label>
+                </span>
+            </div>
+<!--
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('sectionerror')[0].classList.toggle('open')" /><span class=radiolabel>Section Error</span></label>
+                </span>
+            </div>
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('formerror')[0].classList.toggle('open')" /><span class=radiolabel>Form Error</span></label>
+                </span>
+            </div> -->
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox  onchange="this.getparent('form2_demo').classList.toggle('noindent')" /><span class=radiolabel>Sub Section Indent</span></label>
+                </span>
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('sectionborders')" /><span class=radiolabel>Section Borders</span></label>
+                </span>
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('type2')" /><span class=radiolabel>Sections Type2</span></label>
+                </span>
+            </div>
+        </div>
+    <div class=form>
+        <div class=heading>
+            <h3>Shipment</h3>
+            <div class=description>Complete your shipping instructions.</div>
+        </div>
+
+        <div class=section>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Shipment Name</div>
+                    <input type=text placeholder="E-Scooters" />
+                </div>
+            </div>
+        </div>
+        <div id=containersection>
+            <div class="section borderable">
+                <h4>Container <span class=cid>1</span></h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Container ID</div>
+                        <input type=text placeholder="GESU6606324" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Size</div>
+                        <div class="dropwrap">
+                            <div class="dropdown droppop type2 emptydrop" tabindex=0>
+                                None
+                            </div>
+                            <div  class=popover>
+                                <div class="menuitem popitem type4">20 ft</div>
+                                <div class="menuitem popitem type4">40 ft</div>
+                                <div class="menuitem popitem type4">40 x 9 ft</div>
+                                <div class="menuitem popitem type4">45 ft</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Type</div>
+                        <div class="dropwrap">
+                            <div class="dropdown droppop type2 emptydrop" tabindex=0>
+                                None
+                            </div>
+                            <div  class=popover>
+                                <div class="menuitem popitem type4">Dry</div>
+                                <div class="menuitem popitem type4">Flat Rack</div>
+                                <div class="menuitem popitem type4">Headload</div>
+                                <div class="menuitem popitem type4">Open</div>
+                                <div class="menuitem popitem type4">Reefer</div>
+                                <div class="menuitem popitem type4">Tank</div>
+                                <div class="menuitem popitem type4">Ventilated</div>
+                                <div class="menuitem popitem type4">Dry Bulk</div>
+                                <div class="menuitem popitem type4">Special</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=subsection>
+                    <div class=subheading>
+                        <h4>Container <span class=cid>1</span> Contents</h4>
+                    </div>
+                    <div class=formrow>
+                        <div class="formcell radiowrap">
+                            <div class=inputlabel>Package Details</div>
+                            <span class=radio>
+                                <input type=radio class="offscreen" name=res4a id=res984a checked />
+                                <label for=res984a><span class=radiohead></span><span class=radiolabel>Total</span></label>
+                            </span>
+                            <span class=radio>
+                                <input type=radio class="offscreen" name=res4a id=res994a />
+                                <label for=res994a><span class=radiohead></span><span class=radiolabel>Individual</span></label>
+                            </span>
+                        </div>
+                        <div class="formcell radiowrap">
+                            <div class=inputlabel>Units</div>
+                            <span class=radio>
+                                <input type=radio class="offscreen" name=res4 id=res984 checked />
+                                <label for=res984><span class=radiohead></span><span class=radiolabel>kg/cbm</span></label>
+                            </span>
+                            <span class=radio>
+                                <input type=radio class="offscreen" name=res4 id=res994 />
+                                <label for=res994><span class=radiohead></span><span class=radiolabel>lb/cft</span></label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class=formrow>
+                        <div class=formcell>
+                            <div class="relative ">
+                                <div class=inputlabel>Weight</div>
+                                <div class="relative  suffix">
+                                    <input type=number placeholder="0" />
+                                    <div class=inlabel>kg</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=formcell>
+                            <div class="relative ">
+                                <div class=inputlabel>Volume</div>
+                                <div class="relative  suffix">
+                                    <input type=number placeholder="0" />
+                                    <div class=inlabel>cbm</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=formcell>
+                            <div class=inputlabel>Type</div>
+                            <div class="dropwrap">
+                                <div class="dropdown droppop type2 " tabindex=0>
+                                    Carton
+                                </div>
+                                <div  class=popover>
+                                    <div class="menuitem popitem type4 selected">Carton</div>
+                                    <div class="menuitem popitem type4">40 ft</div>
+                                    <div class="menuitem popitem type4">40 x 9 ft</div>
+                                    <div class="menuitem popitem type4">45 ft</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=formcell>
+                            <div class=inputlabel>Total Cartons</div>
+                            <input type=number placeholder="0" />
+                        </div>
+                    </div>
+
+                    <div class=formrow>
+                        <div class=formcell>
+                            <div class=inputlabel>Marks and Numbers</div>
+                            <textarea placeholder="Mark 8256" class=autoexpand></textarea>
+                        </div>
+                        <div class=formcell>
+                            <div class=inputlabel>Description of Goods</div>
+                            <textarea placeholder="Cookies" class=autoexpand></textarea>
+                        </div>
+                    </div>
+
+                    <div class=formrow>
+                        <div class="formcell ">
+                            <div class=inputlabel>HS Codes</div>
+                            <div class=searchbarwrap>
+                                <div class="multiinput">
+                                    <input type=text class=combobar style="min-width:100%;" placeholder="Type here..." />
+                                    <div class=clearbar></div>
+                                    <div class=badges></div>
+                                </div>
+
+                                <div class="combomenu menu2" onclick="this.parentElement.classList.remove('open');">
+                                    <div class="menuitem algolia">4202.12</div>
+                                    <div class="menuitem algolia">4202.13</div>
+                                    <div class="menuitem algolia">4202.14</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=formsectionwrapper>
+
+        </div>
+        <div class=section>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class="btn hollow cta" onclick="addanother.call(this,event);">Add Another Container</div>
+                </div>
+            </div>
+
+            <div class="subtotalsection">
+                <h4>Cargo Totals</h4>
+                <div class="formrow ">
+
+                    <div class=formcell>
+                        <h5>Container Count</h5>
+                        <div class=value>1</div>
+                    </div>
+                    <div class=formcell>
+                        <h5>Total Weight</h5>
+                        <div class=value>3,4750 kg</div>
+                    </div>
+                    <div class=formcell>
+                        <h5>Total Volume</h5>
+                        <div class=value>58.700</div>
+                    </div>
+                    <div class=formcell>
+                        <h5>Number of Pieces</h5>
+                        <div class=value>822 loose cartons</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=section>
+            <h4>Bill of lading Details</h4>
+            <div class=formrow>
+                <div class="formcell radiowrap">
+                    <div class=inputlabel>Lading Type</div>
+                    <span class=radio>
+                        <input type=radio class="offscreen" name=resq id=res98q />
+                        <label for=res98q><span class=radiohead></span><span class=radiolabel>Original (Telex or Mail)</span></label>
+                    </span>
+                    <span class=radio>
+                        <input type=radio class="offscreen" name=resq id=res99q />
+                        <label for=res99q><span class=radiohead></span><span class=radiolabel>Express</span></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class=section>
+            <h4>Involved Parties</h4>
+            <div class=description>
+                Appears on the Bill of Lading
+            </div>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Shipper</div>
+                    <textarea placeholder="Contact Info" style="min-height:96px" class=autoexpand>Dong Guan MiMi Bag & Baby LTD</textarea>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Consignee</div>
+                    <textarea placeholder="Contact Info" style="min-height:96px" class=autoexpand>JL Childress Co Inc</textarea>
+                </div>
+                <div class=formcell>
+                    <div class=inputlabel>Notify Party</div>
+                    <textarea placeholder="Contact Info" style="min-height:96px" class=autoexpand></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class=section>
+            <h4>Additional Notes</h4>
+            <div class=formrow>
+                <div class=formcell>
+                    <div class=inputlabel>Special Instructions to Appear on the Bill of Lading</div>
+                    <textarea placeholder="Type here..." class=autoexpand></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class=section>
+            <div class=btngroup>
+                <div class="btn shh" tabindex=0>Cancel</div><div class="btn cta" tabindex=0>Review Details</div>
+            </div>
+        </div>
+    </div>
+</body>
+
 
 <style>
+
+    .form .subsection {padding-left:0;}
+        .noindent .subsection {padding-left:48px;}
+
+    .sectionborders .section.borderable {border-radius:6px;border:1px solid var(--grey30); margin: 0 24px;padding: 20px 12px 24px 12px;box-shadow: 0 2px 2px var(--shadow);}
+        .sectionborders .formsectionwrapper .section.borderable {margin-top:20px;}
+
+        .sectionborders.type2 .section.borderable {background:var(--grey10);border-color:var(--grey20);box-shadow:none;}
+
+    .subtotalsection {padding: 12px 12px;background: var(--grey10);border-radius: 3px;margin: 0 8px;border: 1px solid var(--grey20);}
 
     .sectionerror {margin: 0 var(--fieldgap);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
         .sectionerror.open {height:80px;opacity:1;}
@@ -2515,6 +2846,7 @@
         .form .description {margin:0 var(--fieldgap) 24px;}
 
         .form .heading {padding:0 16px;}
+        .form .subheading {padding:8px 0 0;}
 
         .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
 
@@ -2613,6 +2945,38 @@
 </style>
 
 <script>
+    function addanother(e){
+        var cw = document.getElementById('containersection');
+        var c = cw.cloneNode(true);
+        c.removeAttribute('id');
+
+        var f = this.getparent('form');
+        var s = f.getElementsByClassName('formsectionwrapper')[0];
+
+        var id = c.getElementsByClassName('cid');
+
+        var r = c.getElementsByClassName('radio');
+
+        var time = Date.now();
+
+        for(var i=0;i<r.length;i++){
+            var rr = r[i];
+            var put = rr.getElementsByTagName('input')[0];
+            var lab = rr.getElementsByTagName('label')[0];
+
+            var fo = lab.getAttribute('for');
+            lab.setAttribute('for', fo + 'a' + time);
+            put.name = put.name + 'a' + time;
+            put.id = put.id + 'a' + time;
+        }
+
+        for(var i=0;i<id.length;i++){
+            id[i].innerText = f.getElementsByClassName('subheading').length + 1;
+        }
+
+        s.appendChild(c);
+    }
+
     function loading(e){
         if ( this.classList.contains('clicked')){
             return;
@@ -3159,7 +3523,7 @@
 
         var s = m.offsetWidth;
 
-        p.style.paddingLeft = s - 12 +'px';
+        p.style.paddingLeft = s - 8 +'px';
     }
 
     function blur(e){
@@ -3180,6 +3544,15 @@
         window.addEventListener('blur', blur, true);
     }
 
+    function stepper(e){
+        var v = this.classList.contains('stepup') ? 1 : -1;
+        var p = this.parentElement.parentElement;
+        var num = p.getElementsByTagName('input')[0];
+
+        num.value = Number(num.value) + v;
+
+    }
+
     Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
     Attach.on('click', '.popitem', popover);
@@ -3190,6 +3563,9 @@
     Attach.on('change', '.spinnersize', spinnersize);
     Attach.on('click', '.algolia', algolia);
     Attach.on('focus', '.combobar', focus);
+
+    Attach.on('click', '.stepup', stepper);
+    Attach.on('click', '.stepdown', stepper);
 
     (function() {
         var hash = window.location.hash;
