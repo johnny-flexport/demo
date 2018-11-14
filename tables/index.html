@@ -15,7 +15,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Tables</div><div class="tab" data-type=advanced>Table w/ Controls</div><div class=tab data-type=list>List</div><div class=tab data-type=grid>Grid</div><div class=tab data-type=standard>Standard</div><div class=tab data-type=expandable>Expandable Rows</div><div class=tab data-type=sticky>Sticky Columns</div><div class=tab data-type=card>Card Table</div><div class=tab data-type=grey10>Grey10 Background</div><div class=tab data-type=empty>Empty State</div><div class=tab data-type=loading>Loading Table</div><div class=tab data-type=loadingrows>Loading Rows</div><div class=tab data-type=typo>Typography</div>
+            <div class="tab" data-type=all id=starttab>All Tables</div><div class=tab data-type=list>List</div><div class=tab data-type=grid>Grid</div><div class=tab data-type=standard>Standard</div><div class=tab data-type=expandable>Expandable Rows</div><div class=tab data-type=sticky>Sticky Columns</div><div class=tab data-type=card>Card Table</div><div class=tab data-type=grey10>Grey10 Background</div><div class="tab" data-type=advanced>Table w/ Controls</div><div class=tab data-type=empty>Empty State</div><div class=tab data-type=loading>Loading Table</div><div class=tab data-type=loadingrows>Loading Rows</div><div class=tab data-type=typo>Typography</div>
         </div>
 
         <div class=tabline></div>
@@ -95,6 +95,11 @@
         .vlabel {width:40%;float:left;font-size: 11px;font-weight: 500;text-transform: uppercase;color: var(--grey50);padding-left:16px;box-sizing:border-box;}
         .vvalue {width:60%;float:left;text-align:right;padding-right:16px;padding-left:24px;box-sizing:border-box;}
 
+        .vrow.mrow .vlabel {width:30%;}
+        .vrow.mrow .vvalue {width:35%;text-align:left;}
+
+        .vtable.multi {width:600px;}
+
 
     .gtable {line-height:20px;margin:0 24px;max-width:400px;}
         .gtable::after {content:'';clear:both;display:block;}
@@ -106,9 +111,38 @@
 
     .demo .standard {margin-bottom:8px;}
 
+    .info {padding:0 40px;max-width:600px;margin: 0 0;}
+    .info h2 {border-bottom:1px solid var(--grey30);padding-bottom:8px;margin-bottom:16px;}
+    .info .description {margin-bottom:24px;}
 </style>
 
-<div class="demo list_table">
+<div class="demo info_table" style="max-width:800px;margin:0 auto 120px;">
+    <div class=info>
+        <h2>Tables</h2>
+        <div class="largetext description">
+            What is a table you ask? An organized list of data.<br>
+            Sometimes there’s only a couple columns, other times hundreds. <br>
+            <br>
+            Latitude has you covered with a few different types of tables, from simple to complex.
+        </div>
+
+        <div class=section>
+            - Need to display rows of data? Use a table<br>
+            - Keep rows spacious and easy to parse<br>
+            - Besides text, an icon, link or button can go in a table cell. Just don’t go overboard<br>
+            - A row should always be hoverable, even if it isn’t selectable<br>
+            - Use checkboxes to indicate multi-select<br>
+            - When text gets cutoff show a tooltip on hover<br>
+            - Ideally keep things left aligned, since it’s easier to scan, but they can be right aligned too<br>
+            - Rows can be one line… or many<br>
+            <br>
+            <br>
+            - Checkout the guidelines doc <a href="https://www.dropbox.com/s/0rmgx70313flb3h/guidelines.sketch?dl=0" target=_blank>guidelines.sketch</a>
+        </div>
+    </div>
+</div>
+
+<div class="demo list_table" style="max-width:800px;margin:0 auto 120px;">
     <h4 class=standard>Transit Information</h4>
     <div class=vtable>
         <div class=vrow>
@@ -126,7 +160,25 @@
     </div>
 </div>
 
-<div class="demo grid_table">
+<div class="demo list_table" style="max-width:800px;margin:0 auto 120px;">
+    <h4 class=standard>Transit Information - multi</h4>
+    <div class="vtable multi">
+        <div class="vrow mrow">
+            <div class=vlabel>Carrier</div><div class=vvalue>Lufthansa Cargo AG</div><div class=vvalue>Maersk</div>
+        </div>
+        <div class="vrow mrow">
+            <div class=vlabel>Mode</div><div class=vvalue><a href=javascript:void(0)>Air</a></div><div class=vvalue><a href=javascript:void(0)>Ocean</a></div>
+        </div>
+        <div class="vrow mrow">
+            <div class=vlabel>Port to Port</div><div class=vvalue>5 - 7 Days</div><div class=vvalue>31 - 38 Days</div>
+        </div>
+        <div class="vrow mrow">
+            <div class=vlabel>Rate Expiration</div><div class=vvalue>Nov 8, 2018</div><div class=vvalue>Nov 14, 2018</div>
+        </div>
+    </div>
+</div>
+
+<div class="demo grid_table" style="max-width:800px;margin:0 auto 120px;">
 
     <div class=gtable>
         <h4 class=ruler>Transit Information</h4>
@@ -149,7 +201,7 @@
     </div>
 </div>
 
-<div class="demo standard_table" style="max-width:800px;">
+<div class="demo standard_table" style="max-width:800px;margin:0 auto 120px;">
     <h4>Transit Information</h4>
     <table>
         <tr><th>Carrier</th><th>Mode</th><th>Port to Port</th><th>Rate Expiration</th></tr>

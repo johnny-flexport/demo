@@ -61,6 +61,15 @@
     --grey60: hsl(210, 4%, 10%);*/
 }
 
+.desat {
+    --grey10:hsl(208, 0%, 98%);
+    --grey20:hsl(208, 0%, 95%);
+    --grey30:hsl(208, 0%, 84%);
+    --grey40:hsl(208, 0%, 73%);
+    --grey50:hsl(208, 0%, 47%);
+    --grey60:hsl(208, 0%, 10%);
+}
+
 * {margin:0;padding:0;outline:none;}
 
 html {
@@ -82,6 +91,7 @@ h5 {font-size:11px;line-height:20px;font-weight:500;text-transform:uppercase;col
 b, .emp {font-weight:600;}
 .italics {font-style:italic;}
 .stext {color:var(--grey50);}
+.largetext {font-size:18px;line-height:28px;}
 
 
 .inputlabel {font-size:13px;color:var(--grey50);margin-bottom:4px;}
