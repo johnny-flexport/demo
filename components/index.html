@@ -176,6 +176,8 @@
 
         .choices {margin:24px 40px;}
 
+        input:focus {border-color:var(--blue30);}
+
         .radio, .checkbox {line-height:var(--lineheight);margin-right:24px;cursor:pointer;display:inline-block;height:var(--lineheight);}
             .radio label, .checkbox label {cursor:pointer;}
             .radiohead {width:16px;height:16px;position:relative;display:inline-block;border:2px solid var(--grey40);border-radius:50%;vertical-align:middle;box-sizing:border-box;transition:border-color 150ms ease-in-out,box-shadow 150ms ease-in-out;}
@@ -226,6 +228,7 @@
 
 
 
+
             .radio input {}
 
             .offscreen {position: absolute;left: -999999px;opacity: 0;}
@@ -233,8 +236,7 @@
         .disabled {pointer-events:none !important;}
 
         body:not(.hidefocus) :focus, body:not(.hidefocus) :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--blue20);}
-
-        body:not(.hidefocus) .error :focus, body:not(.hidefocus) .error :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--red20);}
+            body:not(.hidefocus) .error :focus, body:not(.hidefocus) .error :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--red20);}
 
         body:not(.hidefocus) .error :focus ~ label .radiohead {box-shadow: 0 0 0 3px var(--red20);}
 
@@ -257,13 +259,13 @@
         :focus ~ .clearbar {opacity:1;pointer-events:all;}
 
         ::-webkit-input-placeholder {
-            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+            color: var(--grey40);transition:color 150ms ease-in-out;
         }
         ::-moz-placeholder {
-            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+            color: var(--grey40);transition:color 150ms ease-in-out;
         }
         :-ms-input-placeholder {
-            color: var(--grey40);font-style:italic;transition:color 150ms ease-in-out;
+            color: var(--grey40);transition:color 150ms ease-in-out;
         }
 
         :hover::-webkit-input-placeholder {
@@ -281,7 +283,7 @@
 
             .dropdown:hover::after, .pagebtn:hover::after {border-color:var(--grey60);}
 
-            .dropdown:hover {border-color:var(--grey40);background-color:white;}
+            .dropdown:hover {border-color:var(--grey40);}
 
             .open .dropdown {border-color:var(--blue30);background-color:var(--blue10);}
                 .open .dropdown::after {border-color:var(--blue30);}
@@ -518,7 +520,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div>
         </div>
 
         <div class=tabline></div>
