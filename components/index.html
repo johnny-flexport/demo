@@ -135,7 +135,7 @@
             input[type=text]:focus, input[type=number]:focus, textarea:focus {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);}
 
         input[type=text]:read-only, input[type=number]:read-only, textarea:read-only {border-color:var(--grey20);background:var(--grey10);}
-        input[type=text]:read-only:hover, input[type=number]:read-only:hover {box-shadow:none;}
+        input[type=text]:read-only:hover, input[type=number]:read-only:hover, textarea:read-only  {box-shadow:none;}
 
         textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
 
@@ -514,13 +514,19 @@
 
         .tabsoverflow {white-space:nowrap;}
 
+        .form3_demo .form .inputlabel {white-space:normal;}
+
+        .form.stacked .inputlabel {width: 280px;padding-right: 16px;margin: 0;line-height: 18px;}
+        .form.stacked .formcell {display: flex;border-bottom: 1px solid var(--grey20);padding-bottom: 12px;margin-bottom:12px;align-items: center;}
+        .form.stacked .formrow {margin:0;display:block;}
+        .form.stacked .formrow:last-child .formcell:last-child {padding-bottom:0;margin-bottom:0;border:none;}
     </style>
 </head>
 <body>
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div>
         </div>
 
         <div class=tabline></div>
@@ -2594,62 +2600,62 @@
 </div>
 
 <div class="demo form2_demo">
-        <div class=controlpanel>
-            <div class=control>
-                <div class=inputlabel>Form Width <div class=value>600</div></div>
-                <input type=range value=648 min=328 max=1200 step=4 oninput="formwidth.call(this,event)" />
-            </div>
-
-            <div class=control>
-                <div class=inputlabel>Section Spacing <div class=value>48</div></div>
-                <input type=range value=48 min=0 max=96 step=4 oninput="sectionspacing.call(this,event)" />
-            </div>
-
-            <div class=control>
-                <div class=inputlabel>Row Spacing <div class=value>24</div></div>
-                <input type=range value=24 min=8 max=48 step=4 oninput="rowspacing.call(this,event)" />
-            </div>
-
-            <div class=control>
-                <div class=inputlabel>Field Gap <div class=value>16</div></div>
-                <input type=range value=8 min=2 max=36 step=2 oninput="fieldgap.call(this,event)" />
-            </div>
-
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('hoverbg');" /><span class=radiolabel>Section hover background</span></label>
-                </span>
-            </div>
-<!--
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('sectionerror')[0].classList.toggle('open')" /><span class=radiolabel>Section Error</span></label>
-                </span>
-            </div>
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('formerror')[0].classList.toggle('open')" /><span class=radiolabel>Form Error</span></label>
-                </span>
-            </div> -->
-
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox  onchange="this.getparent('form2_demo').classList.toggle('noindent')" /><span class=radiolabel>Sub Section Indent</span></label>
-                </span>
-            </div>
-
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('sectionborders')" /><span class=radiolabel>Section Borders</span></label>
-                </span>
-            </div>
-
-            <div class=control>
-                <span class=checkbox>
-                    <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('type2')" /><span class=radiolabel>Sections Type2</span></label>
-                </span>
-            </div>
+    <div class=controlpanel>
+        <div class=control>
+            <div class=inputlabel>Form Width <div class=value>600</div></div>
+            <input type=range value=648 min=328 max=1200 step=4 oninput="formwidth.call(this,event)" />
         </div>
+
+        <div class=control>
+            <div class=inputlabel>Section Spacing <div class=value>48</div></div>
+            <input type=range value=48 min=0 max=96 step=4 oninput="sectionspacing.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <div class=inputlabel>Row Spacing <div class=value>24</div></div>
+            <input type=range value=24 min=8 max=48 step=4 oninput="rowspacing.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <div class=inputlabel>Field Gap <div class=value>16</div></div>
+            <input type=range value=8 min=2 max=36 step=2 oninput="fieldgap.call(this,event)" />
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('hoverbg');" /><span class=radiolabel>Section hover background</span></label>
+            </span>
+        </div>
+<!--
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('sectionerror')[0].classList.toggle('open')" /><span class=radiolabel>Section Error</span></label>
+            </span>
+        </div>
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form_demo').getElementsByClassName('formerror')[0].classList.toggle('open')" /><span class=radiolabel>Form Error</span></label>
+            </span>
+        </div> -->
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox  onchange="this.getparent('form2_demo').classList.toggle('noindent')" /><span class=radiolabel>Sub Section Indent</span></label>
+            </span>
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('sectionborders')" /><span class=radiolabel>Section Borders</span></label>
+            </span>
+        </div>
+
+        <div class=control>
+            <span class=checkbox>
+                <label><input type=checkbox onchange="this.getparent('form2_demo').classList.toggle('type2')" /><span class=radiolabel>Sections Type2</span></label>
+            </span>
+        </div>
+    </div>
     <div class=form>
         <div class=heading>
             <h3>Shipment</h3>
@@ -2893,6 +2899,271 @@
             </div>
         </div>
     </div>
+</div>
+
+    <div class="demo form3_demo">
+            <div class=controlpanel>
+                <div class=control>
+                    <span class=checkbox>
+                        <label><input type=checkbox onchange="this.getparent('form3_demo').getElementsByClassName('form')[0].classList.toggle('stacked');" /><span class=radiolabel>Stacked</span></label>
+                    </span>
+                </div>
+            </div>
+        <div class=form>
+            <div class=heading>
+                <h3>Bills of Lading</h3>
+                <div class=description>Something about laddling or something.</div>
+            </div>
+
+            <div class=section>
+                <h4>A. Shipment Identifiers</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>1. Booking Number</div>
+                        <input type=text placeholder="2839409283094" readonly value="FLEX-434902" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>2. NRA Number</div>
+                        <input type=text placeholder="2839409283094" readonly value="FLXT-434902-461876" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Bill of Lading Number</div>
+                        <input type=text placeholder="2839409283094" readonly value="FLXT-FCNUS434902A" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>4. AMS Bill of Lading Number</div>
+                        <input type=text placeholder="FCNUS434902A" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>5. Master Bill of Lading Number</div>
+                        <input type=text placeholder="ZIMUHKG83013473" />
+                    </div>
+                </div>
+            </div>
+
+            <div class=section>
+                <h4>B. Voyage Details</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>1. Place of Pickup</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>2. Pre-Carriage By</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Port of Loading</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>4. Last Foreign Port for AMS (if applicable)</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>5. First Domestic Port for AMS (if applicable)</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>6. Last Foreign Port for ACI (if applicable)</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>7. First Domestic Port for ACI (if applicable)</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>8. FMC Port of Unloading</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>9. Place of Delivery</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>10. Carrier</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>11. Vessel</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>12. Voyage</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>13. Point of Origin / FTZ Number</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class=section>
+                <h4>C. Involved Parties</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>1. Exporter Address (for automatic AMS filing)</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>2. Exporter Address as it should appear on the Bill of Lading</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Consignee / Shipped To (for automatic AMS filing)</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>4. Consignee Address as it should appear on the Bill of Lading</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>5. Notify Party</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>6. Forwarding Agent</div>
+                        <input type=text placeholder="" readonly value="Flexport Carrier Booking Operations" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>7. Destination Agent</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>8. Agent Reference Number</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+            </div>
+            <div class=section>
+                <h4>D. Containers</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Container</div>
+                        <input type=text placeholder="" readonly value="CAIU8414117" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Weight</div>
+                        <input type=text placeholder="" readonly value="4640.0" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Volume</div>
+                        <input type=text placeholder="" readonly value="42.169" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Quantity</div>
+                        <input type=text placeholder="" readonly value="185" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Unit</div>
+                        <input type=text placeholder="" readonly value="CTN" />
+                    </div>
+                </div>
+            </div>
+            <div class=section>
+                <h4>E. Cargo Details</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>1. Marks and Numbers</div>
+                        <input type=text placeholder="" readonly value="N/M" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>2. Number and Kind of Packages</div>
+                        <input type=text placeholder="" readonly value="185 loose cartons" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Description of Packages and Goods</div>
+                        <textarea readonly class=autoexpand>LEISURE CHAIR OFFICE CHAIR OFFICE SOFA OFFICE TABLE STONE TABLE</textarea>
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>4. Total Weight</div>
+                        <input type=text placeholder="" readonly value="4,460.00 kg" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>5. Total Volume</div>
+                        <input type=text placeholder="" readonly value="42.169 cbm" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>6. Declared Value</div>
+                        <input type=text placeholder=""  value="" />
+                    </div>
+                </div>
+            </div>
+            <div class=section>
+                <h4>F. Shipment Details</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>1. Freight Payment Terms</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>2. Containerized</div>
+                        <input type=text placeholder="" readonly value="FCL" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Description of Packages and Goods</div>
+                        <textarea readonly  class=autoexpand>LEISURE CHAIR OFFICE CHAIR OFFICE SOFA OFFICE TABLE STONE TABLE</textarea>
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>3. Bill of Lading Type</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Intended Release Method</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>4. Loaded on Board</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>5. Special Instructions</div>
+                        <textarea class=autoexpand></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class=section>
+                <h4>G. Attachments</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=btn>Pick a file from your computer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 
@@ -2944,7 +3215,7 @@
         .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
 
         .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
-    .formrow {margin-bottom:24px;display:flex;}
+    .formrow {margin-bottom:24px;display:flex;align-items: flex-end;}
 
         .onecolumn .formrow {display:block;}
         .formrow:last-child {margin-bottom:0 !important;}
@@ -3570,10 +3841,20 @@
 
     function autoexpand(e){
         this.removeAttribute('style');
-
         var o = this.scrollHeight;
-
         this.style.height = o + 2 + 'px';
+    }
+
+    function autoautoexpand(e){
+        var ta = document.getElementsByClassName('autoexpand');
+
+        for(var i=0;i<ta.length;i++){
+            var t = ta[i];
+
+            if ( t.value != ''){
+                autoexpand.call(t, e);
+            }
+        }
     }
 
     function tab(e){
