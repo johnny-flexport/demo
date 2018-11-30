@@ -405,8 +405,6 @@
                 background-color:var(--grey10);
             }
 
-
-
             .popitem.type5.selected, .dropitem.type5.selected {
                 box-shadow:0 0 0 1px var(--grey30);
                 background-color:var(--grey20);
@@ -520,6 +518,589 @@
         .form.stacked .formcell {display: flex;border-bottom: 1px solid var(--grey20);padding-bottom: 12px;margin-bottom:12px;align-items: center;}
         .form.stacked .formrow {margin:0;display:block;}
         .form.stacked .formrow:last-child .formcell:last-child {padding-bottom:0;margin-bottom:0;border:none;}
+
+        .stepwrap input {padding-right:calc(var(--lineheight) * 2);}
+        .stepper {position:absolute;top:0;right:0;bottom:0;}
+        .step {width:var(--lineheight);height:100%;float:left;border:1px solid transparent;position:relative;box-sizing:border-box;cursor:pointer;transition:all 150ms ease-in-out;}
+            .step:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
+            .step:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
+            .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
+            .stepdown {margin-right:-1px;}
+
+            .step::after {
+                content: '';
+                display: block;
+                width: 6px;
+                height: 6px;
+                border-left: 2px solid var(--grey50);
+                border-bottom: 2px solid var(--grey50);
+                transform: translate(-50%, -50%) rotate(-45deg);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -1px;
+                transition: border-color 150ms ease-in-out;
+            }
+
+            .step:hover::after {
+                border-color:var(--grey60);
+            }
+            .step:active::after {
+                border-color:var(--grey60);
+            }
+
+            .stepup::after {
+                transform: translate(-50%, -50%) rotate(135deg);
+                margin-top: 2px;
+            }
+
+            .altstep .stepperup {left:0;position:absolute;right:auto;}
+            .altstep .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
+            .altstep .stepdown {border-radius: var(--radius) 0 0 var(--radius);margin:0;}
+            .altstep input {padding:0 var(--lineheight);text-align:center;}
+
+
+        input[type=range] {
+            -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+            width: 280px; /* Specific width is required for Firefox. */
+            background: transparent; /* Otherwise white in Chrome */
+            border:none;
+            cursor:pointer;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+
+        input[type=range]:focus {
+            outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+            box-shadow:none;
+        }
+
+        input[type=range]::-ms-track {
+            width: 100%;
+            cursor: pointer;
+
+            /* Hides the slider so custom styles can be added */
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {width:20px;height:20px;box-sizing:border-box;border-radius:50%;border:2px solid var(--grey50);margin-top:-9px;background:white;transition:all 150ms ease-in-out;}
+        input[type=range]:hover::-webkit-slider-thumb {border-color:var(--grey60);box-shadow:0 2px 2px var(--shadow);}
+        input[type=range]:active::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);border-width:10px;cursor:-webkit-grabbing;}
+        input[type=range]:focus::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 0 0 3px var(--blue20);}
+            input[type=range]:hover:focus::-webkit-slider-thumb {border-color:var(--blue40);}
+
+        input[type=range]::-moz-range-thumb {}
+        input[type=range]::-ms-thumb {}
+
+
+        input[type=range]::-webkit-slider-runnable-track {height:2px;background:var(--grey30);border-radius:1px;}
+        input[type=range]:focus::-webkit-slider-runnable-track {}
+
+
+        input[type=range]::-moz-range-track {}
+
+        input[type=range]::-ms-track {}
+        input[type=range]::-ms-fill-lower {}
+        input[type=range]:focus::-ms-fill-lower {}
+        input[type=range]::-ms-fill-upper {}
+        input[type=range]:focus::-ms-fill-upper {}
+
+
+        .combobar:focus ~ .menu2, .focused ~ .menu2 {opacity:1;pointer-events: all;transform:translateY(0);}
+
+        .holdon ~ .menu2 {pointer-events: all !important;}
+
+        .badges {position:absolute;top:0;left:1px;white-space:nowrap;max-width:calc(100% - 2px);overflow-x:auto;padding-right:4px;box-sizing:border-box;}
+        .badge {padding:1px 22px 1px 8px;background:var(--blue10);border:1px solid var(--blue20);color:var(--blue50);border-radius:2px;margin:calc((var(--lineheight) - 24px) / 2) 0 0 calc((var(--lineheight) - 24px) / 2);display:inline-block;font-size:11px;font-weight:500;text-transform:uppercase;position:relative;}
+
+        .badgeclose {width:10px;height:10px;position:absolute;top:6px;right:6px;opacity:.65;cursor:pointer;transition:opacity 150ms ease-in-out;}
+            .badgeclose:hover {opacity:1;}
+            .badgeclose::after, .badgeclose::before {content:'';width:100%;height:1px;background:var(--blue50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);}
+            .badgeclose::before {transform:translate(-50%, -50%) rotate(-45deg);}
+
+        .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
+        .tooltip.error {background:var(--red45);}
+        .demo:not(.notooltip) input:focus ~ .tooltip, .demo:not(.notooltip) input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+
+        .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
+        .stuck2 input:focus ~ .label2, .stuck .label2 {opacity:1;pointer-events:all;}
+        .stuck2 input:focus ~ .label1, .stuck.stuck2 .label1 {opacity:0;pointer-events:none;top: 32px;left: var(--inset);font-size:14px;font-style:italic;}
+
+        .floattwo {}
+            .floattwo input {padding-top:12px;height:48px;}
+            .floattwo .inputlabel {top:14px;left:var(--inset);transition:all 150ms ease-in-out;font-size:14px;}
+            .floattwo input:focus ~ .inputlabel, .floattwo.stuck .inputlabel {top:4px;font-size:12px;}
+
+        .helpertext {font-size:13px;color:var(--grey50);margin-top:2px;position:absolute;top:100%;}
+            .helpertext.disabled {color:var(--grey40);}
+            .errortext {color:var(--red45);}
+
+        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;}
+            .calhead {line-height: 40px;position:relative;}
+                .nextmonth {width:40px;height:40px;position:absolute;top:0;right:4px;cursor:pointer;}
+                .lastmonth {width:40px;height:40px;position:absolute;top:0;left:4px;cursor:pointer;}
+
+                .monthcontrol {width:8px;height:8px;position:absolute;top:50%;left:50%;border:2px solid var(--grey50);border-left:none;border-top:none;transform:translate(-50%, -50%) rotate(135deg);transition:border-color 150ms ease-in-out;}
+                    .nextmonth .monthcontrol {transform:translate(-50%, -50%) rotate(-45deg);}
+
+                    .nextmonth:hover .monthcontrol, .lastmonth:hover .monthcontrol  {border-color:var(--grey60);}
+                    .nextmonth:active .monthcontrol, .lastmonth:active .monthcontrol  {border-color:var(--grey50);}
+                .month {font-weight:700;text-align:center;}
+
+            .week {padding:5px 8px;border:1px solid var(--grey20);border-left:none;border-right:none;}
+                .week::after {content:'';clear:both;display:block;}
+                .day {width:var(--lineheight);text-align:center;color:var(--grey50);font-size:11px;font-weight:500;text-transform:uppercase;line-height:20px;float:left;}
+
+            .dates {padding:4px 8px;}
+                .daterow {}
+                    .daterow::after {content:'';clear:both;display:block;}
+                    .daywrap {width:var(--lineheight);height:var(--lineheight);text-align:center;float:left;box-sizing:border-box;cursor:pointer;padding:1px;}
+
+                        .date {width:100%;height:100%;box-sizing:border-box;border-radius:50%;align-items: center;justify-content: center;display: flex;font-variant-numeric: tabular-nums;}
+
+                        .daywrap:hover .date {box-shadow:inset 0 0 0 3px var(--grey30);}
+                        .daywrap:active .date {box-shadow:inset 0 0 0 3px var(--grey40);}
+                    .nonmonth {color:var(--grey50);font-style:italic;}
+                    .currentday {font-weight:600;background:var(--grey20);}
+                    .selectedday {box-shadow:inset 0 0 0 3px var(--blue30);color:var(--blue50);background:var(--blue30);color:white;}
+                        .daywrap:hover .selectedday{box-shadow:inset 0 0 0 3px var(--blue50);}
+
+                .startday {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--blue30);}
+                .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--blue30);}
+                .middleday {border-radius:0;box-shadow:1px 0 var(--blue30), -1px 0 var(--blue30);}
+                .middleendday {border-radius: 0 3px 3px 0;box-shadow:-1px 0 var(--blue30);}
+                .endday {border-radius: 0 50% 50% 0;box-shadow:-1px 0 var(--blue30);}
+
+        .popover {max-height:calc(var(--lineheight) * 7.6 + 4px);overflow-y:auto;}
+        .multiline .popover {max-height:260px;}
+            .menuitem.multiline {line-height:20px;padding:8px var(--indent);}
+            .dropwrap h5, .dropbtn h5 {padding:4px var(--indent) 2px;}
+
+            .dropwrap.multiselect h5, .dropbtn.multiselect h5 {padding:4px var(--inset) 2px;}
+
+            .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
+
+            .disabled.dropwrap {pointer-events:none;}
+                .disabled .dropdown {background:var(--grey20);color:var(--grey40);border:none;}
+                    .disabled .dropdown::after {border-color:var(--grey40);}
+
+                .disabled .inputlabel {color:var(--grey40);}
+
+                .error .dropdown {background-color:var(--red10);color:var(--red50) !important;border-color:var(--red40);background-position: right var(--lineheight) center;padding-right: 60px;}
+                    .error .dropdown::after {border-color:var(--red40);}
+                        .error .dropdown:hover::after {border-color:var(--red45);}
+                        .error .dropdown:active::after {border-color:var(--red50);}
+
+                    .error .dropdown:hover {box-shadow:0 2px 2px var(--errorshadow);border-color:var(--red45);}
+                    .error .dropdown:active {box-shadow:none;border-color:var(--red45);}
+
+                .error .inputlabel {color:var(--red45);}
+
+        .spinner12 svg circle {stroke-width:8px !important;}
+        .spinner16 svg circle {stroke-width:7px !important;}
+        .spinner24 svg circle {stroke-width:5px !important;}
+        .spinner36 svg circle {stroke-width:4px !important;}
+        .spinner48 svg circle {stroke-width:4px !important;}
+        .spinner60 svg circle {stroke-width:3.5px !important;}
+
+        .controlpanel {position:absolute;top:24px;left:24px;width:100%;max-width:280px;padding:24px;}
+            .control {position:relative;margin-bottom: 16px;}
+                .control .value {float:right;font-weight: 500;color: var(--grey60);font-variant-numeric: tabular-nums;}
+                .control input[type=range] {width:100%;}
+
+        .hoverbg .section:hover {background:var(--grey10);}
+
+
+        .form .subsection {padding-left:0;}
+            .noindent .subsection {padding-left:48px;}
+
+        .req .form .formcell:not(.optional) .inputlabel::after {content:' *';}
+        .reqsection {display:none;}
+        .req .reqsection {display:block;}
+
+        .form .helper {}
+            .form .helper .text {font-size:13px;color:var(--grey50);margin-top:4px;}
+            .form .helper .errortext {font-size:13px;color:var(--red45);margin-top:4px;display:none;}
+            .inlineerrors .error .helper .errortext {display:block;}
+
+        .sectionborders .section.borderable {border-radius:6px;border:1px solid var(--grey30); margin: 0 24px;padding: 20px 12px 24px 12px;box-shadow: 0 2px 2px var(--shadow);}
+            .sectionborders .formsectionwrapper .section.borderable {margin-top:20px;}
+
+            .sectionborders.type2 .section.borderable {background:var(--grey10);border-color:var(--grey20);box-shadow:none;}
+
+        .subtotalsection {padding: 12px 12px;background: var(--grey10);border-radius: 3px;margin: 0 8px;border: 1px solid var(--grey20);}
+
+        .sectionerror {margin: 0 var(--fieldgap);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
+            .sectionerror.open {height:80px;opacity:1;}
+            .errorwrap {border-radius:var(--radius);box-sizing: border-box;max-height:100%;border:1px solid var(--grey20);/*border:1px solid var(--red20);*/margin-bottom: 24px;}
+                .errormessage {background:var(--grey10);padding:16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
+                    /* background: var(--red10);
+                    color:var(--red50); */
+                }
+
+        .formerror {margin: 0 calc(var(--fieldgap) + 16px);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
+            .formerror.open {height:80px;opacity:1;}
+            .formerror .errorwrap {border:1px solid var(--red20);}
+            .formerror .errormessage {background: var(--red10);color:var(--grey60);}
+
+        .emptydrop {font-style:italic;color:var(--grey50);}
+
+        .form {width:100%;max-width:648px;margin:40px auto;}
+            .form h3 {margin:0 var(--fieldgap) 12px;padding-bottom:8px;border-bottom:1px solid var(--grey30);}
+            .form h4 {margin:0 var(--fieldgap) 12px;}
+
+            .form .description {margin:0 var(--fieldgap) 24px;}
+
+            .form .heading {padding:0 16px;}
+            .form .subheading {padding:8px 0 0;}
+
+            .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
+
+            .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
+        .formrow {margin-bottom:24px;display:flex;align-items: flex-end;}
+
+            .onecolumn .formrow {display:block;}
+            .formrow:last-child {margin-bottom:0 !important;}
+            /* .formrow {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+                grid-gap: 40px 16px;
+            } */
+
+            .formcell {width:100%;margin:0 var(--fieldgap);position:relative;}
+                .onecolumn .formcell {margin-bottom:24px;width:calc(100% - (var(--fieldgap) * 2));}
+                .onecolumn .formcell:last-child {margin-bottom:0;}
+
+                .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
+
+                .formcell.quarter {width: calc(50% - (var(--fieldgap) * 2));}
+                    .onecolumn .formcell.quarter {width:calc(100% - (var(--fieldgap) * 2));}
+
+                .formcell .dropwrap {width:100%;max-width:100%;}
+
+            .form .popover {top: -5px;}
+
+            .form .btngroup {text-align:right;margin:0 8px;}
+            .form .btngroup .btn:last-child {margin:0;}
+
+            .form .dropwrap {display:block;}
+
+
+            .btn.errorsubmit {
+                animation: 200ms 3 forwards nooo;
+            }
+
+            @keyframes nooo {
+                from {transform:translateX(0);}
+                25% {transform:translateX(-4px);}
+                50% {transform:translateX(0);}
+                75% {transform:translateX(4px);}
+                to {transform:translateX(0);}
+            }
+
+
+        .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
+            .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+                animation: 1.1s infinite forwards pbar;
+                animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            }
+
+            .progress1.deter {background:var(--blue10);}
+            .deter .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+                animation: 3s infinite forwards pbarloading;
+                animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            }
+
+    /*
+            .pbar2 {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
+                animation: 2s infinite forwards pbar2;
+                animation-timing-function: ease-in-out;
+            }
+
+        @keyframes pbar {
+            from {left:0%;background:var(--blue30);}
+            25% {right:0%;left:0%;background:var(--blue50);}
+            50%, to {right:0%;left:100%;background:var(--blue30);}
+        }
+
+        @keyframes pbar2 {
+            from,45% {right:100%;left:0%;background:var(--blue30)}
+            70% {right:0%;left:0%;background:var(--blue50)}
+            to {right:0%;left:100%;background:var(--blue30)}
+        } */
+
+        @keyframes pbar {
+            from {right:100%;left:0%;background:var(--blue30);}
+            50% {right:0%;left:0%;background:var(--blue50);}
+            to {right:0%;left:100%;background:var(--blue30);}
+        }
+
+        @keyframes pbarloading {
+            from {right:100%;left:0%;background:var(--blue30);}
+            90% {right:0%;left:0%;background:var(--blue50);}
+            91% {opacity:1;}
+            to {right:0%;left:0%;background:var(--blue50);opacity:0;}
+        }
+
+
+        .barloader {width:400px;margin:40px;height:4px;background:var(--blue10);position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
+            .barmover {position:absolute;width:100%;height:100%;animation: 1s infinite forwards movebar;animation-timing-function: linear;}
+            .bbar {width:100%;height:100%;left:0;top:0;position:absolute;background:var(--blue30);border-radius:12px;}
+                .bbar1 {left:calc(100% - 8%);}
+                .bbar2 {left:calc(-100% + 8%);animation: 1s infinite forwards barcolor;animation-timing-function: ease-in-out;}
+                .bbar3 {left:calc(-300% + 24%);}
+
+        @keyframes movebar {
+            from {left:0%;}
+            to {left:calc(200% - 16%);}
+        }
+
+        @keyframes barcolor {
+            from, 20% {background:var(--blue30);}
+            50%, 70% {background:var(--blue50);}
+            to {background:var(--blue30);}
+        }
+
+        .filterblock {vertical-align:top;margin-right:16px;}
+
+            .btn > * {transition:opacity 150ms ease-in-out;pointer-events:none;}
+
+        .btn.wide {width:200px;text-align:center;}
+
+        .btn .spinlabel {color:var(--grey50);opacity:1;display:inline-block;vertical-align:middle;margin-left:8px;}
+
+        .btn.outsidelabel {text-align:center;}
+            .outsidelabel .spinlabel {position:absolute;right:-12px;transform:translateX(100%);font-size:13px;font-weight:400;}
+
+
+
+
+        .btn.clicked {background:var(--grey10);pointer-events:none;border-color:transparent;box-shadow:none;}
+            .btn.clicked:hover {box-shadow:none;border-color:transparent;pointer-events:none;}
+
+        .btn.finished {}
+
+        .btn .label {transition-delay:150ms;}
+
+        .btn.clicked .label {opacity:0;transition-delay:0ms;}
+
+        .btn .spinning {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;}
+        .btn .spinning .spinner2 {margin:0;width:24px;height:24px;display:inline-block;vertical-align:middle;}
+        .btn.clicked .spinning {opacity:1;transition-delay:150ms;}
+        .btn.clicked.finished .spinning {opacity:0;transition-delay:0ms;}
+
+        .btn .spinning * {animation-play-state:paused;}
+        .btn.clicked .spinning * {animation-play-state:running !important;}
+        .btn.clicked.finished .spinning * {animation-play-state:paused;}
+
+        .btn .spinner2 svg {margin-top:-1px;display:block;}
+        .btn .spinner2 svg circle {stroke-width:5px !important;}
+
+        .btn .done {opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:14px;transition-delay:0ms;}
+        .btn .done svg {display:block;height:14px;}
+
+            .btn .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset: 80px;transition:all 150ms ease-in-out;transition-delay:500ms;}
+
+        .btn.finished .done {opacity:1;transition-delay:150ms;}
+            .btn.finished .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset:0;transition-delay:150ms;}
+
+
+
+        .spinner2 {margin:24px;height:48px;}
+
+        .spinner .spin, .spinner3 .spin3 {
+            animation-name: rotate;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            transform-origin: center;
+        }
+
+        .spinner2 .spin2 {
+            animation-name: rotate2;
+            animation-duration: 1.75s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            transform-origin: center;
+
+        }
+
+        .spinner svg circle {
+            animation-name: spinner;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+        }
+
+        .spinner2 svg .noanimation {
+            animation: none !important;
+            stroke-dasharray: 200, 200 !important;
+            stroke: #F7FAFC !important;
+        }
+
+        .spinner2 svg circle {
+            animation-name: spin2, color2;
+            animation-duration: 1.75s, 7s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            stroke-dasharray: 2, 200;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+        }
+
+        .spinner2.spinnerc svg circle {
+            animation-name: spin2, color3;
+        }
+
+        .spinner2.spinnerg svg circle {
+            animation-name: spin2, colorg;
+            stroke: #B0BAC2;
+            stroke: #CED7DE;
+            /* stroke: #6E7882; */
+        }
+
+        .spinner2.spinnergg svg circle {
+            animation-name: spin2;
+            stroke: #B0BAC2;
+            stroke: #CED7DE;
+            stroke: #6E7882;
+        }
+
+        .fat.spinner2 svg circle {stroke-width:4px;}
+
+        .spinner2 {
+            width: 48px;
+            /* transform: rotate(-45deg); */
+        }
+
+            .spinner3 svg circle {
+            animation-name: spin3;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+        }
+
+        @keyframes colorg {
+            from {stroke:#CED7DE;}
+            25% {stroke:#CED7DE;}
+            29% {stroke:#B0BAC2;}
+            50% {stroke:#B0BAC2;}
+            54% {stroke:#6E7882;}
+            75% {stroke:#6E7882;}
+            79% {stroke:#B0BAC2;}
+            98% {stroke:#B0BAC2;}
+            to {stroke:#CED7DE;}
+        }
+
+        @keyframes color2 {
+            from {stroke:#4976F2;}
+            25% {stroke:#4976F2;}
+            29% {stroke:#265DF1;}
+            50% {stroke:#265DF1;}
+            54% {stroke:#1942B3;}
+            75% {stroke:#1942B3;}
+            79% {stroke:#0E2259;}
+            98% {stroke:#0E2259;}
+            to {stroke:#4976F2;}
+        }
+
+        @keyframes color3 {
+            from {stroke:#265df1;}
+            25% {stroke:#265df1;}
+            29% {stroke:#3dc468;}
+            50% {stroke:#3dc468;}
+            54% {stroke:#ffd100;}
+            75% {stroke:#ffd100;}
+            79% {stroke:#ef3340;}
+            98% {stroke:#ef3340;}
+            to {stroke:#265df1;}
+        }
+
+
+
+        @keyframes spinner {
+            from {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+
+        @keyframes spin2 {
+            from {
+                stroke-dasharray: 2, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 80;
+                stroke-dashoffset: -80px;
+            }
+
+            to{
+                stroke-dasharray: 124;
+                stroke-dashoffset: -124px;
+            }
+        }
+
+
+        @keyframes spin3 {
+            50% {
+                stroke-dasharray: 90,200;
+                stroke-dashoffset: 0;
+            }
+            to{
+                stroke-dasharray: 125,200;
+                stroke-dashoffset: -125px;
+            }
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+        @keyframes rotate2 {
+            from {
+                transform: rotate(-45deg);
+            }
+
+            50% {
+                transform: rotate(315deg);
+            }
+
+            75% {
+                transform: rotate(555deg);
+            }
+
+            to {
+                transform: rotate(680deg);
+            }
+        }
+
+        @keyframes loop {
+            from {background-position-x: 10vw;}
+            to {background-position-x: 206vw;}
+        }
     </style>
 </head>
 <body>
@@ -637,107 +1218,11 @@
                 </div>
             </div>
         </span>
-
-        <style>
-            .stepwrap input {padding-right:calc(var(--lineheight) * 2);}
-            .stepper {position:absolute;top:0;right:0;bottom:0;}
-            .step {width:var(--lineheight);height:100%;float:left;border:1px solid transparent;position:relative;box-sizing:border-box;cursor:pointer;transition:all 150ms ease-in-out;}
-                .step:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
-                .step:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
-                .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
-                .stepdown {margin-right:-1px;}
-
-                .step::after {
-                    content: '';
-                    display: block;
-                    width: 6px;
-                    height: 6px;
-                    border-left: 2px solid var(--grey50);
-                    border-bottom: 2px solid var(--grey50);
-                    transform: translate(-50%, -50%) rotate(-45deg);
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-top: -1px;
-                    transition: border-color 150ms ease-in-out;
-                }
-
-                .step:hover::after {
-                    border-color:var(--grey60);
-                }
-                .step:active::after {
-                    border-color:var(--grey60);
-                }
-
-                .stepup::after {
-                    transform: translate(-50%, -50%) rotate(135deg);
-                    margin-top: 2px;
-                }
-
-                .altstep .stepperup {left:0;position:absolute;right:auto;}
-                .altstep .stepup {border-radius: 0 var(--radius) var(--radius) 0;}
-                .altstep .stepdown {border-radius: var(--radius) 0 0 var(--radius);margin:0;}
-                .altstep input {padding:0 var(--lineheight);text-align:center;}
-
-        </style>
     </div>
 
     <div class="demo slider_demo">
         <div class=inputlabel>Slider</div>
         <input type=range />
-
-        <style>
-            input[type=range] {
-                -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-                width: 280px; /* Specific width is required for Firefox. */
-                background: transparent; /* Otherwise white in Chrome */
-                border:none;
-                cursor:pointer;
-            }
-
-            input[type=range]::-webkit-slider-thumb {
-                -webkit-appearance: none;
-            }
-
-            input[type=range]:focus {
-                outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-                box-shadow:none;
-            }
-
-            input[type=range]::-ms-track {
-                width: 100%;
-                cursor: pointer;
-
-                /* Hides the slider so custom styles can be added */
-                background: transparent;
-                border-color: transparent;
-                color: transparent;
-            }
-
-            input[type=range]::-webkit-slider-thumb {width:20px;height:20px;box-sizing:border-box;border-radius:50%;border:2px solid var(--grey50);margin-top:-9px;background:white;transition:all 150ms ease-in-out;}
-            input[type=range]:hover::-webkit-slider-thumb {border-color:var(--grey60);box-shadow:0 2px 2px var(--shadow);}
-            input[type=range]:active::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 2px 2px var(--blueshadow);border-width:10px;cursor:-webkit-grabbing;}
-            input[type=range]:focus::-webkit-slider-thumb {border-color:var(--blue30);box-shadow:0 0 0 3px var(--blue20);}
-                input[type=range]:hover:focus::-webkit-slider-thumb {border-color:var(--blue40);}
-
-            input[type=range]::-moz-range-thumb {}
-            input[type=range]::-ms-thumb {}
-
-
-            input[type=range]::-webkit-slider-runnable-track {height:2px;background:var(--grey30);border-radius:1px;}
-            input[type=range]:focus::-webkit-slider-runnable-track {}
-
-
-            input[type=range]::-moz-range-track {}
-
-            input[type=range]::-ms-track {}
-            input[type=range]::-ms-fill-lower {}
-            input[type=range]:focus::-ms-fill-lower {}
-            input[type=range]::-ms-fill-upper {}
-            input[type=range]:focus::-ms-fill-upper {}
-
-
-        </style>
     </div>
 
     <div class="demo search_demo">
@@ -786,20 +1271,6 @@
                 </div>
             </div>
         </div>
-
-            <style>
-                .combobar:focus ~ .menu2, .focused ~ .menu2 {opacity:1;pointer-events: all;transform:translateY(0);}
-
-                .holdon ~ .menu2 {pointer-events: all !important;}
-
-                .badges {position:absolute;top:0;left:1px;white-space:nowrap;max-width:calc(100% - 2px);overflow-x:auto;padding-right:4px;box-sizing:border-box;}
-                .badge {padding:1px 22px 1px 8px;background:var(--blue10);border:1px solid var(--blue20);color:var(--blue50);border-radius:2px;margin:calc((var(--lineheight) - 24px) / 2) 0 0 calc((var(--lineheight) - 24px) / 2);display:inline-block;font-size:11px;font-weight:500;text-transform:uppercase;position:relative;}
-
-                .badgeclose {width:10px;height:10px;position:absolute;top:6px;right:6px;opacity:.65;cursor:pointer;transition:opacity 150ms ease-in-out;}
-                    .badgeclose:hover {opacity:1;}
-                    .badgeclose::after, .badgeclose::before {content:'';width:100%;height:1px;background:var(--blue50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);}
-                    .badgeclose::before {transform:translate(-50%, -50%) rotate(-45deg);}
-            </style>
     </div>
 
     <div class="demo combo_demo">
@@ -867,24 +1338,7 @@
         </span>
     </div>
 
-    <style>
-        .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
-        .tooltip.error {background:var(--red45);}
-        .demo:not(.notooltip) input:focus ~ .tooltip, .demo:not(.notooltip) input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
 
-        .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
-        .stuck2 input:focus ~ .label2, .stuck .label2 {opacity:1;pointer-events:all;}
-        .stuck2 input:focus ~ .label1, .stuck.stuck2 .label1 {opacity:0;pointer-events:none;top: 32px;left: var(--inset);font-size:14px;font-style:italic;}
-
-        .floattwo {}
-            .floattwo input {padding-top:12px;height:48px;}
-            .floattwo .inputlabel {top:14px;left:var(--inset);transition:all 150ms ease-in-out;font-size:14px;}
-            .floattwo input:focus ~ .inputlabel, .floattwo.stuck .inputlabel {top:4px;font-size:12px;}
-
-        .helpertext {font-size:13px;color:var(--grey50);margin-top:2px;position:absolute;top:100%;}
-            .helpertext.disabled {color:var(--grey40);}
-            .errortext {color:var(--red45);}
-    </style>
 
     <div class="demo textfield_demo">
         <hr style="border:none;height:1px;background:var(--grey30);" />
@@ -1062,43 +1516,7 @@
         </div>
     </div>
 
-    <style>
-        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;}
-            .calhead {line-height: 40px;position:relative;}
-                .nextmonth {width:40px;height:40px;position:absolute;top:0;right:4px;cursor:pointer;}
-                .lastmonth {width:40px;height:40px;position:absolute;top:0;left:4px;cursor:pointer;}
 
-                .monthcontrol {width:8px;height:8px;position:absolute;top:50%;left:50%;border:2px solid var(--grey50);border-left:none;border-top:none;transform:translate(-50%, -50%) rotate(135deg);transition:border-color 150ms ease-in-out;}
-                    .nextmonth .monthcontrol {transform:translate(-50%, -50%) rotate(-45deg);}
-
-                    .nextmonth:hover .monthcontrol, .lastmonth:hover .monthcontrol  {border-color:var(--grey60);}
-                    .nextmonth:active .monthcontrol, .lastmonth:active .monthcontrol  {border-color:var(--grey50);}
-                .month {font-weight:700;text-align:center;}
-
-            .week {padding:5px 8px;border:1px solid var(--grey20);border-left:none;border-right:none;}
-                .week::after {content:'';clear:both;display:block;}
-                .day {width:var(--lineheight);text-align:center;color:var(--grey50);font-size:11px;font-weight:500;text-transform:uppercase;line-height:20px;float:left;}
-
-            .dates {padding:4px 8px;}
-                .daterow {}
-                    .daterow::after {content:'';clear:both;display:block;}
-                    .daywrap {width:var(--lineheight);height:var(--lineheight);text-align:center;float:left;box-sizing:border-box;cursor:pointer;padding:1px;}
-
-                        .date {width:100%;height:100%;box-sizing:border-box;border-radius:50%;align-items: center;justify-content: center;display: flex;font-variant-numeric: tabular-nums;}
-
-                        .daywrap:hover .date {box-shadow:inset 0 0 0 3px var(--grey30);}
-                        .daywrap:active .date {box-shadow:inset 0 0 0 3px var(--grey40);}
-                    .nonmonth {color:var(--grey50);font-style:italic;}
-                    .currentday {font-weight:600;background:var(--grey20);}
-                    .selectedday {box-shadow:inset 0 0 0 3px var(--blue30);color:var(--blue50);background:var(--blue30);color:white;}
-                        .daywrap:hover .selectedday{box-shadow:inset 0 0 0 3px var(--blue50);}
-
-                .startday {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--blue30);}
-                .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--blue30);}
-                .middleday {border-radius:0;box-shadow:1px 0 var(--blue30), -1px 0 var(--blue30);}
-                .middleendday {border-radius: 0 3px 3px 0;box-shadow:-1px 0 var(--blue30);}
-                .endday {border-radius: 0 50% 50% 0;box-shadow:-1px 0 var(--blue30);}
-    </style>
 
     <div class="demo calendar_demo">
         <div class=calendar>
@@ -1256,32 +1674,7 @@
         </div>
     </div> -->
 
-    <style>
-        .popover {max-height:calc(var(--lineheight) * 7.6 + 4px);overflow-y:auto;}
-        .multiline .popover {max-height:260px;}
-            .menuitem.multiline {line-height:20px;padding:8px var(--indent);}
-            .dropwrap h5, .dropbtn h5 {padding:4px var(--indent) 2px;}
 
-            .dropwrap.multiselect h5, .dropbtn.multiselect h5 {padding:4px var(--inset) 2px;}
-
-            .dropwrap .menuitem + h5, .dropbtn  .menuitem + h5 {padding-top:16px;}
-
-            .disabled.dropwrap {pointer-events:none;}
-                .disabled .dropdown {background:var(--grey20);color:var(--grey40);border:none;}
-                    .disabled .dropdown::after {border-color:var(--grey40);}
-
-                .disabled .inputlabel {color:var(--grey40);}
-
-                .error .dropdown {background-color:var(--red10);color:var(--red50) !important;border-color:var(--red40);background-position: right var(--lineheight) center;padding-right: 60px;}
-                    .error .dropdown::after {border-color:var(--red40);}
-                        .error .dropdown:hover::after {border-color:var(--red45);}
-                        .error .dropdown:active::after {border-color:var(--red50);}
-
-                    .error .dropdown:hover {box-shadow:0 2px 2px var(--errorshadow);border-color:var(--red45);}
-                    .error .dropdown:active {box-shadow:none;border-color:var(--red45);}
-
-                .error .inputlabel {color:var(--red45);}
-    </style>
 
     <!-- <div class="demo dropdown_demo">
         <div class=filter>
@@ -2072,15 +2465,6 @@
             <circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="3"></circle>
         </svg>
     </div>
-
-    <style>
-        .spinner12 svg circle {stroke-width:8px !important;}
-        .spinner16 svg circle {stroke-width:7px !important;}
-        .spinner24 svg circle {stroke-width:5px !important;}
-        .spinner36 svg circle {stroke-width:4px !important;}
-        .spinner48 svg circle {stroke-width:4px !important;}
-        .spinner60 svg circle {stroke-width:3.5px !important;}
-    </style>
 </div>
 
 <!-- <div class="demo progress_demo">
@@ -2186,15 +2570,6 @@
             </span>
         </div> -->
     </div>
-
-    <style>
-        .controlpanel {position:absolute;top:24px;left:24px;width:100%;max-width:280px;padding:24px;}
-            .control {position:relative;margin-bottom: 16px;}
-                .control .value {float:right;font-weight: 500;color: var(--grey60);font-variant-numeric: tabular-nums;}
-                .control input[type=range] {width:100%;}
-
-        .hoverbg .section:hover {background:var(--grey10);}
-    </style>
 
     <script>
         function openformerrors(e){
@@ -2902,13 +3277,13 @@
 </div>
 
     <div class="demo form3_demo">
-            <div class=controlpanel>
-                <div class=control>
-                    <span class=checkbox>
-                        <label><input type=checkbox onchange="this.getparent('form3_demo').getElementsByClassName('form')[0].classList.toggle('stacked');autoautoexpand();" /><span class=radiolabel>Stacked</span></label>
-                    </span>
-                </div>
+        <div class=controlpanel>
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form3_demo').getElementsByClassName('form')[0].classList.toggle('stacked');autoautoexpand();" /><span class=radiolabel>Stacked</span></label>
+                </span>
             </div>
+        </div>
         <div class=form>
             <div class=heading>
                 <h3>Bills of Lading</h3>
@@ -3152,167 +3527,97 @@
                 <h4>G. Attachments</h4>
                 <div class=formrow>
                     <div class=formcell>
-                        <div class=btn>Pick a file from your computer</div>
+                        <div class=btn tabindex=0>Pick a file from your computer</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <div class="demo form4_demo">
+        <div class="form routecard">
+            <div class=heading>
+                <h3>Route</h3>
+                <div class=description>The yellow brickroad</div>
+            </div>
+
+            <div class=section>
+                <h4>Voyage</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Cargo Ready Date</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Scheduled Pickup</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Actual Pickup</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Scheduled Delivery</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Actual Delivery</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Carrier</div>
+                        <input type=text placeholder="" />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Number of Pieces</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Tracking #</div>
+                        <input type=text placeholder="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class=section>
+                <h4>Fulfillment</h4>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Service Type</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                    <div class=formcell>
+                        <div class=inputlabel>Partner</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Carrier Subscribers</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+                <div class=formrow>
+                    <div class=formcell>
+                        <div class=inputlabel>Delivery Order</div>
+                        <input type=text placeholder=""  />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </body>
 
 
-<style>
 
-    .form .subsection {padding-left:0;}
-        .noindent .subsection {padding-left:48px;}
-
-    .req .form .formcell:not(.optional) .inputlabel::after {content:' *';}
-    .reqsection {display:none;}
-    .req .reqsection {display:block;}
-
-    .form .helper {}
-        .form .helper .text {font-size:13px;color:var(--grey50);margin-top:4px;}
-        .form .helper .errortext {font-size:13px;color:var(--red45);margin-top:4px;display:none;}
-        .inlineerrors .error .helper .errortext {display:block;}
-
-    .sectionborders .section.borderable {border-radius:6px;border:1px solid var(--grey30); margin: 0 24px;padding: 20px 12px 24px 12px;box-shadow: 0 2px 2px var(--shadow);}
-        .sectionborders .formsectionwrapper .section.borderable {margin-top:20px;}
-
-        .sectionborders.type2 .section.borderable {background:var(--grey10);border-color:var(--grey20);box-shadow:none;}
-
-    .subtotalsection {padding: 12px 12px;background: var(--grey10);border-radius: 3px;margin: 0 8px;border: 1px solid var(--grey20);}
-
-    .sectionerror {margin: 0 var(--fieldgap);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
-        .sectionerror.open {height:80px;opacity:1;}
-        .errorwrap {border-radius:var(--radius);box-sizing: border-box;max-height:100%;border:1px solid var(--grey20);/*border:1px solid var(--red20);*/margin-bottom: 24px;}
-            .errormessage {background:var(--grey10);padding:16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
-                /* background: var(--red10);
-                color:var(--red50); */
-            }
-
-    .formerror {margin: 0 calc(var(--fieldgap) + 16px);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
-        .formerror.open {height:80px;opacity:1;}
-        .formerror .errorwrap {border:1px solid var(--red20);}
-        .formerror .errormessage {background: var(--red10);color:var(--grey60);}
-
-    .emptydrop {font-style:italic;color:var(--grey50);}
-
-    .form {width:100%;max-width:648px;margin:40px auto;}
-        .form h3 {margin:0 var(--fieldgap) 12px;padding-bottom:8px;border-bottom:1px solid var(--grey30);}
-        .form h4 {margin:0 var(--fieldgap) 12px;}
-
-        .form .description {margin:0 var(--fieldgap) 24px;}
-
-        .form .heading {padding:0 16px;}
-        .form .subheading {padding:8px 0 0;}
-
-        .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
-
-        .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
-    .formrow {margin-bottom:24px;display:flex;align-items: flex-end;}
-
-        .onecolumn .formrow {display:block;}
-        .formrow:last-child {margin-bottom:0 !important;}
-        /* .formrow {
-            display: grid;
-            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-            grid-gap: 40px 16px;
-        } */
-
-        .formcell {width:100%;margin:0 var(--fieldgap);position:relative;}
-            .onecolumn .formcell {margin-bottom:24px;width:calc(100% - (var(--fieldgap) * 2));}
-            .onecolumn .formcell:last-child {margin-bottom:0;}
-
-            .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
-
-            .formcell.quarter {width: calc(50% - (var(--fieldgap) * 2));}
-                .onecolumn .formcell.quarter {width:calc(100% - (var(--fieldgap) * 2));}
-
-            .formcell .dropwrap {width:100%;max-width:100%;}
-
-        .form .popover {top: -5px;}
-
-        .form .btngroup {text-align:right;margin:0 8px;}
-        .form .btngroup .btn:last-child {margin:0;}
-
-        .form .dropwrap {display:block;}
-
-
-        .btn.errorsubmit {
-            animation: 200ms 3 forwards nooo;
-        }
-
-        @keyframes nooo {
-            from {transform:translateX(0);}
-            25% {transform:translateX(-4px);}
-            50% {transform:translateX(0);}
-            75% {transform:translateX(4px);}
-            to {transform:translateX(0);}
-        }
-
-
-    .progress1 {width:400px;margin:40px;height:4px;/*background:var(--blue10);*/position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
-        .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
-            animation: 1.1s infinite forwards pbar;
-            animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-        }
-
-        .progress1.deter {background:var(--blue10);}
-        .deter .pbar {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
-            animation: 3s infinite forwards pbarloading;
-            animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-        }
-
-/*
-        .pbar2 {height:100%;left:0;top:0;right:100%;position:absolute;background:var(--blue30);border-radius:12px;
-            animation: 2s infinite forwards pbar2;
-            animation-timing-function: ease-in-out;
-        }
-
-    @keyframes pbar {
-        from {left:0%;background:var(--blue30);}
-        25% {right:0%;left:0%;background:var(--blue50);}
-        50%, to {right:0%;left:100%;background:var(--blue30);}
-    }
-
-    @keyframes pbar2 {
-        from,45% {right:100%;left:0%;background:var(--blue30)}
-        70% {right:0%;left:0%;background:var(--blue50)}
-        to {right:0%;left:100%;background:var(--blue30)}
-    } */
-
-    @keyframes pbar {
-        from {right:100%;left:0%;background:var(--blue30);}
-        50% {right:0%;left:0%;background:var(--blue50);}
-        to {right:0%;left:100%;background:var(--blue30);}
-    }
-
-    @keyframes pbarloading {
-        from {right:100%;left:0%;background:var(--blue30);}
-        90% {right:0%;left:0%;background:var(--blue50);}
-        91% {opacity:1;}
-        to {right:0%;left:0%;background:var(--blue50);opacity:0;}
-    }
-
-
-    .barloader {width:400px;margin:40px;height:4px;background:var(--blue10);position:relative;overflow:hidden;border-radius:2px;transform:translateZ(0);}
-        .barmover {position:absolute;width:100%;height:100%;animation: 1s infinite forwards movebar;animation-timing-function: linear;}
-        .bbar {width:100%;height:100%;left:0;top:0;position:absolute;background:var(--blue30);border-radius:12px;}
-            .bbar1 {left:calc(100% - 8%);}
-            .bbar2 {left:calc(-100% + 8%);animation: 1s infinite forwards barcolor;animation-timing-function: ease-in-out;}
-            .bbar3 {left:calc(-300% + 24%);}
-
-    @keyframes movebar {
-        from {left:0%;}
-        to {left:calc(200% - 16%);}
-    }
-
-    @keyframes barcolor {
-        from, 20% {background:var(--blue30);}
-        50%, 70% {background:var(--blue50);}
-        to {background:var(--blue30);}
-    }
-</style>
 
 <script>
 
@@ -3424,245 +3729,7 @@
     }
 
 </script>
-<style>
 
-    .filterblock {vertical-align:top;margin-right:16px;}
-
-     .btn > * {transition:opacity 150ms ease-in-out;pointer-events:none;}
-
-    .btn.wide {width:200px;text-align:center;}
-
-    .btn .spinlabel {color:var(--grey50);opacity:1;display:inline-block;vertical-align:middle;margin-left:8px;}
-
-    .btn.outsidelabel {text-align:center;}
-        .outsidelabel .spinlabel {position:absolute;right:-12px;transform:translateX(100%);font-size:13px;font-weight:400;}
-
-
-
-
-    .btn.clicked {background:var(--grey10);pointer-events:none;border-color:transparent;box-shadow:none;}
-        .btn.clicked:hover {box-shadow:none;border-color:transparent;pointer-events:none;}
-
-    .btn.finished {}
-
-    .btn .label {transition-delay:150ms;}
-
-    .btn.clicked .label {opacity:0;transition-delay:0ms;}
-
-    .btn .spinning {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;}
-    .btn .spinning .spinner2 {margin:0;width:24px;height:24px;display:inline-block;vertical-align:middle;}
-    .btn.clicked .spinning {opacity:1;transition-delay:150ms;}
-    .btn.clicked.finished .spinning {opacity:0;transition-delay:0ms;}
-
-    .btn .spinning * {animation-play-state:paused;}
-    .btn.clicked .spinning * {animation-play-state:running !important;}
-    .btn.clicked.finished .spinning * {animation-play-state:paused;}
-
-    .btn .spinner2 svg {margin-top:-1px;display:block;}
-    .btn .spinner2 svg circle {stroke-width:5px !important;}
-
-    .btn .done {opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:14px;transition-delay:0ms;}
-    .btn .done svg {display:block;height:14px;}
-
-        .btn .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset: 80px;transition:all 150ms ease-in-out;transition-delay:500ms;}
-
-    .btn.finished .done {opacity:1;transition-delay:150ms;}
-        .btn.finished .done svg > polyline {stroke-dasharray: 80;stroke-dashoffset:0;transition-delay:150ms;}
-
-
-
-    .spinner2 {margin:24px;height:48px;}
-
-    .spinner .spin, .spinner3 .spin3 {
-        animation-name: rotate;
-        animation-duration: 2s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        transform-origin: center;
-    }
-
-    .spinner2 .spin2 {
-        animation-name: rotate2;
-        animation-duration: 1.75s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        transform-origin: center;
-
-    }
-
-    .spinner svg circle {
-        animation-name: spinner;
-        animation-duration: 1.5s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-        stroke-linecap: round;
-    }
-
-    .spinner2 svg .noanimation {
-        animation: none !important;
-        stroke-dasharray: 200, 200 !important;
-        stroke: #F7FAFC !important;
-    }
-
-    .spinner2 svg circle {
-        animation-name: spin2, color2;
-        animation-duration: 1.75s, 7s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        stroke-dasharray: 2, 200;
-        stroke-dashoffset: 0;
-        stroke-linecap: round;
-    }
-
-    .spinner2.spinnerc svg circle {
-        animation-name: spin2, color3;
-    }
-
-    .spinner2.spinnerg svg circle {
-        animation-name: spin2, colorg;
-        stroke: #B0BAC2;
-        stroke: #CED7DE;
-        /* stroke: #6E7882; */
-    }
-
-    .spinner2.spinnergg svg circle {
-        animation-name: spin2;
-        stroke: #B0BAC2;
-        stroke: #CED7DE;
-        stroke: #6E7882;
-    }
-
-    .fat.spinner2 svg circle {stroke-width:4px;}
-
-    .spinner2 {
-        width: 48px;
-        /* transform: rotate(-45deg); */
-    }
-
-       .spinner3 svg circle {
-        animation-name: spin3;
-        animation-duration: 1.5s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-        stroke-linecap: round;
-    }
-
-    @keyframes colorg {
-        from {stroke:#CED7DE;}
-        25% {stroke:#CED7DE;}
-        29% {stroke:#B0BAC2;}
-        50% {stroke:#B0BAC2;}
-        54% {stroke:#6E7882;}
-        75% {stroke:#6E7882;}
-        79% {stroke:#B0BAC2;}
-        98% {stroke:#B0BAC2;}
-        to {stroke:#CED7DE;}
-    }
-
-    @keyframes color2 {
-        from {stroke:#4976F2;}
-        25% {stroke:#4976F2;}
-        29% {stroke:#265DF1;}
-        50% {stroke:#265DF1;}
-        54% {stroke:#1942B3;}
-        75% {stroke:#1942B3;}
-        79% {stroke:#0E2259;}
-        98% {stroke:#0E2259;}
-        to {stroke:#4976F2;}
-    }
-
-    @keyframes color3 {
-        from {stroke:#265df1;}
-        25% {stroke:#265df1;}
-        29% {stroke:#3dc468;}
-        50% {stroke:#3dc468;}
-        54% {stroke:#ffd100;}
-        75% {stroke:#ffd100;}
-        79% {stroke:#ef3340;}
-        98% {stroke:#ef3340;}
-        to {stroke:#265df1;}
-    }
-
-
-
-    @keyframes spinner {
-        from {
-            stroke-dasharray: 1, 200;
-            stroke-dashoffset: 0;
-        }
-        50% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -35px;
-        }
-        100% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -124px;
-        }
-    }
-
-    @keyframes spin2 {
-        from {
-            stroke-dasharray: 2, 200;
-            stroke-dashoffset: 0;
-        }
-        50% {
-            stroke-dasharray: 80;
-            stroke-dashoffset: -80px;
-        }
-
-        to{
-            stroke-dasharray: 124;
-            stroke-dashoffset: -124px;
-        }
-    }
-
-
-    @keyframes spin3 {
-        50% {
-            stroke-dasharray: 90,200;
-            stroke-dashoffset: 0;
-        }
-        to{
-            stroke-dasharray: 125,200;
-            stroke-dashoffset: -125px;
-        }
-    }
-
-    @keyframes rotate {
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-
-
-    @keyframes rotate2 {
-        from {
-            transform: rotate(-45deg);
-        }
-
-        50% {
-            transform: rotate(315deg);
-        }
-
-        75% {
-            transform: rotate(555deg);
-        }
-
-        to {
-            transform: rotate(680deg);
-        }
-    }
-
-    @keyframes loop {
-        from {background-position-x: 10vw;}
-        to {background-position-x: 206vw;}
-    }
-</style>
 
 <script>
 
