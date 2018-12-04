@@ -20,38 +20,35 @@
     --red45:#D92736;
     --red50:#A6212A;
     --red60:#591317;
-            /*
-            yellow: [
-                {name:'10', hex:"#FCF6DE"},
-                {name:'20', hex:"#FFE880"},
-                {name:'30', hex:"#FFDE4C"},
-                {name:'40', hex:"#FFD100"},
-                {name:'50', hex:"#FF9419"},
-                {name:'60', hex:"#662E00"}
-            ],
-            green: [
-                {name:'10', hex:"#EBFFF1"},
-                {name:'20', hex:"#B0EBC3"},
-                {name:'30', hex:"#66CC86"},
-                {name:'40', hex:"#3DC468"},
-                {name:'50', hex:"#2DA854"},
-                {name:'60', hex:"#124D25"}
-            ],
-            cyan: [
-                {name:'10', hex:"#E8F6FF"},
-                {name:'20', hex:"#BEE6FF"},
-                {name:'30', hex:"#8CDBFF"},
-                {name:'40', hex:"#66CFFF"},
-                {name:'50', hex:"#0A8FCC"},
-                {name:'60', hex:"#00384C"}
-            ],
-            purple: [
-                {name:'10', hex:"#F4EDFF"},
-                {name:'20', hex:"#C4AEE8"},
-                {name:'30', hex:"#8F62D9"},
-                {name:'40', hex:"#7B41D9"},
-                {name:'50', hex:"#572E99"},
-                {name:'60', hex:"#331B59"}*/
+
+    --green10:#EBFFF1;
+    --green20:#B0EBC3;
+    --green30:#66CC86;
+    --green40:#3DC468;
+    --green50:#2DA854;
+    --green60:#124D25;
+
+    --yellow10: #FCF6DE;
+    --yellow20: #FFE880;
+    --yellow30: #FFDE4C;
+    --yellow40: #FFD100;
+    --yellow50: #FF9419;
+    --yellow60: #662E00;
+
+    --cyan10: #E8F6FF;
+    --cyan20: #BEE6FF;
+    --cyan30: #8CDBFF;
+    --cyan40: #66CFFF;
+    --cyan50: #0A8FCC;
+    --cyan60: #00384C;
+
+    --purple10: #F4EDFF;
+    --purple20: #C4AEE8;
+    --purple30: #8F62D9;
+    --purple40: #7B41D9;
+    --purple50: #572E99;
+    --purple60: #331B59;
+
 
     /*--grey10: hsl(204, 45%, 98%);
     --grey20: hsl(204, 38%, 95%);

@@ -1107,7 +1107,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div><div class=tab data-type=toast>Toast</div>
         </div>
 
         <div class=tabline></div>
@@ -3614,6 +3614,166 @@
             </div>
         </div>
     </div> -->
+
+    <div class="demo toast_demo">
+        <div class="toast toasted bottom right">Mmm Toast</div>
+
+        <div class=options>
+            <div class=choices>
+                <div class=inputlabel>Type</div>
+                <span class=radio>
+                    <input type=radio class="toasty offscreen" value=default name=toasty id=c1q checked />
+                    <label for=c1q><span class=radiohead></span><span class=radiolabel>Default</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty offscreen" value=info name=toasty id=c2q />
+                    <label for=c2q><span class=radiohead></span><span class=radiolabel>Info</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty offscreen" value=success name=toasty id=c3q />
+                    <label for=c3q><span class=radiohead></span><span class=radiolabel>Success</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty offscreen" value=error name=toasty id=c4q />
+                    <label for=c4q><span class=radiohead></span><span class=radiolabel>Error</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty offscreen" value=warning name=toasty id=c5q />
+                    <label for=c5q><span class=radiohead></span><span class=radiolabel>Warning</span></label>
+                </span>
+            </div>
+
+            <div class=choices>
+                <div class=inputlabel>Style</div>
+                <span class=radio>
+                    <input type=radio class="toasty4 offscreen" value=v1 name=toasty4 id=c1q4 checked />
+                    <label for=c1q4><span class=radiohead></span><span class=radiolabel>Style 1</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty4 offscreen" value=v3 name=toasty4 id=c2q4  />
+                    <label for=c2q4><span class=radiohead></span><span class=radiolabel>Style 2</span></label>
+                </span>
+            </div>
+
+            <div class=choices>
+                <div class=inputlabel>Placement</div>
+                <span class=radio>
+                    <input type=radio class="toasty2 offscreen" value=top name=toasty2 id=c1q2  />
+                    <label for=c1q2><span class=radiohead></span><span class=radiolabel>Top</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty2 offscreen" value=bottom name=toasty2 id=c2q2 checked />
+                    <label for=c2q2><span class=radiohead></span><span class=radiolabel>Bottom</span></label>
+                </span>
+            </div>
+
+            <div class=choices>
+                <div class=inputlabel>Position</div>
+                <span class=radio>
+                    <input type=radio class="toasty3 offscreen" value=left name=toasty3 id=c1q3  />
+                    <label for=c1q3><span class=radiohead></span><span class=radiolabel>Left</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty3 offscreen" value=center name=toasty3 id=c2q3 />
+                    <label for=c2q3><span class=radiohead></span><span class=radiolabel>Center</span></label>
+                </span>
+                <span class=radio>
+                    <input type=radio class="toasty3 offscreen" value=right name=toasty3 id=c3q3 checked />
+                    <label for=c3q3><span class=radiohead></span><span class=radiolabel>Right</span></label>
+                </span>
+            </div>
+
+
+            <div class="btn toaster">Launch Toast</div>
+        </div>
+    </div>
+
+    <style>
+        .toast {padding:12px 16px;border-radius:3px;background:var(--grey60);color:white;display:inline-block;font-weight:500;box-shadow:0 2px 2px rgba(0,0,0,.05);box-sizing:border-box;
+            transition:transform 150ms ease-in-out;transition-timing-function: cubic-bezier(0.2, 1, 0.6, 1.1);
+        }
+            .toast.success {background:var(--green30);color:var(--green60);
+                background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M6.47556138,12.4546535 C6.40387862,12.5227821 6.28783905,12.5227821 6.21615629,12.4546535 L5.15736,11.4459492 L2.55363389,8.96505829 C2.48212202,8.89676686 2.48212202,8.78621715 2.55363389,8.71792573 L3.59143681,7.72939548 C3.66311957,7.66126686 3.77915914,7.66126686 3.8508419,7.72939548 L6.32404398,10.0855897 L12.1273429,4.55684646 C12.1990257,4.48871783 12.3150653,4.48871783 12.386748,4.55684646 L13.4464571,5.56659427 C13.5178476,5.6348656 13.5178476,5.74528159 13.4464571,5.81355292 L6.47556138,12.4546535 Z' fill='%23124D25' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+            .toast.error {background:var(--red30);color:var(--grey60);
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23591317' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+            .toast.warning {background:var(--yellow20);color:var(--yellow60);
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23662e00' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+            .toast.info {background:var(--blue30);color:white;
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 16 16' style='transform:rotate(180deg);' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M9,12.73675 C8.99972447,12.8852979 8.87929809,13.0056125 8.73075,13.00575 L7.269,13.00575 C7.12054953,13.0054748 7.00027516,12.8852005 7,12.73675 L7,11.275 C7,11.1265 7.1205,11.006 7.269,11.00575 L8.73075,11.00575 C8.8795,11.00575 8.99975,11.12625 9,11.275 L9,12.73675 Z M9,9.75 C9,9.88807119 8.88807119,10 8.75,10 L7.25,10 C7.11192881,10 7,9.88807119 7,9.75 L7,3.24999999 C7,3.1119288 7.11192881,2.99999999 7.25,2.99999999 L8.75,2.99999999 C8.88807119,2.99999999 9,3.1119288 9,3.24999999 L9,9.75 Z' fill='white' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+        .toast.v2 {background:var(--grey30);color:var(--grey60);}
+            .toast.success.v2 {background:var(--green50);color:white;
+                background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M6.47556138,12.4546535 C6.40387862,12.5227821 6.28783905,12.5227821 6.21615629,12.4546535 L5.15736,11.4459492 L2.55363389,8.96505829 C2.48212202,8.89676686 2.48212202,8.78621715 2.55363389,8.71792573 L3.59143681,7.72939548 C3.66311957,7.66126686 3.77915914,7.66126686 3.8508419,7.72939548 L6.32404398,10.0855897 L12.1273429,4.55684646 C12.1990257,4.48871783 12.3150653,4.48871783 12.386748,4.55684646 L13.4464571,5.56659427 C13.5178476,5.6348656 13.5178476,5.74528159 13.4464571,5.81355292 L6.47556138,12.4546535 Z' fill='white' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+            .toast.error.v2 {background:var(--red45);color:white;
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='white' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+
+        .toast.v3, .toast.v4, .toast.v5 {background:white;border:1px solid var(--grey30);color:var(--grey60);padding:11px 16px;}
+            .toast.success.v3 {
+                background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M6.47556138,12.4546535 C6.40387862,12.5227821 6.28783905,12.5227821 6.21615629,12.4546535 L5.15736,11.4459492 L2.55363389,8.96505829 C2.48212202,8.89676686 2.48212202,8.78621715 2.55363389,8.71792573 L3.59143681,7.72939548 C3.66311957,7.66126686 3.77915914,7.66126686 3.8508419,7.72939548 L6.32404398,10.0855897 L12.1273429,4.55684646 C12.1990257,4.48871783 12.3150653,4.48871783 12.386748,4.55684646 L13.4464571,5.56659427 C13.5178476,5.6348656 13.5178476,5.74528159 13.4464571,5.81355292 L6.47556138,12.4546535 Z' fill='%232DA854' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+            .toast.error.v3 {
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23F2555F' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+            .toast.warning.v3 {
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23ffd100' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+            .toast.info.v3 {
+                background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 16 16' style='transform:rotate(180deg);' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M9,12.73675 C8.99972447,12.8852979 8.87929809,13.0056125 8.73075,13.00575 L7.269,13.00575 C7.12054953,13.0054748 7.00027516,12.8852005 7,12.73675 L7,11.275 C7,11.1265 7.1205,11.006 7.269,11.00575 L8.73075,11.00575 C8.8795,11.00575 8.99975,11.12625 9,11.275 L9,12.73675 Z M9,9.75 C9,9.88807119 8.88807119,10 8.75,10 L7.25,10 C7.11192881,10 7,9.88807119 7,9.75 L7,3.24999999 C7,3.1119288 7.11192881,2.99999999 7.25,2.99999999 L8.75,2.99999999 C8.88807119,2.99999999 9,3.1119288 9,3.24999999 L9,9.75 Z' fill='%233e6be6' %3E%3C/path%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: left 16px center;
+                padding-left: 40px;
+            }
+
+            .toast.success.v4 {box-shadow:inset 3px 0 0 var(--green30);padding-left:16px;}
+            .toast.error.v4 {box-shadow:inset 3px 0 0 var(--red30);padding-left:16px;}
+
+
+        .toast.butter {position:fixed;bottom:16px;right:16px;transform:translateY(calc(100% + 16px));z-index:9999999999;pointer-events:none;opacity:1;}
+            .toast.butter.top {top:16px;bottom:auto;transform:translateY(calc(-100% - 16px));}
+
+            .toast.butter.left {left:16px;right:auto;}
+            .toast.butter.center {right:50%;margin-right:-56px;}
+
+            .toast.butter.poppop {transform:translateY(0);pointer-events:all;opacity:1;z-index:99999999999;}
+    </style>
 </body>
 
 
@@ -4027,6 +4187,92 @@
 
     }
 
+    function launchtoast(e){
+        var id = this.dataset.id;
+
+        var t = document.getElementById('toast' + id);
+
+        var pop = document.getElementsByClassName('toast poppop');
+
+        pop.removeclass('poppop');
+
+        if ( t ){
+            t.classList.add('poppop');
+            if ( t.timer ){
+                clearTimeout(t.timer);
+            }
+            t.timer = setTimeout(function(){
+                t.classList.remove('poppop');
+            }, 1337);
+        }
+    }
+
+    function toasty(e){
+        var p = this.getparent('demo');
+        var t = p.getElementsByClassName('toasted')[0];
+
+        t.classList.remove('default', 'info', 'success', 'error', 'warning');
+        t.classList.add(this.value);
+    }
+
+    function toasty2(e){
+        var p = this.getparent('demo');
+        var t = p.getElementsByClassName('toasted')[0];
+
+        t.classList.remove('top', 'bottom');
+        t.classList.add(this.value);
+    }
+
+    function toasty3(e){
+        var p = this.getparent('demo');
+        var t = p.getElementsByClassName('toasted')[0];
+
+        t.classList.remove('left','right','center');
+        t.classList.add(this.value);
+    }
+
+    function toasty4(e){
+        var p = this.getparent('demo');
+        var t = p.getElementsByClassName('toasted')[0];
+
+        t.classList.remove('v1', 'v3');
+        t.classList.add(this.value);
+    }
+
+    function toaster(e){
+        var p = this.getparent('demo');
+        var t = p.getElementsByClassName('toasted')[0];
+
+        var pop = document.getElementsByClassName('toast poppop');
+        while(pop[0]){
+            if ( pop[0].timer ){
+                clearTimeout(pop[0].timer);
+            }
+            pop[0].addEventListener('transitionend', removeelm);
+            pop[0].classList.remove('poppop');
+        }
+
+        var c = t.cloneNode(true);
+        c.classList.add('butter');
+
+        c.timer = setTimeout(function(){
+            c.addEventListener('transitionend', removeelm);
+            c.classList.remove('poppop');
+        }, 1337);
+
+        document.body.appendChild(c);
+
+        c.offsetLeft;
+
+        c.classList.add('poppop');
+
+    }
+
+    function removeelm(e){
+        console.log('remove');
+        this.parentNode.removeChild(this);
+    }
+
     Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
     Attach.on('click', '.popitem', popover);
@@ -4040,6 +4286,15 @@
 
     Attach.on('click', '.stepup', stepper);
     Attach.on('click', '.stepdown', stepper);
+
+    Attach.on('click', '.toastbtn', launchtoast);
+
+    Attach.on('change', '.toasty', toasty);
+    Attach.on('change', '.toasty2', toasty2);
+    Attach.on('change', '.toasty3', toasty3);
+    Attach.on('change', '.toasty4', toasty4);
+
+    Attach.on('click', '.toaster', toaster);
 
     (function() {
         var hash = window.location.hash;
