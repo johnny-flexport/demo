@@ -16,7 +16,7 @@
         :root {
             --radius: 3px;
             --lineheight: 36px;
-            --inset: 16px;
+            --inset: 12px;
 
             --shadow: rgba(0, 0, 0, 0.05);
             --blueshadow: hsla(224, 88%, 55%, 0.2);
@@ -27,6 +27,8 @@
             --indent: 12px;
 
             --fieldgap: 8px;
+
+            --btnpad: 12px;
         }
 
         .funsize {
@@ -35,30 +37,39 @@
             --textpadd: 1px;
 
             --indent: 8px;
+
+            --btnpad: 8px;
         }
 
         .current {
             --lineheight: 30px;
             --inset: 12px;
             --textpadd: 4px;
+
+            --btnpad: 12px;
         }
 
         .multiple4 {
             --lineheight: 32px;
             --inset: 12px;
             --textpadd: 5px;
+
+            --btnpad: 12px;
         }
 
         .large {
             --lineheight: 40px;
             --textpadd: 8px;
             --indent: 16px;
+
+            --inset: 16px;
+            --btnpad: 16px;
         }
 
         .demo {padding:24px 40px 0;margin-bottom:24px;position: relative;}
 
 
-        .btn {background:var(--blue30);user-select:none;border-radius:var(--radius);padding:0 var(--inset);line-height:var(--lineheight);height:var(--lineheight);font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:0 16px 0 0;position:relative;box-sizing:border-box;
+        .btn {background:var(--blue30);user-select:none;border-radius:var(--radius);padding:0 var(--btnpad);line-height:var(--lineheight);height:var(--lineheight);font-size:14px;font-weight:bold;color:white;cursor:pointer;display:inline-block;margin:0 16px 0 0;position:relative;box-sizing:border-box;
             transition:all 150ms ease-in-out;
         }
             .btn:hover {background:var(--blue40);box-shadow:0 2px 2px var(--blueshadow);}
