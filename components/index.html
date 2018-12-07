@@ -1107,7 +1107,7 @@
 
     <div class=tabs>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div><div class=tab data-type=toast>Toast</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div><div class=tab data-type=toast>Toast</div><div class=tab data-type=wizard>Wizard</div>
         </div>
 
         <div class=tabline></div>
@@ -3795,12 +3795,94 @@
 
             .toast.butter.poppop {transform:translateY(0);pointer-events:all;opacity:1;z-index:99999999999;}
     </style>
+
+
+    <div class="demo wizard_demo">
+        <div class=wizard>
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed" onclick="milestone.call(this,event);"></div>
+                    <div class=milestone onclick="milestone.call(this,event);"></div>
+                    <div class=milestone onclick="milestone.call(this,event);"></div>
+                    <div class=milestone onclick="milestone.call(this,event);"></div>
+                </div>
+
+                <div class=currentstone></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+    </div>
+
+    <style>
+        .milestones {position:relative;max-width:200px;}
+        .milestone {width:12px;height:12px;box-sizing:border-box;position:absolute;top:0;cursor:pointer;z-index:11;}
+            .milestone::after {width:6px;height:6px;position:absolute;top:3px;left:3px;border-radius:50%;background:var(--grey30);content:'';transition:all 150ms ease-in-out;}
+            .milestone:first-child {left:0;}
+            .milestone:nth-child(2) {left:33.34%;transform:translateX(-50%);}
+            .milestone:nth-child(3) {left:66.67%;transform:translateX(-50%);}
+            .milestone:last-child {right:0;}
+
+            .milestone.completed::after {background:transparent;}
+
+                .milestone:hover::after {background:var(--grey40);}
+                .milestone.completed:hover::after {background:white;}
+
+        .currentstone, .progressstone {width:12px;height:12px;background:var(--blue30);border-radius:6px;position:absolute;top:0;left:0;box-sizing:border-box;z-index:4;transition:width 150ms ease-in-out;pointer-events:none;}
+            .currentstone::after {content:'';position:absolute;top:3px;right:3px;width:6px;height:6px;background:white;border-radius:50%;}
+        .progressstone {border:none;background:var(--blue30);z-index:3;}
+        .progressbar {position:absolute;height:12px;width:0;left:6px;background:var(--blue30);}
+
+    </style>
 </body>
 
 
 
 
 <script>
+
+    function milestone(e){
+        var l = this.offsetLeft;
+
+        var m = this.getparent('milestones');
+        var s = m.getElementsByClassName('milestone');
+        var cs = document.getElementsByClassName('currentstone')[0];
+        //var ps = document.getElementsByClassName('progresstone')[0];
+        var pb = document.getElementsByClassName('progressbar')[0];
+
+        var w = this.offsetWidth;
+
+
+        if ( this.nextElementSibling ){
+            w = w/2;
+        }
+
+        if ( !this.previousElementSibling ){
+            w = w*2;
+        }
+
+        console.log(l);
+
+        //pb.style.width = l - w + 'px';
+        cs.style.width = l + w  + 'px';
+
+        var grr = false;
+        for(var i=0;i<s.length;i++){
+            var ss = s[i];
+
+            if ( !grr ){
+                ss.classList.add('completed');
+            } else {
+                ss.classList.remove('completed');
+            }
+
+            if ( ss == this ){
+                grr = true;
+            }
+
+        }
+    }
 
     function surprise(e){
         this.classList.remove('errorsubmit');
