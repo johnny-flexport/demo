@@ -369,7 +369,7 @@
 
 
         .tipwrap {position:relative;display:inline-block;margin:24px;cursor: help;vertical-align: top;}
-            .tooltip {z-index:1337;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:var(--grey60);color:white;font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
+            .tooltip {z-index:1337;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:var(--grey60);color:var(--grey00);font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
                 .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
 
             .tooltip.right {top:50%;left:calc(100% + 8px);transform:translate(0, -50%);}
@@ -650,7 +650,7 @@
             .badgeclose::before {transform:translate(-50%, -50%) rotate(-45deg);}
 
         .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
-        .tooltip.error {background:var(--red45);}
+        .tooltip.error {background:var(--red45);color:white;}
         .demo:not(.notooltip) input:focus ~ .tooltip, .demo:not(.notooltip) input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
 
         .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
@@ -969,7 +969,7 @@
         .spinner2 svg .noanimation {
             animation: none !important;
             stroke-dasharray: 200, 200 !important;
-            stroke: #F7FAFC !important;
+            stroke: var(--grey10) !important;
         }
 
         .spinner2 svg circle {
@@ -989,7 +989,7 @@
         .spinner2.spinnerg svg circle {
             animation-name: spin2, colorg;
             stroke: #B0BAC2;
-            stroke: #CED7DE;
+            stroke: var(--grey40);
             /* stroke: #6E7882; */
         }
 
@@ -997,7 +997,7 @@
             animation-name: spin2;
             stroke: #B0BAC2;
             stroke: #CED7DE;
-            stroke: #6E7882;
+            stroke: var(--grey50);
         }
 
         .fat.spinner2 svg circle {stroke-width:4px;}
@@ -1018,39 +1018,39 @@
         }
 
         @keyframes colorg {
-            from {stroke:#CED7DE;}
-            25% {stroke:#CED7DE;}
-            29% {stroke:#B0BAC2;}
-            50% {stroke:#B0BAC2;}
-            54% {stroke:#6E7882;}
-            75% {stroke:#6E7882;}
-            79% {stroke:#B0BAC2;}
-            98% {stroke:#B0BAC2;}
-            to {stroke:#CED7DE;}
+            from {stroke:var(--grey30);}
+            25% {stroke:var(--grey30);}
+            29% {stroke:var(--grey40);}
+            50% {stroke:var(--grey40);}
+            54% {stroke:var(--grey50);}
+            75% {stroke:var(--grey50);}
+            79% {stroke:var(--grey40);}
+            98% {stroke:var(--grey40);}
+            to {stroke:var(--grey30);}
         }
 
         @keyframes color2 {
-            from {stroke:#4976F2;}
-            25% {stroke:#4976F2;}
-            29% {stroke:#265DF1;}
-            50% {stroke:#265DF1;}
-            54% {stroke:#1942B3;}
-            75% {stroke:#1942B3;}
-            79% {stroke:#0E2259;}
-            98% {stroke:#0E2259;}
-            to {stroke:#4976F2;}
+            from {stroke:var(--ui3);}
+            25% {stroke:var(--ui3);}
+            29% {stroke:var(--ui4);}
+            50% {stroke:var(--ui4);}
+            54% {stroke:var(--ui5);}
+            75% {stroke:var(--ui5);}
+            79% {stroke:var(--ui6);}
+            98% {stroke:var(--ui6);}
+            to {stroke:var(--ui3);}
         }
 
         @keyframes color3 {
-            from {stroke:#265df1;}
-            25% {stroke:#265df1;}
-            29% {stroke:#3dc468;}
-            50% {stroke:#3dc468;}
-            54% {stroke:#ffd100;}
-            75% {stroke:#ffd100;}
-            79% {stroke:#ef3340;}
-            98% {stroke:#ef3340;}
-            to {stroke:#265df1;}
+            from {stroke:var(--blue40);}
+            25% {stroke:var(--blue40);}
+            29% {stroke:var(--green40);}
+            50% {stroke:var(--green40);}
+            54% {stroke:var(--yellow40);}
+            75% {stroke:var(--yellow40);}
+            79% {stroke:var(--red40);}
+            98% {stroke:var(--red40);}
+            to {stroke:var(--blue40);}
         }
 
 
@@ -4637,7 +4637,15 @@
 
         console.log(colors);
 
-        var css = '--grey00:black;';
+        var css = `--grey00:black;
+        --red10:#591317;
+        --red20:#A6212A;
+        --red30:#D92736;
+        --red40:#EF3340;
+        --red45:#F2555F;
+        --red50:#FCBDBD;
+        --red60: #FFEBEB;
+        `;
 
         for(var i=0;i<colors.length;i++){
             css += '--grey' + (i+1) +'0:' + colors[i] + ';';
