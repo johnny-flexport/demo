@@ -1170,6 +1170,7 @@
         </span>
         <div class=btn onclick="randomcolor()">Random Color</div>
         <div class="btn hollow" onclick="invert()">Invert</div>
+        <div class="btn shh" onclick="unicorn()">Surprise</div>
     </div>
 
     <div class="demo checkbox_demo">
@@ -4779,102 +4780,109 @@
         //}
     }
 
-    function getcolors(x){
-        // --grey1:hsl(203,0%,0%); /* 1 */
-        // --grey2:hsl(203,0%,1%); /* 1 */
-        // --grey3:hsl(203,0%,2%); /* 1 */
-        // --grey4:hsl(203,0%,4%); /* 1.1 */
-        // --grey5:hsl(203,0%,7%); /* 1.1 */
-        // --grey6:hsl(203,0%,9%); /* 1.2 */
-        // --grey7:hsl(203,0%,11%); /* 1.2 */
-        // --grey8:hsl(203,0%,13%); /* 1.3 */
-        // --grey9:hsl(203,0%,20%); /* 1.7 */
-        // --grey10:hsl(203,0%,21%); /* 1.7 */
-        // --grey11:hsl(203,0%,26%); /* 2.1 */
-        // --grey12:hsl(203,0%,38%); /* 3.4 */
-        // --grey13:hsl(203,0%,46%); /* 4.7 */
-        // --grey14:hsl(203,0%,65%); /* 8.5 */
-        // --grey15:hsl(203,0%,77%); /* 12 */
-        // --grey16:hsl(203,0%,86%); /* 15.1 */
-        // --grey17:hsl(203,0%,100%); /* 21 */
+    function unicorn(x){
+        console.log(x);
+        //var a = false;
+        //while(!a){
+            var r1 = x && x.length ? x[0] : Math.floor(Math.random()*255);
+            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*255);
+            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*255);
 
 
-        var hsl = rgb2hsl(x[0],x[1],x[2]);
+            // var hsl = rgb2hsl(r1,r2,r3);
 
-        var h = hsl[0];
-        var s = hsl[1];
-        var l = 0;
+            // var h = document.getElementById('hue');
+            // h.value = hsl[0];
+            // var s = document.getElementById('sat');
+            // s.value = hsl[1];
+            // var l = document.getElementById('lum');
+            // l.value = hsl[2];
 
-        console.log(h, s, hsl)
-
-
-        var ratios = [1.13, 1.52,4.71,5.35,8.49,15.08];
-        var colors = [];
-
-        if ( hsl[2] > 50){
-          l = -100;
-        }
-
-        for(var i=0;i<100;i++){
-
-          var c = contrast(hsl2rgb(h,s,Math.abs(l)), x);
-
-          console.log(Math.abs(l), c)
-
-          if ( l < 0 ){
-            c = 1/c;
-          }
-
-          var pos = colors.length;
-          if ( pos > ratios.length ){
-            pos = ratios.length;
-          }
-
-          if ( c >= ratios[pos]){
-            colors.push( 'hsl(' + h  + ',' + s + '%,' +  Math.abs(l) + '%)' );
-          }
+            // h.parentElement.getElementsByClassName('label')[1].innerHTML = Math.floor(hsl[0]);
+            // s.parentElement.getElementsByClassName('label')[1].innerHTML = Math.floor(hsl[1]);
+            // l.parentElement.getElementsByClassName('label')[1].innerHTML = Math.floor(hsl[2]);
 
 
-          l++;
-        }
+            //a = getcolors([r1,r2,r3]);
 
 
-        var css = '';
+            var hsl = rgb2hsl(r1,r2,r3);
 
-        for(var i=0;i<colors.length;i++){
+            var base = [255,255,255];
 
-          css += '--ui' + (i+1) +':' + colors[i] + ';';
+            // var bg = window.getComputedStyle(document.documentElement, null).getPropertyValue("background-color");
+            // bg = bg.replace('rgb(','');
+            // bg = bg.replace(')','');
 
-        }
-
-
-        var accessible = false;
-
-        if ( colors.length < 16 ){
-          console.log('BAD colors ' + colors.length);
-
-          //toast('Doesn\'t meet accessibility', 'colortoast', true);
-
-          document.documentElement.classList.add('invalidcolors');
-        } else {
-          //removetoast('colortoast');
-          accessible = true;
-          document.documentElement.classList.remove('invalidcolors');
-        }
-
-        var old = document.getElementsByClassName('colorscss');
-
-        while(old[0]){
-          old[0].parentNode.removeChild(old[0]);
-        }
-
-        var style = document.createElement('style');
-        style.className = 'colorscss';
-        style.innerHTML = ':root { ' + css + '}';
-        document.head.appendChild(style);
+            // base = bg.split(',');
 
 
-        return accessible;
+            var ratios = [1, 1.04, 1.11, 1.45, 1.97, 4.5, 17.6, 21];
+            var colors = [];
+
+            var h = hsl[0] ;
+            var s = hsl[1] ;
+            var l = 5;
+
+            if ( s > 50){
+                l = -95;
+            }
+
+            base = hsl2rgb(h,s,Math.abs(l));
+
+
+            console.log(r1,r2,r3,hsl)
+
+            for(var i=0;i<95;i++){
+                //var rgb = hsl2rgb(h, s, l);
+
+                var c = contrast(hsl2rgb(h, s, Math.abs(l)), base);
+
+                if ( l < 0 ){
+                    c = 1/c;
+                }
+
+                var pos = colors.length;
+                if ( pos > ratios.length ){
+                    pos = ratios.length;
+                }
+
+                if ( c >= ratios[pos]){
+                    console.log(c, ratios[pos]);
+                    colors.push( 'hsl(' + h  + ',' + s + '%,' +  Math.abs(l) + '%)' );
+                }
+
+
+                l++;
+            }
+
+            console.log(colors);
+
+            if (colors.length < 6){
+                return unicorn();
+            }
+
+            var css = '';
+
+            for(var i=0;i<colors.length;i++){
+                css += '--grey' + (i) +'0:' + colors[i] + ';';
+            }
+
+            c//ss += '--grey00:var(--grey70)';
+
+            var old = document.getElementsByClassName('barf');
+
+            while(old[0]){
+                old[0].parentNode.removeChild(old[0]);
+            }
+
+            var style = document.createElement('style');
+            style.className = 'barf';
+            style.innerHTML = ':root { ' + css + '}';
+            document.head.appendChild(style);
+
+            //altcolors([r1,r2,r3], hsl[2]);
+        //}
     }
 
 
