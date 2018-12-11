@@ -369,7 +369,7 @@
 
 
         .tipwrap {position:relative;display:inline-block;margin:24px;cursor: help;vertical-align: top;}
-            .tooltip {z-index:1337;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:var(--grey60);color:var(--grey00);font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;}
+            .tooltip {z-index:1337;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%, -4px);padding:4px 8px;border-radius:3px;background:var(--grey60);color:var(--grey00);font-size:13px;pointer-events:none;opacity:0;transition:all 150ms ease-in-out;font-weight:500;}
                 .tipwrap:hover .tooltip {opacity:1;transform:translate(-50%, 0);}
 
             .tooltip.right {top:50%;left:calc(100% + 8px);transform:translate(0, -50%);}
@@ -3916,13 +3916,91 @@
         <div class=wizard>
             <div class=milestones>
                 <div class=stones>
-                    <div class="milestone completed" onclick="milestone.call(this,event);"></div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);"></div>
                     <div class=milestone onclick="milestone.call(this,event);"></div>
                     <div class=milestone onclick="milestone.call(this,event);"></div>
                     <div class=milestone onclick="milestone.call(this,event);"></div>
                 </div>
 
                 <div class=currentstone></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+    </div>
+
+    <div class="demo wizard_demo">
+        <div class="wizard wclick">
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);">
+                        <div class="tooltip">First Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Second Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Third Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Final Step</div>
+                    </div>
+                </div>
+
+                <div class=currentstone></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+    </div>
+
+    <div class="demo wizard_demo">
+        <div class="wizard wliz">
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed " onclick="milestone.call(this,event);">
+                        <div class="tooltip">First Step</div>
+                    </div>
+                    <div class="milestone completed " onclick="milestone.call(this,event);">
+                        <div class="tooltip">Second Step</div>
+                    </div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);">
+                        <div class="tooltip">Third Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Final Step</div>
+                    </div>
+                </div>
+
+                <div class=currentstone style="width: 139px;"></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+    </div>
+
+    <div class="demo wizard_demo">
+        <div class="wizard wliz wclick">
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed" onclick="milestone.call(this,event);">
+                        <div class="tooltip">First Step</div>
+                    </div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);">
+                        <div class="tooltip">Second Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Third Step</div>
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);">
+                        <div class="tooltip">Final Step</div>
+                    </div>
+                </div>
+
+                <div class=currentstone style="width: 73px;"></div>
                 <div class=progressstone></div>
                 <div class=progressbar></div>
             </div>
@@ -3940,6 +4018,9 @@
             .milestone:last-child {right:0;}
 
             .milestone.completed::after {background:transparent;}
+                .wclick .milestone.completed::after {background-color:var(--ui6);}
+
+                .milestone.completed.current::after {background-color:var(--grey00);}
 
                 .milestone:hover::after {background:var(--grey40);}
                 .milestone.completed:hover::after {background:var(--grey00);}
@@ -3948,6 +4029,14 @@
             .currentstone::after {content:'';position:absolute;top:3px;right:3px;width:6px;height:6px;background:var(--grey00);border-radius:50%;}
         .progressstone {border:none;background:var(--ui3);z-index:3;}
         .progressbar {position:absolute;height:12px;width:0;left:6px;background:var(--ui3);}
+
+
+            .milestone .tooltip {white-space: nowrap;top: -12px;transform: translate(-50%, calc(-100% + 4px));}
+            .wizard.wliz:hover .milestone .tooltip {opacity:0;}
+            .wliz .milestone.current .tooltip, .wizard.wliz .milestone:hover .tooltip, .wizard .milestone:hover .tooltip {opacity: 1;transform: translate(-50%, -100%);}
+
+
+            .wliz {margin-top:56px;}
 
     </style>
 </body>
@@ -3962,9 +4051,10 @@
 
         var m = this.getparent('milestones');
         var s = m.getElementsByClassName('milestone');
-        var cs = document.getElementsByClassName('currentstone')[0];
+        var wiz = m.getparent('wizard');
+        var cs = wiz.getElementsByClassName('currentstone')[0];
         //var ps = document.getElementsByClassName('progresstone')[0];
-        var pb = document.getElementsByClassName('progressbar')[0];
+        var pb = wiz.getElementsByClassName('progressbar')[0];
 
         var w = this.offsetWidth;
 
@@ -3994,6 +4084,9 @@
 
             if ( ss == this ){
                 grr = true;
+                ss.classList.add('current');
+            } else {
+                ss.classList.remove('current');
             }
 
         }
