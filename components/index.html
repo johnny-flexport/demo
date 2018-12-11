@@ -41,7 +41,7 @@
             --btnpad: 8px;
         }
 
-        .current {
+        .currentsize {
             --lineheight: 30px;
             --inset: 12px;
             --textpadd: 4px;
@@ -527,7 +527,7 @@
         #nav {position: fixed;top:0;left:0;bottom:0;overflow-y:auto;background:var(--grey10);width:200px;transition:top 150ms ease-in-out;}
             #nav.tabs {box-shadow:inset -1px 0 var(--grey20);}
             #nav .tabsoverflow {white-space:normal;}
-            #nav .tab {display:block;border-radius:3px;margin:0 0 4px;line-height:40px}
+            #nav .tab {display:block;border-radius:3px;margin:0 0 4px;line-height:calc(var(--lineheight) + 4px);}
 
             #nav .tab:hover {background:var(--grey20);}
             #nav .tab:active {background:var(--grey30);}
@@ -4176,7 +4176,7 @@
     function changesize(e){
         var v = this.value;
 
-        document.body.classList.remove('funsize', 'large', 'default', 'current', 'multiple4');
+        document.body.classList.remove('funsize', 'large', 'default', 'currentsize', 'multiple4');
         document.body.classList.add(v);
     }
 
