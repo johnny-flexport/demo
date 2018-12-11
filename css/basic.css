@@ -6,6 +6,14 @@
     --blue50:#1942B3;
     --blue60:#0E2259;
 
+    --ui1: var(--blue10);
+    --ui2: var(--blue20);
+    --ui3: var(--blue30);
+    --ui4: var(--blue40);
+    --ui5: var(--blue50);
+    --ui6: var(--blue60);
+
+    --grey00:white;
     --grey10:#F7FAFC;
     --grey20:#EDF3F7;
     --grey30:#CED7DE;
@@ -58,6 +66,25 @@
     --grey60: hsl(210, 4%, 10%);*/
 }
 
+.transmit {
+    --ui1: var(--green10);
+    --ui2: var(--green20);
+    --ui3: var(--green30);
+    --ui4: var(--green40);
+    --ui5: var(--green50);
+    --ui6: var(--green60);
+}
+
+.invert {
+    --grey60:#F7FAFC;
+    --grey50:#EDF3F7;
+    --grey40:#CED7DE;
+    --grey30:#B0BAC2;
+    --grey20:#6E7881;
+    --grey10:#18191A;
+    --grey00:black;
+}
+
 .desat {
     --grey10:hsl(208, 0%, 98%);
     --grey20:hsl(208, 0%, 95%);
@@ -73,10 +100,11 @@ html {
     font:normal 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     color:var(--grey60);
     line-height:20px;
+    background:var(--grey00);
 }
 
-a, .a {color:var(--blue30);transition:color 150ms ease-in-out;text-decoration:underline;}
-a:hover, .a:hover {color:var(--blue50);}
+a, .a {color:var(--ui3);transition:color 150ms ease-in-out;text-decoration:underline;}
+a:hover, .a:hover {color:var(--ui5);}
 a:active, .a:active {text-decoration:none;}
 
 h1 {font-size:36px;line-height:48px;font-weight:300;color:var(--grey60);}
