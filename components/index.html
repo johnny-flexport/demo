@@ -66,6 +66,8 @@
             --btnpad: 16px;
         }
 
+        html.additional {color:var(--grey55);}
+
         .demo {padding:24px 40px 0;margin-bottom:24px;position: relative;}
 
 
@@ -128,6 +130,8 @@
 
 
         input, textarea {-moz-appearance:none;-webkit-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;background:var(--grey00);color:var(--grey60);}
+
+        .additional input, .additional textarea {background:var(--grey05);color:var(--grey55);}
 
         input[type=text], input[type=number] {line-height:var(--lineheight);}
 
@@ -424,6 +428,10 @@
 
             .popitem.type5:hover, .dropitem.type5:hover {
                 background-color:var(--grey10);
+            }
+
+            .popitem.type5:active, .dropitem.type5:active {
+                background-color:var(--grey20);
             }
 
 
@@ -802,7 +810,7 @@
                 .onecolumn .formcell {margin-bottom:24px;width:calc(100% - (var(--fieldgap) * 2));}
                 .onecolumn .formcell:last-child {margin-bottom:0;}
 
-                .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;}
+                .formcell input[type=text], .formcell input[type=number], .formcell textarea, .formcell .searchbarwrap {min-width:0;width:100%;vertical-align:bottom;}
 
                 .formcell.quarter {width: calc(50% - (var(--fieldgap) * 2));}
                     .onecolumn .formcell.quarter {width:calc(100% - (var(--fieldgap) * 2));}
@@ -3986,18 +3994,27 @@
         <div class="wizard wliz wclick">
             <div class=milestones>
                 <div class=stones>
-                    <div class="milestone completed" onclick="milestone.call(this,event);">
-                        <div class="tooltip">First Step</div>
+                    <div class="milestone completed" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">First Step</div> -->
                     </div>
-                    <div class="milestone completed current" onclick="milestone.call(this,event);">
-                        <div class="tooltip">Second Step</div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Second Step</div> -->
                     </div>
-                    <div class=milestone onclick="milestone.call(this,event);">
-                        <div class="tooltip">Third Step</div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Third Step</div> -->
                     </div>
-                    <div class=milestone onclick="milestone.call(this,event);">
-                        <div class="tooltip">Final Step</div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Final Step</div> -->
                     </div>
+
+
+                </div>
+
+                <div class="tooltip slide" style="left: 67px; width: 96px;">
+                    <div class="tooltiplabel">First Step</div>
+                    <div class="tooltiplabel current">Second Step</div>
+                    <div class="tooltiplabel">Third Step</div>
+                    <div class="tooltiplabel">Final Step</div>
                 </div>
 
                 <div class=currentstone style="width: 73px;"></div>
@@ -4005,6 +4022,10 @@
                 <div class=progressbar></div>
             </div>
             <div class=progress></div>
+        </div>
+
+        <div class=btnwrap style="margin-top:140px;">
+            <div class="btn shh" onclick="prevstep();">Prev</div><div class=btn onclick="nextstep();">Next</div>
         </div>
     </div>
 
@@ -4042,6 +4063,10 @@
 
             .wliz {margin-top:56px;}
 
+            .tooltip.slide {opacity:1;transform: translate(-50%, -100%);top:-12px;height:28px;box-sizing:border-box;transition:all 150ms ease-in-out;}
+            .tooltip.slide .tooltiplabel {opacity:0;white-space: nowrap;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+                .tooltip.slide .tooltiplabel.current {opacity:1;transition:opacity 150ms ease-in-out;}
+
     </style>
 </body>
 
@@ -4049,6 +4074,106 @@
 
 
 <script>
+
+    function tooltipslide(e){
+        var m = this.getparent('milestones');
+        var l = this.offsetLeft;
+
+        var s = m.getElementsByClassName('milestone');
+
+        var ts = m.getElementsByClassName('tooltip slide')[0];
+
+        var place = 0;
+
+        for(var i=0;i<s.length;i++){
+            var ss = s[i];
+
+            if ( ss == this ){
+                break;
+            }
+            place++;
+        }
+
+        ts.style.left = l + 'px';
+
+        var lab = ts.getElementsByClassName('tooltiplabel')[place];
+        var cl = ts.getElementsByClassName('tooltiplabel current')[0];
+
+        cl.classList.remove('current');
+
+        lab.classList.add('current');
+
+        ts.style.width = lab.offsetWidth + 16 +'px';
+
+        this.onmouseleave = tts;
+
+    }
+
+    function tts(e){
+        var m = this.getparent('milestones');
+        var l = this.offsetLeft;
+
+        var s = m.getElementsByClassName('milestone');
+
+        var ts = m.getElementsByClassName('tooltip slide')[0];
+
+        var place = 0;
+
+        for(var i=0;i<s.length;i++){
+            var ss = s[i];
+
+            if ( ss.classList.contains('current') ){
+                l = ss.offsetLeft;
+                break;
+            }
+            place++;
+        }
+
+        ts.style.left = l + 'px';
+
+        var lab = ts.getElementsByClassName('tooltiplabel')[place];
+        var cl = ts.getElementsByClassName('tooltiplabel current')[0];
+
+        cl.classList.remove('current');
+
+        lab.classList.add('current');
+
+        ts.style.width = lab.offsetWidth + 16 +'px';
+
+        this.onmouseleave = null;
+    }
+
+    function nextstep(){
+        var wiz = document.getElementsByClassName('wizard');
+
+        for(var i=0;i<wiz.length;i++){
+            var w = wiz[i];
+            var c = w.getElementsByClassName('current')[0];
+            var n = c.nextElementSibling;
+
+            if (!n){
+                continue;
+            }
+
+            n.click();
+        }
+    }
+
+    function prevstep(){
+        var wiz = document.getElementsByClassName('wizard');
+
+        for(var i=0;i<wiz.length;i++){
+            var w = wiz[i];
+            var c = w.getElementsByClassName('current')[0];
+            var n = c.previousElementSibling;
+
+            if (!n){
+                continue;
+            }
+
+            n.click();
+        }
+    }
 
     function milestone(e){
         var l = this.offsetLeft;
@@ -4076,12 +4201,15 @@
         //pb.style.width = l - w + 'px';
         cs.style.width = l + w  + 'px';
 
+        var place = -1;
+
         var grr = false;
         for(var i=0;i<s.length;i++){
             var ss = s[i];
 
             if ( !grr ){
                 ss.classList.add('completed');
+                place++;
             } else {
                 ss.classList.remove('completed');
             }
@@ -4093,6 +4221,23 @@
                 ss.classList.remove('current');
             }
 
+        }
+
+        var ts = wiz.getElementsByClassName('tooltip slide')[0];
+
+        if ( ts ){
+            ts.style.left = l + 'px';
+
+            var lab = ts.getElementsByClassName('tooltiplabel')[place];
+            var cl = ts.getElementsByClassName('tooltiplabel current')[0];
+
+
+
+            cl.classList.remove('current');
+
+            lab.classList.add('current');
+
+            ts.style.width = lab.offsetWidth + 16 +'px';
         }
     }
 
@@ -4917,15 +5062,17 @@
             var ratios = [1, 1.04, 1.11, 1.45, 1.97, 4.5, 17.6, 21];
             var colors = [];
 
-            var h = hsl[0] ;
-            var s = hsl[1] ;
-            var l = 5;
+            var h = hsl[0];
+            var s = hsl[1];
+            var l = hsl[2];
 
-            if ( s > 50){
+            if ( l > 50){
                 l = -95;
+            } else {
+                l = 5;
             }
 
-            base = hsl2rgb(h,s,Math.abs(l));
+            base = hsl2rgb(h, s, Math.abs(l));
 
 
             console.log(r1,r2,r3,hsl)
@@ -4955,7 +5102,7 @@
 
             console.log(colors);
 
-            if (colors.length < 6){
+            if (colors.length < 7){
                 return unicorn();
             }
 
