@@ -420,6 +420,10 @@
                 background-color:var(--grey10);
             }
 
+            .popitem.type4:active, .dropitem.type4.selected:active, .menuitem.selected:active {
+                background-color:var(--grey20);
+            }
+
             .popitem.type5.selected, .dropitem.type5.selected {
                 /* box-shadow:0 0 0 1px var(--grey30); */
                 background-color:var(--grey20);
@@ -531,6 +535,11 @@
         .tabline {width:1px;height:3px;background:var(--ui3);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(109);transform-origin:top left;transition:transform 150ms ease-in-out;}
 
         .tabsoverflow {white-space:nowrap;}
+
+        .vtabs {box-shadow:inset 1px 0 var(--grey20);padding:0;}
+            .vtabs .tab {display:block;line-height:calc(12px + var(--lineheight));}
+
+            .vtabs .tabline {width:3px;height:1px;top:0;bottom:auto;transform:translateY(28px) scaleY(36);}
 
         #nav {position: fixed;top:0;left:0;bottom:0;overflow-y:auto;background:var(--grey10);width:200px;transition:top 150ms ease-in-out;}
             #nav.tabs {box-shadow:inset -1px 0 var(--grey20);}
@@ -702,13 +711,13 @@
                     .nonmonth {color:var(--grey50);font-style:italic;}
                     .currentday {font-weight:600;background:var(--grey20);}
                     .selectedday {box-shadow:inset 0 0 0 3px var(--ui3);color:var(--ui5);background:var(--ui3);color:white;}
-                        .daywrap:hover .selectedday{box-shadow:inset 0 0 0 3px var(--ui5);}
+                        .daywrap:hover .selectedday {background: var(--ui5);box-shadow:none;}
 
-                .startday {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--ui3);}
-                .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--ui3);}
-                .middleday {border-radius:0;box-shadow:1px 0 var(--ui3), -1px 0 var(--ui3);}
-                .middleendday {border-radius: 0 3px 3px 0;box-shadow:-1px 0 var(--ui3);}
-                .endday {border-radius: 0 50% 50% 0;box-shadow:-1px 0 var(--ui3);}
+                .startday, .daywrap:hover .startday  {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--ui3);}
+                .middlestartday, .daywrap:hover .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--ui3);}
+                .middleday, .daywrap:hover .middleday {border-radius:0;box-shadow:1px 0 var(--ui3), -1px 0 var(--ui3);}
+                .middleendday, .daywrap:hover .middleendday {border-radius: 0 3px 3px 0;box-shadow:-1px 0 var(--ui3);}
+                .endday, .daywrap:hover .endday {border-radius: 0 50% 50% 0;box-shadow:-1px 0 var(--ui3);}
 
         .popover {max-height:calc(var(--lineheight) * 7.6 + 4px);overflow-y:auto;}
         .multiline .popover {max-height:260px;}
@@ -796,7 +805,9 @@
             .form .inputlabel {white-space:nowrap;overflow:hidden;text-overflow: ellipsis;}
 
             .form .section {margin-bottom:0;padding:24px 16px;transition:background-color 150ms ease-in-out;}
-        .formrow {margin-bottom:24px;display:flex;align-items: flex-end;}
+        .formrow {margin-bottom:24px;display:flex;}
+
+        .form3_demo .formrow {align-items: flex-end;}
 
             .onecolumn .formrow {display:block;}
             .formrow:last-child {margin-bottom:0 !important;}
@@ -1989,12 +2000,21 @@
     </div> -->
 
     <div class="demo tabs_demo">
-            <div class=tabs>
-                <div class=tabsoverflow>
-                    <div class="tab current">Vessels</div><div class="tab">Equipment Types</div><div class=tab>Warehouses & Terminals</div><div class=tab>Carriers</div><div class=tab>Flight Schedules</div>
-                </div>
-                <div class=tabline style="transform: translateX(28px) scaleX(53);"></div>
+        <div class=tabs>
+            <div class=tabsoverflow>
+                <div class="tab current">Vessels</div><div class="tab">Equipment Types</div><div class=tab>Warehouses & Terminals</div><div class=tab>Carriers</div><div class=tab>Flight Schedules</div>
             </div>
+            <div class=tabline style="transform: translateX(28px) scaleX(53);"></div>
+        </div>
+    </div>
+
+    <div class="demo tabs_demo">
+        <div class="tabs vtabs">
+            <div class=tabsoverflow>
+                <div class="tab current">Vessels</div><div class="tab">Equipment Types</div><div class=tab>Warehouses & Terminals</div><div class=tab>Carriers</div><div class=tab>Flight Schedules</div>
+            </div>
+            <div class=tabline style="transform: translateY(8px) scaleY(32);"></div>
+        </div>
     </div>
 
     <div class="demo dropdown_demo">
@@ -4040,6 +4060,9 @@
             .milestone:nth-child(3) {left:66.67%;transform:translateX(-50%);}
             .milestone:last-child {right:0;}
 
+            .milestone.completed {background:transparent;pointer-events:none;}
+                .wclick .milestone.completed {pointer-events:all;}
+
             .milestone.completed::after {background:transparent;}
                 .wclick .milestone.completed::after {background-color:var(--ui6);}
 
@@ -4542,8 +4565,11 @@
 
     function tab(e){
         var w = this.offsetWidth;
+        var h = this.offsetHeight;
+        h = h - 16;
         w = w - 32;
         var o = this.offsetLeft + 16;
+        var t = this.offsetTop + 8;
 
         var v = this.dataset.type;
 
@@ -4552,6 +4578,7 @@
         }
 
         var p = this.getparent('tabs');
+        var vt = p.classList.contains('vtabs');
         var c = p.getElementsByClassName('tab current');
         var l = p.getElementsByClassName('tabline')[0];
 
@@ -4561,7 +4588,11 @@
 
         this.classList.add('current');
 
-        l.style.transform = 'translateX(' + o + 'px) scaleX(' + w + ')';
+        if ( !vt ){
+            l.style.transform = 'translateX(' + o + 'px) scaleX(' + w + ')';
+        } else {
+            l.style.transform = 'translateY(' + t + 'px) scaleY(' + h + ')';
+        }
 
         //document.body.id = v + 'table';
         if ( !this.getparent('demo') ){
