@@ -570,18 +570,13 @@
             .naccord.open {background:var(--grey20);}
             .naccord.open > .nab {background:transparent;color:var(--grey60);}
                 .naccord.open > .nab svg * {fill:var(--grey50);}
-
                 .naccord.open > .nab::after {transform:translateY(-50%) rotate(-45deg);}
-
                 .naccord.open > .nab:hover svg * {fill:var(--grey60);}
-
                 .naccord > .nab:hover::after {border-color:var(--grey60);}
-
 
             .selected:not(.open) > .nab {background:var(--ui3);color:white;}
             .selected:not(.open) > .nab svg * {fill:white;}
             .selected:not(.open) > .nab::after {border-color:white;}
-
 
             .naccord.open:hover {background:var(--grey30);}
 
@@ -4135,6 +4130,77 @@
             <div class=progress></div>
         </div>
 
+    </div>
+
+    <div class="demo wizard_demo">
+        <div class="wizard wliz  full">
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">First Step</div> -->
+                    </div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Second Step</div> -->
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Third Step</div> -->
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Final Step</div> -->
+                    </div>
+
+
+                </div>
+
+                <div class="tooltip slide" style="left: 200px; width: 95px;">
+                    <div class="tooltiplabel">First Step</div>
+                    <div class="tooltiplabel current">Second Step</div>
+                    <div class="tooltiplabel">Third Step</div>
+                    <div class="tooltiplabel">Final Step</div>
+                </div>
+
+                <div class=currentstone style="width: 206px;"></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+    </div>
+
+    <div class="demo wizard_demo">
+        <div class="wizard wliz wclick full">
+            <div class=milestones>
+                <div class=stones>
+                    <div class="milestone completed" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">First Step</div> -->
+                    </div>
+                    <div class="milestone completed current" onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Second Step</div> -->
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Third Step</div> -->
+                    </div>
+                    <div class=milestone onclick="milestone.call(this,event);" onmouseover="tooltipslide.call(this,event);">
+                        <!-- <div class="tooltip">Final Step</div> -->
+                    </div>
+
+
+                </div>
+
+                <div class="tooltip slide" style="left: 200px; width: 95px;">
+                    <div class="tooltiplabel">First Step</div>
+                    <div class="tooltiplabel current">Second Step</div>
+                    <div class="tooltiplabel">Third Step</div>
+                    <div class="tooltiplabel">Final Step</div>
+                </div>
+
+                <div class=currentstone style="width: 206px;"></div>
+                <div class=progressstone></div>
+                <div class=progressbar></div>
+            </div>
+            <div class=progress></div>
+        </div>
+
         <div class=btnwrap style="margin-top:140px;">
             <div class="btn shh" onclick="prevstep();">Prev</div><div class=btn onclick="nextstep();">Next</div>
         </div>
@@ -4142,6 +4208,7 @@
 
     <style>
         .milestones {position:relative;max-width:200px;}
+            .full .milestones {max-width:600px;background: var(--grey20);height: 12px;border-radius: 12px;}
         .milestone {width:12px;height:12px;box-sizing:border-box;position:absolute;top:0;cursor:pointer;z-index:11;}
             .milestone::after {width:6px;height:6px;position:absolute;top:3px;left:3px;border-radius:50%;background:var(--grey30);content:'';transition:all 150ms ease-in-out;}
             .milestone::before {content:'';position:absolute;top:-12px;left:-12px;width:36px;height:36px;;}
