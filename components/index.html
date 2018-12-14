@@ -543,7 +543,7 @@
 
         #nav {position: fixed;top:0;left:0;bottom:0;overflow-y:auto;background:var(--grey10);width:200px;transition:top 150ms ease-in-out;}
             #nav.tabs {box-shadow:inset -1px 0 var(--grey20);}
-            #nav .tabsoverflow {white-space:normal;}
+            #nav .tabsoverflow {white-space:normal;padding-bottom:8px;}
             #nav .tab {display:block;border-radius:3px;margin:0 0 4px;line-height:calc(var(--lineheight) + 4px);}
 
             #nav .tab:hover {background:var(--grey20);}
@@ -551,6 +551,47 @@
             #nav .tab.current {background:var(--ui3);color:white;}
 
             #nav .tabline {display:none;}
+
+        .nabs {width:200px;background:var(--grey10);box-shadow:inset -1px 0 var(--grey20);padding:12px 12px 8px;border-radius:5px 0 0 5px;}
+        .nab {line-height:40px;border-radius:3px;font-weight:600;box-sizing:border-box;padding:0 16px;margin-bottom:4px;cursor:pointer;color:var(--grey60);transition:all 150ms ease-in-out;position:relative;}
+            .nab:hover {background:var(--grey20);color:var(--grey60);}
+            .nab:active {background:var(--grey30);color:var(--grey60);}
+
+            .nab svg {display:inline-block;margin-right:12px;vertical-align:middle;    margin-top: -2px;}
+                .nab svg * {fill:var(--grey50);transition:fill 150ms ease-in-out;}
+                .nab:hover svg *, .nab:active svg * {fill:var(--grey60);}
+
+            .nab.current {color:white;background:var(--ui3);}
+                .nab.current svg * {fill:white;}
+
+        .naccord {margin-bottom:4px;border-radius:3px;transition:background 150ms ease-in-out;}
+        .naccord > .nab {margin:0;}
+        .naccord > .nab::after {content:'';display:block;width:6px;height:6px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(45deg);position:absolute;top:50%;right:16px;margin-top:-1px;transition:all 150ms ease-in-out;}
+            .naccord.open {background:var(--grey20);}
+            .naccord.open > .nab {background:transparent;color:var(--grey60);}
+                .naccord.open > .nab svg * {fill:var(--grey50);}
+
+                .naccord.open > .nab::after {transform:translateY(-50%) rotate(-45deg);}
+
+                .naccord.open > .nab:hover svg * {fill:var(--grey60);}
+
+                .naccord > .nab:hover::after {border-color:var(--grey60);}
+
+
+            .selected:not(.open) > .nab {background:var(--ui3);color:white;}
+            .selected:not(.open) > .nab svg * {fill:white;}
+            .selected:not(.open) > .nab::after {border-color:white;}
+
+
+            .naccord.open:hover {background:var(--grey30);}
+
+            .naccord .accordcontent {overflow: hidden;height: 0;box-sizing:border-box;transition:height 150ms ease-in-out;}
+                .naccord.open .accordcontent {height:92px;}
+
+            .naccord .accordcontent .nab {padding-left:32px;margin-left:4px;margin-right:4px;}
+            .naccord .accordcontent .nab:first-child {margin-top:4px;}
+                .naccord .accordcontent .nab:not(.current):hover {background:var(--grey20);}
+                .naccord .accordcontent .nab:not(.current):active {background:var(--grey10);}
 
         body {padding-left:224px;transition:padding 150ms ease-in-out;}
         body.buttered {padding-top:44px;}
@@ -1153,7 +1194,7 @@
 
     <div class=tabs id=nav>
         <div class=tabsoverflow>
-            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div><div class=tab data-type=toast>Toast</div><div class=tab data-type=pagebanner>Page Banner</div><div class=tab data-type=wizard>Step Indicator</div><div class=tab data-type=tabs>Tabs</div>
+            <div class="tab current" data-type=all id=starttab>All Components</div><div class="tab" data-type=checkbox>Checkbox</div><div class=tab data-type=radio>Radio</div><div class=tab data-type=textfield>Textfield</div><div class=tab data-type=textarea>Textarea</div><div class=tab data-type=search>Search</div><div class=tab data-type=combo>Combo Box</div><div class=tab data-type=dropdown>Dropdown</div><div class=tab data-type=multiselect>MultiSelect</div><div class=tab data-type=stepper>Stepper Field</div><div class=tab data-type=slider>Slider</div><div class=tab data-type=dropbtn>Dropdown Button</div><div class=tab data-type=filters>Filters</div><div class=tab data-type=tooltip>Tooltip</div><div class=tab data-type=btn>Buttons</div><div class=tab data-type=icobtn>Icon Buttons</div><div class=tab data-type=loadingbtn>Loading Button</div><div class=tab data-type=spinner>Spinner</div><div class=tab data-type=progress>Progress Bar</div><div class=tab data-type=link>Link</div><div class=tab data-type=prefix>Pre/Suffix</div><div class=tab data-type=calendar>Calendar</div><div class=tab data-type=form>Form</div><div class=tab data-type=form2>Form 2</div><div class=tab data-type=form3>Form 3</div><div class=tab data-type=toast>Toast</div><div class=tab data-type=pagebanner>Page Banner</div><div class=tab data-type=wizard>Step Indicator</div><div class=tab data-type=tabs>Tabs</div><div class=tab data-type=nabs>Left Nav</div>
         </div>
 
         <div class=tabline></div>
@@ -2014,6 +2055,52 @@
                 <div class="tab current">Vessels</div><div class="tab">Equipment Types</div><div class=tab>Warehouses & Terminals</div><div class=tab>Carriers</div><div class=tab>Flight Schedules</div>
             </div>
             <div class=tabline style="transform: translateY(8px) scaleY(32);"></div>
+        </div>
+    </div>
+
+    <div class="demo nabs_demo">
+        <div class="nabs">
+            <div class=nabsoverflow>
+                <div class="nab current"><svg width="15" height="15">
+                        <path  d="M7.5 0a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15zM11 7.5l-.058.056a3594.394 3594.394 0 0 0-3.381 3.383.194.194 0 0 1-.15.06h-3.28c-.116 0-.129-.012-.129-.128l-.001-3.273a.217.217 0 0 1 .07-.168C5.215 6.288 6.358 5.144 7.5 4H11v3.5zm-3.5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                        </svg>Dashboard</div>
+                <div class="nab"><svg width="13" height="13">
+                        <path d="M7.5 2A3.5 3.5 0 0 0 11 5.5v7.25a.25.25 0 0 1-.25.25H.25a.25.25 0 0 1-.25-.25V2.25A.25.25 0 0 1 .25 2H7.5zM11 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+                        </svg>Shipments</div>
+                <div class=nab><svg width="13" height="12">
+                                <path d="M12.75 0H.25A.25.25 0 0 0 0 .25v11.123a.125.125 0 0 0 .215.088L3.245 8.5h9.505a.25.25 0 0 0 .25-.25v-8a.25.25 0 0 0-.25-.25zm-3 6.25a.25.25 0 0 1-.25.25h-6a.25.25 0 0 1-.25-.25v-1A.25.25 0 0 1 3.5 5h6a.25.25 0 0 1 .25.25v1zm0-3a.25.25 0 0 1-.25.25h-6a.25.25 0 0 1-.25-.25v-1A.25.25 0 0 1 3.5 2h6a.25.25 0 0 1 .25.25v1z" />
+                                </svg>Quotes</div>
+                <div class=nab><svg width="12" height="15">
+                        <path d="M11.25 0h-11A.25.25 0 0 0 0 .25v14.5c0 .138.112.25.25.25h11a.25.25 0 0 0 .25-.25V.25a.25.25 0 0 0-.25-.25zM4.002 13.5H1.778a.27.27 0 0 1-.283-.255v-6.49a.27.27 0 0 1 .283-.255h2.225l-.001 7zm5.993-.255a.261.261 0 0 1-.268.255H5.5v-7h4.227a.261.261 0 0 1 .268.255v6.49z"/>
+                        </svg>Orders</div>
+                <div class=nab><svg width="15" height="12">
+                        <path d="M15 3.75a2 2 0 1 0 0 4v3.5a.25.25 0 0 1-.25.25H6.5V0h8.25a.25.25 0 0 1 .25.25v3.5zM0 .25A.25.25 0 0 1 .25 0H5v11.5H.25a.25.25 0 0 1-.25-.25v-3.5a2 2 0 1 0 0-4V.25z"/>
+                        </svg>Bookings</div>
+                <div class=nab><svg width="13" height="13">
+                        <path d="M12.912 6.371L6.715.172A.678.678 0 0 0 6.299 0H.244A.245.245 0 0 0 0 .244V6.3a.68.68 0 0 0 .172.416l6.199 6.197c.095.095.249.095.344 0l6.197-6.197a.245.245 0 0 0 0-.345zM3 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                        </svg>Products</div>
+                <div class=nab><svg width="15" height="15">
+                        <path d="M7.438 14.997c-.671-.06-1.836-2.593-1.962-6.75H9.45c-.128 4.157-1.293 6.69-1.963 6.75h-.05zm3.513-8.25c-.075-2.456-.512-4.851-1.293-6.422a7.505 7.505 0 0 1 5.268 6.423H10.95zm-1.5 0H5.474C5.605 2.544 6.796 0 7.462 0 8.13 0 9.321 2.543 9.45 6.748zm1.5 1.5h3.974a7.505 7.505 0 0 1-5.264 6.422c.78-1.571 1.216-3.965 1.29-6.421zm-6.977-1.5H0A7.505 7.505 0 0 1 5.267.326c-.782 1.57-1.218 3.966-1.293 6.423zm0 1.5c.074 2.457.51 4.85 1.29 6.422A7.505 7.505 0 0 1 0 8.248h3.974z"/>
+                        </svg>Network</div>
+                <div class=nab><svg width="15" height="12">
+                                <path d="M15 3H0V.25A.25.25 0 0 1 .25 0h14.5a.25.25 0 0 1 .25.25V3zM0 4.5h15v6.75a.25.25 0 0 1-.25.25H.25a.25.25 0 0 1-.25-.25V4.5zm13.5 5.25v-1a.25.25 0 0 0-.25-.25h-4a.25.25 0 0 0-.25.25v1c0 .138.112.25.25.25h4a.25.25 0 0 0 .25-.25z"/>
+                                </svg>Billing</div>
+                <div class=naccord>
+                    <div class=nab><svg width="13" height="13">
+                            <path  d="M12.75 0H.25A.25.25 0 0 0 0 .25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V.25a.25.25 0 0 0-.25-.25zM3.5 11.25a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-4.5a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v4.5zm4 0a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-9.5a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v9.5zm4 0a.25.25 0 0 1-.25.25h-1.5a.25.25 0 0 1-.25-.25v-7.5a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 .25.25v7.5z"/>
+                            </svg>Reports</div>
+                    <div class=accordcontent>
+                        <div class=nab>Data</div>
+                        <div class=nab>Analytics</div>
+                    </div>
+                </div>
+                <div class=nab><svg width="15" height="15">
+                                <path d="M7.5 0a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15zm.857 12.231a.27.27 0 0 1-.27.269H6.627a.27.27 0 0 1-.269-.269v-1.462a.27.27 0 0 1 .269-.269h1.462a.27.27 0 0 1 .269.27v1.461zm1.16-4.587c-.133.105-.255.198-.365.283-.684.523-.94.719-.935 1.491v.017a.058.058 0 0 1-.049.054l-1.596.01a.059.059 0 0 1-.042-.018.062.062 0 0 1-.018-.043v-.064c.005-1.511.553-1.922 1.311-2.491l.122-.092c.496-.37.925-.69.92-1.418a1.177 1.177 0 0 0-.37-.893 1.308 1.308 0 0 0-.9-.322h-.031c-.936.006-1.522.615-1.528 1.59v.014a.058.058 0 0 1-.056.056l-1.15.007v-.003h-.522a.06.06 0 0 1-.06-.061v-.156C4.344 3.73 5.636 2.51 7.54 2.497h.033a3.362 3.362 0 0 1 2.319.8c.556.52.868 1.25.858 2.011.008 1.346-.68 1.896-1.234 2.336z"/>
+                                </svg>Help</div>
+                <div class=nab><svg width="15" height="15">
+                        <path d="M14.2 9.397l-.707-.557-.763-.606c.03-.239.046-.48.046-.721V7.5c0-.242-.016-.482-.046-.722l.763-.605.707-.557a.37.37 0 0 0 .113-.378 7.568 7.568 0 0 0-1.613-2.79.37.37 0 0 0-.384-.09l-.8.32-.94.371a5.607 5.607 0 0 0-1.263-.73L9.047.461a.37.37 0 0 0-.27-.288 7.566 7.566 0 0 0-3.223.001.37.37 0 0 0-.27.289l-.269 1.86a5.6 5.6 0 0 0-1.262.731l-1.744-.695a.37.37 0 0 0-.384.09A7.566 7.566 0 0 0 .013 5.238a.37.37 0 0 0 .114.378l1.48 1.156a5.64 5.64 0 0 0-.046.728v.013c0 .243.016.486.047.728L.127 9.397a.37.37 0 0 0-.114.378 7.566 7.566 0 0 0 1.613 2.79c.1.102.25.137.384.09l1.743-.695a5.6 5.6 0 0 0 1.263.732l.268 1.86a.37.37 0 0 0 .27.287 7.57 7.57 0 0 0 3.223.002.37.37 0 0 0 .27-.288l.269-1.857a5.615 5.615 0 0 0 1.263-.73l.94.371.8.32a.37.37 0 0 0 .384-.09 7.571 7.571 0 0 0 1.61-2.792.37.37 0 0 0-.113-.378zm-7.037.61a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                        </svg>Setting</div>
+            </div>
         </div>
     </div>
 
@@ -4597,7 +4684,7 @@
         //document.body.id = v + 'table';
         if ( !this.getparent('demo') ){
 
-        var d = document.getElementsByClassName('demo');
+            var d = document.getElementsByClassName('demo');
 
             for(var i=0;i<d.length;i++){
                 var a = d[i];
@@ -4615,6 +4702,32 @@
             //}
 
             window.scrollTo(0, 0);
+
+            var nav = document.getElementById('nav');
+            //var y = (t + h + 20) - nav.offsetHeight;
+            var st = nav.scrollTop;
+            var nh = nav.offsetHeight;
+
+            var y = st + nh;
+
+            var ot = this.offsetTop;
+            var ty = this.offsetHeight + ot;
+
+            if ( y < ty ){
+                nav.scrollTop = ty;
+            } else if ( st > ot-12 ){
+                nav.scrollTop = ot-12;
+            }
+
+            console.log(t, y, nav.scrollTop, nav.scrollHeight, nh, ty);
+
+            // if ( cy < y ){
+            //     //nav.scrollTop = y;
+            // } else if ( cy){
+
+            // }
+
+
         }
 
     }
@@ -4951,9 +5064,9 @@
         console.log(x);
         //var a = false;
         //while(!a){
-            var r1 = x && x.length ? x[0] : Math.floor(Math.random()*255);
-            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*255);
-            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*255);
+            var r1 = x && x.length ? x[0] : Math.floor(Math.random()*256);
+            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*256);
+            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*256);
 
             document.body.dataset.r = r1;
             document.body.dataset.g = r2;
@@ -5057,9 +5170,9 @@
         console.log(x);
         //var a = false;
         //while(!a){
-            var r1 = x && x.length ? x[0] : Math.floor(Math.random()*255);
-            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*255);
-            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*255);
+            var r1 = x && x.length ? x[0] : Math.floor(Math.random()*256);
+            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*256);
+            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*256);
 
 
             // var hsl = rgb2hsl(r1,r2,r3);
@@ -5160,6 +5273,29 @@
         //}
     }
 
+    function nab(e){
+        var n = this.getparent('nabs');
+        var a = this.parentElement;
+        if ( a.classList.contains('naccord') ){
+            a.classList.toggle('open');
+            return;
+        }
+        var ac = this.getparent('naccord');
+        var c = n.getElementsByClassName('nab current');
+        c.removeclass('current');
+
+        var sa = n.getElementsByClassName('naccord selected');
+        sa.removeclass('selected');
+
+        this.classList.add('current');
+
+        if ( ac ){
+            ac.classList.add('selected');
+        }
+
+
+    }
+
 
 
     Attach.on('click', '.tab', tab);
@@ -5188,6 +5324,8 @@
     Attach.on('click', '.banned', banner);
 
     Attach.on('click', '.toaster', toaster);
+
+    Attach.on('click', '.nab', nab);
 
     (function() {
         var hash = window.location.hash;
