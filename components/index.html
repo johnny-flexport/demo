@@ -66,8 +66,6 @@
             --btnpad: 16px;
         }
 
-        html.additional {color:var(--grey55);}
-
         .demo {padding:24px 40px 0;margin-bottom:24px;position: relative;}
 
 
@@ -83,9 +81,9 @@
             .btn.danger:hover {background:var(--red50);box-shadow:0 2px 2px hsla(356, 67%, 39%, .2);}
             .btn.danger:active {background:var(--red60);box-shadow:none;}
 
-        .btn.hollow {background-color:transparent;border:1px solid var(--grey30);color:var(--grey60);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
-            .btn.hollow:hover, .dropdown:hover {background-color:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
-            .btn.hollow:active, .dropdown:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;}
+        .btn.hollow {background-color:transparent;border:1px solid var(--grey30);color:var(--text);line-height:calc(var(--lineheight) - 2px);padding:0 calc(var(--inset) - 1px);}
+            .btn.hollow:hover, .dropdown:hover {background-color:transparent;border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);color:var(--texthover);}
+            .btn.hollow:active, .dropdown:active {background:var(--grey10);border-color:var(--grey30);box-shadow:none;color:var(--texthover);}
 
             .btn.hollow.danger {color:var(--red45);}
             .btn.hollow.danger:hover {color:var(--red50);}
@@ -95,9 +93,9 @@
             .btn.hollow.cta:active {color:var(--ui5);}
 
 
-        .btn.shh {background:transparent;border:none;color:var(--grey60);}
-            .btn.shh:hover {background:var(--grey10);box-shadow:none;}
-            .btn.shh:active {background:var(--grey20);}
+        .btn.shh {background:transparent;border:none;color:var(--text);}
+            .btn.shh:hover {background:var(--grey10);box-shadow:none;color:var(--texthover);}
+            .btn.shh:active {background:var(--grey20);color:var(--texthover);}
 
         .btn.shh.danger {color:var(--red45);}
             .btn.shh.danger:hover {color:var(--red45);}
@@ -129,7 +127,7 @@
             .btn.disabled .icon svg path {fill:var(--grey40) !important;}
 
 
-        input, textarea {-moz-appearance:none;-webkit-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;background:var(--grey00);color:var(--grey60);}
+        input, textarea {-moz-appearance:none;-webkit-appearance:none;appearance:none;height:var(--lineheight);border:1px solid var(--grey30);font-size:14px;text-indent:var(--indent);border-radius:var(--radius);box-sizing:border-box;background:var(--grey00);color:var(--text);}
 
         .additional input, .additional textarea {background:var(--grey05);color:var(--grey55);}
 
@@ -528,15 +526,16 @@
         .tabs {position:relative;box-shadow:inset 0 -1px var(--grey20);padding:0 12px;padding-top:16px;overflow-x:auto;}
             .tabsoverflow::after {content:'';clear:both;display:block;}
         .tab {display:inline-block;padding:0 16px;line-height:48px;font-weight:600;color:var(--grey50);cursor:pointer;transition:color 150ms ease-in-out, background-color 150ms ease-in-out;border-radius:3px 3px 0 0;}
-            .tab.current, .tab:hover {color:var(--grey60);}
+            .tab.current, .tab:hover {color:var(--text);}
+            .tab.current:hover {color:var(--texthover);}
             /* .tab:hover {background:var(--grey10);} */
-            .tab:active {background: var(--grey10);}
+            .tab:active {background: var(--grey10);color:var(--texthover);}
 
         .tabline {width:1px;height:3px;background:var(--ui3);position:absolute;bottom:0;left:0;transform:translateX(28px) scaleX(109);transform-origin:top left;transition:transform 150ms ease-in-out;}
 
         .tabsoverflow {white-space:nowrap;}
 
-        .vtabs {box-shadow:inset 1px 0 var(--grey20);padding:0;}
+        .vtabs {box-shadow:inset 1px 0 var(--grey20);padding:0;max-width:240px;border-radius:0 3px 3px 0;}
             .vtabs .tab {display:block;line-height:calc(12px + var(--lineheight));}
 
             .vtabs .tabline {width:3px;height:1px;top:0;bottom:auto;transform:translateY(28px) scaleY(36);}
@@ -553,13 +552,13 @@
             #nav .tabline {display:none;}
 
         .nabs {width:200px;background:var(--grey10);box-shadow:inset -1px 0 var(--grey20);padding:12px 12px 8px;border-radius:5px 0 0 5px;}
-        .nab {line-height:40px;border-radius:3px;font-weight:600;box-sizing:border-box;padding:0 16px;margin-bottom:4px;cursor:pointer;color:var(--grey60);transition:all 150ms ease-in-out;position:relative;}
-            .nab:hover {background:var(--grey20);color:var(--grey60);}
-            .nab:active {background:var(--grey30);color:var(--grey60);}
+        .nab {line-height:40px;border-radius:3px;font-weight:600;box-sizing:border-box;padding:0 16px;margin-bottom:4px;cursor:pointer;color:var(--text);transition:all 150ms ease-in-out;position:relative;}
+            .nab:hover {background:var(--grey20);color:var(--texthover);}
+            .nab:active {background:var(--grey30);color:var(--texthover);}
 
             .nab svg {display:inline-block;margin-right:16px;vertical-align:middle;margin-top:-2px;}
                 .nab svg * {fill:var(--grey50);transition:fill 150ms ease-in-out;}
-                .nab:hover svg *, .nab:active svg * {fill:var(--grey60);}
+                .nab:hover svg *, .nab:active svg * {fill:var(--text);}
 
             .nab.current {color:white;background:var(--ui3);}
                 .nab.current svg * {fill:white;}
@@ -568,11 +567,11 @@
         .naccord > .nab {margin:0;}
         .naccord > .nab::after {content:'';display:block;width:5px;height:5px;border-left:2px solid var(--grey50);border-bottom:2px solid var(--grey50);transform:translateY(-50%) rotate(45deg);position:absolute;top:50%;right:16px;margin-top:-1px;transition:all 150ms ease-in-out;}
             .naccord.open {background:var(--grey20);}
-            .naccord.open > .nab {background:transparent;color:var(--grey60);}
+            .naccord.open > .nab {background:transparent;color:var(--text);}
                 .naccord.open > .nab svg * {fill:var(--grey50);}
                 .naccord.open > .nab::after {transform:translateY(-50%) rotate(-45deg);}
                 .naccord.open > .nab:hover svg * {fill:var(--grey60);}
-                .naccord > .nab:hover::after {border-color:var(--grey60);}
+                .naccord > .nab:hover::after {border-color:var(--texthover);}
 
             .selected:not(.open) > .nab {background:var(--ui3);color:white;}
             .selected:not(.open) > .nab svg * {fill:white;}
@@ -789,7 +788,7 @@
 
         .controlpanel {position:absolute;top:24px;left:24px;width:100%;max-width:280px;padding:24px;}
             .control {position:relative;margin-bottom: 16px;}
-                .control .value {float:right;font-weight: 500;color: var(--grey60);font-variant-numeric: tabular-nums;}
+                .control .value {float:right;font-weight: 500;color: var(--text);font-variant-numeric: tabular-nums;}
                 .control input[type=range] {width:100%;}
 
         .hoverbg .section:hover {background:var(--grey10);}
@@ -825,7 +824,7 @@
         .formerror {margin: 0 calc(var(--fieldgap) + 16px);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
             .formerror.open {height:80px;opacity:1;}
             .formerror .errorwrap {border:1px solid var(--red20);}
-            .formerror .errormessage {background: var(--red10);color:var(--grey60);}
+            .formerror .errormessage {background: var(--red10);color:var(--text);}
 
         .emptydrop {font-style:italic;color:var(--grey50);}
 
@@ -1226,6 +1225,9 @@
         <div class=btn onclick="randomcolor()">Random Color</div>
         <div class="btn hollow" onclick="invert()">Invert</div>
         <div class="btn shh" onclick="unicorn()">Surprise</div>
+        <span class=checkbox>
+            <label><input type=checkbox onchange="document.documentElement.classList.toggle('additional');" id=addition /><span class=radiolabel>More Shades</span></label>
+        </span>
     </div>
 
     <div class="demo checkbox_demo">
@@ -3872,7 +3874,7 @@
                 background-position: left 16px center;
                 padding-left: 40px;
             }
-            .toast.error {background:var(--red30);color:var(--grey60);
+            .toast.error {background:var(--red30);color:var(--text);
                 background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23591317' %3E%3C/path%3E%3C/svg%3E");
                 background-repeat: no-repeat;
                 background-position: left 16px center;
@@ -3893,7 +3895,7 @@
                 padding-left: 40px;
             }
 
-        .toast.v2 {background:var(--grey30);color:var(--grey60);}
+        .toast.v2 {background:var(--grey30);color:var(--text);}
             .toast.success.v2 {background:var(--green50);color:white;
                 background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M6.47556138,12.4546535 C6.40387862,12.5227821 6.28783905,12.5227821 6.21615629,12.4546535 L5.15736,11.4459492 L2.55363389,8.96505829 C2.48212202,8.89676686 2.48212202,8.78621715 2.55363389,8.71792573 L3.59143681,7.72939548 C3.66311957,7.66126686 3.77915914,7.66126686 3.8508419,7.72939548 L6.32404398,10.0855897 L12.1273429,4.55684646 C12.1990257,4.48871783 12.3150653,4.48871783 12.386748,4.55684646 L13.4464571,5.56659427 C13.5178476,5.6348656 13.5178476,5.74528159 13.4464571,5.81355292 L6.47556138,12.4546535 Z' fill='white' %3E%3C/path%3E%3C/svg%3E");
                 background-repeat: no-repeat;
@@ -3908,7 +3910,7 @@
             }
 
 
-        .toast.v3, .toast.v4, .toast.v5 {background:white;border:1px solid var(--grey30);color:var(--grey60);padding:11px 16px;}
+        .toast.v3, .toast.v4, .toast.v5 {background:white;border:1px solid var(--grey30);color:var(--text);padding:11px 16px;}
             .toast.success.v3 {
                 background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M8,0.505749988 C3.85774999,0.505749988 0.499999988,3.86349999 0.499999988,8.00575 C0.499999988,12.148 3.85774999,15.50575 8,15.50575 C12.14225,15.50575 15.5,12.148 15.5,8.00575 C15.5,3.86349999 12.14225,0.505749988 8,0.505749988 Z M6.47556138,12.4546535 C6.40387862,12.5227821 6.28783905,12.5227821 6.21615629,12.4546535 L5.15736,11.4459492 L2.55363389,8.96505829 C2.48212202,8.89676686 2.48212202,8.78621715 2.55363389,8.71792573 L3.59143681,7.72939548 C3.66311957,7.66126686 3.77915914,7.66126686 3.8508419,7.72939548 L6.32404398,10.0855897 L12.1273429,4.55684646 C12.1990257,4.48871783 12.3150653,4.48871783 12.386748,4.55684646 L13.4464571,5.56659427 C13.5178476,5.6348656 13.5178476,5.74528159 13.4464571,5.81355292 L6.47556138,12.4546535 Z' fill='%232DA854' %3E%3C/path%3E%3C/svg%3E");
                 background-repeat: no-repeat;
@@ -3982,7 +3984,7 @@
     </div>
 
     <style>
-        .pagebanner {padding:12px 16px;border-radius:0;background:var(--grey60);color:white;display:block;font-weight:500;box-sizing:border-box;
+        .pagebanner {padding:12px 16px;border-radius:0;background:var(--text);color:white;display:block;font-weight:500;box-sizing:border-box;
             transition:transform 150ms ease-in-out;transition-timing-function: cubic-bezier(0.2, 1, 0.6, 1.1);position:relative;
             margin: -25px -40px 0;
             text-align:center;
@@ -4000,7 +4002,7 @@
                 background-position: left 16px center;
                 padding-left: 40px;
             }
-            .pagebanner.error {background:var(--red30);color:var(--grey60);
+            .pagebanner.error {background:var(--red30);color:var(--text);
                 background-image: url("data:image/svg+xml,%0A%3Csvg width='16px' height='16px' viewBox='0 0 64 64' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M32,2 C15.431,2 2,15.431 2,32 C2,48.569 15.431,62 32,62 C48.569,62 62,48.569 62,32 C62,15.431 48.569,2 32,2 Z M36,50.924 C35.9988979,51.5181916 35.5171924,51.9994498 34.923,52 L29.076,52 C28.4821981,51.9988993 28.0011007,51.5178019 28,50.924 L28,45.077 C28,44.483 28.482,44.001 29.076,44 L34.923,44 C35.518,44 35.999,44.482 36,45.077 L36,50.924 Z M36,38.977 C36,39.5292847 35.5522847,39.977 35,39.977 L29,39.977 C28.4477153,39.977 28,39.5292847 28,38.977 L28,12.977 C28,12.4247153 28.4477153,11.977 29,11.977 L35,11.977 C35.5522847,11.977 36,12.4247153 36,12.977 L36,38.977 Z' fill='%23591317' %3E%3C/path%3E%3C/svg%3E");
                 background-repeat: no-repeat;
                 background-position: left 16px center;
@@ -5062,7 +5064,7 @@
     }
 
     function invert(x){
-        var ratios = [1.04, 1.11, 1.45, 1.97, 4.5, 17.6, 21];
+        var ratios = [1, 1.03, 1.04, 1.11, 1.45, 1.97, 3.25, 4.5, 11.13, 17.6, 21];
         var colors = [];
 
         var h = 210;
@@ -5105,13 +5107,47 @@
         --red60: #FFEBEB;
         `;
 
-        for(var i=0;i<colors.length;i++){
-            css += '--grey' + (i+1) +'0:' + colors[i] + ';';
+        // for(var i=0;i<colors.length;i++){
+        //     css += '--grey' + (i+1) +'0:' + colors[i] + ';';
+        // }
+
+        for (var i=0;i<colors.length;i++){
+            var name = null;
+
+            switch(i){
+                case 0 :
+                    name = i + '0';
+                    break;
+                case 1 :
+                    name = '05';
+                    break;
+                case 2 :case 3 :case 4 :case 5 :
+                    name = i-1 + '0';
+                    break;
+                case 6 :
+                    name = '45';
+                    break;
+                case 7 :
+                    name = i - 2 + "0";
+                    break;
+                case 8 :
+                    name = '55';
+                    break;
+                case 9 :
+                    name = i - 3 + "0";
+                    break;
+                default:
+            }
+            css += '--grey' + name + ':' + colors[i] + ';';
         }
 
+        var old = document.getElementsByClassName('unicorn');
 
+        if(old[0]){
+            old[0].parentNode.removeChild(old[0]);
+        }
 
-        var old = document.getElementsByClassName('invertcolor');
+        var old = document.getElementsByClassName('inverted');
 
         if(old[0]){
             old[0].parentNode.removeChild(old[0]);
@@ -5119,7 +5155,7 @@
         }
 
         var style = document.createElement('style');
-        style.className = 'invertcolor';
+        style.className = 'inverted';
         style.innerHTML = ':root { ' + css + '}';
         document.head.appendChild(style);
 
@@ -5274,7 +5310,7 @@
             // base = bg.split(',');
 
 
-            var ratios = [1, 1.04, 1.11, 1.45, 1.97, 4.5, 17.6, 21];
+            var ratios = [1, 1.03, 1.04, 1.11, 1.45, 1.97, 3.25, 4.5, 11.13, 17.6];
             var colors = [];
 
             var h = hsl[0];
@@ -5323,20 +5359,46 @@
 
             var css = '';
 
-            for(var i=0;i<colors.length;i++){
-                css += '--grey' + (i) +'0:' + colors[i] + ';';
+            for (var i=0;i<colors.length;i++){
+                var name = null;
+
+                switch(i){
+                    case 0 :
+                        name = i + '0';
+                        break;
+                    case 1 :
+                        name = '05';
+                        break;
+                    case 2 :case 3 :case 4 :case 5 :
+                        name = i-1 + '0';
+                        break;
+                    case 6 :
+                        name = '45';
+                        break;
+                    case 7 :
+                        name = i - 2 + "0";
+                        break;
+                    case 8 :
+                        name = '55';
+                        break;
+                    case 9 :
+                        name = i - 3 + "0";
+                        break;
+                    default:
+                }
+                css += '--grey' + name + ':' + colors[i] + ';';
             }
 
-            c//ss += '--grey00:var(--grey70)';
+            //css += '--grey00:var(--grey70)';
 
-            var old = document.getElementsByClassName('barf');
+            var old = document.getElementsByClassName('unicorn');
 
             while(old[0]){
                 old[0].parentNode.removeChild(old[0]);
             }
 
             var style = document.createElement('style');
-            style.className = 'barf';
+            style.className = 'unicorn';
             style.innerHTML = ':root { ' + css + '}';
             document.head.appendChild(style);
 
