@@ -816,7 +816,7 @@
         .sectionerror {margin: 0 var(--fieldgap);transition:all 150ms ease-in-out;height:0;overflow:hidden;opacity:0;}
             .sectionerror.open {height:80px;opacity:1;}
             .errorwrap {border-radius:var(--radius);box-sizing: border-box;max-height:100%;border:1px solid var(--grey20);/*border:1px solid var(--red20);*/margin-bottom: 24px;}
-                .errormessage {background:var(--grey10);padding:16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
+                .errormessage {background:var(--grey10);padding:14px 16px;border-radius:var(--radius);max-height: 100%;overflow: hidden;box-sizing: border-box;
                     /* background: var(--red10);
                     color:var(--red50); */
                 }
@@ -5172,8 +5172,8 @@
         //var a = false;
         //while(!a){
             var r1 = x && x.length ? x[0] : Math.floor(Math.random()*256);
-            var r2 = x && x.length ? x[1] :  Math.floor(Math.random()*256);
-            var r3 = x && x.length ? x[2] :  Math.floor(Math.random()*256);
+            var r2 = x && x.length ? x[1] : Math.floor(Math.random()*256);
+            var r3 = x && x.length ? x[2] : Math.floor(Math.random()*256);
 
             document.body.dataset.r = r1;
             document.body.dataset.g = r2;
@@ -5317,10 +5317,13 @@
             var s = hsl[1];
             var l = hsl[2];
 
+            var dark  = false;
+
             if ( l > 50){
                 l = -95;
             } else {
                 l = 5;
+                dark = true;
             }
 
             base = hsl2rgb(h, s, Math.abs(l));
@@ -5358,6 +5361,17 @@
             }
 
             var css = '';
+
+            if ( dark ){
+                css =  `--grey00:black;
+                        --red10:#591317;
+                        --red20:#A6212A;
+                        --red30:#D92736;
+                        --red40:#EF3340;
+                        --red45:#F2555F;
+                        --red50:#FCBDBD;
+                        --red60: #FFEBEB;`;
+            }
 
             for (var i=0;i<colors.length;i++){
                 var name = null;
@@ -5403,7 +5417,12 @@
             document.head.appendChild(style);
 
             //altcolors([r1,r2,r3], hsl[2]);
-        //}
+        //}rgb(62, 107, 230)
+
+        var r = Number(document.body.dataset.r) || 67;
+        var b = Number(document.body.dataset.b) || 107;
+        var g = Number(document.body.dataset.g) || 230;
+        randomcolor([r,g,b]);
     }
 
     function nab(e){
@@ -5425,8 +5444,6 @@
         if ( ac ){
             ac.classList.add('selected');
         }
-
-
     }
 
 
