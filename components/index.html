@@ -142,7 +142,7 @@
             -webkit-appearance: none;
         }
 
-        input[type=text], input[type=number], textarea {transition:all 150ms ease-in-out;box-shadow:0 0 0 var(--shadow);}
+        input[type=text], input[type=number], textarea {transition:all 150ms ease-in-out;box-shadow:0 0 0 var(--shadow);background-repeat: no-repeat;background-position: right 12px center;}
             input[type=text]:hover, input[type=number]:hover, textarea:hover {border-color:var(--grey40);box-shadow:0 2px 2px var(--shadow);}
             input[type=text]:active, input[type=number]:active, textarea:active {border-color:var(--grey50);box-shadow:none;}
             input[type=text]:focus, input[type=number]:focus, textarea:focus {border-color:var(--ui3);box-shadow:0 2px 2px var(--blueshadow);}
@@ -712,7 +712,9 @@
 
         .tooltip.right2 {left:calc(100% + 12px);top:50%;margin-top:12px;transform:translate(-4px, -50%);white-space:nowrap;}
         .tooltip.error {background:var(--red45);color:white;}
-        .demo:not(.notooltip) input:focus ~ .tooltip, .demo:not(.notooltip) input:hover ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+        .tooltip_demo:not(.notooltip) .er input:focus ~ .tooltip, .tooltip_demo:not(.notooltip) input:hover ~ .tooltip, .demo:not(.notooltip) .error input:hover ~ .tooltip , .demo:not(.notooltip) .error textarea:hover ~ .tooltip, .demo:not(.notooltip) .error input:focus ~ .tooltip , .demo:not(.notooltip) .error textarea:focus ~ .tooltip {opacity:1;transform:translate(0, -50%);}
+
+
 
         .stuck2 .label2 {top:0;left:0;opacity:0;pointer-events:none;font-size:13px;font-style:normal;}
         .stuck2 input:focus ~ .label2, .stuck .label2 {opacity:1;pointer-events:all;}
@@ -1361,7 +1363,7 @@
                                 <div class=title>Heifer -KA20180207 - ATL8 | FLEX-461950</div>
                                 <div class=itembadges>
                                     <div class=badge>Depart: Dec 31, 2018</div><div class=badge>Arrive: Jan 31, 2019</div>
-                                    <div class=bage>From: Heifer Cross Border E-Commerce (Sh…</div><div class=badge>To: Unspecified</div>
+                                    <div class=badge>From: Heifer Cross Border E-Commerce (Sh…</div><div class=badge>To: Unspecified</div>
                                 </div>
                             </div>
                         </div>
@@ -3531,6 +3533,30 @@
                     <label><input type=checkbox onchange="this.getparent('form3_demo').getElementsByClassName('form')[0].classList.toggle('stacked');autoautoexpand();" /><span class=radiolabel>Stacked</span></label>
                 </span>
             </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form3_demo').getElementsByClassName('form')[0].classList.toggle('errorscroll');" /><span class=radiolabel>Scroll to Error</span></label>
+                </span>
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form3_demo').classList.toggle('inlineerrors')" /><span class=radiolabel>Inline Errors</span></label>
+                </span>
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form3_demo').classList.toggle('notooltip')" checked /><span class=radiolabel>Tooltip Errors</span></label>
+                </span>
+            </div>
+
+            <div class=control>
+                <span class=checkbox>
+                    <label><input type=checkbox onchange="this.getparent('form3_demo').classList.toggle('errortoast')" checked /><span class=radiolabel>Error Toast</span></label>
+                </span>
+            </div>
         </div>
         <div class=form>
             <div class=heading>
@@ -3775,12 +3801,218 @@
                 <h4>G. Attachments</h4>
                 <div class=formrow>
                     <div class=formcell>
-                        <div class=btn tabindex=0>Pick a file from your computer</div>
+                        <div class="btn cta hollow" tabindex=0>Pick a file from your computer</div>
+                    </div>
+                </div>
+            </div>
+            <div class=section>
+                <div class=btngroup>
+                    <div class="btn shh" tabindex=0 onclick="clearerrors.call(this,event);">Cancel</div><div class=btn onclick="valid.call(this,event);" data-clicks=0 tabindex=0>
+                        <span class=label>Submit</span>
+                        <span class=spinning>
+                            <div class="spinner2 fat spinnergg">
+                                <svg class="spin2" width="24" height="24" viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-miterlimit="10" stroke-width="6"></circle></svg>
+                            </div>
+                        </span>
+                        <span class=done>
+                            <svg height="16px" viewBox="0 0 57 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <polyline points="1 19.2323262 18.9884144 37.2207407 55.2091551 1" fill=none stroke=#6E7882 stroke-width=8></polyline>
+                            </svg>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        .inlineerrors .rowerror {padding-bottom:20px;}
+
+        .form3_demo .tooltip.right2 {top: auto;margin-top: -18px;}
+
+        .form3_demo .toast {font-variant-numeric: tabular-nums;}
+
+        .errortoast .toast {display:none !important;}
+
+        .stacked .tooltip.error.right2 {margin-top:14px;}
+        .stacked .helper {left: 200px;bottom: 8px;}
+        .stacked .formcell.error {padding-bottom:32px !important;}
+
+    </style>
+
+    <script>
+        function valid(e){
+            clearerrors.call(this, e);
+            var f = this.getparent('form');
+
+            var inputs = f.querySelectorAll('input, textarea');
+            var error = false;
+            var count = 0;
+
+            this.classList.remove('errorsubmit');
+
+            for(var i=0;i<inputs.length;i++){
+                var a = inputs[i];
+                var v = a.value.trim();
+
+                if ( a.readonly == true ){
+                    continue;
+                }
+
+                if ( v == '' ){
+                    var p = a.parentElement;
+                    p.classList.add('error');
+                    a.oninput = clearerror;
+                    error = true;
+
+                    var tip = document.createElement('div');
+                    tip.className = 'tooltip error right2';
+                    tip.appendChild(document.createTextNode('This doesn\'t look right'));
+
+                    var help = document.createElement('div');
+                    var er = document.createElement('div');
+                    help.className = 'helper';
+                    er.className = 'errortext';
+
+                    help.style.position = 'absolute';
+
+                    er.appendChild(document.createTextNode('This field can\'t be blank.'));
+                    help.appendChild(er);
+
+                    p.appendChild(tip);
+                    p.appendChild(help);
+
+                    var r = a.getparent('formrow');
+                    r.classList.add('rowerror');
+
+                    count++;
+
+                    continue;
+                }
+
+                var t = a.dataset.type;
+
+                switch(t){
+                    case 'email':
+
+                        break;
+                    default:
+                }
+            }
+
+            if ( error ){
+                this.offsetLeft;
+                this.classList.add('errorsubmit');
+
+
+
+                var scroll = this.getparent('errorscroll');
+                if ( scroll ){
+                    var fe = f.getElementsByClassName('error')[0];
+                    var ot = fe.offsetTop;
+                    var inn = fe.querySelector('input,textarea');
+
+                    window.scrollTo(0, ot);
+                    inn.focus();
+                }
+
+
+                //<div class="toast toasted bottom right error">Mmm Toast<div class="btn">Dismiss</div></div>
+
+                var toast = document.createElement('div');
+                toast.className = 'toast bottom right error form3toast butter toasted';
+                toast.innerHTML = count + ' Errors';
+
+                toast.onclick = function(){
+                    var input = f.getElementsByClassName('formcell error')[0].querySelector('input, textarea');
+
+                    window.scrollTo(0, input.offsetTop);
+                    input.focus();
+                };
+
+                f.appendChild(toast);
+
+                toast.offsetLeft;
+
+                toast.classList.add('poppop');
+            }
+        }
+
+
+        function clearerror(e){
+            var er = this.getparent('error');
+            var h = er.getElementsByClassName('helper');
+            var t = er.getElementsByClassName('tooltip');
+
+            var r = er.getparent('formrow');
+
+
+            if ( er ){
+                er.classList.remove('error');
+            }
+
+            var ne = r.getElementsByClassName('error')[0];
+
+            if ( !ne ){
+                r.classList.remove('rowerror');
+            }
+
+            while(h[0]){
+                h[0].parentNode.removeChild(h[0]);
+            }
+
+            while(t[0]){
+                t[0].parentNode.removeChild(t[0]);
+            }
+
+            this.oninput = null;
+
+            var f = this.getparent('form');
+            var er = f.getElementsByClassName('formcell error');
+
+            var toast = f.getElementsByClassName('form3toast')[0];
+
+            toast.innerHTML = er.length + (er.length > 1 ? ' Errors' : ' Error');
+
+            if ( er.length === 0 ){
+                toast.parentNode.remove(toast);
+            }
+        }
+
+        function clearerrors(e){
+            var f = this.getparent('form');
+
+            var er = f.getElementsByClassName('formcell error');
+            var re = f.getElementsByClassName('rowerror');
+            re.removeclass('rowerror');
+
+            var toast = f.getElementsByClassName('form3toast');
+
+            while(toast[0]){
+                toast[0].parentNode.removeChild(toast[0]);
+            }
+
+            while(er[0]){
+                var h = er[0].getElementsByClassName('helper');
+                var t = er[0].getElementsByClassName('tooltip');
+                var input = er[0].querySelector('input, textarea');
+
+                er[0].classList.remove('error');
+
+
+                while(h[0]){
+                    h[0].parentNode.removeChild(h[0]);
+                }
+
+                while(t[0]){
+                    t[0].parentNode.removeChild(t[0]);
+                }
+
+                input.oninput = null;
+            }
+
+        }
+    </script>
 
     <!-- <div class="demo form4_demo">
         <div class="form routecard">
