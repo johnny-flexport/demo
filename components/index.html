@@ -268,9 +268,9 @@
         .largesearch .searchicon {z-index:4;}
         .largesearch input:focus ~ .searchicon:hover, .largesearch .searchbarwrap.open .searchicon:hover {border-radius:3px;border-color:transparent;background:var(--grey10);box-shadow:none;}
 
-        .searchpanel {position:absolute;top:0;left:0;right:0;bottom:0;background:var(--grey00);border:1px solid var(--grey30);border-radius:5px;z-index:1;padding-top:42px;box-shadow:0 2px 2px rgba(0,0,0,0);transition:all 150ms ease-in-out;height:0;overflow:hidden;box-sizing:border-box;}
+        .searchpanel {position:absolute;top:0;left:0;right:0;bottom:0;background:var(--grey00);border:1px solid var(--grey30);border-radius:4px;z-index:1;padding-top:42px;box-shadow:0 2px 2px rgba(0,0,0,0);transition:all 150ms ease-in-out;height:0;overflow:hidden;box-sizing:border-box;}
 
-        input:focus ~ .searchpanel, .searchbarwrap.open .searchpanel {max-height:556px;height:556px;box-shadow:0 2px 2px var(--shadow);top:-4px;left:-4px;right:-4px;padding-top:46px;box-shadow:0 0 0 3px var(--ui2);border-color:var(--blue30);border-radius:5px;}
+        input:focus ~ .searchpanel, .searchbarwrap.open .searchpanel {max-height:556px;height:556px;box-shadow:0 2px 2px var(--shadow);top:-4px;left:-4px;right:-4px;padding-top:46px;box-shadow:0 0 0 3px var(--ui2);border-color:var(--blue30);border-radius:6px;}
 
         .clearbar {position: absolute;top:50%;right:var(--inset);width:12px;height:12px;transform: translateY(-50%);opacity:0;pointer-events:none;cursor:pointer;}
             .clearbar::after, .clearbar::before {content:'';width:100%;height:2px;background:var(--grey50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);transition:background-color 150ms ease-in-out;}
@@ -1366,7 +1366,7 @@
                         </div>
                         <div class=tabline style="transform:translateX(20px) scaleX(21);"></div>
                     </div>
-                    <div class=searchsectionwrap>
+                    <div class=searchsectionwrap onscroll="panelscroll.call(this, event);">
                         <div class=searchsection>
                             <div class=sectionhead><h5>Shipments</h5></div>
                             <div class=sectionitem>
@@ -1421,6 +1421,7 @@
         .searchpanel .tabs {padding:0 8px;}
             .searchpanel .tabs .tab {font-size:11px;text-transform:uppercase;line-height:40px;padding:0 12px;letter-spacing:.3px;}
             .sectionhead {background:var(--grey10);padding:4px 20px;}
+            .searched .sectionhead {display:none;}
             .sectionitem {padding:12px 20px;border-bottom: 1px solid var(--grey20);transition:background-color 150ms ease-in-out;}
                 .sectionitem:last-child {border-bottom:none;}
 
@@ -1434,7 +1435,7 @@
                 .searchpanel .tabs {margin:0 -4px;transition:margin 150ms ease-in-out;}
                 .open .searchpanel .tabs {margin:0;}
 
-
+        .hidden {display:none;}
     </style>
 
     <div class="demo combo_demo">
@@ -2836,8 +2837,46 @@
             </span>
         </div> -->
     </div>
-
+    <style>
+        .stickyhead {position:absolute;background: var(--grey10);padding: 4px 20px;width:100%;z-index:9999;}
+        .searched .stickyhead {display:none;}
+    </style>
     <script>
+        function panelscroll(e){
+            console.log(this.scrollTop, 'scroll');
+            var y = this.scrollTop;
+            var sh = this.getElementsByClassName('sectionhead');
+
+            var current = null;
+
+            for(var i=0;i<sh.length;i++){
+                var s = sh[i];
+
+                var t = s.offsetTop - this.offsetTop;
+
+                console.log(t,y);
+
+                if ( t <= y || current == null ){
+                    current = s;
+                }
+            }
+
+            console.log(current);
+
+            var st = this.parentElement.getElementsByClassName('stickyhead')[0];
+
+            if ( !st ){
+                st  = document.createElement('div');
+                st.className = 'stickyhead';
+                st.innerHTML = current.innerHTML;
+
+                this.parentNode.insertBefore(st, this);
+            }
+
+            st.innerHTML = current.innerHTML;
+
+        }
+
         function closesearch(e){
             var t = e.target;
             var p = t.getparent('largesearch');
@@ -5824,12 +5863,26 @@
 
             console.log(t,v);
 
+            if ( v != 'all'){
+                w.classList.add('searched')
+            } else {
+                w.classList.remove('searched')
+            }
+
             if ( t === v || v == 'all' ){
-                p.style.display = 'block';
+                p.classList.remove('hidden');
+                p.offsetHeight;
                 hh += p.offsetHeight;
             } else {
-                p.style.display = 'none';
+                //p.style.display = 'none';
+                p.classList.add('hidden');
             }
+
+
+        }
+
+        if ( hh > 0 ){
+            hh += 4;
         }
 
         hh = Math.min(468, hh);
