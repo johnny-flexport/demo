@@ -150,7 +150,7 @@
         input[type=text]:read-only, input[type=number]:read-only, textarea:read-only {border-color:var(--grey20);background:var(--grey10);}
         input[type=text]:read-only:hover, input[type=number]:read-only:hover, textarea:read-only  {box-shadow:none;}
 
-        textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow150ms ease-in-out;}
+        textarea {line-height:20px;padding:var(--textpadd) var(--indent);text-indent:0;resize:none;min-width:400px;transition:border-color 150ms ease-in-out, background-color 150ms ease-in-out, box-shadow 150ms ease-in-out;}
 
         .error input[type=text], .error input[type=number], .error textarea {border-color:var(--red45);}
             .error input[type=text]:focus, .error input[type=number]:focus, body:not(.hidefocus) .error textarea:focus {border-color:var(--red45);box-shadow:0 0 0 3px var(--errorshadow);}
@@ -255,7 +255,8 @@
 
         .searchbarwrap {position:relative;display:inline-block;}
         .searchbar {width:280px;}
-            .searchicon {position:absolute;top:0;right:0;padding:0 12px;border-radius:0 3px 3px 0;cursor:pointer;border:1px solid transparent;transition:all 150ms ease-in-out;box-sizing:border-box;display:flex;align-items: center;height:100%;}
+            .searchicon {position:absolute;top:0;right:0;padding:0 9px;border-radius:0 3px 3px 0;cursor:pointer;border:1px solid transparent;transition:all 150ms ease-in-out;box-sizing:border-box;display:flex;align-items: center;height:100%;}
+            .largesearch .searchicon {padding:0 12px;border-radius:0 5px 5px 0;}
                 .searchicon:hover {border-color:var(--grey40);box-shadow:0 2px 2px rgba(0, 0, 0, 0.05);}
                 .searchicon:active {border-color:var(--grey30);box-shadow:none;background:var(--grey10);}
                 .searchicon svg {display:block;}
@@ -263,11 +264,11 @@
                 .searchicon:hover svg path {fill:var(--grey60);}
 
 
-        .largesearch input {height:44px;text-indent:16px;border:none;background:transparent;box-shadow:none !important;z-index: 3;position:relative;width:600px;}
+        .largesearch input {height:44px;text-indent:16px;border:none;background:transparent;box-shadow:none !important;z-index: 3;position:relative;width:600px;font-size:15px;}
         .largesearch .searchicon {z-index:4;}
         .largesearch input:focus ~ .searchicon:hover, .largesearch .searchbarwrap.open .searchicon:hover {border-radius:3px;border-color:transparent;background:var(--grey10);box-shadow:none;}
 
-        .searchpanel {position:absolute;top:0;left:0;right:0;bottom:0;background:var(--grey00);border:1px solid var(--grey30);border-radius:3px;z-index:1;padding-top:42px;box-shadow:0 2px 2px rgba(0,0,0,0);transition:all 150ms ease-in-out;height:0;overflow:hidden;box-sizing:border-box;}
+        .searchpanel {position:absolute;top:0;left:0;right:0;bottom:0;background:var(--grey00);border:1px solid var(--grey30);border-radius:5px;z-index:1;padding-top:42px;box-shadow:0 2px 2px rgba(0,0,0,0);transition:all 150ms ease-in-out;height:0;overflow:hidden;box-sizing:border-box;}
 
         input:focus ~ .searchpanel, .searchbarwrap.open .searchpanel {max-height:556px;height:556px;box-shadow:0 2px 2px var(--shadow);top:-4px;left:-4px;right:-4px;padding-top:46px;box-shadow:0 0 0 3px var(--ui2);border-color:var(--blue30);border-radius:5px;}
 
@@ -605,7 +606,9 @@
 
         body {padding-left:224px;transition:padding 150ms ease-in-out;}
         body.buttered {padding-top:44px;}
+        body.buttered.mobilenav {padding-top:100px;}
         body.buttered #nav {top:44px;}
+
 
         .form3_demo .form .inputlabel {white-space:normal;}
 
