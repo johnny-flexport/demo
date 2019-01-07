@@ -269,7 +269,7 @@
 
         .searchpanel {position:absolute;top:0;left:0;right:0;bottom:0;background:var(--grey00);border:1px solid var(--grey30);border-radius:3px;z-index:1;padding-top:42px;box-shadow:0 2px 2px rgba(0,0,0,0);transition:all 150ms ease-in-out;height:0;overflow:hidden;box-sizing:border-box;}
 
-        input:focus ~ .searchpanel, .searchbarwrap.open .searchpanel {height:556px;box-shadow:0 2px 2px var(--shadow);top:-4px;left:-4px;right:-4px;padding-top:46px;box-shadow:0 0 0 3px var(--ui2);border-color:var(--blue30);border-radius:5px;}
+        input:focus ~ .searchpanel, .searchbarwrap.open .searchpanel {max-height:556px;height:556px;box-shadow:0 2px 2px var(--shadow);top:-4px;left:-4px;right:-4px;padding-top:46px;box-shadow:0 0 0 3px var(--ui2);border-color:var(--blue30);border-radius:5px;}
 
         .clearbar {position: absolute;top:50%;right:var(--inset);width:12px;height:12px;transform: translateY(-50%);opacity:0;pointer-events:none;cursor:pointer;}
             .clearbar::after, .clearbar::before {content:'';width:100%;height:2px;background:var(--grey50);position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) rotate(45deg);transition:background-color 150ms ease-in-out;}
@@ -1340,10 +1340,10 @@
     </div>
 
     <div class="demo search_demo">
-        <div class="filter search largesearch">
-            <div class=inputlabel>Search</div>
+        <div class="filter search largesearch" style="display:inline-block;">
+            <!-- <div class=inputlabel>Search</div> -->
             <div class=searchbarwrap>
-                <input type=text class=searchbar placeholder="Find things..." onfocus="this.parentElement.classList.add('open');" />
+                <input type=text class=searchbar placeholder="Find things..." onfocus="this.parentElement.classList.add('open');window.onclick=closesearch;" />
                 <div class=searchicon>
                     <svg width="20px" height="20px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <path d="M51.8128372,45.50901 L50.4728372,44.17401 L39.3728372,33.07401 L38.7518372,32.45401 C44.5778372,23.40901 42.6478372,11.42601 34.2748372,4.66900997 C25.9018372,-2.08699003 13.7818372,-1.44399003 6.17083715,6.16200997 C-1.43916285,13.76701 -2.09016285,25.88701 4.66083715,34.26401 C11.4128372,42.64101 23.3938372,44.58001 32.4428372,38.75901 L33.0638372,39.37901 L44.1638372,50.47901 L45.5028372,51.81601 C45.8530393,52.1603475 46.414635,52.1603475 46.7648372,51.81601 L48.1028372,50.47901 L50.4728372,48.10901 L51.8118372,46.77101 C52.1597073,46.4224223 52.1601544,45.8581485 51.8128372,45.50901 Z M6.07283715,21.10901 C6.06757812,15.035638 9.72204193,9.55736493 15.3315972,7.22954118 C20.9411526,4.90171742 27.4006426,6.18295514 31.6970265,10.4756187 C35.9934103,14.7682822 37.2802433,21.2266599 34.95728,26.8382297 C32.6343166,32.4497995 27.1592114,36.1090077 21.0858372,36.10901 C12.8018372,36.10301 6.08583715,29.39301 6.07283715,21.10901 Z" ></path>
@@ -1352,7 +1352,7 @@
                 <div class=searchpanel>
                     <div class=tabs>
                         <div class=tabsoverflow>
-                                <div class="tab current">All</div><div class="tab">Shipments</div><div class="tab">Quotes</div><div class=tab>Products</div><div class=tab>Companies</div><div class=tab>Location</div><div class=tab>Help</div>
+                                <div class="tab current searchtab">All</div><div class="tab searchtab">Shipments</div><div class="tab searchtab">Quotes</div><div class="tab searchtab">Products</div><div class="tab searchtab">Companies</div><div class="tab searchtab">Location</div><div class="tab searchtab">Help</div>
                         </div>
                         <div class=tabline style="transform:translateX(20px) scaleX(21);"></div>
                     </div>
@@ -1409,7 +1409,7 @@
 
     <style>
         .searchpanel .tabs {padding:0 8px;}
-            .searchpanel .tabs .tab {font-size:11px;text-transform:uppercase;line-height:40px;padding:0 12px;}
+            .searchpanel .tabs .tab {font-size:11px;text-transform:uppercase;line-height:40px;padding:0 12px;letter-spacing:.3px;}
             .sectionhead {background:var(--grey10);padding:4px 20px;}
             .sectionitem {padding:12px 20px;border-bottom: 1px solid var(--grey20);transition:background-color 150ms ease-in-out;}
                 .sectionitem:last-child {border-bottom:none;}
@@ -1418,7 +1418,13 @@
                 .sectionitem:active {background:var(--grey20);}
 
             .itembadges .badge {margin:4px 4px 0 0;padding-right:8px;background:var(--grey10);color:var(--grey50);border:none;}
-            .searchsectionwrap {overflow-y:auto;max-height:calc(100% - 40px);}
+            .searchsectionwrap {overflow-y:auto;max-height:calc(100% - 40px);margin:0 -4px;transition:margin 150ms ease-in-out;}
+                .open .searchsectionwrap {margin:0;}
+
+                .searchpanel .tabs {margin:0 -4px;transition:margin 150ms ease-in-out;}
+                .open .searchpanel .tabs {margin:0;}
+
+
     </style>
 
     <div class="demo combo_demo">
@@ -2822,6 +2828,21 @@
     </div>
 
     <script>
+        function closesearch(e){
+            var t = e.target;
+            var p = t.getparent('largesearch');
+            if ( p ){
+                return;
+            }
+
+            window.onclick = null;
+            var c = document.getElementsByClassName('searchbarwrap open');
+            var s = c[0].getElementsByClassName('searchpanel')[0];
+            c.removeclass('open');
+
+            //s.removeAttribute('style');
+        }
+
         function openformerrors(e){
             var  f = this.getparent('form_demo');
             fe = f.getElementsByClassName('formerror');
@@ -5776,6 +5797,36 @@
         }
     }
 
+    function searchtab(e){
+        var v = this.innerText.toLowerCase().trim();
+        var w = this.getparent('searchbarwrap');
+        var n = w.getElementsByClassName('searchpanel')[0];
+        var l = w.getElementsByClassName('searchsectionwrap')[0];
+        var s = w.getElementsByClassName('sectionhead');
+
+        var hh = 0;
+
+        for(var i=0;i<s.length;i++){
+            var h = s[i];
+            var t = h.innerText.toLowerCase().trim();
+
+            var p = h.getparent('searchsection');
+
+            console.log(t,v);
+
+            if ( t === v || v == 'all' ){
+                p.style.display = 'block';
+                hh += p.offsetHeight;
+            } else {
+                p.style.display = 'none';
+            }
+        }
+
+        hh = Math.min(468, hh);
+
+        n.style.maxHeight = hh + 88 + 'px';
+    }
+
 
 
     Attach.on('click', '.tab', tab);
@@ -5806,6 +5857,8 @@
     Attach.on('click', '.toaster', toaster);
 
     Attach.on('click', '.nab', nab);
+
+    Attach.on('click', '.searchtab', searchtab);
 
     (function() {
         var hash = window.location.hash;
