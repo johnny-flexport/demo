@@ -560,6 +560,13 @@
 
             #nav .tabline {display:none;}
 
+        .mobilenav #nav {bottom:auto;right:0;height:56px;width:auto;padding-right:16px;}
+        .mobilenav #nav .tabsoverflow {white-space:nowrap;}
+        .mobilenav #nav .tab {display:inline-block;}
+        .mobilenav #nav .tab:last-child {margin-right:12px;}
+
+        body.mobilenav {padding-left:0;padding-top:56px;}
+
         .nabs {width:200px;background:var(--grey10);box-shadow:inset -1px 0 var(--grey20);padding:12px 12px 8px;border-radius:5px 0 0 5px;}
         .nab {line-height:40px;border-radius:3px;font-weight:600;box-sizing:border-box;padding:0 16px;margin-bottom:4px;cursor:pointer;color:var(--text);transition:all 150ms ease-in-out;position:relative;}
             .nab:hover {background:var(--grey20);color:var(--texthover);}
@@ -5827,6 +5834,15 @@
         n.style.maxHeight = hh + 88 + 'px';
     }
 
+    function resize(e){
+        var w = window.innerWidth;
+
+        if ( w < 800 ){
+            document.body.classList.add('mobilenav');
+        } else {
+            document.body.classList.remove('mobilenav');
+        }
+    }
 
 
     Attach.on('click', '.tab', tab);
@@ -5873,6 +5889,9 @@
             document.getElementById('starttab').click();
         }
 
+        window.onresize = resize;
+
+        resize();
     })();
 </script>
 </body>
