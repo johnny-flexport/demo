@@ -2222,7 +2222,7 @@
     <div class="demo dropdown_demo">
         <div class=filter>
             <div class=inputlabel>Complex Dropdown - Below</div>
-            <div class="dropbtn">
+            <div class="dropbtn" style="max-width: 280px;">
                 <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
                 <div  class=dropmenu style="max-height: 280px;">
                     <h5>Recent</h5>
@@ -2847,7 +2847,6 @@
     </style>
     <script>
         function panelscroll(e){
-            console.log(this.scrollTop, 'scroll');
             var y = this.scrollTop;
             var sh = this.getElementsByClassName('sectionhead');
 
@@ -2858,14 +2857,11 @@
 
                 var t = s.offsetTop - this.offsetTop;
 
-                console.log(t,y);
 
                 if ( t <= y || current == null ){
                     current = s;
                 }
             }
-
-            console.log(current);
 
             var st = this.parentElement.getElementsByClassName('stickyhead')[0];
 
@@ -4776,7 +4772,6 @@
             w = w*2;
         }
 
-        console.log(l);
 
         //pb.style.width = l - w + 'px';
         cs.style.width = l + w  + 'px';
@@ -5032,7 +5027,6 @@
     }
 
     function dropitem(e){
-        console.log('dropitem')
         var p = this.getparent('dropbtn');
         var c = p.getElementsByClassName('dropitem selected');
         var v = this.innerText;
@@ -5070,8 +5064,6 @@
         var x = v.replace(/\s+/g, ' ');
 
         d.innerText = x;
-
-
     }
 
     function openpopover(e){
@@ -5860,8 +5852,6 @@
             var t = h.innerText.toLowerCase().trim();
 
             var p = h.getparent('searchsection');
-
-            console.log(t,v);
 
             if ( v != 'all'){
                 w.classList.add('searched')
