@@ -739,8 +739,21 @@
             .helpertext.disabled {color:var(--grey40);}
             .errortext {color:var(--red45);}
 
-        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;}
+
+        .calwrap {position: absolute;top:0;left:0;}
+            .calwrap .dates {transform:translateX(48px);transition:transform 250ms ease-in-out, opacity 150ms ease-in-out;opacity:0;}
+            .calwrap.negative .dates {transform:translateX(-48px);}
+            .calwrap.boom .dates {transform:translateX(0);opacity:1;}
+
+            .calwrap .month {transform:translateX(24px);transition:transform 250ms ease-in-out, opacity 150ms ease-in-out;opacity:0;}
+            .calwrap.negative .month {transform:translateX(-24px);}
+            .calwrap.boom .month {transform:translateX(0);opacity:1;}
+
+
+
+        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;overflow:hidden;}
             .calhead {line-height: 40px;position:relative;}
+            .calprehead {position:relative;z-index:1337;}
                 .nextmonth {width:40px;height:40px;position:absolute;top:0;right:4px;cursor:pointer;}
                 .lastmonth {width:40px;height:40px;position:absolute;top:0;left:4px;cursor:pointer;}
 
@@ -1246,9 +1259,9 @@
         <span class=checkbox>
             <label><input type=checkbox onchange="document.body.classList.toggle('hidefocus');" /><span class=radiolabel>Hide focus state</span></label>
         </span>
-        <div class=btn onclick="randomcolor()">Random Color</div>
-        <div class="btn hollow" onclick="invert()">Invert</div>
-        <div class="btn shh" onclick="unicorn()">Surprise</div>
+        <div class=btn tabindex=0 onclick="randomcolor()" role="button" aria-pressed="mixed">Random Color</div>
+        <div class="btn hollow" tabindex=0 onclick="invert()" role="button" aria-pressed="mixed">Invert</div>
+        <div class="btn shh" tabindex=0 onclick="unicorn()" role="button" aria-pressed="true">Surprise</div>
         <span class=checkbox>
             <label><input type=checkbox onchange="document.documentElement.classList.toggle('additional');" id=addition /><span class=radiolabel>More Shades</span></label>
         </span>
@@ -1721,70 +1734,81 @@
 
 
     <div class="demo calendar_demo">
-        <div class=calendar>
-            <div class=calhead>
+        <div class=calendar style="width:268px;height:304px;">
+            <div class=calprehead>
                 <div class="lastmonth" onclick="cal.call(this, -1)">
                     <div class="monthcontrol"></div>
                 </div>
-                <div class="month">November 2018</div>
                 <div class="nextmonth" onclick="cal.call(this, 1)">
                     <div class="monthcontrol"></div>
                 </div>
             </div>
-            <div class=week>
-                <div class=day>Su</div>
-                <div class=day>Mo</div>
-                <div class=day>Tu</div>
-                <div class=day>We</div>
-                <div class=day>Th</div>
-                <div class=day>Fr</div>
-                <div class=day>Sa</div>
-            </div>
-            <div class=dates>
-                <div class=daterow>
-                        <div class=daywrap><div class="date nonmonth">28</div></div>
-                    <div class=daywrap><div class="date nonmonth">29</div></div>
-                    <div class=daywrap><div class="date nonmonth">30</div></div>
-                    <div class=daywrap><div class="date nonmonth">31</div></div>
-                    <div class=daywrap><div class=date>1</div></div>
-                    <div class=daywrap><div class=date>2</div></div>
-                    <div class=daywrap><div class=date>3</div></div>
+            <div class="calwrap boom">
+                <div class=calhead>
+                    <!-- <div class="lastmonth" onclick="cal.call(this, -1)">
+                        <div class="monthcontrol"></div>
+                    </div> -->
+                    <div class="month">November 2018</div>
+                    <!-- <div class="nextmonth" onclick="cal.call(this, 1)">
+                        <div class="monthcontrol"></div>
+                    </div> -->
                 </div>
-                <div class=daterow>
-                    <div class=daywrap><div class=date>4</div></div>
-                    <div class=daywrap><div class=date>5</div></div>
-                    <div class=daywrap><div class=date>6</div></div>
-                    <div class=daywrap><div class=date>7</div></div>
-                    <div class=daywrap><div class="date currentday">8</div></div>
-                    <div class=daywrap><div class=date>9</div></div>
-                    <div class=daywrap><div class=date>10</div></div>
+                <div class=week>
+                    <div class=day>Su</div>
+                    <div class=day>Mo</div>
+                    <div class=day>Tu</div>
+                    <div class=day>We</div>
+                    <div class=day>Th</div>
+                    <div class=day>Fr</div>
+                    <div class=day>Sa</div>
                 </div>
-                <div class=daterow>
-                    <div class=daywrap><div class=date>11</div></div>
-                    <div class=daywrap><div class=date>12</div></div>
-                    <div class=daywrap><div class=date>13</div></div>
-                    <div class=daywrap><div class=date>14</div></div>
-                    <div class=daywrap><div class=date>15</div></div>
-                    <div class=daywrap><div class=date>16</div></div>
-                    <div class=daywrap><div class=date>17</div></div>
-                </div>
-                <div class=daterow>
-                        <div class=daywrap><div class=date>18</div></div>
-                    <div class=daywrap><div class=date>19</div></div>
-                    <div class=daywrap><div class=date>20</div></div>
-                    <div class=daywrap><div class=date>21</div></div>
-                    <div class=daywrap><div class="date selectedday">22</div></div>
-                    <div class=daywrap><div class=date>23</div></div>
-                    <div class=daywrap><div class=date>24</div></div>
-                </div>
-                <div class=daterow>
-                        <div class=daywrap><div class=date>25</div></div>
-                    <div class=daywrap><div class=date>26</div></div>
-                    <div class=daywrap><div class=date>27</div></div>
-                    <div class=daywrap><div class=date>28</div></div>
-                    <div class=daywrap><div class=date>29</div></div>
-                    <div class=daywrap><div class=date>30</div></div>
-                    <div class=daywrap><div class="date nonmonth">1</div></div>
+                <div class=dates>
+                    <div class=daterow>
+                            <div class=daywrap><div class="date nonmonth">28</div></div>
+                        <div class=daywrap><div class="date nonmonth">29</div></div>
+                        <div class=daywrap><div class="date nonmonth">30</div></div>
+                        <div class=daywrap><div class="date nonmonth">31</div></div>
+                        <div class=daywrap><div class=date>1</div></div>
+                        <div class=daywrap><div class=date>2</div></div>
+                        <div class=daywrap><div class=date>3</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class=date>4</div></div>
+                        <div class=daywrap><div class=date>5</div></div>
+                        <div class=daywrap><div class=date>6</div></div>
+                        <div class=daywrap><div class=date>7</div></div>
+                        <div class=daywrap><div class="date currentday">8</div></div>
+                        <div class=daywrap><div class=date>9</div></div>
+                        <div class=daywrap><div class=date>10</div></div>
+                    </div>
+                    <div class=daterow>
+                        <div class=daywrap><div class=date>11</div></div>
+                        <div class=daywrap><div class=date>12</div></div>
+                        <div class=daywrap><div class=date>13</div></div>
+                        <div class=daywrap><div class=date>14</div></div>
+                        <div class=daywrap><div class=date>15</div></div>
+                        <div class=daywrap><div class=date>16</div></div>
+                        <div class=daywrap><div class=date>17</div></div>
+                    </div>
+                    <div class=daterow>
+                            <div class=daywrap><div class=date>18</div></div>
+                        <div class=daywrap><div class=date>19</div></div>
+                        <div class=daywrap><div class=date>20</div></div>
+                        <div class=daywrap><div class=date>21</div></div>
+                        <div class=daywrap><div class="date selectedday">22</div></div>
+                        <div class=daywrap><div class=date>23</div></div>
+                        <div class=daywrap><div class=date>24</div></div>
+                    </div>
+                    <div class=daterow>
+                            <div class=daywrap><div class=date>25</div></div>
+                        <div class=daywrap><div class=date>26</div></div>
+                        <div class=daywrap><div class=date>27</div></div>
+                        <div class=daywrap><div class=date>28</div></div>
+                        <div class=daywrap><div class=date>29</div></div>
+                        <div class=daywrap><div class=date>30</div></div>
+                        <div class=daywrap><div class="date nonmonth">1</div></div>
+                    </div>
+                    <div class="daterow"><div class="daywrap"><div class="date nonmonth">2</div></div><div class="daywrap"><div class="date nonmonth">3</div></div><div class="daywrap"><div class="date nonmonth">4</div></div><div class="daywrap"><div class="date nonmonth">5</div></div><div class="daywrap"><div class="date nonmonth">6</div></div><div class="daywrap"><div class="date nonmonth">7</div></div><div class="daywrap"><div class="date nonmonth">8</div></div></div>
                 </div>
             </div>
         </div>
@@ -1838,12 +1862,20 @@
 
         function cal(x){
             var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
             var c = this.getparent('calendar');
             var mon = c.getElementsByClassName('month')[0];
             var od = c.getElementsByClassName('dates');
             var m = c.dataset.month == null ? 10 : Number(c.dataset.month);
             var y = Number(c.dataset.year) || 2018;
+
+            var cw = document.createElement('div');
+            var ch = c.getElementsByClassName('calhead')[0].cloneNode(true);
+            var ww = c.getElementsByClassName('week')[0].cloneNode(true);
+
+            cw.className = 'calwrap';
+
+            cw.appendChild(ch);
+            cw.appendChild(ww);
 
             m += x;
 
@@ -1858,16 +1890,14 @@
             c.dataset.month = m;
             c.dataset.year = y;
 
+            //mon.innerText = months[m] + ' ' + y;
 
-            mon.innerText = months[m] + ' ' + y;
+            ch.getElementsByClassName('month')[0].innerText = months[m] + ' ' + y;
 
             var days = new Date(y, m + 1, 0).getDate();
             var past = new Date(y, m, 0).getDate();
 
             var day = new Date(y, m, 1).getDay();
-
-            console.log(days, day);
-
 
             var prev = new Array(day);
 
@@ -1969,12 +1999,38 @@
                 }
             }
 
-            console.log(od);
-            od[0].parentNode.removeChild(od[0]);
+            //od[0].parentNode.removeChild(od[0]);
 
-            c.appendChild(cdates);
-            console.log(prev, dates);
+            var old = c.getElementsByClassName('calwrap');
 
+            old = old[old.length-1];
+
+            // if ( old ){
+            //     old.parentNode.removeChild(old);
+            // }
+
+            old.addEventListener('transitionend', removeelm);
+
+            old.classList.remove('boom', 'negative');
+            if ( x == 1){
+                old.classList.add('negative');
+            } else {
+                cw.classList.add('negative');
+            }
+
+
+            cw.appendChild(cdates);
+            c.appendChild(cw);
+
+            var w = cw.offsetWidth;
+            var h = cw.offsetHeight;
+
+            c.style.width = w + 'px';
+            c.style.height = h + 'px';
+
+            //c.offsetLeft;
+
+            cw.classList.add('boom');
         }
     </script>
 
@@ -2523,7 +2579,7 @@
             <div class=inputlabel>Complex Multiselect</div>
             <div class="dropbtn multiselect">
                 <div class="dropdown type2" style="min-width:120px;font-style:italic;color:var(--grey50);" onclick="opendrop.call(this,event);">None</div>
-                <div  class=dropmenu style="max-height: 280px;">
+                <div  class=dropmenu style="max-height: 306px;">
                         <div class="menuheading">
                             <div class=icon>
                                 <span class=checkbox>
@@ -6085,6 +6141,7 @@
         if ( c.classList.contains('calrange') || d.classList.contains('nonmonth') ){
             return;
         }
+
         var s = c.getElementsByClassName('selectedday');
         s.removeclass('selectedday');
 

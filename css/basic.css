@@ -77,6 +77,8 @@
 }
 
 .additional {
+    --grey45: #6E7881;
+    --grey50: hsl(207, 8%, 44%);
     --input:var(--grey05);
     --text: var(--grey55);
     --texthover: var(--grey60);
@@ -119,9 +121,9 @@ html, input, textarea {
     background:var(--grey00);
 }
 
-a, .a {color:var(--ui3);transition:color 150ms ease-in-out;text-decoration:underline;}
-a:hover, .a:hover {color:var(--ui5);}
-a:active, .a:active {text-decoration:none;}
+a, .a {color:var(--ui3);transition:color 150ms ease-in-out, box-shadow 150ms ease-in-out;text-decoration:underline;}
+a:hover, .a:hover {color:var(--ui5);box-shadow:none !important;}
+a:active, .a:active {text-decoration:none;box-shadow:none;}
 
 h1 {font-size:36px;line-height:48px;font-weight:300;color:var(--text);}
 h2 {font-size:24px;line-height:36px;font-weight:400;color:var(--text);}
