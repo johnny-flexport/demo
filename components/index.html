@@ -755,7 +755,7 @@
                 .week::after {content:'';clear:both;display:block;}
                 .day {width:var(--lineheight);text-align:center;color:var(--grey50);font-size:11px;font-weight:500;text-transform:uppercase;line-height:20px;float:left;}
 
-            .dates {padding:4px 8px;}
+            .dates {padding:8px;}
                 .daterow {}
                     .daterow::after {content:'';clear:both;display:block;}
                     .daywrap {width:var(--lineheight);height:var(--lineheight);text-align:center;float:left;box-sizing:border-box;cursor:pointer;padding:1px;}
@@ -767,7 +767,8 @@
                     .nonmonth {color:var(--grey50);font-style:italic;}
                     .currentday {font-weight:600;background:var(--grey20);}
                     .selectedday {box-shadow:inset 0 0 0 3px var(--ui3);color:var(--ui5);background:var(--ui3);color:white;}
-                        .daywrap:hover .selectedday {background: var(--ui5);box-shadow:none;}
+                        .daywrap:hover .selectedday {background: var(--ui4);box-shadow:none;}
+                        .daywrap:active .selectedday {background: var(--ui5);box-shadow:none;}
 
                 .startday, .daywrap:hover .startday  {border-radius:50% 0 0 50%;box-shadow:1px 0 var(--ui3);}
                 .middlestartday, .daywrap:hover .middlestartday {border-radius:3px 0 0  3px;box-shadow:1px 0 var(--ui3);}
@@ -1722,11 +1723,11 @@
     <div class="demo calendar_demo">
         <div class=calendar>
             <div class=calhead>
-                <div class="lastmonth">
+                <div class="lastmonth" onclick="cal.call(this, -1)">
                     <div class="monthcontrol"></div>
                 </div>
                 <div class="month">November 2018</div>
-                <div class="nextmonth">
+                <div class="nextmonth" onclick="cal.call(this, 1)">
                     <div class="monthcontrol"></div>
                 </div>
             </div>
@@ -1789,8 +1790,196 @@
         </div>
     </div>
 
+    <script>
+        function autoclicknext(){
+            var m = this.dataset.month == null ? 10 : Number(this.dataset.month);
+            var y = Number(this.dataset.year) || 2018;
+            var n = this.getElementsByClassName('nextmonth')[0];
+
+            var tm = new Date().getMonth();
+            var ty = new Date().getFullYear();
+
+            console.log(tm,ty, m, y);
+
+            if ( m != tm && y != ty ){
+                console.log('click');
+                cal.call(n, 1);
+                autoclicknext.call(this);
+            } else {
+                var c = new Date().getDate();
+
+                var d = this.getElementsByClassName('date'+c)[0];
+                d.classList.add('currentday');
+
+                var r = Math.floor(Math.random() * 29);
+                if ( r == c){
+                    if ( c > 1 ){
+                        r = c-1;
+                    } else if ( c== 1 ){
+                        r = c + 1;
+                    }
+                }
+
+                var d = this.getElementsByClassName('date'+r)[0];
+                d.click();
+            }
+
+            return;
+        }
+
+        function today(){
+            var cals = document.getElementsByClassName('calendar');
+            for(var i=0;i<cals.length;i++){
+                var c = cals[i];
+                autoclicknext.call(c);
+            }
+        }
+
+
+        function cal(x){
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            var c = this.getparent('calendar');
+            var mon = c.getElementsByClassName('month')[0];
+            var od = c.getElementsByClassName('dates');
+            var m = c.dataset.month == null ? 10 : Number(c.dataset.month);
+            var y = Number(c.dataset.year) || 2018;
+
+            m += x;
+
+            if ( m > 11 ){
+                m = 0;
+                y += x;
+            } else if ( m < 0 ){
+                m = 11;
+                y += x;
+            }
+
+            c.dataset.month = m;
+            c.dataset.year = y;
+
+
+            mon.innerText = months[m] + ' ' + y;
+
+            var days = new Date(y, m + 1, 0).getDate();
+            var past = new Date(y, m, 0).getDate();
+
+            var day = new Date(y, m, 1).getDay();
+
+            console.log(days, day);
+
+
+            var prev = new Array(day);
+
+            for(var i=0;i<prev.length;i++){
+                prev[prev.length-1 - i] = past - i;
+            }
+
+            var dates = []
+
+            for(var i=0;i<days;i++){
+                dates[i] = i + 1;
+            }
+
+            var cdates = document.createElement('div');
+            cdates.className = 'dates';
+
+            rows = 5;
+            var col = 7;
+
+            var r = document.createElement('div');
+            r.className = 'daterow';
+
+            for(var j=0;j<prev.length;j++){
+                var dw = document.createElement('div');
+                var dd = document.createElement('div');
+
+                dw.className = 'daywrap';
+                dd.className = 'date nonmonth';
+
+                dd.appendChild(document.createTextNode(prev[j]));
+
+                dw.appendChild(dd);
+                r.appendChild(dw);
+
+                col--;
+
+                if ( col == 0){
+                    cdates.appendChild(r);
+                    col = 7;
+                    r = document.createElement('div');
+                    r.className = 'daterow';
+
+                    rows--;
+                }
+            }
+
+            for(var j=0;j<dates.length;j++){
+                var dw = document.createElement('div');
+                var dd = document.createElement('div');
+
+                dw.className = 'daywrap';
+                dd.className = 'date date' + dates[j];
+
+                dd.appendChild(document.createTextNode(dates[j]));
+
+                dw.appendChild(dd);
+                r.appendChild(dw);
+
+                col--;
+
+                if ( col == 0){
+                    cdates.appendChild(r);
+                    col = 7;
+                    r = document.createElement('div');
+                    r.className = 'daterow';
+                    rows--;
+                }
+            }
+
+            var xc = col;
+            if ( rows > 0){
+                xc += 7;
+            }
+
+            var xx = 1;
+
+            while(xc){
+                console.log(xx);
+                var dw = document.createElement('div');
+                var dd = document.createElement('div');
+
+                dw.className = 'daywrap';
+                dd.className = 'date nonmonth';
+
+                dd.appendChild(document.createTextNode(xx++));
+
+                dw.appendChild(dd);
+                r.appendChild(dw);
+
+                xc--;
+                col--;
+
+                if ( col == 0 ){
+                    col = 7;
+                    cdates.appendChild(r);
+                    r = document.createElement('div');
+                    r.className = 'daterow';
+                    rows--;
+                }
+            }
+
+            console.log(od);
+            od[0].parentNode.removeChild(od[0]);
+
+            c.appendChild(cdates);
+            console.log(prev, dates);
+
+        }
+    </script>
+
     <div class="demo calendar_demo">
-            <div class=calendar>
+            <div class="calendar calrange">
                 <div class=calhead>
                     <div class="lastmonth">
                         <div class="monthcontrol"></div>
@@ -5890,6 +6079,18 @@
         }
     }
 
+    function selectdate(){
+        var d = this.getElementsByClassName('date')[0];
+        var c = this.getparent('calendar');
+        if ( c.classList.contains('calrange') || d.classList.contains('nonmonth') ){
+            return;
+        }
+        var s = c.getElementsByClassName('selectedday');
+        s.removeclass('selectedday');
+
+        d.classList.add('selectedday');
+    }
+
 
     Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
@@ -5921,6 +6122,8 @@
     Attach.on('click', '.nab', nab);
 
     Attach.on('click', '.searchtab', searchtab);
+
+    Attach.on('click', '.daywrap', selectdate);
 
     (function() {
         var hash = window.location.hash;
