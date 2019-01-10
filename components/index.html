@@ -751,7 +751,7 @@
 
 
 
-        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;overflow:hidden;}
+        .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;overflow:hidden;transition:height 150ms ease-in-out;}
             .calhead {line-height: 40px;position:relative;}
             .calprehead {position:relative;z-index:1337;}
                 .nextmonth {width:40px;height:40px;position:absolute;top:0;right:4px;cursor:pointer;}
@@ -1734,7 +1734,7 @@
 
 
     <div class="demo calendar_demo">
-        <div class=calendar style="width:268px;height:304px;">
+        <div class=calendar style="width:268px;height:268px;">
             <div class=calprehead>
                 <div class="lastmonth" onclick="cal.call(this, -1)">
                     <div class="monthcontrol"></div>
@@ -1808,7 +1808,7 @@
                         <div class=daywrap><div class=date>30</div></div>
                         <div class=daywrap><div class="date nonmonth">1</div></div>
                     </div>
-                    <div class="daterow"><div class="daywrap"><div class="date nonmonth">2</div></div><div class="daywrap"><div class="date nonmonth">3</div></div><div class="daywrap"><div class="date nonmonth">4</div></div><div class="daywrap"><div class="date nonmonth">5</div></div><div class="daywrap"><div class="date nonmonth">6</div></div><div class="daywrap"><div class="date nonmonth">7</div></div><div class="daywrap"><div class="date nonmonth">8</div></div></div>
+
                 </div>
             </div>
         </div>
@@ -1887,6 +1887,18 @@
                 y += x;
             }
 
+            var tm = new Date().getMonth();
+            var ty = new Date().getFullYear();
+            var td = new Date().getDate();
+
+            console.log(tm,ty, m, y);
+
+            var current = false;
+
+            if ( m == tm && y == ty ){
+                current = true;
+            }
+
             c.dataset.month = m;
             c.dataset.year = y;
 
@@ -1951,6 +1963,10 @@
                 dw.className = 'daywrap';
                 dd.className = 'date date' + dates[j];
 
+                if ( current && td == dates[j] ){
+                    dd.className += ' currentday';
+                }
+
                 dd.appendChild(document.createTextNode(dates[j]));
 
                 dw.appendChild(dd);
@@ -1969,7 +1985,11 @@
 
             var xc = col;
             if ( rows > 0){
-                xc += 7;
+                //xc += 7; // constant height
+            }
+
+            if ( xc === 7 ){
+                xc = 0;
             }
 
             var xx = 1;
@@ -5635,7 +5655,9 @@
 
     function removeelm(e){
         console.log('remove');
-        this.parentNode.removeChild(this);
+        if ( this && this.parentNode ){
+            this.parentNode.removeChild(this);
+        }
     }
 
     function luminanace(r, g, b) {
