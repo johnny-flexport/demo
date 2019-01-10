@@ -1837,14 +1837,17 @@
 
                 var r = Math.floor(Math.random() * 29);
                 if ( r == c){
-                    if ( c > 1 ){
-                        r = c-1;
-                    } else if ( c== 1 ){
-                        r = c + 1;
+                    if ( c > 2 ){
+                        r = c-2;
+                    } else if ( c == 1 ){
+                        r = c + 2;
                     }
                 }
 
-                var d = this.getElementsByClassName('date'+r)[0];
+                var c = this;
+
+                var d = c.getElementsByClassName('date'+r);
+                d = d[d.length-1];
                 d.click();
             }
 
@@ -1856,6 +1859,7 @@
             for(var i=0;i<cals.length;i++){
                 var c = cals[i];
                 autoclicknext.call(c);
+                return;
             }
         }
 
@@ -6220,6 +6224,8 @@
         window.onresize = resize;
 
         resize();
+
+        today();
     })();
 </script>
 </body>
