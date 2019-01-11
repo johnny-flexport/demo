@@ -750,6 +750,16 @@
             .calwrap.boom .month {transform:translateX(0);opacity:1;}
 
 
+        .months {background:white;position:absolute;top:0;left:0;right:0;bottom:0;z-index:13;
+            transform: translateY(8px);opacity: 0;transition: all 150ms ease-in-out;
+        }
+            .months.boom {opacity: 1;transform:translateY(0);}
+        .minimonth {float: left;width: 33.33%;text-align: center;height:25%;display:flex;justify-content: center;align-items: center;cursor:pointer;}
+        .months .year {line-height: 40px;font-weight:700;text-align:center;}
+
+        .monthwrap {height:calc(100% - 40px);}
+
+
 
         .calendar {border:1px solid var(--grey30);box-shadow:0 2px 2px var(--shadow);border-radius:var(--radius);position:relative;display:inline-block;overflow:hidden;transition:height 150ms ease-in-out;}
             .calhead {line-height: 40px;position:relative;}
@@ -762,7 +772,7 @@
 
                     .nextmonth:hover .monthcontrol, .lastmonth:hover .monthcontrol  {border-color:var(--grey60);}
                     .nextmonth:active .monthcontrol, .lastmonth:active .monthcontrol  {border-color:var(--grey50);}
-                .month {font-weight:700;text-align:center;}
+                .month {font-weight:700;text-align:center;cursor:pointer;}
 
             .week {padding:5px 8px;border:1px solid var(--grey20);border-left:none;border-right:none;}
                 .week::after {content:'';clear:both;display:block;}
@@ -1815,20 +1825,22 @@
     </div>
 
     <script>
-        function autoclicknext(){
+        function autoclicknext(mm, yy){
             var m = this.dataset.month == null ? 10 : Number(this.dataset.month);
             var y = Number(this.dataset.year) || 2018;
             var n = this.getElementsByClassName('nextmonth')[0];
 
-            var tm = new Date().getMonth();
-            var ty = new Date().getFullYear();
+            var tm = !!mm ? mm : new Date().getMonth();
+            var ty = yy || new Date().getFullYear();
 
-            console.log(tm,ty, m, y);
 
-            if ( m != tm && y != ty ){
-                console.log('click');
-                cal.call(n, 1);
-                autoclicknext.call(this);
+            if ( m != tm || y != ty ){
+                var next = 1;
+                if ( ty < y || (y == ty && tm < m) ){
+                    next = -1;
+                }
+                cal.call(n, next);
+                autoclicknext.call(this, mm, yy);
             } else {
                 var c = new Date().getDate();
 
@@ -1871,6 +1883,19 @@
             var od = c.getElementsByClassName('dates');
             var m = c.dataset.month == null ? 10 : Number(c.dataset.month);
             var y = Number(c.dataset.year) || 2018;
+
+            if ( c.classList.contains('monthview') ){
+                //year
+
+                var year = c.getElementsByClassName('year')[0];
+                var yy = Number(year.parentElement.dataset.year) || 2018;
+                var ny = yy + x;
+                year.innerText = ny;
+
+                year.parentElement.dataset.year = ny;
+
+                return;
+            }
 
             var cw = document.createElement('div');
             var ch = c.getElementsByClassName('calhead')[0].cloneNode(true);
@@ -6174,6 +6199,69 @@
         d.classList.add('selectedday');
     }
 
+    function month(e){
+        console.log('month');
+
+        var months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+        var c = this.getparent('calendar');
+
+        c.classList.add('monthview');
+
+        var y = Number(c.dataset.year) || 2018;
+
+
+        var d = document.createElement('div');
+        d.className = 'months';
+        d.dataset.year = y;
+
+        var year = document.createElement('div');
+        year.className = 'year';
+
+        year.appendChild(document.createTextNode(y));
+        d.appendChild(year);
+
+        var mw = document.createElement('div');
+        mw.className = 'monthwrap';
+
+        d.appendChild(mw);
+
+        for(var i=0;i<months.length;i++){
+            var m = months[i];
+
+            var a = document.createElement('div');
+            a.className = 'minimonth';
+
+            a.dataset.month = i;
+            //a.dataset.year = y;
+
+            a.appendChild(document.createTextNode(m));
+
+            mw.appendChild(a);
+        }
+
+        c.appendChild(d);
+
+        d.offsetLeft;
+
+        d.classList.add('boom');
+
+    }
+
+    function minimonth(e){
+        console.log('click');
+
+        var m = Number(this.dataset.month);
+        var c = this.getparent('calendar');
+        var ms = this.getparent('months');
+        var y = Number(ms.dataset.year) || 2018;
+
+        c.classList.remove('monthview');
+
+        ms.parentNode.removeChild(ms);
+
+        autoclicknext.call(c, m, y);
+    }
+
 
     Attach.on('click', '.tab', tab);
     Attach.on('click', '.sizes', changesize);
@@ -6207,6 +6295,10 @@
     Attach.on('click', '.searchtab', searchtab);
 
     Attach.on('click', '.daywrap', selectdate);
+
+    Attach.on('click', '.month', month);
+
+    Attach.on('click', '.minimonth', minimonth);
 
     (function() {
         var hash = window.location.hash;
