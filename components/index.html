@@ -563,7 +563,7 @@
 
         .mobilenav #nav {bottom:auto;right:0;height:56px;width:auto;padding-right:16px;}
         .mobilenav #nav .tabsoverflow {white-space:nowrap;}
-        .mobilenav #nav .tab {display:inline-block;}
+        .mobilenav #nav .tab {display:inline-block;margin-right:4px;}
         .mobilenav #nav .tab:last-child {margin-right:12px;}
 
         body.mobilenav {padding-left:0;padding-top:56px;}
@@ -6154,7 +6154,7 @@
     function resize(e){
         var w = window.innerWidth;
 
-        if ( w < 800 ){
+        if ( w < 1000 ){
             document.body.classList.add('mobilenav');
         } else {
             document.body.classList.remove('mobilenav');
